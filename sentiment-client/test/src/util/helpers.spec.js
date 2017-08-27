@@ -13,4 +13,12 @@ describe('helpers', function () {
       expect(input).to.equal(actual);
     })
   })
+  describe.only('parse', function () {
+    it('should parse a url query string', function(){
+      let queryString = '/filterWebContent?token=da347ad6-b6b4-4135-839d-4308c3989db4&format=html&ts=1503567431774&q=bitcoin+language%3Aenglish+site_type%3Anews+is_first%3Atrue+&sort=relevancy&from=100'
+      let input = helpers.parse(queryString, 'q').split(' ')[0];
+      let actual = 'bitcoin';
+      expect(input).to.equal(actual)
+    })
+  })
 });
