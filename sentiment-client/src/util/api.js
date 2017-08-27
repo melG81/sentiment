@@ -4,9 +4,12 @@ let api = module.exports = {}
 let config = require('../../config.js');
 let axios = require('axios');
 
-// Refer to webhose API developer docs for filter and format query params
-// https://docs.webhose.io/v1.0/docs/filters-reference
-
+/**
+ * {Object literal to store webhose api paramaters, call .buildURL to return endpoint}
+ * Refer to webhose API developer docs for filter and format query params
+ * https://docs.webhose.io/v1.0/docs/filters-reference
+ * @return {String} {webhose url endpoint}
+ */
 api.webhose = {  
   token: config.webhoseTOKEN,
   endpoint: "http://webhose.io/filterWebContent?token=",
@@ -18,7 +21,7 @@ api.webhose = {
 }
 
 /**
- * @function {fetches initial api payload based on query paramater}
+ * @function {Fetches initial api payload based on query paramater}
  * @param  {String} string {topic you want to search for e.g. bitcoin or donald trump}
  * @return {Promise} {axios get promise}
  */
@@ -29,6 +32,11 @@ api.query = function (string) {
   return axios.get(url)
 }
 
+/**
+ * @function {Fetches next payload if there are more results available }
+ * @param  {Object} payload {returned data from api.query}
+ * @return {Promise} {axios get promise, will throw if there are no more results available}
+ */
 api.getNext = function (payload) {
   let data = payload.data;
   let isMore = data.moreResultsAvailable > 0;
@@ -41,6 +49,11 @@ api.getNext = function (payload) {
   }
 }
 
+/**
+ * @function {Recursive function which keeps fetching next payload until there are no more results available}
+ * @param  {Object} data {returned data from api.query}
+ * @return {Promise} {axios get promise, will continue calling itself until api.getNext throws 'No more results'}
+ */
 api.pollNext = function (data) {
   // Placeholder for asynchronous POST task
   // e.g. { Model.create(data).then(data => [])}
