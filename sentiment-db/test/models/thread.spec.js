@@ -41,15 +41,19 @@ describe('thread', function () {
   });
 
   it('should add a single thread on POST /threads', function (done) {
+    let posts = require('../data/posts.json');
+
     chai.request(server)
       .post('/threads')
-      .send({topic: 'banana boat'})
+      .send({topic: 'banana boat', posts})
       .end(function (err, resp) {
-        let topic = resp.body.topic;
-        let date = moment(resp.body.date).format('MMMM YYYY');
+        let data = resp.body;
+        let topic = data.topic;
+        let date = moment(data.date).format('MMMM YYYY');
         let today = moment().format('MMMM YYYY');
         expect(topic).to.equal('banana boat');
         expect(date).to.equal(today);
+        expect(data.posts.posts.length).to.equal(23);
         done();
       })
   });
@@ -77,9 +81,12 @@ describe('thread', function () {
     chai.request(server)
       .get('/threads/topic/bitcoin/latest')
       .end(function (err, resp) {
-        let input = resp.body;      
-        expect(input.length).to.equal(1);
-        expect(input[0].topic).to.equal('bitcoin');
+        expect(resp.body.length).to.equal(1);        
+        let data = resp.body[0];        
+        let topic = data.topic;
+        let posts = data.posts.posts;
+        expect(topic).to.equal('bitcoin');
+        expect(posts.length).to.equal(23);
         done();
       })
   });

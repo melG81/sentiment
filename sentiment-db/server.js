@@ -8,7 +8,8 @@ var db = require('./db/connection.js');
 db.connect();
 
 // Set bodyparser middleware
-app.use(bodyParser.json());
+app.use(bodyParser.json({ limit: '50mb' }));
+app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
 
 // Routes 
 app.use(require('./routes/index'));
