@@ -5,7 +5,11 @@ let mongoose = require('mongoose');
 let Thread = require('../../models/thread');
 let posts = require('../data/posts.json');
 
-// Wrap create object into a promise so we can call Promise.all
+/**
+ * @function {wraps the defalt mongoose.create method in a promise}
+ * @param  {Object} obj {document properties to be created}
+ * @return {Promise}
+ */
 mongoose.Model.seed = function (obj) {
   return new Promise((resolve, reject) => {
     this.create(obj, function (err) {
@@ -15,6 +19,11 @@ mongoose.Model.seed = function (obj) {
   });
 };
 
+/**
+ * @function {our database seed script to be called beforeEach test runs}
+ * @param  {String} done {for our tests to be able to call done after seeding is complete}
+ * @return {Promise}
+ */
 seeder.threads = function (done) {
   let bitcoin = Thread.seed({ topic: 'bitcoin'});
   let monero = Thread.seed({ topic: 'monero'});

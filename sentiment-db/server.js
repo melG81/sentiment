@@ -7,7 +7,7 @@ var app = express();
 var db = require('./db/connection.js');
 db.connect();
 
-// Set bodyparser middleware
+// Set bodyparser middleware. Set limit to 50mb in order to accept larger payload
 app.use(bodyParser.json({ limit: '50mb' }));
 app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
 

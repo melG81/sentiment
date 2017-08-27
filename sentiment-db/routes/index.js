@@ -6,7 +6,7 @@ router.get('/', function(req, res, next){
   res.status(200).json({status: 'ok'});  
 })
 
-// Threads CRUD
+// Threads CRUD endpoints
 var threads = require('./threads.js');
 router
   .get('/threads', threads.index)
