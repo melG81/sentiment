@@ -19,4 +19,13 @@ parser.parsePost = function(data){
   })
 }
 
-
+/**
+ * @function {Parses through an entire array of posts and returns array of updated posts}
+ * @param  {Array} array {posts payload in the form of payload.posts}
+ * @return {Array} {array of transformed posts}
+ */
+parser.parseArray = function(array){
+  return array.map(post => {
+    return parser.parsePost(post);
+  })
+}
