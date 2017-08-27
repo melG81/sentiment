@@ -10,5 +10,6 @@ router.get('/', function(req, res, next){
 var threads = require('./threads.js');
 router
   .get('/threads', threads.index)
+  .post('/threads', threads.create)
 
 module.exports = router;

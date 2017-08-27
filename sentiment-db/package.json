@@ -4,13 +4,8 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-<<<<<<< HEAD
     "test": "NODE_ENV=test mocha",
-    "dev": "NODE_ENV=development nodemon server.js"
-=======
-    "test": "mocha",
-    "start": "node server.js"
->>>>>>> e8768128e192151a03e1e7359193d5d8b3779f5a
+    "dev": "NODE_ENV=development nodemon ./server.js"
   },
   "keywords": [],
   "author": "",
@@ -18,6 +13,8 @@
   "dependencies": {
     "body-parser": "^1.17.2",
     "express": "^4.15.4",
+    "lodash": "^4.17.4",
+    "moment": "^2.18.1",
     "mongoose": "^4.11.8"
   },
   "devDependencies": {

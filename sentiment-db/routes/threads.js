@@ -1,30 +1,20 @@
 let threads = module.exports = {};
 
 // Dependencies
-// var mongoose = require('mongoose');
-// var Movie = require('../models/movie');
+var mongoose = require('mongoose');
+var Thread = require('../models/thread');
 
 threads.index = function (req, res, next) {
-  res.status(200).json({
-    data: [
-<<<<<<< HEAD
-      { topic: 'bitcoin', createdAt: 'Sun Aug 27 2017 11:24:01 GMT+1000 (AEST)' },
-      { topic: 'monero', createdAt: 'Sun Aug 27 2017 11:24:01 GMT+1000 (AEST)' },
-      { topic: 'gold', createdAt: 'Sun Aug 27 2017 11:24:01 GMT+1000 (AEST)' }
-=======
-      { topic: 'bitcoin' },
-      { topic: 'monero' },
-      { topic: 'gold' }
->>>>>>> e8768128e192151a03e1e7359193d5d8b3779f5a
-    ]
-  })  
+  Thread.find({})
+    .then(data => res.status(200).send(data))
+    .catch(next);
 };
 
-// exports.create = function (req, res, next) {
-//   Movie.create(req.body)
-//     .then(data => res.send(data))
-//     .catch(next);
-// };
+threads.create = function (req, res, next) {
+  Thread.create(req.body)
+    .then(data => res.send(data))
+    .catch(next);
+};
 
 // exports.show = function (req, res, next) {
 //   Movie.findById(req.params.id)
