@@ -72,5 +72,16 @@ describe('thread', function () {
         done();
       })
   });
+
+  it('should return the latest topic thread on GET /threads/topic/:topic/latest', function (done) {
+    chai.request(server)
+      .get('/threads/topic/bitcoin/latest')
+      .end(function (err, resp) {
+        let input = resp.body;      
+        expect(input.length).to.equal(1);
+        expect(input[0].topic).to.equal('bitcoin');
+        done();
+      })
+  });
   
 })

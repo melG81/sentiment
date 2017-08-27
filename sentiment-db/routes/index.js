@@ -11,6 +11,7 @@ var threads = require('./threads.js');
 router
   .get('/threads', threads.index)
   .post('/threads', threads.create)
+  .get('/threads/topic/:topic/latest', threads.topicLatest)
   .get('/threads/topic/:topic', threads.topic)
   
 

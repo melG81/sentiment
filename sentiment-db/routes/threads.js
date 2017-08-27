@@ -23,6 +23,17 @@ threads.topic = function (req, res, next) {
     .catch(next)
 }
 
+threads.topicLatest = function (req, res, next) {
+  let topic = req.params.topic;
+  Thread
+    .find({topic})
+    .sort({createdAt: -1})
+    .limit(1)
+    .exec()
+    .then(data => res.status(200).send(data))
+    .catch(next)
+}
+
 // exports.show = function (req, res, next) {
 //   Movie.findById(req.params.id)
 //     .populate('comments.user', 'name')
