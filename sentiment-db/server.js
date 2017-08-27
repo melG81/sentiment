@@ -3,12 +3,15 @@ var bodyParser = require('body-parser');
 
 var app = express();
 
+// Connect to MongoDB on start
+var db = require('./db/connection.js');
+db.connect();
+
 // Set bodyparser middleware
 app.use(bodyParser.json());
 
 // Routes 
 app.use(require('./routes/index'));
-
 
 // Catch and send error messages
 app.use(function (err, req, res, next) {
