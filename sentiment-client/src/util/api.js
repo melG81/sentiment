@@ -31,6 +31,14 @@ api.getNext = function (payload) {
   if (isMore) {
     return axios.get(url)
   } else {
-    Promise.resolve('done');
+    throw('No more results');
   }
+}
+
+api.pollNext = function (data) {
+  // Placeholder for asynchronous POST task
+  // e.g. { Model.create(data).then(data => [])}
+  return api.getNext(data).then(data => {
+    return api.pollNext(data);
+  })
 }

@@ -45,6 +45,92 @@ describe.only('api', function () {
           stub.restore();
           done();
         })
+    });
+    it('should keep fetching the next URL until there are no more results available', function(done){
+      let payload1 = { data: bitcoinPage1 }
+      let payload2 = { data: bitcoinPage2 }
+      let payload3 = { data: bitcoinPage3 }
+      let stub = sinon.stub(axios, 'get');
+      stub.onFirstCall().returns(Promise.resolve(payload1));
+      stub.onSecondCall().returns(Promise.resolve(payload2));
+      stub.onThirdCall().returns(Promise.resolve(payload3));
+
+      api.query('bitcoin')
+        .then(data => {
+          expect(data).to.eql(payload1)
+          return data
+        })
+        .then(data => api.getNext(data))
+        .then(data => {
+          expect(data).to.eql(payload2)
+          return data
+        })
+        .then(data => api.getNext(data))
+        .then(data => {
+          expect(data).to.eql(payload3)
+          return data;
+        })
+        .then(data => api.getNext(data))
+        .catch(err => {
+          let input = err;
+          let actual = 'No more results';
+          expect(input).to.equal(actual);
+          stub.restore();
+          done();
+        })      
+
+        // let getMultiple = function(data){
+      //   return api.getNext(data).then( data => {
+      //     return data;
+      //   })
+      // };
+
+      // let poll = function(data) {
+      //   return getMultiple(data).then(data => {
+      //     return poll(data);
+      //   })        
+      // }
+      // api.query('bitcoin')
+      //   .then(data => {
+      //     return poll(data);
+      //   })
+      //   .catch(err => {
+      //     let input = err;
+      //     let actual = 'No more results';
+      //     expect(input).to.equal(actual);
+      //     expect(stub.callCount).to.equal(3);
+      //     stub.restore();
+      //     done();
+      //   })      
+
     })
-  })
+  });
+  describe('pollNext', function () {
+    it('should exist', () => expect(api.pollNext).to.not.be.undefined);
+    it('should continue fetching next payload until there are no more results available', function (done) {
+      let payload1 = { data: bitcoinPage1 }
+      let payload2 = { data: bitcoinPage2 }
+      let payload3 = { data: bitcoinPage3 }
+      let stub = sinon.stub(axios, 'get');
+      stub.onFirstCall().returns(Promise.resolve(payload1));
+      stub.onSecondCall().returns(Promise.resolve(payload2));
+      stub.onThirdCall().returns(Promise.resolve(payload3));
+
+      api.query('bitcoin')
+        .then(data => {
+          return api.pollNext(data);
+        })
+        .catch(err => {
+          let input = err;
+          let actual = 'No more results';
+          expect(input).to.equal(actual);
+          expect(stub.callCount).to.equal(3);
+          stub.restore();
+          done();
+        })      
+
+    })
+  });
+  
 });
+
