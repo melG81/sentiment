@@ -9,7 +9,7 @@ let bitcoinPage1 = require('../../data/bitcoinPage1.json');
 let bitcoinPage2 = require('../../data/bitcoinPage2.json');
 let bitcoinPage3 = require('../../data/bitcoinPage3.json');
 
-describe.only('api', function () {
+describe('api', function () {
   it('should exist', () => expect(api).to.not.be.undefined);
   describe('query', function () {
     it('should exist', () => expect(api.query).to.not.be.undefined);

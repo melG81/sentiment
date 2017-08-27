@@ -6,6 +6,7 @@ let axios = require('axios');
 
 // Refer to webhose API developer docs for filter and format query params
 // https://docs.webhose.io/v1.0/docs/filters-reference
+
 api.webhose = {  
   token: config.webhoseTOKEN,
   endpoint: "http://webhose.io/filterWebContent?token=",
@@ -16,6 +17,11 @@ api.webhose = {
   }
 }
 
+/**
+ * @function {fetches initial api payload based on query paramater}
+ * @param  {String} string {topic you want to search for e.g. bitcoin or donald trump}
+ * @return {Promise} {axios get promise}
+ */
 api.query = function (string) {
   let endpoint = api.webhose.buildURL();
   let queryParam = encodeURI(string);
