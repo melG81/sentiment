@@ -3,6 +3,7 @@ let express = require('express');
 let exphbs = require('express-handlebars');
 let path = require('path');
 let app = express();
+let config = require('./config');
 
 // Set view engine
 app.engine('.hbs', exphbs({ extname: '.hbs', defaultLayout: 'main' }));
@@ -33,7 +34,7 @@ app.use(function (req, res) {
   });
 });
 
-const PORT = process.env.PORT || 3000;
+const PORT = config.PORT;
 // Expose and listen
 app.listen(PORT, function () {
   console.log(`Listening to port ${PORT}`);
