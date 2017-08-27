@@ -18,7 +18,8 @@ seeder.threads = function (done) {
   let bitcoin = Thread.seed({ topic: 'bitcoin'});
   let monero = Thread.seed({ topic: 'monero'});
   let gold = Thread.seed({ topic: 'gold'});
+  let bitcoin2 = Thread.seed({ topic: 'bitcoin' });
 
-  Promise.all([bitcoin, monero, gold])
+  Promise.all([bitcoin, monero, gold, bitcoin2])
     .then(() => done());
 };

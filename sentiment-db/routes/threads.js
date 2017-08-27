@@ -11,11 +11,7 @@ threads.index = function (req, res, next) {
 };
 
 threads.create = function (req, res, next) {
-  let thread = {
-    topic: req.body.topic,
-    createdAt: new Date()
-  }
-  Thread.create(thread)
+  Thread.create(req.body)
     .then(data => res.send(data))
     .catch(next);
 };

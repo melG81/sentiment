@@ -2,8 +2,9 @@
 var mongoose = require('mongoose');
 
 var Schema = new mongoose.Schema({
-  topic: String,
-  createdAt: Date
+  topic: String
+},{
+  timestamps: true
 });
 
 let Thread = mongoose.model('Thread', Schema);

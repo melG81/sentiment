@@ -13,7 +13,7 @@ let server = require('../../server.js');
 let mongoose = require('mongoose');
 let Thread = require('../../models/thread');
 
-describe.only('thread', function () {
+describe('thread', function () {
   beforeEach('drop the collection and reseed database', function(done){
     mongoose.connection.collections.threads.drop(function () {
       seeder.threads(done)
@@ -40,7 +40,7 @@ describe.only('thread', function () {
       })
   });
 
-  it.only('should add a single thread on POST /threads', function (done) {
+  it('should add a single thread on POST /threads', function (done) {
     chai.request(server)
       .post('/threads')
       .send({topic: 'banana boat'})
