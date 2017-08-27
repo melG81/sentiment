@@ -11,5 +11,7 @@ var threads = require('./threads.js');
 router
   .get('/threads', threads.index)
   .post('/threads', threads.create)
+  .get('/threads/topic/:topic', threads.topic)
+  
 
 module.exports = router;

@@ -53,4 +53,24 @@ describe('thread', function () {
         done();
       })
   });
+
+  it('should return all topic threads on GET /threads/topic/:topic', function (done) {
+    chai.request(server)
+      .get('/threads/topic/bitcoin')
+      .end(function (err, resp) {
+        let input = resp.body.map(el => {
+          return Object.assign({}, {
+            topic: el.topic,
+            createdAt: moment(el.createdAt).format('MMMM YYYY')
+          })
+        })
+        let actual = [
+          { topic: 'bitcoin', createdAt: 'August 2017' },
+          { topic: 'bitcoin', createdAt: 'August 2017' },
+        ]
+        expect(input).to.deep.include.members(actual);
+        done();
+      })
+  });
+  
 })
