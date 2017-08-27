@@ -90,5 +90,23 @@ describe('thread', function () {
         done();
       })
   });
-  
+
+  it('should delete a topic by id on DELETE /threads/topic/id/:id', function (done) {
+    Thread
+      .findOne({topic: 'bitcoin' })
+      .then(data => {
+        let id = data.id;
+        chai.request(server)
+          .delete(`/threads/topic/id/${id}`)
+          .end(function (err, resp) {
+            expect(resp.body.topic).to.equal('bitcoin');
+            chai.request(server)
+              .get('/threads/topic/bitcoin')
+              .end(function( err, resp){
+                expect(resp.body.length).to.equal(1);
+                done();
+              })
+          })
+      })
+  });
 })
