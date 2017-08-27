@@ -61,3 +61,18 @@ api.pollNext = function (data) {
     return api.pollNext(data);
   })
 }
+
+/**
+ * @function {makes a POST request to sentiment-db/threads}
+ * @param  {String} query {query paramater from api.query search}
+ * @param  {Object} data  {single post payload data}
+ * @return {Promise} {axios.post promise}
+ */
+api.postThread = function (query, data) {
+  let url = `${config.sentimentDBHost}/threads`;
+  let thread = {
+    topic: query,
+    posts: data.posts
+  } 
+  return axios.post(url, thread)
+}

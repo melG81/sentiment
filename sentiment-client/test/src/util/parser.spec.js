@@ -25,7 +25,7 @@ describe('parser', function(){
       expect(input).to.eql(actual);
     })
   });
-  describe.only('.parseArray', function () {
+  describe('.parseArray', function () {
     it('should exist', () => expect(parser.parseArray).to.not.be.undefined)
     it('should parse an array of posts and return transformed posts', function () {
       let posts = bitcoinPage1.posts;
