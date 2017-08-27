@@ -15,9 +15,9 @@ mongoose.Model.seed = function (obj) {
 };
 
 seeder.threads = function (done) {
-  let bitcoin = Thread.seed({ topic: 'bitcoin', createdAt: new Date() });
-  let monero = Thread.seed({ topic: 'monero', createdAt: new Date() });
-  let gold = Thread.seed({ topic: 'gold', createdAt: new Date() });
+  let bitcoin = Thread.seed({ topic: 'bitcoin'});
+  let monero = Thread.seed({ topic: 'monero'});
+  let gold = Thread.seed({ topic: 'gold'});
 
   Promise.all([bitcoin, monero, gold])
     .then(() => done());

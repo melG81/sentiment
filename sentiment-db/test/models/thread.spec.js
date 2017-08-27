@@ -39,4 +39,18 @@ describe.only('thread', function () {
         done();
       })
   });
+
+  it.only('should add a single thread on POST /threads', function (done) {
+    chai.request(server)
+      .post('/threads')
+      .send({topic: 'banana boat'})
+      .end(function (err, resp) {
+        let topic = resp.body.topic;
+        let date = moment(resp.body.date).format('MMMM YYYY');
+        let today = moment().format('MMMM YYYY');
+        expect(topic).to.equal('banana boat');
+        expect(date).to.equal(today);
+        done();
+      })
+  });
 })
