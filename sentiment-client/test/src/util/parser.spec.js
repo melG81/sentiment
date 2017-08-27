@@ -30,7 +30,7 @@ describe('parser', function(){
     it('should parse an array of posts and return transformed posts', function () {
       let posts = bitcoinPage1.posts;
       let input = parser.parseArray(posts);
-      let actual = postNew
+      let actual = postNew;
       expect(input.length).to.equal(100);
       expect(input[0]).to.eql(actual);      
     })

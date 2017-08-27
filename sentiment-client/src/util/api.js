@@ -3,6 +3,8 @@ let api = module.exports = {}
 // Dependencies
 let config = require('../../config.js');
 let axios = require('axios');
+let helpers = require('./helpers');
+let parser = require('./parser');
 
 /**
  * {Object literal to store webhose api paramaters, call .buildURL to return endpoint}
@@ -22,12 +24,12 @@ api.webhose = {
 
 /**
  * @function {Fetches initial api payload based on query paramater}
- * @param  {String} string {topic you want to search for e.g. bitcoin or donald trump}
+ * @param  {String} query {topic you want to search for e.g. bitcoin or donald trump}
  * @return {Promise} {axios get promise}
  */
-api.query = function (string) {
+api.query = function (query) {
   let endpoint = api.webhose.buildURL();
-  let queryParam = encodeURI(string);
+  let queryParam = encodeURI(query);
   let url = endpoint + queryParam;
   return axios.get(url)
 }
@@ -54,11 +56,15 @@ api.getNext = function (payload) {
  * @param  {Object} data {returned data from api.query}
  * @return {Promise} {axios get promise, will continue calling itself until api.getNext throws 'No more results'}
  */
-api.pollNext = function (data) {
-  // Placeholder for asynchronous POST task
-  // e.g. { Model.create(data).then(data => [])}
-  return api.getNext(data).then(data => {
-    return api.pollNext(data);
+api.pollNext = function (query, payload) {    
+  // Side task: parses successful payload and posts to database
+  let posts = payload.data.posts;
+  let parsedPosts = parser.parseArray(posts);
+  api.postThread(query, parsedPosts);
+  
+  // Fetches the next payload and calls itself recursively
+  return api.getNext(payload).then(data => {    
+    return api.pollNext(query, data);
   })
 }
 
@@ -68,11 +74,11 @@ api.pollNext = function (data) {
  * @param  {Object} data  {single post payload data}
  * @return {Promise} {axios.post promise}
  */
-api.postThread = function (query, data) {
+api.postThread = function (query, parsedPosts) {
   let url = `${config.sentimentDBHost}/threads`;
   let thread = {
     topic: query,
-    posts: data.posts
+    posts: parsedPosts
   } 
   return axios.post(url, thread)
 }
