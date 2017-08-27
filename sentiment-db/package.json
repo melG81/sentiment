@@ -4,8 +4,13 @@
   "description": "",
   "main": "server.js",
   "scripts": {
+<<<<<<< HEAD
     "test": "NODE_ENV=test mocha",
     "dev": "NODE_ENV=development nodemon server.js"
+=======
+    "test": "mocha",
+    "start": "node server.js"
+>>>>>>> e8768128e192151a03e1e7359193d5d8b3779f5a
   },
   "keywords": [],
   "author": "",
