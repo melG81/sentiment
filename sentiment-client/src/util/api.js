@@ -75,7 +75,7 @@ api.pollNext = function (query, payload) {
  * @return {Promise} {axios.post promise}
  */
 api.postThread = function (query, parsedPosts) {
-  let url = `${config.sentimentDBHost}/threads`;
+  let url = `${config.sentimentDBHost}threads`;
   let thread = {
     topic: query,
     posts: parsedPosts
