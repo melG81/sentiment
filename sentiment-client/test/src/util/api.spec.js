@@ -141,8 +141,8 @@ describe('api', function () {
       stub.onThirdCall().returns(Promise.resolve(payload3));
 
       api.pollScript('bitcoin')
-        .catch(err => {
-          let input = err;
+        .then(msg => {
+          let input = msg;
           let actual = 'No more results';
           expect(input).to.equal(actual);
           expect(stub.callCount).to.equal(3);
