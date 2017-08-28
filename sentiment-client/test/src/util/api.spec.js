@@ -106,35 +106,6 @@ describe('api', function () {
 
     })
   });
-  describe('pollNext', function () {
-    it('should exist', () => expect(api.pollNext).to.not.be.undefined);
-    it('should continue fetching next payload until there are no more results available', function (done) {
-      let payload1 = { data: bitcoinPage1 }
-      let payload2 = { data: bitcoinPage2 }
-      let payload3 = { data: bitcoinPage3 }
-      let stubPost = sinon.stub(axios, 'post');
-      let stub = sinon.stub(axios, 'get');
-      stub.onFirstCall().returns(Promise.resolve(payload1));
-      stub.onSecondCall().returns(Promise.resolve(payload2));
-      stub.onThirdCall().returns(Promise.resolve(payload3));
-
-      api.query('bitcoin')
-        .then(data => {
-          return api.pollNext('bitcoin', data);
-        })
-        .catch(err => {
-          let input = err;
-          let actual = 'No more results';
-          expect(input).to.equal(actual);
-          expect(stub.callCount).to.equal(3);
-          expect(stubPost.callCount).to.equal(3);
-          stub.restore();
-          stubPost.restore();
-          done();
-        })      
-
-    })
-  });
   describe('postThread', function() {
     it('should exist', () => expect(api.postThread).to.not.be.undefined);
     it('should send a /POST request to sentiment-db and return the saved payload', function(done){
@@ -155,6 +126,34 @@ describe('api', function () {
           done();
         })
     })
-  })
+  });
+  describe('pollScript', function () {
+    it('should exist', () => expect(api.pollScript).to.not.be.undefined);
+    it('should continue fetching next payload until there are no more results available', function (done) {
+      let payload1 = { data: bitcoinPage1 }
+      let payload2 = { data: bitcoinPage2 }
+      let payload3 = { data: bitcoinPage3 }
+      let stubPost = sinon.stub(axios, 'post');
+      let stub = sinon.stub(axios, 'get');
+      let spy = sinon.spy(api, 'pollNext');
+      stub.onFirstCall().returns(Promise.resolve(payload1));
+      stub.onSecondCall().returns(Promise.resolve(payload2));
+      stub.onThirdCall().returns(Promise.resolve(payload3));
+
+      api.pollScript('bitcoin')
+        .catch(err => {
+          let input = err;
+          let actual = 'No more results';
+          expect(input).to.equal(actual);
+          expect(stub.callCount).to.equal(3);
+          expect(stubPost.callCount).to.equal(3);
+          expect(spy.callCount).to.equal(3);
+          stub.restore();
+          stubPost.restore();
+          spy.restore();
+          done();
+        })
+    })
+  });  
 });
 

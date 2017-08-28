@@ -35,6 +35,21 @@ api.query = function (query) {
 }
 
 /**
+ * @function {makes a POST request to sentiment-db/threads}
+ * @param  {String} query {query paramater from api.query search}
+ * @param  {Object} data  {single post payload data}
+ * @return {Promise} {axios.post promise}
+ */
+api.postThread = function (query, parsedPosts) {
+  let url = `${config.sentimentDBHost}threads`;
+  let thread = {
+    topic: query,
+    posts: parsedPosts
+  }
+  return axios.post(url, thread)
+}
+
+/**
  * @function {Fetches next payload if there are more results available }
  * @param  {Object} payload {returned data from api.query}
  * @return {Promise} {axios get promise, will throw if there are no more results available}
@@ -69,16 +84,13 @@ api.pollNext = function (query, payload) {
 }
 
 /**
- * @function {makes a POST request to sentiment-db/threads}
- * @param  {String} query {query paramater from api.query search}
- * @param  {Object} data  {single post payload data}
- * @return {Promise} {axios.post promise}
+ * @function {Queries, parses and posts data from the api until no more results available}
+ * @param  {String} query {query paramater}
+ * @return {Promise}
  */
-api.postThread = function (query, parsedPosts) {
-  let url = `${config.sentimentDBHost}threads`;
-  let thread = {
-    topic: query,
-    posts: parsedPosts
-  } 
-  return axios.post(url, thread)
+api.pollScript = function (query) {
+  return api.query(query)
+    .then(payload => {
+      return api.pollNext(query, payload);
+    })
 }
