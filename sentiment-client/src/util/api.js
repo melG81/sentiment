@@ -89,8 +89,13 @@ api.pollNext = function (query, payload) {
  * @return {Promise}
  */
 api.pollScript = function (query) {
-  return api.query(query)
-    .then(payload => {
-      return api.pollNext(query, payload);
-    })
+  return new Promise(function(resolve){
+    api.query(query)
+      .then(payload => {
+        return api.pollNext(query, payload);
+      })
+      .catch(msg => {
+        resolve(msg)
+      })
+  })
 }

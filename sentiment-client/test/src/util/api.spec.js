@@ -79,31 +79,6 @@ describe('api', function () {
           stub.restore();
           done();
         })      
-
-        // let getMultiple = function(data){
-      //   return api.getNext(data).then( data => {
-      //     return data;
-      //   })
-      // };
-
-      // let poll = function(data) {
-      //   return getMultiple(data).then(data => {
-      //     return poll(data);
-      //   })        
-      // }
-      // api.query('bitcoin')
-      //   .then(data => {
-      //     return poll(data);
-      //   })
-      //   .catch(err => {
-      //     let input = err;
-      //     let actual = 'No more results';
-      //     expect(input).to.equal(actual);
-      //     expect(stub.callCount).to.equal(3);
-      //     stub.restore();
-      //     done();
-      //   })      
-
     })
   });
   describe('postThread', function() {
@@ -141,8 +116,8 @@ describe('api', function () {
       stub.onThirdCall().returns(Promise.resolve(payload3));
 
       api.pollScript('bitcoin')
-        .catch(err => {
-          let input = err;
+        .then(msg => {
+          let input = msg;
           let actual = 'No more results';
           expect(input).to.equal(actual);
           expect(stub.callCount).to.equal(3);
