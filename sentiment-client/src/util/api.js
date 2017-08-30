@@ -2,7 +2,6 @@ let api = module.exports = {}
 
 // Dependencies
 let config = require('../../config.js');
-let axios = require('axios');
 let helpers = require('./helpers');
 let parser = require('./parser');
 
@@ -24,10 +23,11 @@ api.webhose = {
 
 /**
  * @function {Fetches initial api payload based on query paramater}
+ * @param  {Object} axios {axios service dependency injection}
  * @param  {String} query {topic you want to search for e.g. bitcoin or donald trump}
  * @return {Promise} {axios get promise}
  */
-api.query = function (query) {
+api.query = function (axios, query) {
   let endpoint = api.webhose.buildURL();
   let queryParam = encodeURI(query);
   let url = endpoint + queryParam;
@@ -36,11 +36,12 @@ api.query = function (query) {
 
 /**
  * @function {makes a POST request to sentiment-db/threads}
+ * @param  {Object} axios {axios service dependency injection}
  * @param  {String} query {query paramater from api.query search}
  * @param  {Object} data  {single post payload data}
  * @return {Promise} {axios.post promise}
  */
-api.postThread = function (query, parsedPosts) {
+api.postThread = function (axios, query, parsedPosts) {
   let url = `${config.sentimentDBHost}threads`;
   let thread = {
     topic: query,
@@ -51,10 +52,11 @@ api.postThread = function (query, parsedPosts) {
 
 /**
  * @function {Fetches next payload if there are more results available }
+ * @param  {Object} axios {axios service dependency injection}
  * @param  {Object} payload {returned data from api.query}
  * @return {Promise} {axios get promise, will throw if there are no more results available}
  */
-api.getNext = function (payload) {
+api.getNext = function (axios, payload) {
   let data = payload.data;
   let isMore = data.moreResultsAvailable > 0;
   let next = data.next;
@@ -71,15 +73,15 @@ api.getNext = function (payload) {
  * @param  {Object} data {returned data from api.query}
  * @return {Promise} {axios get promise, will continue calling itself until api.getNext throws 'No more results'}
  */
-api.pollNext = function (query, payload) {    
+api.pollNext = function (axios, query, payload) {    
   // Side task: parses successful payload and posts to database
   let posts = payload.data.posts;
   let parsedPosts = parser.parseArray(posts);
-  api.postThread(query, parsedPosts);
+  api.postThread(axios, query, parsedPosts);
   
   // Fetches the next payload and calls itself recursively
-  return api.getNext(payload).then(data => {    
-    return api.pollNext(query, data);
+  return api.getNext(axios, payload).then(data => {    
+    return api.pollNext(axios, query, data);
   })
 }
 
@@ -88,11 +90,11 @@ api.pollNext = function (query, payload) {
  * @param  {String} query {query paramater}
  * @return {Promise}
  */
-api.pollScript = function (query) {
+api.pollScript = function (axios, query) {
   return new Promise(function(resolve){
-    api.query(query)
+    api.query(axios, query)
       .then(payload => {
-        return api.pollNext(query, payload);
+        return api.pollNext(axios, query, payload);
       })
       .catch(msg => {
         resolve(msg)
