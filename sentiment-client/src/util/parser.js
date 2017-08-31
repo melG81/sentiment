@@ -9,16 +9,13 @@ let helpers = require('./helpers.js')
  * @return {Object} {transformed object with extracted data}
  */
 parser.parsePost = function(data){
-  let thread = data.thread || {};  
+  let thread = data.thread || {};
+  let {url, author, published, title, text, crawled } = data;
 
   return Object.assign({},{
     site: thread.site,
-    url: data.url,
-    author: data.author,
-    published: data.published,
-    title: data.title,
-    text: helpers.truncate(data.text, 600),
-    crawled: data.crawled
+    url, author, published, title, crawled,
+    text: helpers.truncate(data.text, 600)
   })
 }
 
