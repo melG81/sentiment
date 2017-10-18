@@ -63,23 +63,18 @@ describe('api', function () {
       api.query('bitcoin', axios)
         .then(data => {
           expect(data).to.eql(payload1)
-          return data
+          return api.getNext(data, axios)
         })
-        .then(data => api.getNext(data, axios))
         .then(data => {
           expect(data).to.eql(payload2)
-          return data
+          return api.getNext(data, axios)
         })
-        .then(data => api.getNext(data, axios))
         .then(data => {
           expect(data).to.eql(payload3)
-          return data;
+          return api.getNext(data, axios)
         })
-        .then(data => api.getNext(data, axios))
         .then(data => {
-          let input = data;
-          let actual = 'No more results';
-          expect(input).to.equal(actual);
+          expect(data).to.equal('No more results');
           axios.get.reset();
           done();
         })      
@@ -120,9 +115,7 @@ describe('api', function () {
 
       api.pollScript('bitcoin', axios)
         .then(msg => {
-          let input = msg;
-          let actual = 'No more results';
-          expect(input).to.equal(actual);
+          expect(msg).to.equal('No more results');
           expect(axios.get.callCount).to.equal(3);
           expect(axios.post.callCount).to.equal(3);
           expect(spy.callCount).to.equal(3);
