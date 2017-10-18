@@ -4,7 +4,8 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "mocha",
+    "test": "find ./test -name '*.spec.js' | xargs mocha -R spec",
+    "test:int": "find ./test -name '*.int_spec.js' | xargs mocha -R spec",
     "dev": "nodemon server.js"
   },
   "keywords": [],
