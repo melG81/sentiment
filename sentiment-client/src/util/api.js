@@ -7,9 +7,8 @@ let config = require('../../config.js');
 let helpers = require('./helpers');
 let parser = require('./parser');
 
-
 /**
- * {Object literal to store webhose api paramaters, call .buildURL to return endpoint}
+ * @function {Returns webhose url endpoint}
  * Refer to webhose API developer docs for filter and format query params
  * https://docs.webhose.io/v1.0/docs/filters-reference
  * @return {String} {webhose url endpoint}
@@ -24,8 +23,8 @@ api.getWebhoseEndpoint = () => {
 
 /**
  * @function {Fetches initial api payload based on query paramater}
- * @param  {Object} axios {axios service dependency injection}
- * @param  {String} query {topic you want to search for e.g. bitcoin or donald trump}
+ * @param  {String} query {topic you want to search webhouse for e.g. bitcoin or donald trump}
+ * @param  {Object} request {request dependency defaults to axios}
  * @return {Promise} {axios get promise}
  */
 api.query = function (query, request=axios) {
@@ -36,10 +35,10 @@ api.query = function (query, request=axios) {
 }
 
 /**
- * @function {makes a POST request to sentiment-db/threads}
- * @param  {Object} axios {axios service dependency injection}
+ * @function {parses payload and makes a POST request to sentiment-db/threads}
  * @param  {String} query {query paramater from api.query search}
- * @param  {Object} data  {single post payload data}
+ * @param  {Object} payload  {payload data from a single post with multiple threads}
+ * @param  {Object} request {request dependency defaults to axios}
  * @return {Promise} {axios.post promise}
  */
 api.postThread = function (query, payload, request=axios) {
@@ -57,9 +56,9 @@ api.postThread = function (query, payload, request=axios) {
 
 /**
  * @function {Fetches next payload if there are more results available }
- * @param  {Object} axios {axios service dependency injection}
  * @param  {Object} payload {returned data from api.query}
- * @return {Promise} {axios get promise, will throw if there are no more results available}
+ * @param  {Object} request {request dependency defaults to axios}
+ * @return {Promise} {get promise of the next url if more data available, otherwise will resolve with string 'No More results'}
  */
 api.getNext = function (payload, request=axios) {
   let data = payload.data;
@@ -74,9 +73,11 @@ api.getNext = function (payload, request=axios) {
 }
 
 /**
- * @function {Recursive function which keeps fetching next payload until there are no more results available}
+ * @function {Recursive function which keeps fetching next payload, parses and posts a thread until there are no more results available}
  * @param  {Object} data {returned data from api.query}
- * @return {Promise} {axios get promise, will continue calling itself until api.getNext throws 'No more results'}
+ * @param  {Object} payload {returned data from api get url payload}
+ * @param  {Object} request {request dependency defaults to axios}
+ * @return {Promise} {resolves to 'No more results' when no more results are left}
  */
 api.pollNext = function (query, payload, request=axios) {    
   // Side task: post payload to database
@@ -94,7 +95,8 @@ api.pollNext = function (query, payload, request=axios) {
 /**
  * @function {Queries, parses and posts data from the api until no more results available}
  * @param  {String} query {query paramater}
- * @return {Promise}
+ * @param  {Object} request {request dependency defaults to axios}
+ * @return {Promise} resolves to 'No more results' when completed polling
  */
 api.pollScript = function (query, request=axios) {
   return new Promise(function(resolve){
