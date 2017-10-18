@@ -6,6 +6,7 @@ let axios = require('axios');
 let config = require('../../config.js');
 let helpers = require('./helpers');
 let parser = require('./parser');
+let _ = require('lodash');
 
 
 /**
