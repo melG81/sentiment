@@ -1,9 +1,12 @@
 let api = module.exports = {}
 
 // Dependencies
+let _ = require('lodash');
+let axios = require('axios');
 let config = require('../../config.js');
 let helpers = require('./helpers');
 let parser = require('./parser');
+
 
 /**
  * {Object literal to store webhose api paramaters, call .buildURL to return endpoint}
@@ -11,14 +14,12 @@ let parser = require('./parser');
  * https://docs.webhose.io/v1.0/docs/filters-reference
  * @return {String} {webhose url endpoint}
  */
-api.webhose = {  
-  token: config.webhoseTOKEN,
-  endpoint: "http://webhose.io/filterWebContent?token=",
-  format: "sort=relevancy&size=100",
-  filters: "q=language%3Aenglish%20site_type%3Anews%20is_first%3Atrue%20",
-  buildURL: function(){
-    return `${this.endpoint}${this.token}&${this.format}&${this.filters}`
-  }
+api.getWebhoseEndpoint = () => {  
+  this.token = config.webhoseTOKEN;
+  this.endpoint = "http://webhose.io/filterWebContent?token=";
+  this.format = "sort=relevancy&size=100";
+  this.filters = "q=language%3Aenglish%20site_type%3Anews%20is_first%3Atrue%20";
+  return `${this.endpoint}${this.token}&${this.format}&${this.filters}`
 }
 
 /**
@@ -27,11 +28,11 @@ api.webhose = {
  * @param  {String} query {topic you want to search for e.g. bitcoin or donald trump}
  * @return {Promise} {axios get promise}
  */
-api.query = function (axios, query) {
-  let endpoint = api.webhose.buildURL();
+api.query = function (query, request=axios) {
+  let endpoint = api.getWebhoseEndpoint();
   let queryParam = encodeURI(query);
   let url = endpoint + queryParam;
-  return axios.get(url)
+  return request.get(url)
 }
 
 /**
@@ -41,13 +42,17 @@ api.query = function (axios, query) {
  * @param  {Object} data  {single post payload data}
  * @return {Promise} {axios.post promise}
  */
-api.postThread = function (axios, query, parsedPosts) {
+api.postThread = function (query, payload, request=axios) {
   let url = `${config.sentimentDBHost}threads`;
+
+  let posts = _.get(payload, 'data.posts');
+  let parsedPosts = parser.parseArray(posts);
+
   let thread = {
     topic: query,
     posts: parsedPosts
   }
-  return axios.post(url, thread)
+  return request.post(url, thread)
 }
 
 /**
@@ -56,15 +61,15 @@ api.postThread = function (axios, query, parsedPosts) {
  * @param  {Object} payload {returned data from api.query}
  * @return {Promise} {axios get promise, will throw if there are no more results available}
  */
-api.getNext = function (axios, payload) {
+api.getNext = function (payload, request=axios) {
   let data = payload.data;
   let isMore = data.moreResultsAvailable > 0;
   let next = data.next;
   let url = "http://webhose.io" + next;
   if (isMore) {
-    return axios.get(url)
+    return request.get(url)
   } else {
-    throw('No more results');
+    return Promise.resolve('No more results');
   }
 }
 
@@ -73,15 +78,16 @@ api.getNext = function (axios, payload) {
  * @param  {Object} data {returned data from api.query}
  * @return {Promise} {axios get promise, will continue calling itself until api.getNext throws 'No more results'}
  */
-api.pollNext = function (axios, query, payload) {    
-  // Side task: parses successful payload and posts to database
-  let posts = payload.data.posts;
-  let parsedPosts = parser.parseArray(posts);
-  api.postThread(axios, query, parsedPosts);
+api.pollNext = function (query, payload, request=axios) {    
+  // Side task: post payload to database
+  api.postThread(query, payload, request);
   
   // Fetches the next payload and calls itself recursively
-  return api.getNext(axios, payload).then(data => {    
-    return api.pollNext(axios, query, data);
+  return api.getNext(payload, request).then(nextPayload => {
+    if (nextPayload === 'No more results') {
+      return Promise.resolve(nextPayload)
+    }
+    return api.pollNext(query, nextPayload, request);
   })
 }
 
@@ -90,13 +96,13 @@ api.pollNext = function (axios, query, payload) {
  * @param  {String} query {query paramater}
  * @return {Promise}
  */
-api.pollScript = function (axios, query) {
+api.pollScript = function (query, request=axios) {
   return new Promise(function(resolve){
-    api.query(axios, query)
+    api.query(query, request)
       .then(payload => {
-        return api.pollNext(axios, query, payload);
+        return api.pollNext(query, payload, request);
       })
-      .catch(msg => {
+      .then(msg => {
         resolve(msg)
       })
   })

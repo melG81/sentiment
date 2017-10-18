@@ -25,7 +25,7 @@ describe('api', function () {
         data: bitcoinPage1
       }
       axios.get.returns(Promise.resolve(payload));
-      api.query(axios, 'bitcoin')
+      api.query('bitcoin', axios)
         .then(data => {
           expect(data).to.eql(payload)
           axios.get.reset();
@@ -40,12 +40,12 @@ describe('api', function () {
       let payload2 = { data: bitcoinPage2 }
       axios.get.onFirstCall().returns(Promise.resolve(payload1));
       axios.get.onSecondCall().returns(Promise.resolve(payload2));
-      api.query(axios, 'bitcoin')
+      api.query('bitcoin', axios)
         .then(data => {
           expect(data).to.eql(payload1)
           return data
         })
-        .then(data => api.getNext(axios, data))
+        .then(data => api.getNext(data, axios))
         .then(data => {
           expect(data).to.eql(payload2);
           axios.get.reset();
@@ -60,24 +60,24 @@ describe('api', function () {
       axios.get.onSecondCall().returns(Promise.resolve(payload2));
       axios.get.onThirdCall().returns(Promise.resolve(payload3));
 
-      api.query(axios, 'bitcoin')
+      api.query('bitcoin', axios)
         .then(data => {
           expect(data).to.eql(payload1)
           return data
         })
-        .then(data => api.getNext(axios, data))
+        .then(data => api.getNext(data, axios))
         .then(data => {
           expect(data).to.eql(payload2)
           return data
         })
-        .then(data => api.getNext(axios, data))
+        .then(data => api.getNext(data, axios))
         .then(data => {
           expect(data).to.eql(payload3)
           return data;
         })
-        .then(data => api.getNext(axios, data))
-        .catch(err => {
-          let input = err;
+        .then(data => api.getNext(data, axios))
+        .then(data => {
+          let input = data;
           let actual = 'No more results';
           expect(input).to.equal(actual);
           axios.get.reset();
@@ -88,17 +88,18 @@ describe('api', function () {
   describe('postThread', function() {
     it('should exist', () => expect(api.postThread).to.not.be.undefined);
     it('should send a /POST request to sentiment-db and return the saved payload', function(done){
-      let posts = bitcoinPage1Parsed;       
+      let payload = { data: bitcoinPage1 };
+      let postsParsed = bitcoinPage1Parsed;
       let postNew = Object.assign({}, {
         topic: 'bitcoin',
         createdAt: new Date(),
         updatedAt: new Date(),
         _id: 'uid',
-        posts: posts
+        posts: postsParsed
       })
       
       axios.post.returns(Promise.resolve(postNew))
-      api.postThread(axios, 'bitcoin', posts)
+      api.postThread('bitcoin', payload, axios)
         .then(data => {
           expect(data).to.eql(postNew);
           axios.post.reset();
@@ -117,7 +118,7 @@ describe('api', function () {
       axios.get.onSecondCall().returns(Promise.resolve(payload2));
       axios.get.onThirdCall().returns(Promise.resolve(payload3));
 
-      api.pollScript(axios, 'bitcoin')
+      api.pollScript('bitcoin', axios)
         .then(msg => {
           let input = msg;
           let actual = 'No more results';
