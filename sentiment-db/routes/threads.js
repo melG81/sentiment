@@ -3,6 +3,7 @@ let threads = module.exports = {};
 // Dependencies
 var mongoose = require('mongoose');
 var Thread = require('../models/thread');
+var _ = require('lodash')
 
 /**
  * @function {fetches all thread documents}
@@ -12,6 +13,23 @@ threads.index = function (req, res, next) {
     .then(data => res.status(200).send(data))
     .catch(next);
 };
+
+/**
+ * fetches all threads with the given author name
+ */
+threads.author = function (req, res, next) {
+  let author = req.params.author
+  Thread.find({'posts.author': {$regex: new RegExp(author, "i")}})
+    .then(threads => {
+      let posts = threads.map(thread => {
+        return thread.posts.filter(post => post.author.toLowerCase() === author.toLowerCase())
+      })
+      return _.flatten(posts)
+    })
+    .then(posts => res.send(posts))
+    .catch(next)
+}
+
 
 /**
  * @function {creates a new thread document}
