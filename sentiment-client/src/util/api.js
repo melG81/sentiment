@@ -42,7 +42,7 @@ api.query = function (query, request=axios) {
  * @return {Promise} {axios.post promise}
  */
 api.postThread = function (query, payload, request=axios) {
-  let url = `${config.sentimentDBHost}threads`;
+  let url = `${config.sentimentDBHost}/threads`;
 
   let posts = _.get(payload, 'data.posts');
   let parsedPosts = parser.parseArray(posts);
