@@ -32,3 +32,4 @@ dbClient.updateThread = function (id, document, request=axios) {
   let url = `${config.sentimentDBHost}/threads/topic/id/${id}`;
   return request.put(url, document)  
 }
+
