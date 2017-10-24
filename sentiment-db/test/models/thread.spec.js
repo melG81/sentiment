@@ -109,4 +109,20 @@ describe('thread', function () {
           })
       })
   });
+
+  it('should update a topic by id on PUT /threads/topic/id/:id', function (done) {
+    Thread
+      .findOne({topic: 'bitcoin' })
+      .then(data => {
+        let id = data.id;
+        chai.request(server)
+          .put(`/threads/topic/id/${id}`)
+          .send({topic: 'miaow', posts: [{title: 'cat hero'}, {title: 'evil cat'}]})
+          .end(function (err, resp) {
+            expect(resp.body.topic).to.equal('miaow');
+            expect(resp.body.posts).to.eql([{ title: 'cat hero' }, { title: 'evil cat' }]);
+            done();
+          })
+      })
+  });
 })

@@ -72,3 +72,12 @@ threads.topicDelete = function (req, res, next) {
     .then(data => res.send(data))
     .catch(next)
 }
+
+/**
+ * @function {updates the entire document}
+ */
+threads.topicUpdate = function (req, res, next) {
+  Thread.findByIdAndUpdate(req.params.id, req.body, { new: true })
+    .then(data => res.send(data))
+    .catch(next);
+}
