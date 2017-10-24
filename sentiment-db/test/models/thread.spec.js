@@ -53,7 +53,7 @@ describe('thread', function () {
         let today = moment().format('MMMM YYYY');
         expect(topic).to.equal('banana boat');
         expect(date).to.equal(today);
-        expect(data.posts.posts.length).to.equal(23);
+        expect(data.posts.length).to.equal(23);
         done();
       })
   });
@@ -84,7 +84,7 @@ describe('thread', function () {
         expect(resp.body.length).to.equal(1);        
         let data = resp.body[0];        
         let topic = data.topic;
-        let posts = data.posts.posts;
+        let posts = data.posts;
         expect(topic).to.equal('bitcoin');
         expect(posts.length).to.equal(23);
         done();
