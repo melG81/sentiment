@@ -1,7 +1,6 @@
 var chai = require('chai');
 var expect = chai.expect;
 var api = require('../../../src/util/api');
-// var axios = require('axios');
 let sinon = require('sinon');
 
 // Require sample json data
@@ -16,7 +15,7 @@ let axios = {
   post: sinon.stub()
 }
 
-describe('api', function () {
+describe('#api', function () {
   it('should exist', () => expect(api).to.not.be.undefined);
   describe('query', function () {
     it('should exist', () => expect(api.query).to.not.be.undefined);

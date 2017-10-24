@@ -2,7 +2,7 @@ var chai = require('chai');
 var expect = chai.expect;
 var helpers = require('../../../src/util/helpers');
 
-describe('helpers', function () {
+describe('#helpers', function () {
   it('should exist', () => expect(helpers).to.not.be.undefined);
   describe('truncate', function () {
     it('should exist', () => expect(helpers.truncate).to.not.be.undefined);

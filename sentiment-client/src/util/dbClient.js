@@ -20,3 +20,15 @@ dbClient.postThread = function (topic, posts, request=axios) {
   }
   return request.post(url, thread)
 }
+
+/**
+ * @function {makes a PUT request to sentiment-db/threads/topic/id with document id and updated document}
+ * @param  {String} id       {unique document id}
+ * @param  {Object} document {updated document}
+ * @param  {Object} request  {request dependency defaults to axios}
+ * @return {Promise} {axios.put promise}
+ */
+dbClient.updateThread = function (id, document, request=axios) {
+  let url = `${config.sentimentDBHost}/threads/topic/id/${id}`;
+  return request.put(url, document)  
+}

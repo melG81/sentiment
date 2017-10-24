@@ -16,7 +16,7 @@ let postNew = {
   crawled: "2017-08-25T00:07:35.000+03:00"
 }
 
-describe('parser', function(){
+describe('#parser', function(){
   it('should exist', () => expect(parser).to.not.be.undefined)
   describe('.parsePost', function(){
     it('should exist', () => expect(parser.parsePost).to.not.be.undefined)
