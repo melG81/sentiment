@@ -35,9 +35,20 @@ threads.author = function (req, res, next) {
  * @function {creates a new thread document}
  */
 threads.create = function (req, res, next) {
-  Thread.create(req.body)
-    .then(data => res.send(data))
-    .catch(next);
+  // Validate if thread post uuid already exists
+  let payload = req.body
+  let uuid = _.get(payload, 'post.uuid')
+  Thread.find({'post.uuid': uuid})
+    .then(results => {
+      if (results.length > 0) {
+        res.send({
+          message: 'Post already exists'
+        });
+      }
+      Thread.create(payload)
+        .then(data => res.send(data))
+        .catch(next);
+    })
 };
 
 /**

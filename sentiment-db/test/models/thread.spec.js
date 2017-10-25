@@ -42,7 +42,7 @@ describe('thread', function () {
 
   it('should add a single thread on POST /threads', function (done) {
     let posts = require('../data/posts.json');
-    let post = posts[1]
+    let post = posts[2]
 
     chai.request(server)
       .post('/threads')
@@ -58,6 +58,24 @@ describe('thread', function () {
         done();
       })
   });
+
+  it('should validate if the post uuid already exists before creating thread via POST /threads', function(done){
+    let posts = require('../data/posts.json');
+    let post = posts[1];
+    chai.request(server)
+      .post('/threads')
+      .send({ topic: ['newTopic'], post })
+      .end(function (err, resp) {
+        let input = resp.body;
+        let actual = {
+          message: 'Post already exists'
+        }
+        expect(input).to.eql(actual)
+        done();
+      })
+    
+    
+  })
 
   it('should return all topic threads on GET /threads/topic/:topic', function (done) {
     chai.request(server)
