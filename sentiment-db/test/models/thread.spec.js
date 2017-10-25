@@ -31,9 +31,9 @@ describe('thread', function () {
           })
         })
         let actual = [
-          {topic: 'bitcoin', createdAt: 'October 2017'},
-          {topic: 'gold', createdAt: 'October 2017' },
-          {topic: 'monero', createdAt: 'October 2017' }
+          {topic: ['bitcoin'], createdAt: 'October 2017'},
+          {topic: ['gold'], createdAt: 'October 2017' },
+          {topic: ['monero'], createdAt: 'October 2017' }
         ]
         expect(input).to.deep.include.members(actual);                
         done();
@@ -42,18 +42,19 @@ describe('thread', function () {
 
   it('should add a single thread on POST /threads', function (done) {
     let posts = require('../data/posts.json');
+    let post = posts[1]
 
     chai.request(server)
       .post('/threads')
-      .send({topic: 'banana boat', posts})
+      .send({topic: ['banana boat'], post})
       .end(function (err, resp) {
         let data = resp.body;
         let topic = data.topic;
         let date = moment(data.date).format('MMMM YYYY');
         let today = moment().format('MMMM YYYY');
-        expect(topic).to.equal('banana boat');
+        expect(topic).to.eql(['banana boat']);
         expect(date).to.equal(today);
-        expect(data.posts.length).to.equal(23);
+        expect(data.post).to.eql(post);
         done();
       })
   });
@@ -69,8 +70,8 @@ describe('thread', function () {
           })
         })
         let actual = [
-          { topic: 'bitcoin', createdAt: 'October 2017' },
-          { topic: 'bitcoin', createdAt: 'October 2017' },
+          { topic: ['bitcoin'], createdAt: 'October 2017' },
+          { topic: ['bitcoin'], createdAt: 'October 2017' },
         ]
         expect(input).to.deep.include.members(actual);
         done();
@@ -84,9 +85,12 @@ describe('thread', function () {
         expect(resp.body.length).to.equal(1);        
         let data = resp.body[0];        
         let topic = data.topic;
-        let posts = data.posts;
-        expect(topic).to.equal('bitcoin');
-        expect(posts.length).to.equal(23);
+        let post = data.post;
+        let posts = require('../data/posts.json');
+        let actual = posts[1]
+
+        expect(topic).to.eql(['bitcoin', 'crypto']);
+        expect(post).to.eql(actual);
         done();
       })
   });
@@ -99,7 +103,7 @@ describe('thread', function () {
         chai.request(server)
           .delete(`/threads/topic/id/${id}`)
           .end(function (err, resp) {
-            expect(resp.body.topic).to.equal('bitcoin');
+            expect(resp.body.topic).to.eql(['bitcoin']);
             chai.request(server)
               .get('/threads/topic/bitcoin')
               .end(function( err, resp){
@@ -115,12 +119,14 @@ describe('thread', function () {
       .findOne({topic: 'bitcoin' })
       .then(data => {
         let id = data.id;
+        let document = { topic: ['miaow'], post: { title: 'cat hero' } }
+
         chai.request(server)
           .put(`/threads/topic/id/${id}`)
-          .send({topic: 'miaow', posts: [{title: 'cat hero'}, {title: 'evil cat'}]})
+          .send(document)
           .end(function (err, resp) {
-            expect(resp.body.topic).to.equal('miaow');
-            expect(resp.body.posts).to.eql([{ title: 'cat hero' }, { title: 'evil cat' }]);
+            expect(resp.body.topic).to.eql(['miaow']);
+            expect(resp.body.post).to.eql(document.post);
             done();
           })
       })
