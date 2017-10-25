@@ -7,6 +7,7 @@ let helpers = require('../../../src/util/helpers')
 let bitcoinPage1 = require('../../data/bitcoinPage1.json');
 let post = require('../../data/post.json');
 let postNew = {
+  uuid: "521fec8ebfe03a792096b1ef97a8ff3668e0c442",
   site: "businessinsider.com",
   url: "http://omgili.com/ri/jHIAmI4hxg8v3BmVd24meuL1ei1Bo_4WrVcnnQA4rPU43VUr.1EFLsENOYNWqEvk5MVa7jmgM_OhhMLDLxgyaU7BC11G.3OGANlGoyIde1C5c9x5Jrbk6dVCK_t_GbZN",
   author: "Frank Chaparro , Business Insider US",

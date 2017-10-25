@@ -10,9 +10,10 @@ let _ = require('lodash')
  * @return {Object} {transformed object with extracted data}
  */
 parser.parsePost = function(data){
-  let {url, author, published, title, text, crawled } = data;
+  let {uuid, url, author, published, title, text, crawled } = data;
 
   return {
+    uuid,
     site: _.get(data, 'thread.site'),
     url, 
     author, 
