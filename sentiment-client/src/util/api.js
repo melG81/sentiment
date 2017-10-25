@@ -37,15 +37,18 @@ api.query = function (query, request=axios) {
 
 /**
  * @function {parses payload and makes a POST request to sentiment-db/threads}
- * @param  {String} query {query paramater from api.query search}
+ * @param  {String} topic {query paramater from api.query search}
  * @param  {Object} payload  {payload data from a single post with multiple threads}
  * @param  {Object} request {request dependency defaults to axios}
  * @return {Promise} {axios.post promise}
  */
-api.postThread = function (query, payload, request=axios) {
+api.postThread = function (topic, payload, request=axios) {
   let posts = _.get(payload, 'data.posts');
-  let parsedPosts = parser.parseArray(posts);
-  return dbClient.postThread(query, parsedPosts, request)
+  let parsedPostsArr = parser.parseArray(posts);
+  let promiseArr = parsedPostsArr.map(post => {
+    return dbClient.postThread(topic, post, request)
+  })
+  return Promise.all(promiseArr)
 }
 
 /**

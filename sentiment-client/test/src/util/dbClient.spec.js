@@ -17,23 +17,23 @@ describe('#dbClient', () => {
   describe('.postThread', () => {
     it('should send a post request to sentiment-db with payload', (done) => {
       let topic = 'bitcoin'
-      let posts = bitcoinPage1Parsed;
-      let postNew = Object.assign({}, {
-        topic,
+      let post = bitcoinPage1Parsed[0];
+      let postNew = {
+        topic: [topic],
         createdAt: new Date(),
         updatedAt: new Date(),
         _id: 'uid',
-        posts
-      })
+        post
+      }
 
       axiosStub.post.returns(Promise.resolve(postNew))
       
-      dbClient.postThread(topic, posts, axiosStub)
+      dbClient.postThread(topic, post, axiosStub)
         .then(data => {
           let url = config.sentimentDBHost + '/threads'
           let thread = {
-            topic,
-            posts
+            topic: [topic],
+            post
           }
           expect(axiosStub.post.calledWith(url, thread)).to.be.true          
           expect(data).to.eql(postNew);
@@ -46,18 +46,18 @@ describe('#dbClient', () => {
     it('should send a PUT request to sentiment-db with payload', (done) => {
       let id = 'uid'
       let topic = 'miaow'
-      let posts = [{title: 'cat hero'}, {title: 'cat attack'}];
+      let post = {uuid: 'uuid', title: 'cat hero', text: 'cat description'};
       let document = {
-        topic,
-        posts
+        topic: [topic],
+        post
       }
-      let postNew = Object.assign({}, {
-        topic,
+      let postNew = {
+        topic: [topic],
         createdAt: new Date(),
         updatedAt: new Date(),
         _id: id,
-        posts
-      })
+        post
+      }
 
       axiosStub.put.returns(Promise.resolve(postNew))
       

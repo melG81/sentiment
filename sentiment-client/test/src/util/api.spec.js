@@ -81,21 +81,21 @@ describe('#api', function () {
   });
   describe('postThread', function() {
     it('should exist', () => expect(api.postThread).to.not.be.undefined);
-    it('should send a /POST request to sentiment-db and return the saved payload', function(done){
+    it('should send a /POST request to sentiment-db and returns an array of promises', function(done){
       let payload = { data: bitcoinPage1 };
-      let postsParsed = bitcoinPage1Parsed;
-      let postNew = Object.assign({}, {
-        topic: 'bitcoin',
+      let postParsed = bitcoinPage1Parsed[0];
+      let postNew = {
+        topic: ['bitcoin'],
         createdAt: new Date(),
         updatedAt: new Date(),
         _id: 'uid',
-        posts: postsParsed
-      })
+        post: postParsed
+      }
       
       axios.post.returns(Promise.resolve(postNew))
       api.postThread('bitcoin', payload, axios)
         .then(data => {
-          expect(data).to.eql(postNew);
+          expect(data.length).to.equal(100)
           axios.post.reset();
           done();
         })
@@ -112,11 +112,13 @@ describe('#api', function () {
       axios.get.onSecondCall().returns(Promise.resolve(payload2));
       axios.get.onThirdCall().returns(Promise.resolve(payload3));
 
+      let numPosts = bitcoinPage1.posts.length + bitcoinPage2.posts.length + bitcoinPage3.posts.length
+
       api.pollScript('bitcoin', axios)
         .then(msg => {
           expect(msg).to.equal('No more results');
           expect(axios.get.callCount).to.equal(3);
-          expect(axios.post.callCount).to.equal(3);
+          expect(axios.post.callCount).to.equal(numPosts);
           expect(spy.callCount).to.equal(3);
           spy.restore();
           axios.get.reset();

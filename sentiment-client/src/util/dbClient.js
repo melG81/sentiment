@@ -11,12 +11,12 @@ let axios = require('axios');
  * @param  {Object} request {request dependency defaults to axios}
  * @return {Promise} {axios.post promise}
  */
-dbClient.postThread = function (topic, posts, request=axios) {
+dbClient.postThread = function (topic, post, request=axios) {
   let url = `${config.sentimentDBHost}/threads`;
 
   let thread = {
-    topic,
-    posts
+    topic: [topic],
+    post: post
   }
   return request.post(url, thread)
 }
