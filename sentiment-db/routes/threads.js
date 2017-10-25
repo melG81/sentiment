@@ -38,16 +38,30 @@ threads.create = function (req, res, next) {
   // Validate if thread post uuid already exists
   let payload = req.body
   let uuid = _.get(payload, 'post.uuid')
+  let topic = _.get(payload, 'topic')[0]
   Thread.find({'post.uuid': uuid})
     .then(results => {
       if (results.length > 0) {
-        res.send({
-          message: 'Post already exists'
-        });
+        let result = results[0]
+        let hasTopic = _.includes(result.topic, topic)
+        if (hasTopic) {
+          res.send({
+            message: 'Post already exists'
+          });
+        } else {
+          let newTopic = _.concat(result.topic, topic)          
+          let newPayload = Object.assign({}, payload, {
+            topic: newTopic
+          })
+          Thread.findByIdAndUpdate(result._id, newPayload, { new: true })
+            .then(data => res.send(data))
+            .catch(next);
+        }        
+      } else {
+        Thread.create(payload)
+          .then(data => res.send(data))
+          .catch(next);
       }
-      Thread.create(payload)
-        .then(data => res.send(data))
-        .catch(next);
     })
 };
 

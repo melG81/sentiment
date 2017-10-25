@@ -59,12 +59,12 @@ describe('thread', function () {
       })
   });
 
-  it('should validate if the post uuid already exists before creating thread via POST /threads', function(done){
+  it('should validate if the post uuid already exists with same topic before creating thread via POST /threads', function(done){
     let posts = require('../data/posts.json');
     let post = posts[1];
     chai.request(server)
       .post('/threads')
-      .send({ topic: ['newTopic'], post })
+      .send({ topic: ['bitcoin'], post })
       .end(function (err, resp) {
         let input = resp.body;
         let actual = {
@@ -73,8 +73,20 @@ describe('thread', function () {
         expect(input).to.eql(actual)
         done();
       })
-    
-    
+  })
+
+  it('should update if the post uuid already exists but topic is different via POST /threads', function(done){
+    let posts = require('../data/posts.json');
+    let post = posts[1];
+    chai.request(server)
+      .post('/threads')
+      .send({ topic: ['fatcat'], post })
+      .end(function (err, resp) {
+        let input = resp.body.topic;
+        let actual = ['bitcoin', 'crypto', 'fatcat']
+        expect(input).to.eql(actual)
+        done();
+      })
   })
 
   it('should return all topic threads on GET /threads/topic/:topic', function (done) {
