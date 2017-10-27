@@ -30,6 +30,23 @@ threads.author = function (req, res, next) {
     .catch(next)
 }
 
+/**
+ * @function {returns all documents from the sites given in the sites array}
+ */
+threads.sites = function (req, res, next) {
+  let payload = req.body
+  let siteArr = payload.sites
+  let topic = payload.topic
+  Thread.find({ 
+    'topic': topic, 
+    'post.site': { $in: siteArr } 
+  })
+  .then(results => {
+    res.send(results)
+  })
+  .catch(next)  
+}
+
 
 /**
  * @function {creates a new thread document}

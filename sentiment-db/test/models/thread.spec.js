@@ -125,6 +125,18 @@ describe('thread', function () {
       })
   });
 
+  it('should return all relevant site documents when passed an array of sites via POST /threads/sites', function (done) {
+    chai.request(server)
+      .post('/threads/sites')
+      .send({topic: 'bitcoin', sites: ['businessinsider.com']})
+      .end(function (err, resp) {
+        let input = resp.body[0].post.site;
+        let actual = 'businessinsider.com'
+        expect(input).to.equal(actual)
+        done()
+      })
+  })
+
   it('should delete a topic by id on DELETE /threads/topic/id/:id', function (done) {
     Thread
       .findOne({topic: 'bitcoin' })
