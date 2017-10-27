@@ -71,4 +71,31 @@ describe('#dbClient', () => {
         })
     })
   })
+  describe('.getByTopicAndSites', () => {
+    it.only('should send a POST request to sentiment-db with payload', (done) => {
+      let topic = 'bitcoin'
+      let sitesArr = ['wsj.com', 'bloomberg.com']
+      let postNew = {
+        data: [{
+          topic: [topic],
+          createdAt: new Date(),
+          updatedAt: new Date(),
+          post: {
+            site: 'wsj.com'
+          }
+        }]
+      }
+
+      axiosStub.post.returns(Promise.resolve(postNew))
+      
+      dbClient.getByTopicAndSites(topic, sitesArr, axiosStub)
+        .then(data => {
+          let url = `${config.sentimentDBHost}/threads/sites`
+          expect(axiosStub.post.calledWith(url)).to.be.true
+          expect(data).to.eql(postNew);
+          axiosStub.post.reset();
+          done();
+        })
+    })
+  })
 })

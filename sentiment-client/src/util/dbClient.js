@@ -33,3 +33,14 @@ dbClient.updateThread = function (id, document, request=axios) {
   return request.put(url, document)  
 }
 
+/**
+ * @function {returns the topic documents from the given sites}
+ * @param  {String} topic       {topic you want to search i.e. 'bitcoin'}
+ * @param  {Array} sitesArr {array of sites to be filtered i.e. ['wsj.com', 'bloomberg.com']}
+ * @param  {Object} request  {request dependency defaults to axios}
+ * @return {Promise} {axios.post promise}
+ */
+dbClient.getByTopicAndSites = function (topic, sitesArr, request=axios) {
+  let url = `${config.sentimentDBHost}/threads/sites`;
+  return request.post(url,{topic, sites: sitesArr})
+}
