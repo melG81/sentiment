@@ -42,7 +42,12 @@ threads.sites = function (req, res, next) {
     'post.site': { $in: siteArr } 
   })
   .then(results => {
-    res.send(results)
+    if(results.length>0) {
+      res.send(results)
+    } else {
+      res.send({message:'No results'})
+    }
+    
   })
   .catch(next)  
 }

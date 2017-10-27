@@ -11,10 +11,9 @@ app.set('view engine', '.hbs');
 
 // Serve static files from public folder
 app.use(express.static(path.join(__dirname, 'public')));
-// App
-app.get('/', function (req, res, next) {
-  res.render('home');
-});
+
+// Routes 
+app.use(require('./routes/index'));
 
 // Catch and send error messages
 app.use(function (err, req, res, next) {
