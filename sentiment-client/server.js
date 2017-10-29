@@ -4,9 +4,14 @@ let exphbs = require('express-handlebars');
 let path = require('path');
 let app = express();
 let config = require('./config');
+let helpers = require('./src/helpers');
 
 // Set view engine
-app.engine('.hbs', exphbs({ extname: '.hbs', defaultLayout: 'main' }));
+app.engine('.hbs', exphbs({ 
+  extname: '.hbs', 
+  defaultLayout: 'main',
+  helpers
+}));
 app.set('view engine', '.hbs');
 
 // Serve static files from public folder

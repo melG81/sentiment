@@ -1,0 +1,15 @@
+<h1>Topic: {{capitalize topicName}}</h1>
+<ul>
+  {{#each data}}
+    <li><strong>{{moment post.published 'DD-MMM-YY'}} | {{post.title}}</strong></li>
+    <ul>
+      <li><a href="{{post.url}}" target="_blank">{{post.site}}</a></li>
+      <li class="post-text post-preview">
+        {{post.text}}
+      </li>
+      <span class="show-more">...show more</span>
+    </ul>
+    <hr>
+  {{/each}}
+</ul>
+<script src=""></script>
