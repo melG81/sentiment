@@ -20,7 +20,7 @@ topics.show = function (req, res, next) {
         }
         return uniqPayload.sort((a, b) => new Date(b.post.published) - new Date(a.post.published))
       }
-      
+
       res.render('topics/show',{
         topicName,
         data: sortPayload()
