@@ -15,12 +15,12 @@ let sitesFiltered = require('../filters/sitesFiltered');
  * https://docs.webhose.io/v1.0/docs/filters-reference
  * @return {String} {webhose url endpoint}
  */
-api.getWebhoseEndpoint = () => {
+api.getWebhoseEndpoint = (daysAgo=1) => {
   let token = config.webhoseTOKEN;
   let endpoint = "http://webhose.io/filterWebContent?token=";
   let sort = "sort=relevancy";
-  let yesterday = new Date() - (24*60*60*1000);
-  let publishedAfter = `published%3A%3E${yesterday}`
+  let sinceDate = new Date() - (daysAgo*24*60*60*1000);
+  let publishedAfter = `published%3A%3E${sinceDate}`
   let sitesFilter = "(site%3A" + sitesFiltered.join('%20OR%20site%3A') + ")";
   let filters = `q=${publishedAfter}${sitesFilter}language%3Aenglish%20site_type%3Anews%20is_first%3Atrue%20`;
   return `${endpoint}${token}&${sort}&${filters}`
@@ -32,8 +32,8 @@ api.getWebhoseEndpoint = () => {
  * @param  {Object} request {request dependency defaults to axios}
  * @return {Promise} {axios get promise}
  */
-api.query = function (query, request=axios) {
-  let endpoint = api.getWebhoseEndpoint();
+api.query = function (query, daysAgo, request=axios) {
+  let endpoint = api.getWebhoseEndpoint(daysAgo);
   let queryParam = encodeURI(query);
   let url = endpoint + queryParam;
   return request.get(url)
@@ -100,9 +100,9 @@ api.pollNext = function (query, payload, request=axios) {
  * @param  {Object} request {request dependency defaults to axios}
  * @return {Promise} resolves to 'No more results' when completed polling
  */
-api.pollScript = function (query, request=axios) {
+api.pollScript = function (query, daysAgo, request=axios) {
   return new Promise(function(resolve){
-    api.query(query, request)
+    api.query(query, daysAgo, request)
       .then(payload => {
         return api.pollNext(query, payload, request);
       })

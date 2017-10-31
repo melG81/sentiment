@@ -24,7 +24,7 @@ describe('#api', function () {
         data: bitcoinPage1
       }
       axios.get.returns(Promise.resolve(payload));
-      api.query('bitcoin', axios)
+      api.query('bitcoin', 1, axios)
         .then(data => {
           expect(data).to.eql(payload)
           axios.get.reset();
@@ -39,7 +39,7 @@ describe('#api', function () {
       let payload2 = { data: bitcoinPage2 }
       axios.get.onFirstCall().returns(Promise.resolve(payload1));
       axios.get.onSecondCall().returns(Promise.resolve(payload2));
-      api.query('bitcoin', axios)
+      api.query('bitcoin', 1, axios)
         .then(data => {
           expect(data).to.eql(payload1)
           return data
@@ -59,7 +59,7 @@ describe('#api', function () {
       axios.get.onSecondCall().returns(Promise.resolve(payload2));
       axios.get.onThirdCall().returns(Promise.resolve(payload3));
 
-      api.query('bitcoin', axios)
+      api.query('bitcoin',1, axios)
         .then(data => {
           expect(data).to.eql(payload1)
           return api.getNext(data, axios)
@@ -76,7 +76,7 @@ describe('#api', function () {
           expect(data).to.equal('No more results');
           axios.get.reset();
           done();
-        })      
+        })
     })
   });
   describe('postThread', function() {
@@ -91,7 +91,7 @@ describe('#api', function () {
         _id: 'uid',
         post: postParsed
       }
-      
+
       axios.post.returns(Promise.resolve(postNew))
       api.postThread('bitcoin', payload, axios)
         .then(data => {
@@ -114,7 +114,7 @@ describe('#api', function () {
 
       let numPosts = bitcoinPage1.posts.length + bitcoinPage2.posts.length + bitcoinPage3.posts.length
 
-      api.pollScript('bitcoin', axios)
+      api.pollScript('bitcoin', 1, axios)
         .then(msg => {
           expect(msg).to.equal('No more results');
           expect(axios.get.callCount).to.equal(3);
@@ -125,6 +125,6 @@ describe('#api', function () {
           done();
         })
     })
-  });  
+  });
 });
 
