@@ -37,9 +37,9 @@ threads.sites = function (req, res, next) {
   let payload = req.body
   let siteArr = payload.sites
   let topic = payload.topic
-  Thread.find({ 
-    'topic': topic, 
-    'post.site': { $in: siteArr } 
+  Thread.find({
+    'topic': topic,
+    'post.site': { $in: siteArr }
   })
   .then(results => {
     if(results.length>0) {
@@ -47,9 +47,9 @@ threads.sites = function (req, res, next) {
     } else {
       res.send({message:'No results'})
     }
-    
+
   })
-  .catch(next)  
+  .catch(next)
 }
 
 
@@ -67,21 +67,28 @@ threads.create = function (req, res, next) {
         let result = results[0]
         let hasTopic = _.includes(result.topic, topic)
         if (hasTopic) {
+          console.log('post already exists');
           res.send({
             message: 'Post already exists'
           });
         } else {
-          let newTopic = _.concat(result.topic, topic)          
+          let newTopic = _.concat(result.topic, topic)
           let newPayload = Object.assign({}, payload, {
             topic: newTopic
           })
           Thread.findByIdAndUpdate(result._id, newPayload, { new: true })
-            .then(data => res.send(data))
+            .then(data => {
+              console.log('updated: ', data.topic);
+              res.send(data)
+            })
             .catch(next);
-        }        
+        }
       } else {
         Thread.create(payload)
-          .then(data => res.send(data))
+          .then(data => {
+            console.log('created: ', data.post.title);
+            res.send(data)
+          })
           .catch(next);
       }
     })

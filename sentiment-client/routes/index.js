@@ -10,5 +10,6 @@ router.get('/', function (req, res, next) {
 var topics = require('./topics.js');
 router
   .get('/topics/:name', topics.show)
+  .get('/topics', topics.index)
 
 module.exports = router;

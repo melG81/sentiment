@@ -62,6 +62,7 @@ api.postThread = function (topic, payload, request=axios) {
  * @return {Promise} {get promise of the next url if more data available, otherwise will resolve with string 'No More results'}
  */
 api.getNext = function (payload, request=axios) {
+  console.log(`totalResults: ${payload.data.totalResults} moreResultsAvailable: ${payload.data.moreResultsAvailable}`);
   let data = payload.data;
   let isMore = data.moreResultsAvailable > 0;
   let next = data.next;

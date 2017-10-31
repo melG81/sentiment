@@ -10,3 +10,7 @@ helpers.capitalize = (word) => {
 helpers.moment = (dateString, format) => {
   return moment(dateString).format(format)
 }
+
+helpers.join = (array) => {
+  return array.join(', ')
+}

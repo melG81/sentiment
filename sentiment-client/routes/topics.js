@@ -4,26 +4,28 @@ let topics = module.exports = {}
 let dbClient = require('../src/util/dbClient')
 let sitesArr = require('../src/filters/sitesFiltered.js')
 let _ = require('lodash')
+let {sortPayload} = require('./helpers')
 
+topics.index = function (req, res, next) {
+  dbClient.getAll()
+    .then(payload => {
+      let data = payload.data;
+      res.render('topics/show', {
+        topicName: 'all',
+        data: sortPayload(data)
+      })
+    })
+}
 
 topics.show = function (req, res, next) {
   let topicName = req.params.name
   let sortQuery = req.query.sort
   dbClient.getByTopicAndSites(topicName, sitesArr)
     .then(payload => {
-      // Filter by unique post titles
-      let uniqPayload = _.uniqBy(payload.data, 'post.title')
-      // Sort by most recent published unless query param includes ?sort=descending
-      let sortPayload = () =>{
-        if (sortQuery === 'descending') {
-          return uniqPayload.sort((a, b) => new Date(a.post.published) - new Date(b.post.published))
-        }
-        return uniqPayload.sort((a, b) => new Date(b.post.published) - new Date(a.post.published))
-      }
-
+      let data = payload.data
       res.render('topics/show',{
         topicName,
-        data: sortPayload()
+        data: sortPayload(data, sortQuery)
       })
     })
     .catch(next)

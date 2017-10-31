@@ -30,7 +30,7 @@ dbClient.postThread = function (topic, post, request=axios) {
  */
 dbClient.updateThread = function (id, document, request=axios) {
   let url = `${config.sentimentDBHost}/threads/topic/id/${id}`;
-  return request.put(url, document)  
+  return request.put(url, document)
 }
 
 /**
@@ -43,4 +43,15 @@ dbClient.updateThread = function (id, document, request=axios) {
 dbClient.getByTopicAndSites = function (topic, sitesArr, request=axios) {
   let url = `${config.sentimentDBHost}/threads/sites`;
   return request.post(url,{topic, sites: sitesArr})
+}
+
+// TODO: Write unit test
+/**
+ * @function {fetces all documents}
+ * @param  {Object} request  {request dependency defaults to axios}
+ * @return {Promise} {axios.get promise}
+ */
+dbClient.getAll = function (request=axios) {
+  let url = `${config.sentimentDBHost}/threads`;
+  return request.get(url)
 }
