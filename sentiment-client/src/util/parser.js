@@ -15,12 +15,15 @@ parser.parsePost = function(data){
   return {
     uuid,
     site: _.get(data, 'thread.site'),
-    url, 
-    author, 
-    published, 
-    title, 
+    url,
+    author,
+    published,
+    title,
     crawled,
-    text: helpers.truncate(data.text, 600)
+    text: helpers.truncate(data.text, 5000),
+    domainRank: _.get(data, 'thread.domain_rank'),
+    mainImage: _.get(data, 'thread.main_image'),
+    social: _.get(data, 'thread.social')
   }
 }
 

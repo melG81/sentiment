@@ -10,7 +10,7 @@ let bitcoinPage1Parsed = require('../../data/bitcoinPage1Parsed.json');
 
 let axiosStub = {
   post: sinon.stub(),
-  put: sinon.stub()  
+  put: sinon.stub()
 }
 
 describe('#dbClient', () => {
@@ -27,7 +27,7 @@ describe('#dbClient', () => {
       }
 
       axiosStub.post.returns(Promise.resolve(postNew))
-      
+
       dbClient.postThread(topic, post, axiosStub)
         .then(data => {
           let url = config.sentimentDBHost + '/threads'
@@ -35,7 +35,7 @@ describe('#dbClient', () => {
             topic: [topic],
             post
           }
-          expect(axiosStub.post.calledWith(url, thread)).to.be.true          
+          expect(axiosStub.post.calledWith(url, thread)).to.be.true
           expect(data).to.eql(postNew);
           axiosStub.post.reset();
           done();
@@ -60,7 +60,7 @@ describe('#dbClient', () => {
       }
 
       axiosStub.put.returns(Promise.resolve(postNew))
-      
+
       dbClient.updateThread(id, document, axiosStub)
         .then(data => {
           let url = `${config.sentimentDBHost}/threads/topic/id/${id}`
@@ -72,7 +72,7 @@ describe('#dbClient', () => {
     })
   })
   describe('.getByTopicAndSites', () => {
-    it.only('should send a POST request to sentiment-db with payload', (done) => {
+    it('should send a POST request to sentiment-db with payload', (done) => {
       let topic = 'bitcoin'
       let sitesArr = ['wsj.com', 'bloomberg.com']
       let postNew = {
@@ -87,7 +87,7 @@ describe('#dbClient', () => {
       }
 
       axiosStub.post.returns(Promise.resolve(postNew))
-      
+
       dbClient.getByTopicAndSites(topic, sitesArr, axiosStub)
         .then(data => {
           let url = `${config.sentimentDBHost}/threads/sites`
