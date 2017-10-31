@@ -7,6 +7,7 @@ let config = require('../../config.js');
 let helpers = require('./helpers');
 let parser = require('./parser');
 let dbClient = require('./dbClient');
+let sitesFiltered = require('../filters/sitesFiltered');
 
 /**
  * @function {Returns webhose url endpoint}
@@ -14,12 +15,15 @@ let dbClient = require('./dbClient');
  * https://docs.webhose.io/v1.0/docs/filters-reference
  * @return {String} {webhose url endpoint}
  */
-api.getWebhoseEndpoint = () => {  
-  this.token = config.webhoseTOKEN;
-  this.endpoint = "http://webhose.io/filterWebContent?token=";
-  this.format = "sort=relevancy&size=100";
-  this.filters = "q=language%3Aenglish%20site_type%3Anews%20is_first%3Atrue%20";
-  return `${this.endpoint}${this.token}&${this.format}&${this.filters}`
+api.getWebhoseEndpoint = () => {
+  let token = config.webhoseTOKEN;
+  let endpoint = "http://webhose.io/filterWebContent?token=";
+  let sort = "sort=relevancy";
+  let yesterday = new Date() - (24*60*60*1000);
+  let publishedAfter = `published%3A%3E${yesterday}`
+  let sitesFilter = "(site%3A" + sitesFiltered.join('%20OR%20site%3A') + ")";
+  let filters = `q=${publishedAfter}${sitesFilter}language%3Aenglish%20site_type%3Anews%20is_first%3Atrue%20`;
+  return `${endpoint}${token}&${sort}&${filters}`
 }
 
 /**
@@ -76,10 +80,10 @@ api.getNext = function (payload, request=axios) {
  * @param  {Object} request {request dependency defaults to axios}
  * @return {Promise} {resolves to 'No more results' when no more results are left}
  */
-api.pollNext = function (query, payload, request=axios) {    
+api.pollNext = function (query, payload, request=axios) {
   // Side task: post payload to database
   api.postThread(query, payload, request);
-  
+
   // Fetches the next payload and calls itself recursively
   return api.getNext(payload, request).then(nextPayload => {
     if (nextPayload === 'No more results') {
