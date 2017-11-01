@@ -10,7 +10,8 @@ let helpers = require('./src/helpers');
 app.engine('.hbs', exphbs({ 
   extname: '.hbs', 
   defaultLayout: 'main',
-  helpers
+  helpers,
+  partialsDir: __dirname + '/src/client/'
 }));
 app.set('view engine', '.hbs');
 

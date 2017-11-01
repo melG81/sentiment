@@ -1,5 +1,5 @@
 // CSS dependencies
-require('./css/topic.scss');
+require('./style.scss');
 
 let makeTopicShow = function(){
   this.init = () => {

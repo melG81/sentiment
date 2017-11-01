@@ -1,6 +1,6 @@
 module.exports = {
   // Define entry point
-  entry: './src/client/index.js',
+  entry: './src/client/app.js',
   // Define output point
   output: {
     path: __dirname + '/public/js',

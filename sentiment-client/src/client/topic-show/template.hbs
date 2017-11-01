@@ -1,0 +1,12 @@
+<li>
+  <strong>{{moment post.published 'DD-MMM-YY'}} | {{post.title}}</strong>
+</li>
+<ul>
+  <li>Site: <a href="{{post.url}}" target="_blank">{{post.site}}</a> {{#if post.author}} | Author: {{post.author}} {{/if}}</li>
+  <li>Tags: <em>[{{topic}}]</em></li>
+  <li class="post-text post-preview">
+    {{post.text}}
+  </li>
+  <span class="show-more">...show more</span>
+</ul>
+<hr> 
