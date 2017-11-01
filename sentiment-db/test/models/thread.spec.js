@@ -27,13 +27,13 @@ describe('thread', function () {
         let input = resp.body.map(el => {
           return Object.assign({}, {
             topic: el.topic,
-            createdAt: moment(el.createdAt).format('MMMM YYYY')
+            createdAt: moment(el.createdAt).format('YYYY')
           })
         })
         let actual = [
-          {topic: ['bitcoin'], createdAt: 'October 2017'},
-          {topic: ['gold'], createdAt: 'October 2017' },
-          {topic: ['monero'], createdAt: 'October 2017' }
+          {topic: ['bitcoin'], createdAt: '2017'},
+          {topic: ['gold'], createdAt: '2017' },
+          {topic: ['monero'], createdAt: '2017' }
         ]
         expect(input).to.deep.include.members(actual);                
         done();
@@ -50,8 +50,8 @@ describe('thread', function () {
       .end(function (err, resp) {
         let data = resp.body;
         let topic = data.topic;
-        let date = moment(data.date).format('MMMM YYYY');
-        let today = moment().format('MMMM YYYY');
+        let date = moment(data.date).format('YYYY');
+        let today = moment().format('YYYY');
         expect(topic).to.eql(['banana boat']);
         expect(date).to.equal(today);
         expect(data.post).to.eql(post);
@@ -96,12 +96,12 @@ describe('thread', function () {
         let input = resp.body.map(el => {
           return Object.assign({}, {
             topic: el.topic,
-            createdAt: moment(el.createdAt).format('MMMM YYYY')
+            createdAt: moment(el.createdAt).format('YYYY')
           })
         })
         let actual = [
-          { topic: ['bitcoin'], createdAt: 'October 2017' },
-          { topic: ['bitcoin'], createdAt: 'October 2017' },
+          { topic: ['bitcoin'], createdAt: '2017' },
+          { topic: ['bitcoin'], createdAt: '2017' },
         ]
         expect(input).to.deep.include.members(actual);
         done();
