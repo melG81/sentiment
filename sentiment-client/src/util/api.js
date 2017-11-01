@@ -62,15 +62,15 @@ api.postThread = function (topic, payload, request=axios) {
  * @return {Promise} {get promise of the next url if more data available, otherwise will resolve with string 'No More results'}
  */
 api.getNext = function (payload, request=axios) {
-  console.log(`totalResults: ${payload.data.totalResults} moreResultsAvailable: ${payload.data.moreResultsAvailable}`);
   let data = payload.data;
+  console.log(`totalResults: ${data.totalResults} moreResultsAvailable: ${data.moreResultsAvailable}`);  
   let isMore = data.moreResultsAvailable > 0;
   let next = data.next;
   let url = "http://webhose.io" + next;
   if (isMore) {
     return request.get(url)
   } else {
-    return Promise.resolve('No more results');
+    return Promise.resolve(`No more results`);
   }
 }
 
@@ -87,8 +87,9 @@ api.pollNext = function (query, payload, request=axios) {
 
   // Fetches the next payload and calls itself recursively
   return api.getNext(payload, request).then(nextPayload => {
+    let totalResults = _.get(payload, 'data.totalResults')
     if (nextPayload === 'No more results') {
-      return Promise.resolve(nextPayload)
+      return Promise.resolve(`No more results, totalResults: ${totalResults}`)
     }
     return api.pollNext(query, nextPayload, request);
   })

@@ -7,6 +7,13 @@ var app = express();
 var db = require('./db/connection.js');
 db.connect();
 
+// Enable CORS
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
 // Set bodyparser middleware. Set limit to 50mb in order to accept larger payload
 app.use(bodyParser.json({ limit: '50mb' }));
 app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));

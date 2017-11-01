@@ -29,5 +29,5 @@ topics.show = function (req, res, next) {
       })
     })
     .catch(next)
-};
+}
 

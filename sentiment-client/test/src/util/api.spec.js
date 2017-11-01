@@ -116,7 +116,7 @@ describe('#api', function () {
 
       api.pollScript('bitcoin', 1, axios)
         .then(msg => {
-          expect(msg).to.equal('No more results');
+          expect(msg).to.equal('No more results, totalResults: 2101');
           expect(axios.get.callCount).to.equal(3);
           expect(axios.post.callCount).to.equal(numPosts);
           expect(spy.callCount).to.equal(3);
