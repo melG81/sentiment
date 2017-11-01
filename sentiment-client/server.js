@@ -11,7 +11,7 @@ app.engine('.hbs', exphbs({
   extname: '.hbs', 
   defaultLayout: 'main',
   helpers,
-  partialsDir: __dirname + '/src/client/'
+  partialsDir: __dirname + '/components/'
 }));
 app.set('view engine', '.hbs');
 

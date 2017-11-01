@@ -1,15 +1,20 @@
-var express = require('express');
-var router = express.Router();
+let express = require('express')
+let router = express.Router()
 
 // Root page
 router.get('/', function (req, res, next) {
-  res.render('home');
+  res.render('home')
 })
 
 // Threads CRUD endpoints
-var topics = require('./topics.js');
+let topics = require('./topics.js')
 router
   .get('/topics/:name', topics.show)
   .get('/topics', topics.index)
 
-module.exports = router;
+// Admin endpoints
+let admin = require('./admin.js')
+router
+  .get('/admin', admin.index)
+
+module.exports = router
