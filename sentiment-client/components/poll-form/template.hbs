@@ -1,4 +1,23 @@
-<p>Poll this shit</p>
-{{#each queryKeywords as |keyword|}}
-  <p>{{keyword}}</p>
-{{/each}}
+<form action="">
+  <p>
+    <span>Select keyword topic:</span>
+    <select>
+      {{#each queryKeywords as |keyword|}}
+        <option value="{{keyword}}">{{keyword}}</option>
+      {{/each}}
+    </select>
+  </p>
+  <p>
+    <span>Crawl posts published since:</span>
+    <select>
+      {{#times 30}}
+        <option value="{{this}}">{{this}} days ago</option>
+      {{/times}}
+    </select>
+  </p>
+  <input type="submit" value="Start Webhose API Poll">
+</form>
+
+<div id="poll-form-results">
+
+</div>

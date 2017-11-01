@@ -21,3 +21,4 @@ helpers.sortPayload = (array, sortBy) => {
     return uniqPayload.sort((a, b) => new Date(b.post.published) - new Date(a.post.published))
   }
 }
+
