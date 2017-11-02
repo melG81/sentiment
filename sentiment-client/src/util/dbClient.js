@@ -33,6 +33,7 @@ dbClient.updateThread = function (id, document, request=axios) {
   return request.put(url, document)
 }
 
+
 /**
  * @function {makes a GET request to sentiment-db/threads/topic/query?topic=name&daysAgo=num}
  * @param  {Array} topicArr       {array of topic strings to query}

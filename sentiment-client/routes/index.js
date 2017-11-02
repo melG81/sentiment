@@ -9,8 +9,10 @@ router.get('/', function (req, res, next) {
 // Threads CRUD endpoints
 let topics = require('./topics.js')
 router
+  .get('/topics/browse', topics.browse)
   .get('/topics/:name', topics.show)
   .get('/topics', topics.index)
+
 
 // Admin endpoints
 let admin = require('./admin.js')

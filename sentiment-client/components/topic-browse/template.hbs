@@ -1,0 +1,19 @@
+<form action="">
+  <p>
+    <span>Select keyword topics:</span><br>
+    <select multiple class="topic-browse-keyword">
+      {{#each queryKeywords as |keyword|}}
+      <option value="{{keyword}}">{{keyword}}</option>
+      {{/each}}
+    </select>
+  </p>
+  <p>
+    <span>Published since:</span>
+    <select class="topic-browse-days">
+      {{#times 30}}
+      <option value="{{this}}">{{this}} days ago</option>
+      {{/times}}
+    </select>
+  </p>
+  <input class="topic-browse-submit" type="submit" value="Search">
+</form>
