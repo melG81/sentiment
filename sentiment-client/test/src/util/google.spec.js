@@ -2,7 +2,7 @@ var chai = require('chai');
 var expect = chai.expect;
 var google = require('../../../src/util/google');
 
-describe('#google', () => {
+describe.only('#google', () => {
   describe('.analyze', () => {
     it('should exist', () => expect(google.analyze).to.not.be.undefined)
     it('should analyze title and text and return documentSentiment', (done) => {

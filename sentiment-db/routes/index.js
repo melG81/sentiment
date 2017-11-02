@@ -14,6 +14,7 @@ router
   .post('/threads/sites', threads.sites)
   .post('/threads', threads.create)
   .get('/threads/topic/:topic/latest', threads.topicLatest)
+  .get('/threads/topic/query', threads.topicQuery)
   .get('/threads/topic/:topic', threads.topic)
   .delete('/threads/topic/id/:id', threads.topicDelete)
   .put('/threads/topic/id/:id', threads.topicUpdate)

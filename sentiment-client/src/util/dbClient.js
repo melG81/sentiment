@@ -33,6 +33,12 @@ dbClient.updateThread = function (id, document, request=axios) {
   return request.put(url, document)
 }
 
+dbClient.getByTopic = function (topic, daysAgo, request=axios) {
+  let topicName = encodeURI(topic)
+  let url = `${config.sentimentDBHost}/threads/topic?q=${topicName}%20${daysAgo}`;
+  return request.get(url)
+}
+
 /**
  * @function {returns the topic documents from the given sites}
  * @param  {String} topic       {topic you want to search i.e. 'bitcoin'}

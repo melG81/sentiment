@@ -2,6 +2,7 @@ let google = module.exports = {}
 
 // Dependencies
 let config = require('../../config.js');
+let { postThread } = require('./dbClient.js')
 
 google.analyze = (text, client) => {
   let document = {

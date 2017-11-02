@@ -2,7 +2,6 @@ let topics = module.exports = {}
 
 // Dependencies
 let dbClient = require('../src/util/dbClient')
-let sitesArr = require('../src/filters/sitesFiltered.js')
 let _ = require('lodash')
 let {sortPayload} = require('./helpers')
 
@@ -19,8 +18,9 @@ topics.index = function (req, res, next) {
 
 topics.show = function (req, res, next) {
   let topicName = req.params.name
+  let daysAgo = req.params.daysAgo
   let sortQuery = req.query.sort
-  dbClient.getByTopicAndSites(topicName, sitesArr)
+  dbClient.getByTopic(topicName, daysAgo)
     .then(payload => {
       let data = payload.data
       res.render('topics/show',{

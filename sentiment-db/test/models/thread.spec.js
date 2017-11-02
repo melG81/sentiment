@@ -173,4 +173,13 @@ describe('thread', function () {
           })
       })
   });
+
+  it('should find all topics by topic name and published since on GET /threads/topic/query?topic=name%20daysAgo=number', function (done) {
+    chai.request(server)
+      .get('/threads/topic/query?topic=crypto&topic=bitcoin&daysAgo=100')
+      .end(function (err, resp) {
+        expect(resp.body[0].topic).to.eql(['bitcoin', 'crypto'])
+        done()
+      })
+  })
 })
