@@ -9,6 +9,7 @@ let config = require('../../../config.js');
 let bitcoinPage1Parsed = require('../../data/bitcoinPage1Parsed.json');
 
 let axiosStub = {
+  get: sinon.stub(),
   post: sinon.stub(),
   put: sinon.stub()
 }
@@ -94,6 +95,33 @@ describe('#dbClient', () => {
           expect(axiosStub.post.calledWith(url)).to.be.true
           expect(data).to.eql(postNew);
           axiosStub.post.reset();
+          done();
+        })
+    })
+  })
+  describe('.getByTopics', () => {
+    it.only('should send a GET request to sentiment-db', (done) => {
+      let topicsArr = ['bitcoin currency', 'monero gold']
+      let daysAgo = 10
+      let posts = {
+        data: [{
+          topic: topicsArr,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+          post: {
+            site: 'wsj.com'
+          }
+        }]
+      }
+
+      axiosStub.get.returns(Promise.resolve(posts))
+
+      dbClient.getByTopics(topicsArr, daysAgo, axiosStub)
+        .then(data => {
+          let url = `${config.sentimentDBHost}/threads/topic/query?topic=bitcoin%20currency&topic=monero%20gold&daysAgo=10`
+          expect(axiosStub.get.calledWith(url)).to.be.true
+          expect(data).to.eql(posts);
+          axiosStub.get.reset();
           done();
         })
     })

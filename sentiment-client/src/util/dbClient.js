@@ -33,9 +33,16 @@ dbClient.updateThread = function (id, document, request=axios) {
   return request.put(url, document)
 }
 
-dbClient.getByTopic = function (topic, daysAgo, request=axios) {
-  let topicName = encodeURI(topic)
-  let url = `${config.sentimentDBHost}/threads/topic?q=${topicName}%20${daysAgo}`;
+/**
+ * @function {makes a GET request to sentiment-db/threads/topic/query?topic=name&daysAgo=num}
+ * @param  {Array} topicArr       {array of topic strings to query}
+ * @param  {Number} daysAgo {days since published}
+ * @param  {Object} request  {request dependency defaults to axios}
+ * @return {Promise} {axios.get promise}
+ */
+dbClient.getByTopics = function (topicArr, daysAgo, request=axios) {
+  let topicQuery = topicArr.map(topic => encodeURI(topic)).join('&topic=')
+  let url = `${config.sentimentDBHost}/threads/topic/query?topic=${topicQuery}&daysAgo=${daysAgo}`
   return request.get(url)
 }
 
