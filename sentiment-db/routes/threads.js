@@ -1,9 +1,10 @@
 let threads = module.exports = {};
 
 // Dependencies
-var mongoose = require('mongoose');
-var Thread = require('../models/thread');
-var _ = require('lodash')
+let mongoose = require('mongoose');
+let Thread = require('../models/thread');
+let _ = require('lodash')
+let moment = require('moment')
 
 /**
  * @function {fetches all thread documents}
@@ -137,17 +138,15 @@ threads.topicUpdate = function (req, res, next) {
 }
 
 threads.topicQuery = function (req, res, next) {
-  let topicName = req.query.topic
-  let daysAgo = req.query.daysAgo
-  let publishedSince = new Date() - (daysAgo * 24 * 60 * 60 * 1000) + '+00:00'
+  let topicNameArr = _.castArray(req.query.topic);
+  let daysAgo = req.query.daysAgo || 3
+  let date = new Date() - (daysAgo * 24 * 60 * 60 * 1000)
+  let publishedSince = moment(date).format('YYYY-MM-DD')
   
   Thread.find({
-      topic: {$in: topicName}, 
-      "post.published": {"$gte": publishedSince}
+      topic: {$in: topicNameArr}, 
+      "post.published": { "$gte": publishedSince}
     })
     .then(data => res.send(data))
     .catch(next)
 }
-
-// db.posts.find( //query today up to tonight
-//   { "created_on": { "$gte": new Date(2012, 7, 14), "$lt": new Date(2012, 7, 15) } })

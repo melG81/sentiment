@@ -100,7 +100,7 @@ describe('#dbClient', () => {
     })
   })
   describe('.getByTopics', () => {
-    it.only('should send a GET request to sentiment-db', (done) => {
+    it('should send a GET request to sentiment-db', (done) => {
       let topicsArr = ['bitcoin currency', 'monero gold']
       let daysAgo = 10
       let posts = {
