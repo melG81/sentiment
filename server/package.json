@@ -5,13 +5,15 @@
   "main": "server.js",
   "scripts": {
     "test": "NODE_ENV=test mocha",
-    "dev": "NODE_ENV=development nodemon ./server.js"
+    "dev": "NODE_ENV=development nodemon ./server.js",
+    "start": "NODE_ENV=production node server"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.17.2",
+    "dotenv": "^4.0.0",
     "express": "^4.15.4",
     "lodash": "^4.17.4",
     "moment": "^2.18.1",

@@ -13,6 +13,11 @@ db.connect = function () {
     mongoose.connect('mongodb://localhost:27017/sentiment-development', {useMongoClient: true});
   } else if (config === 'test') {
     mongoose.connect('mongodb://localhost:27017/sentiment-test', {useMongoClient: true});
+  } else {
+    // Using mongoose to connect to MLAB database (Create new database single node free and create new user and set name and password)
+    const username = process.env.MONGO_USER;
+    const password = process.env.MONGO_PW;
+    mongoose.connect(`mongodb://${username}:${password}@ds243285.mlab.com:43285/sentiment-production`);   
   }
 
   // Signal connection
