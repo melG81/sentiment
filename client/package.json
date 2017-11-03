@@ -6,10 +6,10 @@
   "scripts": {
     "test": "find ./test -name '*.spec.js' | xargs mocha -R spec",
     "test:int": "find ./test -name '*.int_spec.js' | xargs mocha -R spec",
-    "build": "webpack --watch",
+    "build": "webpack",
+    "buld:watch": "webpack --watch",
     "dev": "NODE_ENV=development nodemon server.js",
-    "start": "NODE_ENV=production node server.js",
-    "prestart": "webpack"
+    "start": "NODE_ENV=production node server.js"
   },
   "keywords": [],
   "author": "",

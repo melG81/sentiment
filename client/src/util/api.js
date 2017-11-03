@@ -17,7 +17,7 @@ let sitesFiltered = require('../filters/sitesFiltered');
  */
 api.getWebhoseEndpoint = (daysAgo=1) => {
   let token = config.webhoseTOKEN;
-  let endpoint = "http://webhose.io/filterWebContent?token=";
+  let endpoint = "https://webhose.io/filterWebContent?token=";
   let sort = "sort=relevancy";
   let sinceDate = new Date() - (daysAgo*24*60*60*1000);
   let publishedAfter = `published%3A%3E${sinceDate}`

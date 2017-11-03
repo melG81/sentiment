@@ -5,5 +5,5 @@ config.webhoseTOKEN = process.env.WEBHOSETOKEN || 'da347ad6-b6b4-4135-839d-4308c
 if (process.env.NODE_ENV === 'development') {
   config.sentimentDBHost = 'http://localhost:4201';
 } else {
-  config.sentimentDBHost = 'https://cryptoserver.now.sh/';
+  config.sentimentDBHost = 'https://cryptoserver.now.sh';
 }
