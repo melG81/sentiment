@@ -1,6 +1,8 @@
-var chai = require('chai');
-var expect = chai.expect;
-var google = require('../../../src/util/google');
+let chai = require('chai');
+let expect = chai.expect;
+let sinon = require('sinon')
+let google = require('../../../src/util/google');
+let dbClient = require('../../../src/util/dbClient')
 
 describe('#google', () => {
   describe('.analyze', () => {
@@ -21,6 +23,72 @@ describe('#google', () => {
       google.analyze(text, fakeClient).then(result => {
         expect(result).to.eql(actual)
         done()
+      })
+    })
+  })
+  describe('.postUpdateSentiment', () => {
+    it('should analyze title sentiment and update document', (done) => {
+      let document = {
+        topic: ['bitcoin'],
+        _id: 'uid',
+        post: {
+          title: 'this is the title',
+          text: 'this is the copy text'
+        }
+      }
+      let sentiment = {
+        documentSentiment: {
+          magnitude: 0.8999999761581421,
+          score: -0.8999999761581421
+        }        
+      }
+      let newDoc = {
+        topic: ['bitcoin'],
+        _id: 'uid',
+        post: {
+          title: 'this is the title',
+          text: 'this is the copy text'
+        },
+        documentSentiment: sentiment.documentSentiment        
+      }
+
+      let analyzeStub = sinon.stub(google, 'analyze').returns(Promise.resolve(sentiment))
+      let updateThreadStub = sinon.stub(dbClient, 'updateThread').returns(Promise.resolve(newDoc))
+
+      google.postUpdateSentiment(document).then(result => {
+        let input = result
+        let actual = newDoc        
+        expect(input).to.eql(actual)
+        expect(updateThreadStub.calledWith('uid', newDoc)).to.be.true
+        expect(updateThreadStub.callCount).to.equal(1)
+
+        analyzeStub.restore();
+        updateThreadStub.restore();
+        done();
+      })
+      
+    })
+    it('should only analyze if property documentSentiment does not exist', (done) => {
+      let document = {
+        topic: ['bitcoin'],
+        createdAt: new Date(),
+        updatedAt: new Date(),
+        _id: 'uid',
+        post: {
+          title: 'this is the title',
+          text: 'this is the copy text'
+        },
+        documentSentiment: {
+          magnitude: 0.8999999761581421,
+          score: -0.8999999761581421
+        }
+      }
+      
+      google.postUpdateSentiment(document).then(result => {
+        let input = result
+        let actual = 'Sentiment already exists'
+        expect(input).to.eql(actual)
+        done();
       })
     })
   })

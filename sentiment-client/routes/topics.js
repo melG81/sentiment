@@ -50,3 +50,10 @@ topics.browse = function (req, res, next) {
       })
     })
 }
+
+topics.getTopicBrowseURL = function (topicArr, daysAgo) {
+  let topicQuery = topicArr.map(topic => encodeURI(topic)).join('&topic=')
+  let url = `${config.sentimentDBHost}/topics/browse?topic=${topicQuery}&daysAgo=${daysAgo}`
+  return url
+}
+
