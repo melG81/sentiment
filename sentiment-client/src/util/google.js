@@ -35,3 +35,15 @@ google.postUpdateSentiment = (doc) => {
       })
   })
 }
+
+/**
+ * @function {takes array of documents and analyzes post title for sentiment and updates document}
+ * @param  {Array} array {array of documents}
+ * @return {Promise} {Promise array of updated docs}
+ */
+google.arrayPostUpdateSentiment = (array) => {
+  let promiseArr = array.map(doc => {
+    return google.postUpdateSentiment(doc);
+  })
+  return Promise.all(promiseArr)
+}
