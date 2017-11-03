@@ -4,6 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "preinstall": "cd server/ && npm i",
+    "postinstall": "cd client/ && npm i",    
     "server:dev": "cd server && npm run dev",    
     "client:dev": "cd client && npm run dev",
     "server:start": "cd server && npm run start",    
