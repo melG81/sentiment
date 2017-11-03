@@ -109,28 +109,33 @@ describe('#google', () => {
         let input = result
         let actual = docArray.length
         expect(input.length).to.equal(actual)
+        updateThreadStub.restore()
+        done()
+      })
+    })
+  })
+  describe('.pollSentiment', (done) => {
+    it('should search api for topicsArr and daysAgo published, then analyze and update all docs for sentiment', (done) =>{
+      let docArray = require('../../data/sampleData.json')
+      let sentiment = {
+        documentSentiment: {
+          magnitude: 0.8999999761581421,
+          score: -0.8999999761581421
+        }
+      }
+      let newDocArray = docArray.map(doc => Object.assign(doc, sentiment))
+
+      let stubGetByTopics = sinon.stub(dbClient, 'getByTopics').returns(Promise.resolve(docArray))
+      let stubArrayPostUpdateSentiment = sinon.stub(google, 'arrayPostUpdateSentiment').returns(Promise.resolve(newDocArray))
+
+      google.pollSentiment('cryptocurrency', 1).then(results => {
+        expect(results.length).to.equal(newDocArray.length)
+        
+        stubGetByTopics.restore()
+        stubArrayPostUpdateSentiment.restore()
         done()
       })
     })
   })
 
 })
-
-// let payload = { data: bitcoinPage1 };
-// let postParsed = bitcoinPage1Parsed[0];
-// let postNew = {
-//   topic: ['bitcoin'],
-//   createdAt: new Date(),
-//   updatedAt: new Date(),
-//   _id: 'uid',
-//   post: postParsed
-// }
-
-// axios.post.returns(Promise.resolve(postNew))
-// api.postThread('bitcoin', payload, axios)
-//   .then(data => {
-//     expect(data.length).to.equal(100)
-//     axios.post.reset();
-//     done();
-//   })
-//     })

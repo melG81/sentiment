@@ -47,3 +47,21 @@ google.arrayPostUpdateSentiment = (array) => {
   })
   return Promise.all(promiseArr)
 }
+
+/**
+ * @function {queries db based on topicsArr and analyzes sentiment and updates docs}
+ * @param  {Array} topic {array of topic strings or single string}
+ * @param  {String} daysAgo {published since * daysAgo}
+ * @return {Promise} {Promise array of updated docs}
+ */
+google.pollSentiment = (topic, daysAgo) => {
+  let topicArr = _.castArray(topic)
+  return new Promise(resolve => {
+    dbClient.getByTopics(topicArr, daysAgo).then(payload => {
+      let array = payload.data
+      google.arrayPostUpdateSentiment(array).then(results => {
+        resolve(results)
+      })
+    })
+  })
+}
