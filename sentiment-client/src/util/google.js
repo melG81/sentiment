@@ -35,3 +35,10 @@ google.postUpdateSentiment = (doc) => {
       })
   })
 }
+
+google.arrayPostUpdateSentiment = (array) => {
+  let promiseArr = array.map(doc => {
+    return google.postUpdateSentiment(doc);
+  })
+  return Promise.all(promiseArr)
+}

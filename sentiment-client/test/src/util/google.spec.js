@@ -92,4 +92,45 @@ describe('#google', () => {
       })
     })
   })
+  describe('.arrayPostUpdateSentiment', () => {
+    it('should analyze and update posts for an array of documents', (done) => {
+      let docArray = require('../../data/sampleData.json')
+      let sentiment = {
+        documentSentiment: {
+          magnitude: 0.8999999761581421,
+          score: -0.8999999761581421
+        }        
+      }
+      let newDocArray = docArray.map(doc => Object.assign(doc, sentiment))
+      let newDoc = newDocArray[0]
+      let updateThreadStub = sinon.stub(google, 'postUpdateSentiment').returns(Promise.resolve(newDoc))
+      
+      google.arrayPostUpdateSentiment(docArray).then(result => {
+        let input = result
+        let actual = docArray.length
+        expect(input.length).to.equal(actual)
+        done()
+      })
+    })
+  })
+
 })
+
+// let payload = { data: bitcoinPage1 };
+// let postParsed = bitcoinPage1Parsed[0];
+// let postNew = {
+//   topic: ['bitcoin'],
+//   createdAt: new Date(),
+//   updatedAt: new Date(),
+//   _id: 'uid',
+//   post: postParsed
+// }
+
+// axios.post.returns(Promise.resolve(postNew))
+// api.postThread('bitcoin', payload, axios)
+//   .then(data => {
+//     expect(data.length).to.equal(100)
+//     axios.post.reset();
+//     done();
+//   })
+//     })
