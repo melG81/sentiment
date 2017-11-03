@@ -41,7 +41,7 @@ app.use(function (req, res) {
   });
 });
 
-const PORT = process.env.PORT || 4201;
+const PORT = process.env.PORT || 3000;
 // Expose and listen
 app.listen(PORT, function () {
   console.log(`Listening to port ${PORT}`);

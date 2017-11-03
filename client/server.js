@@ -41,7 +41,7 @@ app.use(function (req, res) {
   });
 });
 
-const PORT = config.PORT;
+const PORT = config.PORT || 4000;
 // Expose and listen
 app.listen(PORT, function () {
   console.log(`Listening to port ${PORT}`);
