@@ -1,8 +1,9 @@
 let api = module.exports = {}
 
 // Dependencies
-let _ = require('lodash');
+let get = require('lodash/get');
 let axios = require('axios');
+
 let config = require('../../config.js');
 let helpers = require('./helpers');
 let parser = require('./parser');
@@ -47,7 +48,7 @@ api.query = function (query, daysAgo, request=axios) {
  * @return {Promise} {axios.post promise}
  */
 api.postThread = function (topic, payload, request=axios) {
-  let posts = _.get(payload, 'data.posts');
+  let posts = get(payload, 'data.posts');
   let parsedPostsArr = parser.parseArray(posts);
   let promiseArr = parsedPostsArr.map(post => {
     return dbClient.postThread(topic, post, request)
@@ -87,7 +88,7 @@ api.pollNext = function (query, payload, request=axios) {
 
   // Fetches the next payload and calls itself recursively
   return api.getNext(payload, request).then(nextPayload => {
-    let totalResults = _.get(payload, 'data.totalResults')
+    let totalResults = get(payload, 'data.totalResults')
     if (nextPayload === 'No more results') {
       return Promise.resolve(`No more results, totalResults: ${totalResults}`)
     }

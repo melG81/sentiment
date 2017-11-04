@@ -1,7 +1,7 @@
 let helpers = module.exports = {}
 
 // Dependencies
-let queryString = require('query-string');
+let {parse} = require('query-string');
 
 /**
  * @function {truncates a string based on number of characters provided}
@@ -21,5 +21,5 @@ helpers.truncate = function (string, num) {
  * @return {String} {the relevant parameter}
  */
 helpers.parse = function(string, param) {
-  return queryString.parse(string)[param];
+  return parse(string)[param];
 }

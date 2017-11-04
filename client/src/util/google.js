@@ -3,7 +3,8 @@ let google = module.exports = {}
 // Dependencies
 let config = require('../../config.js');
 let dbClient = require('./dbClient.js')
-let _ = require('lodash')
+let get = require('lodash/get')
+let castArray = require('lodash/castArray')
 let client = 'TODO'
 
 google.analyze = (text, client) => {
@@ -20,7 +21,7 @@ google.analyze = (text, client) => {
  * @return {Promise} {dbClient.updateThread put Promise}
  */
 google.postUpdateSentiment = (doc) => {
-  let title = _.get(doc, 'post.title')
+  let title = get(doc, 'post.title')
   let id = doc._id
   return new Promise ((resolve, reject) => {
     if (doc.documentSentiment) {
@@ -55,7 +56,7 @@ google.arrayPostUpdateSentiment = (array) => {
  * @return {Promise} {Promise array of updated docs}
  */
 google.pollSentiment = (topic, daysAgo) => {
-  let topicArr = _.castArray(topic)
+  let topicArr = castArray(topic)
   return new Promise(resolve => {
     dbClient.getByTopics(topicArr, daysAgo).then(payload => {
       let array = payload.data

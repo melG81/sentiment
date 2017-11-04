@@ -2,7 +2,7 @@ let parser = module.exports = {};
 
 // Dependencies
 let helpers = require('./helpers.js')
-let _ = require('lodash')
+let get = require('lodash/get')
 
 /**
  * @function {parses single post object to extract relevant metadata }
@@ -14,16 +14,16 @@ parser.parsePost = function(data){
 
   return {
     uuid,
-    site: _.get(data, 'thread.site'),
+    site: get(data, 'thread.site'),
     url,
     author,
     published,
     title,
     crawled,
     text: helpers.truncate(data.text, 5000),
-    domainRank: _.get(data, 'thread.domain_rank'),
-    mainImage: _.get(data, 'thread.main_image'),
-    social: _.get(data, 'thread.social')
+    domainRank: get(data, 'thread.domain_rank'),
+    mainImage: get(data, 'thread.main_image'),
+    social: get(data, 'thread.social')
   }
 }
 

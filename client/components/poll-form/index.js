@@ -1,5 +1,5 @@
 // Dependencies
-let {pollScript} = require('../../src/util/api')
+let {pollScript} = require('../../src/util/api');
 
 let makePollForm = function () {
   this.message = 'Click poll results to start'
