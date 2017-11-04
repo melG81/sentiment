@@ -1,6 +1,5 @@
 // Access built in webpack plugins
 const webpack = require('webpack');
-var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = {
   // Define entry point
@@ -31,7 +30,6 @@ module.exports = {
     }]
   },
   plugins: [
-    new webpack.optimize.UglifyJsPlugin(),
-    new BundleAnalyzerPlugin()
+    new webpack.optimize.UglifyJsPlugin()
   ]  
 }

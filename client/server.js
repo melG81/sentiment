@@ -5,6 +5,7 @@ let express = require('express');
 let exphbs = require('express-handlebars');
 let path = require('path');
 let app = express();
+let compression = require('compression');
 let config = require('./config');
 let helpers = require('./src/helpers');
 
@@ -16,6 +17,12 @@ app.engine('.hbs', exphbs({
   partialsDir: __dirname + '/components/'
 }));
 app.set('view engine', '.hbs');
+// Set as default true in production
+app.set('view cache', true)
+
+// GZIP all assets
+app.use(compression());
+
 
 // Serve static files from public folder
 app.use(express.static(path.join(__dirname, 'public')));
