@@ -3,7 +3,7 @@ var router = express.Router();
 
 // Root page
 router.get('/', function(req, res, next){
-  res.status(200).json({status: 'ok'});
+  res.status(200).json({status: "All About That Bass"});
 })
 
 // Threads CRUD endpoints

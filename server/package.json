@@ -1,12 +1,14 @@
 {
-  "name": "sentiment-db",
+  "name": "server",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
   "scripts": {
     "test": "NODE_ENV=test mocha",
     "dev": "NODE_ENV=development nodemon ./server.js",
-    "start": "NODE_ENV=production node ./server.js"
+    "start": "NODE_ENV=production node ./server.js",
+    "deploy": "now --docker --public",
+    "postdeploy": "now alias"
   },
   "keywords": [],
   "author": "",
@@ -24,5 +26,10 @@
     "chai-http": "^3.0.0",
     "nock": "^9.0.14",
     "sinon": "^3.2.1"
+  },
+  "now": {
+    "alias": "cryptoserver",
+    "dotenv": true,
+    "public": true
   }
 }
