@@ -13,5 +13,7 @@ module.exports = [
   "monero",  
   "iota coin",
   "qtum coin",
-  "cardano coin"
+  "cardano coin",
+  "initial coin offering",
+  "cryptocurrency mining"
 ]

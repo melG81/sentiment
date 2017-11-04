@@ -1,5 +1,5 @@
 // Dependencies
-let {pollScript} = require('../../src/util/api');
+let axios = require('axios');
 
 let makePollForm = function () {
   this.message = 'Click poll results to start'
@@ -25,11 +25,11 @@ let makePollForm = function () {
     e.preventDefault()
     this.cacheDom()
     let query = this.$keyword
-    let days = this.$days
+    let daysAgo = this.$days
     this.setMessage('...polling')
-    pollScript(query, days)
-      .then(results => {
-        this.setMessage(results)
+    axios.post('/topics/pollscript', {query, daysAgo})
+      .then(payload => {
+        this.setMessage(payload.data)
       })
   }
   this.render = () => {

@@ -1,13 +1,15 @@
 // Access built in webpack plugins
 const webpack = require('webpack');
+// Used for compiling specific files
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
   // Define entry point
   entry: './components/app.js',
   // Define output point
   output: {
-    path: __dirname + '/public/js',
-    filename: 'bundle.js'
+    path: __dirname + '/public',
+    filename: 'js/bundle.js'
   },
   // Loaders
   module: {
@@ -18,8 +20,10 @@ module.exports = {
       query: {
         presets: ['es2015']
       }      
-    },{
+    },
+    {
       test: /\.scss$/,
+      exclude: __dirname + '/components/styles',
       use: [{
         loader: "style-loader" // creates style nodes from JS strings
       }, {
@@ -27,9 +31,19 @@ module.exports = {
       }, {
         loader: "sass-loader" // compiles Sass to CSS
       }]
-    }]
+    },
+    {
+      test: /\.scss$/,
+      include: __dirname + '/components/styles',
+      use: ExtractTextPlugin.extract(['css-loader','sass-loader'])
+    }
+  ]
   },
   plugins: [
-    new webpack.optimize.UglifyJsPlugin()
+    new webpack.optimize.UglifyJsPlugin(),
+    new ExtractTextPlugin({ // define where to save the file
+      filename: 'styles/main.css',
+      allChunks: true,
+    })
   ]  
 }

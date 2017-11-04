@@ -5,6 +5,7 @@ let dbClient = require('../src/util/dbClient')
 let _ = require('lodash')
 let {sortPayload} = require('./helpers')
 let queryKeywords = require('../src/filters/queryKeywords.js')
+let { pollScript } = require('../src/util/api');
 
 topics.index = function (req, res, next) {
   dbClient.getAll()
@@ -57,3 +58,12 @@ topics.getTopicBrowseURL = function (topicArr, daysAgo) {
   return url
 }
 
+topics.pollscript = function (req, res, next) {
+  let payload = req.body
+  let query = _.get(payload, 'query')
+  let daysAgo = _.get(payload, 'daysAgo')
+  pollScript(query, daysAgo)
+    .then(results => {
+      res.send(results)
+    })
+}

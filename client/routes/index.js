@@ -12,6 +12,7 @@ router
   .get('/topics/browse', topics.browse)
   .get('/topics/:name', topics.show)
   .get('/topics', topics.index)
+  .post('/topics/pollscript', topics.pollscript)
 
 
 // Admin endpoints

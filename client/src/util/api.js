@@ -3,7 +3,6 @@ let api = module.exports = {}
 // Dependencies
 let get = require('lodash/get');
 let axios = require('axios');
-
 let config = require('../../config.js');
 let helpers = require('./helpers');
 let parser = require('./parser');

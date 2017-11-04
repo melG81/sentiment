@@ -2,12 +2,19 @@ require('dotenv').config();
 
 // Dependencies
 let express = require('express');
+var bodyParser = require('body-parser');
 let exphbs = require('express-handlebars');
 let path = require('path');
 let app = express();
 let compression = require('compression');
 let config = require('./config');
 let helpers = require('./src/helpers');
+
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }))
+
+// parse application/json
+app.use(bodyParser.json())
 
 // Set view engine
 app.engine('.hbs', exphbs({ 
