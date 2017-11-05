@@ -62,6 +62,9 @@ topics.getTopicBrowseURL = function (topicArr, daysAgo) {
 /**
  * @function {query webhose api -> transform + update db -> fetch from db -> analyze sentiment -> update db for sentiment}
  */
+// TODO: NOTE that pollScripte returns a promise of db being created. 
+// If it isn't created yet then pollSentiment will not be able to query the id and will not update sentiment
+// Either rewrite pollScript to not return a promise but wait for db create to finish OR rewrite sentiment to be separate to pollScript runtime
 topics.pollscript = function (req, res, next) {
   let payload = req.body
   let query = _.get(payload, 'query')
