@@ -11,12 +11,12 @@ var threads = require('./threads.js');
 router
   .get('/threads/author/:author', threads.author)
   .get('/threads', threads.index)
+  .put('/threads/topic/id/:id', threads.topicUpdate)
   .post('/threads/sites', threads.sites)
   .post('/threads', threads.create)
   .get('/threads/topic/:topic/latest', threads.topicLatest)
   .get('/threads/topic/query', threads.topicQuery)
   .get('/threads/topic/:topic', threads.topic)
   .delete('/threads/topic/id/:id', threads.topicDelete)
-  .put('/threads/topic/id/:id', threads.topicUpdate)
 
 module.exports = router;

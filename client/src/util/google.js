@@ -32,7 +32,9 @@ google.postUpdateSentiment = (doc) => {
     }
     google.analyze(title)
       .then(result => {
-        return Object.assign(doc, result)
+        return Object.assign(doc, {
+          documentSentiment: result[0].documentSentiment
+        })
       })
       .then(newDoc => {
         resolve(dbClient.updateThread(id, newDoc))

@@ -9,7 +9,7 @@ var mongoose = require('mongoose');
 var Schema = new mongoose.Schema({
     topic: [String],
     post: mongoose.Schema.Types.Mixed,
-    google: mongoose.Schema.Types.Mixed
+    documentSentiment: mongoose.Schema.Types.Mixed
   },{
     timestamps: true
 });

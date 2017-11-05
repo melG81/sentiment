@@ -5,10 +5,10 @@ const language = require('@google-cloud/language');
 
 config.PORT = process.env.PORT;
 config.webhoseTOKEN = process.env.WEBHOSETOKEN;
-if (process.env.NODE_ENV === 'development') {
-  config.sentimentDBHost = 'http://localhost:4201';
-} else {
+if (process.env.NODE_ENV === 'production') {
   config.sentimentDBHost = 'https://cryptoserver.now.sh';
+} else {  
+  config.sentimentDBHost = 'http://localhost:3000';
 }
 // Instantiate google natural language client
 config.googleClient = new language.LanguageServiceClient({

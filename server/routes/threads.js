@@ -131,9 +131,12 @@ threads.topicDelete = function (req, res, next) {
 /**
  * @function {updates the entire document}
  */
-threads.topicUpdate = function (req, res, next) {
+threads.topicUpdate = function (req, res, next) {  
   Thread.findByIdAndUpdate(req.params.id, req.body, { new: true })
-    .then(data => res.send(data))
+    .then(data => {
+      console.log('updated sentiment: ', data.post.title);
+      res.send(data)
+    })
     .catch(next);
 }
 
