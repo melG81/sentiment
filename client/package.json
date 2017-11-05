@@ -13,8 +13,9 @@
     "build:watch": "webpack --watch",
     "dev": "NODE_ENV=development nodemon server.js",
     "start": "NODE_ENV=production node server.js",
-    "deploy": "now --npm --public",
-    "postdeploy": "now alias"
+    "deploy": "now --docker --public",
+    "postdeploy": "now alias",
+    "prestart": "npm run build"
   },
   "keywords": [],
   "author": "",

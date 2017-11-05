@@ -13,5 +13,5 @@ RUN npm install
 COPY . /usr/src/app
 
 # Expose publc port and run npm command
-EXPOSE 3000
+EXPOSE 4000
 CMD ["npm", "start"]
