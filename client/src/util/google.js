@@ -1,3 +1,6 @@
+// ENV variables
+require('dotenv').config({path: __dirname + '/./../../.env'});
+
 let google = module.exports = {}
 
 // Dependencies
@@ -5,14 +8,14 @@ let config = require('../../config.js');
 let dbClient = require('./dbClient.js')
 let get = require('lodash/get')
 let castArray = require('lodash/castArray')
-let client = 'TODO'
+let googleClient = config.googleClient
 
-google.analyze = (text, client) => {
+google.analyze = (text, client=googleClient) => {
   let document = {
     content: text,
     type: 'PLAIN_TEXT',    
   }
-  return client.analyzeSentiment(document)
+  return client.analyzeSentiment({document: document})
 }
 
 /**
@@ -27,7 +30,7 @@ google.postUpdateSentiment = (doc) => {
     if (doc.documentSentiment) {
       resolve('Sentiment already exists')
     }
-    google.analyze(title, client)
+    google.analyze(title)
       .then(result => {
         return Object.assign(doc, result)
       })

@@ -36,5 +36,6 @@ module.exports = [
   "bitcoin.com",
   "cointelegraph.com",
   "bitcoinist.com",
-  "coincenter.org"
+  "coincenter.org",
+  "cryptocoinsnews.com"
 ]
