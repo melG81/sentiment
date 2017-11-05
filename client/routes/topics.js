@@ -6,6 +6,7 @@ let _ = require('lodash')
 let {sortPayload} = require('./helpers')
 let queryKeywords = require('../src/filters/queryKeywords.js')
 let { pollScript } = require('../src/util/api');
+let google = require('../src/util/google');
 
 topics.index = function (req, res, next) {
   dbClient.getAll()
@@ -58,12 +59,16 @@ topics.getTopicBrowseURL = function (topicArr, daysAgo) {
   return url
 }
 
+/**
+ * @function {query webhose api -> transform + update db -> fetch from db -> analyze sentiment -> update db for sentiment}
+ */
 topics.pollscript = function (req, res, next) {
   let payload = req.body
   let query = _.get(payload, 'query')
   let daysAgo = _.get(payload, 'daysAgo')
   pollScript(query, daysAgo)
+    .then(() => google.pollSentiment(query, daysAgo))
     .then(results => {
       res.send(results)
-    })
+    })    
 }

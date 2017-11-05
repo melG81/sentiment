@@ -66,7 +66,7 @@ google.pollSentiment = (topic, daysAgo) => {
     dbClient.getByTopics(topicArr, daysAgo).then(payload => {
       let array = payload.data
       google.arrayPostUpdateSentiment(array).then(results => {
-        resolve(results)
+        resolve(`No more results, totalResults: ${results.length}`)
       })
     })
   })
