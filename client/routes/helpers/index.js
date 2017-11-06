@@ -22,3 +22,17 @@ helpers.sortPayload = (array, sortBy) => {
   }
 }
 
+helpers.checkVoteCookie = (req, res, next) => {
+  let id = req.params.id
+  let voteCookie = _.get(req, 'cookies.vote')
+  let hasVoted = _.includes(voteCookie, id)
+  if (hasVoted) {
+    res.send({message: 'Limit one vote'})
+  } else {
+    let newCookie = voteCookie || [];
+    newCookie.push(id)
+    res.cookie('vote', newCookie)
+    next()
+  }
+}
+

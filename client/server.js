@@ -5,6 +5,8 @@ let express = require('express');
 var bodyParser = require('body-parser');
 let exphbs = require('express-handlebars');
 let path = require('path');
+let cookieParser = require('cookie-parser');
+
 let app = express();
 let compression = require('compression');
 let config = require('./config');
@@ -16,9 +18,12 @@ app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json
 app.use(bodyParser.json())
 
+// Use session and cookie parser
+app.use(cookieParser());
+
 // Set view engine
-app.engine('.hbs', exphbs({ 
-  extname: '.hbs', 
+app.engine('.hbs', exphbs({
+  extname: '.hbs',
   defaultLayout: 'main',
   helpers,
   partialsDir: __dirname + '/components/'
@@ -34,7 +39,7 @@ app.use(compression());
 // Serve static files from public folder
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Routes 
+// Routes
 app.use(require('./routes/index'));
 
 // Catch and send error messages

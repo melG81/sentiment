@@ -5,10 +5,10 @@
   "main": "index.js",
   "scripts": {
     "preinstall": "cd server/ && npm i",
-    "postinstall": "cd client/ && npm i",    
-    "server:dev": "cd server && npm run dev",    
+    "postinstall": "cd client/ && npm i",
+    "server:dev": "cd server && npm run dev",
     "client:dev": "cd client && npm run dev",
-    "server:start": "cd server && npm run start",    
+    "server:start": "cd server && npm run start",
     "client:start": "cd client && npm run start",
     "dev": "concurrently \"npm run server:dev\" \"npm run client:dev\" ",
     "start": "concurrently \"npm run server:start\" \"npm run client:start\" "
@@ -26,5 +26,6 @@
   "homepage": "https://github.com/howardmann/sentiment#readme",
   "devDependencies": {
     "concurrently": "^3.5.0"
-  }
+  },
+  "dependencies": {}
 }

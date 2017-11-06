@@ -36,26 +36,56 @@ dbClient.updateThread = function (id, document, request=axios) {
   return request.put(url, document)
 }
 
-dbClient.upVote = function (id, document, request=axios) {
+dbClient.getDoc = function (id, request=axios) {
   let url = `${config.sentimentDBHost}/threads/topic/id/${id}`;
-  let hasVotes = document.votes;
-  if (hasVotes) {
-    document.votes += 1
-  } else {
-    document.votes = 1
-  }
-  return request.put(url, document)
+  return request.get(url)
+}
+/**
+ * @function {upvote a document or set as vote: 1 if none exists}
+ * @param  {String} id       {unique document id}
+ * @param  {Object} request  {request dependency defaults to axios}
+ * @return {Promise} {axios.put promise}
+ */
+dbClient.upVote = function (id, request=axios) {
+  return new Promise((resolve) => {
+    dbClient.getDoc(id)
+    .then(payload => {
+      let document = payload.data
+      let hasVotes = document.votes;
+      let voteOpts;
+      if (hasVotes) {
+        voteOpts = {votes: document.votes += 1}
+      } else {
+        voteOpts = {votes: 1}
+      }
+      let url = `${config.sentimentDBHost}/threads/topic/id/${id}`;
+      resolve(request.put(url, voteOpts))
+    })
+  })
 }
 
-dbClient.downVote = function (id, document, request=axios) {
-  let url = `${config.sentimentDBHost}/threads/topic/id/${id}`;
-  let hasVotes = document.votes;
-  if (hasVotes) {
-    document.votes -= 1
-  } else {
-    document.votes = -1
-  }
-  return request.put(url, document)
+/**
+ * @function {downvote a document or set as vote: -1 if none exists}
+ * @param  {String} id       {unique document id}
+ * @param  {Object} request  {request dependency defaults to axios}
+ * @return {Promise} {axios.put promise}
+ */
+dbClient.downVote = function (id, request=axios) {
+  return new Promise((resolve) => {
+    dbClient.getDoc(id)
+    .then(payload => {
+      let document = payload.data
+      let hasVotes = document.votes;
+      let voteOpts;
+      if (hasVotes) {
+        voteOpts = {votes: document.votes -= 1}
+      } else {
+        voteOpts = {votes: -1}
+      }
+      let url = `${config.sentimentDBHost}/threads/topic/id/${id}`;
+      resolve(request.put(url, voteOpts))
+    })
+  })
 }
 
 /**

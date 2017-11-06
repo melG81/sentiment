@@ -62,7 +62,7 @@ topics.getTopicBrowseURL = function (topicArr, daysAgo) {
 /**
  * @function {query webhose api -> transform + update db -> fetch from db -> analyze sentiment -> update db for sentiment}
  */
-// TODO: NOTE that pollScripte returns a promise of db being created. 
+// TODO: NOTE that pollScripte returns a promise of db being created.
 // If it isn't created yet then pollSentiment will not be able to query the id and will not update sentiment
 // Either rewrite pollScript to not return a promise but wait for db create to finish OR rewrite sentiment to be separate to pollScript runtime
 topics.pollscript = function (req, res, next) {
@@ -73,5 +73,32 @@ topics.pollscript = function (req, res, next) {
     .then(() => google.pollSentiment(query, daysAgo))
     .then(results => {
       res.send(results)
-    })    
+    })
+}
+
+topics.upVote = function (req, res, next) {
+  let id = req.params.id
+  dbClient.upVote(id)
+    .then(payload => {
+      res.send(payload.data)
+    })
+    .catch(next)
+}
+
+topics.downVote = function (req, res, next) {
+  let id = req.params.id
+  dbClient.downVote(id)
+    .then(payload => {
+      res.send(payload.data)
+    })
+    .catch(next)
+}
+
+topics.getById = function (req, res, next) {
+  let id = req.params.id
+  dbClient.getDoc(id)
+    .then(payload => {
+      res.send(payload.data)
+    })
+    .catch(next)
 }

@@ -84,7 +84,6 @@ describe('#dbClient', () => {
         topic: [topic],
         post
       }
-      let documentTransform = Object.assign(document, {votes: 1})
       let postNew = {
         topic: [topic],
         createdAt: new Date(),
@@ -94,13 +93,14 @@ describe('#dbClient', () => {
         votes: 1
       }
 
+      let dbClientStub = sinon.stub(dbClient, 'getDoc').returns(Promise.resolve(document))
       axiosStub.put.returns(Promise.resolve(postNew))
 
-      dbClient.upVote(id, document, axiosStub)
+      dbClient.upVote(id, axiosStub)
         .then(data => {
           let url = `${config.sentimentDBHost}/threads/topic/id/${id}`
-          expect(axiosStub.put.args[0]).to.eql([url, documentTransform])
-          expect(data).to.eql(postNew);
+          expect(axiosStub.put.args[0]).to.eql([url, {votes: 1}])
+          dbClient.getDoc.restore();
           axiosStub.put.reset();
           done();
         })
@@ -111,7 +111,6 @@ describe('#dbClient', () => {
         post,
         votes: 4
       }
-      let documentTransform = Object.assign(document, {votes: 5})
       let postNew = {
         topic: [topic],
         createdAt: new Date(),
@@ -121,13 +120,15 @@ describe('#dbClient', () => {
         votes: 5
       }
 
+      let dbClientStub = sinon.stub(dbClient, 'getDoc').returns(Promise.resolve(document))
       axiosStub.put.returns(Promise.resolve(postNew))
 
-      dbClient.upVote(id, document, axiosStub)
+      dbClient.upVote(id, axiosStub)
         .then(data => {
           let url = `${config.sentimentDBHost}/threads/topic/id/${id}`
-          expect(axiosStub.put.args[0]).to.eql([url, documentTransform])
+          expect(axiosStub.put.args[0]).to.eql([url, {votes: 5}])
           expect(data).to.eql(postNew);
+          dbClient.getDoc.restore()
           axiosStub.put.reset();
           done();
         })
@@ -144,7 +145,6 @@ describe('#dbClient', () => {
         topic: [topic],
         post
       }
-      let documentTransform = Object.assign(document, {votes: 1})
       let postNew = {
         topic: [topic],
         createdAt: new Date(),
@@ -154,13 +154,15 @@ describe('#dbClient', () => {
         votes: -1
       }
 
+      let dbClientStub = sinon.stub(dbClient, 'getDoc').returns(Promise.resolve(document))
       axiosStub.put.returns(Promise.resolve(postNew))
 
-      dbClient.downVote(id, document, axiosStub)
+      dbClient.downVote(id, axiosStub)
         .then(data => {
           let url = `${config.sentimentDBHost}/threads/topic/id/${id}`
-          expect(axiosStub.put.args[0]).to.eql([url, documentTransform])
+          expect(axiosStub.put.args[0]).to.eql([url, {votes: -1}])
           expect(data).to.eql(postNew);
+          dbClient.getDoc.restore()
           axiosStub.put.reset();
           done();
         })
@@ -171,7 +173,7 @@ describe('#dbClient', () => {
         post,
         votes: 4
       }
-      let documentTransform = Object.assign(document, {votes: 3})
+
       let postNew = {
         topic: [topic],
         createdAt: new Date(),
@@ -181,13 +183,15 @@ describe('#dbClient', () => {
         votes: 3
       }
 
+      let dbClientStub = sinon.stub(dbClient, 'getDoc').returns(Promise.resolve(document))
       axiosStub.put.returns(Promise.resolve(postNew))
 
-      dbClient.downVote(id, document, axiosStub)
+      dbClient.downVote(id, axiosStub)
         .then(data => {
           let url = `${config.sentimentDBHost}/threads/topic/id/${id}`
-          expect(axiosStub.put.args[0]).to.eql([url, documentTransform])
+          expect(axiosStub.put.args[0]).to.eql([url, {votes: 3}])
           expect(data).to.eql(postNew);
+          dbClient.getDoc.restore()
           axiosStub.put.reset();
           done();
         })
