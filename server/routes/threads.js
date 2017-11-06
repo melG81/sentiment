@@ -131,10 +131,11 @@ threads.topicDelete = function (req, res, next) {
 /**
  * @function {updates the entire document}
  */
-threads.topicUpdate = function (req, res, next) {  
+threads.topicUpdate = function (req, res, next) {
   Thread.findByIdAndUpdate(req.params.id, req.body, { new: true })
     .then(data => {
-      console.log('updated sentiment: ', data.post.title);
+      let title = _.get(data, 'post.title')
+      console.log('updated document: ', title);
       res.send(data)
     })
     .catch(next);
@@ -145,9 +146,9 @@ threads.topicQuery = function (req, res, next) {
   let daysAgo = req.query.daysAgo || 3
   let date = new Date() - (daysAgo * 24 * 60 * 60 * 1000)
   let publishedSince = moment(date).format('YYYY-MM-DD')
-  
+
   Thread.find({
-      topic: {$in: topicNameArr}, 
+      topic: {$in: topicNameArr},
       "post.published": { "$gte": publishedSince}
     })
     .then(data => res.send(data))

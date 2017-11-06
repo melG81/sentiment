@@ -17,7 +17,7 @@ describe('thread', function () {
   beforeEach('drop the collection and reseed database', function(done){
     mongoose.connection.collections.threads.drop(function () {
       seeder.threads(done)
-    });        
+    });
   });
 
   it('should return all the threads on GET /threads', function (done) {
@@ -35,7 +35,7 @@ describe('thread', function () {
           {topic: ['gold'], createdAt: '2017' },
           {topic: ['monero'], createdAt: '2017' }
         ]
-        expect(input).to.deep.include.members(actual);                
+        expect(input).to.deep.include.members(actual);
         done();
       })
   });
@@ -112,8 +112,8 @@ describe('thread', function () {
     chai.request(server)
       .get('/threads/topic/bitcoin/latest')
       .end(function (err, resp) {
-        expect(resp.body.length).to.equal(1);        
-        let data = resp.body[0];        
+        expect(resp.body.length).to.equal(1);
+        let data = resp.body[0];
         let topic = data.topic;
         let post = data.post;
         let posts = require('../data/posts.json');
@@ -173,6 +173,25 @@ describe('thread', function () {
           })
       })
   });
+
+  it('should update a topic with given votes on PUT /threads/topic/id/:id', function (done) {
+    Thread
+    .findOne({topic: 'bitcoin' })
+    .then(data => {
+      let id = data.id;
+      let newDocument = Object.assign(data, {votes: 1}, {post: {title: 'bananabitcoin'}})
+
+      chai.request(server)
+        .put(`/threads/topic/id/${id}`)
+        .send(newDocument)
+        .end(function (err, resp) {
+          expect(resp.body.topic).to.eql(['bitcoin'])
+          expect(resp.body.votes).to.equal(1)
+          expect(resp.body.post).to.eql(newDocument.post)
+          done();
+        })
+    })
+})
 
   it('should find all topics by topic name and published since on GET /threads/topic/query?topic=name%20daysAgo=number', function (done) {
     chai.request(server)

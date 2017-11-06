@@ -20,7 +20,7 @@ app.use(function (req, res, next) {
 app.use(bodyParser.json({ limit: '50mb' }));
 app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
 
-// Routes 
+// Routes
 app.use(require('./routes/index'));
 
 // Catch and send error messages
