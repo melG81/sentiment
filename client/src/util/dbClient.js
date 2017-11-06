@@ -50,7 +50,7 @@ dbClient.upVote = function (id, request=axios) {
   return new Promise((resolve) => {
     dbClient.getDoc(id)
     .then(payload => {
-      let document = payload.data
+      let document = payload.data;
       let hasVotes = document.votes;
       let voteOpts;
       if (hasVotes) {

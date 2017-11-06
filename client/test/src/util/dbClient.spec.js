@@ -80,10 +80,10 @@ describe('#dbClient', () => {
     let post = {uuid: 'uuid', title: 'cat hero', text: 'cat description'};
 
     it('should send a PUT request with vote 1 if no vote exists to sentiment-db', (done) => {
-      let document = {
+      let document = {data:{
         topic: [topic],
         post
-      }
+      }}
       let postNew = {
         topic: [topic],
         createdAt: new Date(),
@@ -107,9 +107,11 @@ describe('#dbClient', () => {
     })
     it('should send a PUT request with of vote +1 if vote exists to sentiment-db', (done) => {
       let document = {
-        topic: [topic],
-        post,
-        votes: 4
+        data:{
+          topic: [topic],
+          post,
+          votes: 4
+        }
       }
       let postNew = {
         topic: [topic],
@@ -141,10 +143,11 @@ describe('#dbClient', () => {
     let post = {uuid: 'uuid', title: 'cat hero', text: 'cat description'};
 
     it('should send a PUT request with vote -1 if no vote exists to sentiment-db', (done) => {
-      let document = {
+      let document = {data:{
         topic: [topic],
         post
       }
+}
       let postNew = {
         topic: [topic],
         createdAt: new Date(),
@@ -168,11 +171,11 @@ describe('#dbClient', () => {
         })
     })
     it('should send a PUT request with of vote -1 if vote exists to sentiment-db', (done) => {
-      let document = {
+      let document = {data:{
         topic: [topic],
         post,
         votes: 4
-      }
+      }}
 
       let postNew = {
         topic: [topic],
