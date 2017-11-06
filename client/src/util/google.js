@@ -13,7 +13,7 @@ let googleClient = config.googleClient
 google.analyze = (text, client=googleClient) => {
   let document = {
     content: text,
-    type: 'PLAIN_TEXT',    
+    type: 'PLAIN_TEXT',
   }
   return client.analyzeSentiment({document: document})
 }

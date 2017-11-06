@@ -46,6 +46,18 @@ dbClient.upVote = function (id, document, request=axios) {
   }
   return request.put(url, document)
 }
+
+dbClient.downVote = function (id, document, request=axios) {
+  let url = `${config.sentimentDBHost}/threads/topic/id/${id}`;
+  let hasVotes = document.votes;
+  if (hasVotes) {
+    document.votes -= 1
+  } else {
+    document.votes = -1
+  }
+  return request.put(url, document)
+}
+
 /**
  * @function {makes a GET request to sentiment-db/threads/topic/query?topic=name&daysAgo=num}
  * @param  {Array} topicArr       {array of topic strings to query}

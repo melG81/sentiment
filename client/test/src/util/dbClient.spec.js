@@ -43,6 +43,7 @@ describe('#dbClient', () => {
         })
     })
   })
+
   describe('.updateThread', () => {
     it('should send a PUT request to sentiment-db with payload', (done) => {
       let id = 'uid'
@@ -72,7 +73,8 @@ describe('#dbClient', () => {
         })
     })
   })
-  describe.only('.upVote', () => {
+
+  describe('.upVote', () => {
     let id = 'uid'
     let topic = 'miaow'
     let post = {uuid: 'uuid', title: 'cat hero', text: 'cat description'};
@@ -131,6 +133,67 @@ describe('#dbClient', () => {
         })
     })
   })
+
+  describe('.downVote', () => {
+    let id = 'uid'
+    let topic = 'miaow'
+    let post = {uuid: 'uuid', title: 'cat hero', text: 'cat description'};
+
+    it('should send a PUT request with vote -1 if no vote exists to sentiment-db', (done) => {
+      let document = {
+        topic: [topic],
+        post
+      }
+      let documentTransform = Object.assign(document, {votes: 1})
+      let postNew = {
+        topic: [topic],
+        createdAt: new Date(),
+        updatedAt: new Date(),
+        _id: id,
+        post,
+        votes: -1
+      }
+
+      axiosStub.put.returns(Promise.resolve(postNew))
+
+      dbClient.downVote(id, document, axiosStub)
+        .then(data => {
+          let url = `${config.sentimentDBHost}/threads/topic/id/${id}`
+          expect(axiosStub.put.args[0]).to.eql([url, documentTransform])
+          expect(data).to.eql(postNew);
+          axiosStub.put.reset();
+          done();
+        })
+    })
+    it('should send a PUT request with of vote -1 if vote exists to sentiment-db', (done) => {
+      let document = {
+        topic: [topic],
+        post,
+        votes: 4
+      }
+      let documentTransform = Object.assign(document, {votes: 3})
+      let postNew = {
+        topic: [topic],
+        createdAt: new Date(),
+        updatedAt: new Date(),
+        _id: id,
+        post,
+        votes: 3
+      }
+
+      axiosStub.put.returns(Promise.resolve(postNew))
+
+      dbClient.downVote(id, document, axiosStub)
+        .then(data => {
+          let url = `${config.sentimentDBHost}/threads/topic/id/${id}`
+          expect(axiosStub.put.args[0]).to.eql([url, documentTransform])
+          expect(data).to.eql(postNew);
+          axiosStub.put.reset();
+          done();
+        })
+    })
+  })
+
   describe('.getByTopicAndSites', () => {
     it('should send a POST request to sentiment-db with payload', (done) => {
       let topic = 'bitcoin'
@@ -158,6 +221,7 @@ describe('#dbClient', () => {
         })
     })
   })
+
   describe('.getByTopics', () => {
     it('should send a GET request to sentiment-db', (done) => {
       let topicsArr = ['bitcoin currency', 'monero gold']

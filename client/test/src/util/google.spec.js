@@ -40,7 +40,7 @@ describe('#google', () => {
         documentSentiment: {
           magnitude: 0.8999999761581421,
           score: -0.8999999761581421
-        }        
+        }
       }]
       let newDoc = {
         topic: ['bitcoin'],
@@ -49,7 +49,7 @@ describe('#google', () => {
           title: 'this is the title',
           text: 'this is the copy text'
         },
-        documentSentiment: sentiment[0].documentSentiment        
+        documentSentiment: sentiment[0].documentSentiment
       }
 
       let analyzeStub = sinon.stub(google, 'analyze').returns(Promise.resolve(sentiment))
@@ -57,7 +57,7 @@ describe('#google', () => {
 
       google.postUpdateSentiment(document).then(result => {
         let input = result
-        let actual = newDoc        
+        let actual = newDoc
         expect(input).to.eql(actual)
         expect(updateThreadStub.calledWith('uid', newDoc)).to.be.true
         expect(updateThreadStub.callCount).to.equal(1)
@@ -66,7 +66,7 @@ describe('#google', () => {
         updateThreadStub.restore();
         done();
       })
-      
+
     })
     it('should only analyze if property documentSentiment does not exist', (done) => {
       let document = {
@@ -83,7 +83,7 @@ describe('#google', () => {
           score: -0.8999999761581421
         }
       }
-      
+
       google.postUpdateSentiment(document).then(result => {
         let input = result
         let actual = 'Sentiment already exists'
@@ -99,12 +99,12 @@ describe('#google', () => {
         documentSentiment: {
           magnitude: 0.8999999761581421,
           score: -0.8999999761581421
-        }        
+        }
       }
       let newDocArray = docArray.map(doc => Object.assign(doc, sentiment))
       let newDoc = newDocArray[0]
       let updateThreadStub = sinon.stub(google, 'postUpdateSentiment').returns(Promise.resolve(newDoc))
-      
+
       google.arrayPostUpdateSentiment(docArray).then(result => {
         let input = result
         let actual = docArray.length
@@ -129,8 +129,8 @@ describe('#google', () => {
       let stubArrayPostUpdateSentiment = sinon.stub(google, 'arrayPostUpdateSentiment').returns(Promise.resolve(newDocArray))
 
       google.pollSentiment('cryptocurrency', 1).then(results => {
-        expect(results.length).to.equal(newDocArray.length)
-        
+        expect(results).to.equal(`No more results, totalResults: ${newDocArray.length}`)
+
         stubGetByTopics.restore()
         stubArrayPostUpdateSentiment.restore()
         done()
