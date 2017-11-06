@@ -72,6 +72,65 @@ describe('#dbClient', () => {
         })
     })
   })
+  describe.only('.upVote', () => {
+    let id = 'uid'
+    let topic = 'miaow'
+    let post = {uuid: 'uuid', title: 'cat hero', text: 'cat description'};
+
+    it('should send a PUT request with vote 1 if no vote exists to sentiment-db', (done) => {
+      let document = {
+        topic: [topic],
+        post
+      }
+      let documentTransform = Object.assign(document, {votes: 1})
+      let postNew = {
+        topic: [topic],
+        createdAt: new Date(),
+        updatedAt: new Date(),
+        _id: id,
+        post,
+        votes: 1
+      }
+
+      axiosStub.put.returns(Promise.resolve(postNew))
+
+      dbClient.upVote(id, document, axiosStub)
+        .then(data => {
+          let url = `${config.sentimentDBHost}/threads/topic/id/${id}`
+          expect(axiosStub.put.args[0]).to.eql([url, documentTransform])
+          expect(data).to.eql(postNew);
+          axiosStub.put.reset();
+          done();
+        })
+    })
+    it('should send a PUT request with of vote +1 if vote exists to sentiment-db', (done) => {
+      let document = {
+        topic: [topic],
+        post,
+        votes: 4
+      }
+      let documentTransform = Object.assign(document, {votes: 5})
+      let postNew = {
+        topic: [topic],
+        createdAt: new Date(),
+        updatedAt: new Date(),
+        _id: id,
+        post,
+        votes: 5
+      }
+
+      axiosStub.put.returns(Promise.resolve(postNew))
+
+      dbClient.upVote(id, document, axiosStub)
+        .then(data => {
+          let url = `${config.sentimentDBHost}/threads/topic/id/${id}`
+          expect(axiosStub.put.args[0]).to.eql([url, documentTransform])
+          expect(data).to.eql(postNew);
+          axiosStub.put.reset();
+          done();
+        })
+    })
+  })
   describe('.getByTopicAndSites', () => {
     it('should send a POST request to sentiment-db with payload', (done) => {
       let topic = 'bitcoin'
