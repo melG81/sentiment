@@ -9,7 +9,8 @@ let { pollScript } = require('../src/util/api');
 let google = require('../src/util/google');
 
 topics.index = function (req, res, next) {
-  dbClient.getAll()
+  let page = req.query.page
+  dbClient.getAll(page)
     .then(payload => {
       let data = payload.data;
       res.render('topics/show', {
@@ -41,6 +42,7 @@ topics.browse = function (req, res, next) {
   let topicsArr = _.castArray(topics)
   let daysAgo = req.query.daysAgo || 3
   let sortQuery = req.query.sort
+  
   dbClient.getByTopics(topicsArr, daysAgo)
     .then(payload => {
       let data = payload.data

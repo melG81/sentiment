@@ -150,12 +150,15 @@ threads.topicQuery = function (req, res, next) {
   let limit = Number(req.query.limit) || 40
   let skip = limit * (page - 1)
   let findQuery;
-  if (topicNameArr[0] = 'all') {
+  let queryAll = _.includes(topicNameArr, 'all');
+  if (queryAll) {
     findQuery = {}
   } else {
-    findQuery = {topic: {$in: topicNameAr}}
+    findQuery = {
+      topic: {$in: topicNameArr},
+      "post.published": {$gte: publishedSince}
+    }
   }
-
   Thread.find(findQuery,
     {
       "post.social": 0
@@ -163,14 +166,39 @@ threads.topicQuery = function (req, res, next) {
     .sort({
       "post.published": -1
     })
-    .limit(limit)
-    .skip(skip)
-    .then(data => res.send({
-      data
-    }))
+    .then(data => {
+      res.send(data)
+    })
     .catch(next)
 }
 
+threads.paginate = function (req, res, next) {
+  let daysAgo = 30
+  let date = new Date() - (daysAgo * 24 * 60 * 60 * 1000)
+  let publishedSince = moment(date).format('YYYY-MM-DD')
+  let page = req.query.page || 1
+  let limit = Number(req.query.limit) || 100
+  let skip = limit * (page - 1)
+  Thread.find({ 
+    "post.published": {$gte: publishedSince},
+    $where: function(){
+      this.votes = this.votes || 0
+      return this.votes > -1
+    }},{
+      "post.social": 0
+    })
+    .sort({
+      "post.published": -1
+    })
+    .limit(limit)
+    .skip(skip)
+    .then(data => {
+      res.send(data)
+    })
+    .catch(err => {
+      console.log(err);
+    })
+}
 
 threads.topicById = function (req, res, next) {
   let id = req.params.id;
@@ -178,3 +206,4 @@ threads.topicById = function (req, res, next) {
     .then(data => res.status(200).send(data))
     .catch(next)
 }
+

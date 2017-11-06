@@ -95,7 +95,7 @@ dbClient.downVote = function (id, request=axios) {
  * @param  {Object} request  {request dependency defaults to axios}
  * @return {Promise} {axios.get promise}
  */
-dbClient.getByTopics = function (topicArr, daysAgo, request=axios) {
+dbClient.getByTopics = function (topicArr, daysAgo, request=axios) {  
   let topicQuery = topicArr.map(topic => encodeURI(topic)).join('&topic=')
   let url = `${config.sentimentDBHost}/threads/topic/query?topic=${topicQuery}&daysAgo=${daysAgo}`
   return request.get(url)
@@ -119,7 +119,7 @@ dbClient.getByTopicAndSites = function (topic, sitesArr, request=axios) {
  * @param  {Object} request  {request dependency defaults to axios}
  * @return {Promise} {axios.get promise}
  */
-dbClient.getAll = function (request=axios) {
-  let url = `${config.sentimentDBHost}/threads`;
+dbClient.getAll = function (page, request=axios) {
+  let url = `${config.sentimentDBHost}/threads?page=${page}`;
   return request.get(url)
 }
