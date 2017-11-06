@@ -23,3 +23,17 @@ ul {
   text-decoration: underline;
   color: salmon;
 }
+
+.post-upvote {
+  cursor: pointer;
+  &:hover {
+    color: green;
+  }
+}
+
+.post-downvote {
+  cursor: pointer;
+  &:hover {
+    color: red;
+  }
+}

@@ -3,6 +3,6 @@
 
 <ul>
   {{#each data}}
-    {{> topic-show/template post=post topic=(join topic) documentSentiment=documentSentiment }}
+    {{> topic-show/template post=post topic=(join topic) documentSentiment=documentSentiment id=_id }}
   {{/each}}
 </ul>

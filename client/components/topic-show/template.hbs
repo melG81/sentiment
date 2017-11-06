@@ -2,6 +2,11 @@
   <strong>{{moment post.published 'DD-MMM-YY'}} | {{post.title}}</strong>
 </li>
 <li>
+  <span class="post-upvote" data-id="{{id}}">&uarr;</span> or <span class="post-downvote" data-id="{{id}}">&darr;</span>
+  <br/>
+  <span class="post-vote-count">{{#if votes}}{{votes}} points{{/if}}</span>
+</li>
+<li>
   Sentiment score: {{documentSentiment.score}}
 </li>
 <ul>
@@ -13,4 +18,4 @@
   </li>
   <span class="show-more">...show more</span>
 </ul>
-<hr> 
+<hr>

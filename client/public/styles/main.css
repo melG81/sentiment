@@ -19,6 +19,16 @@ ul {
   text-decoration: underline;
   color: salmon; }
 
+.post-upvote {
+  cursor: pointer; }
+  .post-upvote:hover {
+    color: green; }
+
+.post-downvote {
+  cursor: pointer; }
+  .post-downvote:hover {
+    color: red; }
+
 body {
   font-family: 'arial', sans-serif;
   background: gainsboro;

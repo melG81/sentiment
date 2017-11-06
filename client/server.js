@@ -30,7 +30,7 @@ app.engine('.hbs', exphbs({
 }));
 app.set('view engine', '.hbs');
 // Set as default true in production
-app.set('view cache', true)
+// app.set('view cache', true)
 
 // GZIP all assets
 app.use(compression());
