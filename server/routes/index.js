@@ -9,6 +9,7 @@ router.get('/', function(req, res, next){
 // Threads CRUD endpoints
 var threads = require('./threads.js');
 router
+  .get('/threads/topic/id/:id', threads.topicById)
   .get('/threads/author/:author', threads.author)
   .get('/threads', threads.index)
   .put('/threads/topic/id/:id', threads.topicUpdate)

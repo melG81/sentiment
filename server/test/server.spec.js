@@ -11,7 +11,7 @@ describe('server', function(){
       .get('/')
       .end(function(err, resp){
         let input = resp.body;
-        let actual = { status: 'ok'}      
+        let actual = { status: 'ok'}
         expect(resp).to.have.status(200);
         expect(input).to.eql(actual);
         done();
@@ -22,7 +22,7 @@ describe('server', function(){
       .get('/banana')
       .end(function(err, resp){
         let input = resp.body;
-        let actual = { status: 'Page does not exist'}      
+        let actual = { status: 'Page does not exist'}
         expect(resp).to.have.status(404);
         expect(input).to.eql(actual);
         done();

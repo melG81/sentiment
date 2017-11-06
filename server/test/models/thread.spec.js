@@ -40,6 +40,23 @@ describe('thread', function () {
       })
   });
 
+  it.only('should return a single doc on GET /threads/topic/id/:id', function(done){
+    chai.request(server)
+    .get('/threads')
+    .end(function (err, resp) {
+      let sampleId = resp.body[0]._id;
+      chai.request(server)
+        .get(`/threads/topic/id/${sampleId}`)
+        .end(function (err, resp) {
+          let input = resp.body._id
+          let actual = sampleId
+          expect(input).to.equal(actual)
+          done();
+        })
+    })
+
+  })
+
   it('should add a single thread on POST /threads', function (done) {
     let posts = require('../data/posts.json');
     let post = posts[2]

@@ -154,3 +154,10 @@ threads.topicQuery = function (req, res, next) {
     .then(data => res.send(data))
     .catch(next)
 }
+
+threads.topicById = function (req, res, next) {
+  let id = req.params.id;
+  Thread.findById(id)
+    .then(data => res.status(200).send(data))
+    .catch(next)
+}
