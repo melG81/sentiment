@@ -179,15 +179,13 @@ describe('thread', function () {
     .findOne({topic: 'bitcoin' })
     .then(data => {
       let id = data.id;
-      let newDocument = Object.assign(data, {votes: 1}, {post: {title: 'bananabitcoin'}})
 
       chai.request(server)
         .put(`/threads/topic/id/${id}`)
-        .send(newDocument)
+        .send({post: {title: 'optional'}, votes: 1})
         .end(function (err, resp) {
           expect(resp.body.topic).to.eql(['bitcoin'])
           expect(resp.body.votes).to.equal(1)
-          expect(resp.body.post).to.eql(newDocument.post)
           done();
         })
     })
