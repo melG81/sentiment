@@ -2,6 +2,7 @@ let helpers = module.exports = {};
 
 // Dependencies
 let _ = require('lodash')
+let moment = require('moment')
 
 // TODO: Unit test
 /**
@@ -14,11 +15,19 @@ let _ = require('lodash')
 helpers.sortPayload = (array, sortBy) => {
   // Filter by unique post titles
   let uniqPayload = _.uniqBy(array, 'post.title')
+  // Set default vote 0 if no vote
+  let payloadWithVotes = uniqPayload.map(doc => {
+    if (doc.votes) {
+      return doc
+    } else {
+      return Object.assign(doc, {votes:0})
+    }
+  })
   // Sort by most recent published unless query param includes ?sort=descending
   if (sortBy === 'descending') {
-    return uniqPayload.sort((a, b) => new Date(a.post.published) - new Date(b.post.published))
+    return payloadWithVotes.sort((a, b) => new Date(moment(a.post.published).format('YYYY-MM-DD')) - new Date(moment(b.post.published).format('YYYY-MM-DD')) || a.votes - b.votes)
   } else {
-    return uniqPayload.sort((a, b) => new Date(b.post.published) - new Date(a.post.published))
+    return payloadWithVotes.sort((a, b) => new Date(moment(b.post.published).format('YYYY-MM-DD')) - new Date(moment(a.post.published).format('YYYY-MM-DD')) || b.votes - a.votes)
   }
 }
 
