@@ -146,14 +146,31 @@ threads.topicQuery = function (req, res, next) {
   let daysAgo = req.query.daysAgo || 3
   let date = new Date() - (daysAgo * 24 * 60 * 60 * 1000)
   let publishedSince = moment(date).format('YYYY-MM-DD')
+  let page = req.query.page || 1
+  let limit = Number(req.query.limit) || 40
+  let skip = limit * (page - 1)
+  let findQuery;
+  if (topicNameArr[0] = 'all') {
+    findQuery = {}
+  } else {
+    findQuery = {topic: {$in: topicNameAr}}
+  }
 
-  Thread.find({
-      topic: {$in: topicNameArr},
-      "post.published": { "$gte": publishedSince}
+  Thread.find(findQuery,
+    {
+      "post.social": 0
     })
-    .then(data => res.send(data))
+    .sort({
+      "post.published": -1
+    })
+    .limit(limit)
+    .skip(skip)
+    .then(data => res.send({
+      data
+    }))
     .catch(next)
 }
+
 
 threads.topicById = function (req, res, next) {
   let id = req.params.id;
