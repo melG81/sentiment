@@ -14,7 +14,7 @@ router
   .put('/threads/topic/id/:id', threads.topicUpdate)
   .post('/threads/sites', threads.sites)
   .post('/threads', threads.create)
-  .get('/threads/topic/query', threads.topicQuery)  
+  .get('/threads/topic/query', threads.topicQuery)
   .get('/threads', threads.paginate)
   .get('/threads/topic/:topic/latest', threads.topicLatest)
   .get('/threads/topic/:topic', threads.topic)

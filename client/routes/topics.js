@@ -9,13 +9,33 @@ let { pollScript } = require('../src/util/api');
 let google = require('../src/util/google');
 
 topics.index = function (req, res, next) {
-  let page = req.query.page
+  let page = Number(req.query.page || 1)
+  let getNextPage = function(page, data) {
+    if (data.length >= 80) {
+      return page + 1
+    } else {
+      return null
+    }
+  }
+  let getPrevPage = function(page){
+    if (page === 1) {
+      return null
+    } else {
+      return page - 1
+    }
+  }
+  let prevPage = getPrevPage(page)
+
   dbClient.getAll(page)
     .then(payload => {
       let data = payload.data;
+      let nextPage = getNextPage(page, data)
       res.render('topics/show', {
         topicName: 'all',
-        data: sortPayload(data)
+        data: sortPayload(data),
+        page,
+        nextPage,
+        prevPage
       })
     })
 }
@@ -42,7 +62,7 @@ topics.browse = function (req, res, next) {
   let topicsArr = _.castArray(topics)
   let daysAgo = req.query.daysAgo || 3
   let sortQuery = req.query.sort
-  
+
   dbClient.getByTopics(topicsArr, daysAgo)
     .then(payload => {
       let data = payload.data

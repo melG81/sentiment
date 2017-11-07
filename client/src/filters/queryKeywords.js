@@ -10,7 +10,7 @@ module.exports = [
   "bitconnect",
   "neo coin",
   "nem coin",
-  "monero",  
+  "monero",
   "iota coin",
   "qtum coin",
   "cardano coin",
