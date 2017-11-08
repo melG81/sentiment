@@ -1,0 +1,17 @@
+.phone-show,
+.tablet-show,
+.laptop-show,
+.desktop-show {
+ display: none;
+}
+
+
+@mixin visibility($device){
+    .#{$device}show { display: block!important; }
+    .#{$device}hide { display: none; }
+}
+@include visibility($device);
+@include phone 	{$device: "phone-"; @include visibility($device); }
+@include tablet {$device: "tablet-"; @include visibility($device); }
+@include laptop {$device: "laptop-"; @include visibility($device); }
+@include desktop {$device: "desktop-"; @include visibility($device); }

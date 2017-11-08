@@ -1,9 +1,9 @@
-<p>
+<p class="gray py-16">
   {{#if prevPage}}
-    <a href="/topics?page={{prevPage}}"><< Prev</a> |
+    <a href="/?page={{prevPage}}" class="text-decoration-none gray">< Prev</a>
   {{/if}}
-  Page: {{page}}
+  Page {{page}}
   {{#if nextPage}}
-    <a href="/topics?page={{nextPage}}">More >></a>
+    <a href="/?page={{nextPage}}" class="text-decoration-none gray">More ></a>
   {{/if}}
 </p>

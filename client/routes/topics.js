@@ -10,6 +10,7 @@ let google = require('../src/util/google');
 
 topics.index = function (req, res, next) {
   let page = Number(req.query.page || 1)
+  let admin = req.query.admin
   let getNextPage = function(page, data) {
     if (data.length >= 80) {
       return page + 1
@@ -35,7 +36,8 @@ topics.index = function (req, res, next) {
         data: sortPayload(data),
         page,
         nextPage,
-        prevPage
+        prevPage,
+        admin
       })
     })
 }

@@ -8,13 +8,17 @@
   <link rel="stylesheet" href="/styles/main.css">
 </head>
 <body>
-  <header>
-    <a href="/">Home</a> |
-    <a href="/topics">News</a> |
-    <a href="/topics/browse">Browse</a> |
-    <a href="/admin">Admin</a>
-  </header>
-  {{{body}}}
+  <div class="container">
+    <header class="bg-blue white px-4 py-2 mt-6">
+      <p class="bold">
+        <span class="logo white fs-15 px-4" style="border: 1px solid white; padding: 2px 5px">B</span>
+        TheBitCoinWire
+      </p>
+    </header>
+    <div class="px-12 bg-smoke">
+      {{{body}}}
+    </div>
+  </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="/js/bundle.js"></script>
 </body>

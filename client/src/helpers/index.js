@@ -11,8 +11,33 @@ helpers.moment = (dateString, format) => {
   return moment(dateString).format(format)
 }
 
+helpers.momentFromNow = (dateString) => {
+  return moment(dateString).fromNow()
+}
+
 helpers.join = (array) => {
   return array.join(', ')
+}
+
+helpers.add = (string, num) => {
+  return Number(string + num)
+}
+
+helpers.round = (string, num) => {
+  let number = Number(string)
+  let round = Number(num)
+  return number.toFixed(round)
+}
+
+helpers.sentimentColor = (score) => {
+  let num = Number(score)
+  if (score < -0.25) {
+    return '#E45E5E'
+  } else if (score > 0.25) {
+    return '#56BC4E'
+  } else {
+    return '#828282'
+  }
 }
 
 /**

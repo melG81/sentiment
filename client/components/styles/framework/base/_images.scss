@@ -1,0 +1,29 @@
+.bg-img-overlay {height: 100%; position: absolute; top: 0; right: 0; width: 100%; z-index: 0;}
+
+.bg-img-cover   { background-size: cover;}
+.bg-img-contain { background-size: contain;}
+
+.bg-img-center  { background-position: center }
+.bg-img-top     { background-position: top }
+.bg-img-right   { background-position: right }
+.bg-img-bottom  { background-position: bottom }
+.bg-img-left    { background-position: left }
+
+.bg-img-no-repeat { background-repeat: no-repeat }
+.bg-img-repeat-x { background-repeat: repeat-x }
+.bg-img-repeat-y { background-repeat: repeat-y }
+
+
+@mixin image-align() {
+    &-right {
+        float: left;
+    }
+    &-left {
+        float: right;
+    }
+}
+.image-flush { @include image-align(); }
+@include phone 	{ .phone-image-flush { @include image-align(); } }
+@include tablet { .tablet-image-flush { @include image-align(); } }
+@include laptop { .laptop-image-flush { @include image-align(); } }
+@include desktop { .desktop-image-flush { @include image-align(); } }

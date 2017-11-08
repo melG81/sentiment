@@ -1,0 +1,78 @@
+@mixin colors($device){
+    // CSS text colors
+    .blue, .blue-hover:hover { color: $blue; }
+    .ocean, .ocean-hover:hover { color: $ocean; }
+    .navy, .navy-hover:hover { color: $navy; }
+    .storm, .storm-hover:hover { color: $storm; }
+    .green, .green-hover:hover { color: $green; }
+    .forest, .forest-hover:hover { color: $forest; }
+    .emerald, .emerald-hover:hover { color: $emerald; }
+    .teal, .teal-hover:hover {color: $teal; }
+    .lime, .lime-hover:hover {color: $lime; }
+    .red, .red-hover:hover {color: $red; }
+    .yellow, .yellow-hover:hover {color: $yellow; }
+    .orange, .orange-hover:hover {color: $orange; }
+    .white, .white-hover:hover {color: $white; }
+    .black, .black-hover:hover {color: $black; }
+    .gray, .gray-hover:hover {color: $gray; }
+    .stone, .stone-hover:hover {color: $stone; }
+    .silver, .silver-hover:hover {color: $silver; }
+    .platinum, .platinum-hover:hover {color: $platinum; }
+    .smoke, .smoke-hover:hover {color: $smoke; }
+    .haze, .haze-hover:hover {color: $haze; }
+
+    // CSS background colors
+    .bg-blue, .bg-blue-hover:hover { background-color: $blue; }
+    .bg-ocean, .bg-ocean-hover:hover { background-color: $ocean; }
+    .bg-navy, .bg-navy-hover:hover { background-color: $navy; }
+    .bg-storm, .bg-storm-hover:hover { background-color: $storm; }
+    .bg-green, .bg-green-hover:hover { background-color: $green; }
+    .bg-forest, .bg-forest-hover:hover { background-color: $forest; }
+    .bg-emerald, .bg-emerald-hover:hover { background-color: $emerald; }
+    .bg-teal, .bg-teal-hover:hover {background-color: $teal; }
+    .bg-lime, .bg-lime-hover:hover {background-color: $lime; }
+    .bg-red, .bg-red-hover:hover {background-color: $red; }
+    .bg-yellow, .bg-yellow-hover:hover {background-color: $yellow; }
+    .bg-orange, .bg-orange-hover:hover {background-color: $orange; }
+    .bg-white, .bg-white-hover:hover {background-color: $white; }
+    .bg-gray, .bg-gray-hover:hover {background-color: $gray; }
+    .bg-stone, .bg-stong-hover:hover {background-color: $stone; }
+    .bg-silver, .bg-silver-hover:hover {background-color: $silver; }
+    .bg-platinum, .bg-platinum-hover:hover {background-color: $platinum; }
+    .bg-smoke, .bg-smoke-hover:hover {background-color: $smoke; }
+    .bg-haze, .bg-haze-hover:hover {background-color: $haze; }
+
+    .border-blue, .border-blue-hover:hover { border-color: $blue; }
+    .border-ocean, .border-ocean-hover:hover { border-color: $ocean; }
+    .border-navy, .border-navy-hover:hover { border-color: $navy; }
+    .border-storm, .border-storm-hover:hover { border-color: $storm; }
+    .border-green, .border-green-hover:hover { border-color: $green; }
+    .border-forest, .border-forest-hover:hover { border-color: $forest; }
+    .border-emerald, .border-emerald-hover:hover { border-color: $emerald; }
+    .border-teal, .border-teal-hover:hover { border-color: $teal; }
+    .border-lime, .border-lime-hover:hover { border-color: $lime; }
+    .border-red, .border-red-hover:hover { border-color: $red; }
+    .border-yellow, .border-yellow-hover:hover { border-color: $yellow; }
+    .border-orange, .border-orange-hover:hover { border-color: $orange; }
+    .border-white, .border-white-hover:hover {border-color: $white; }
+    .border-gray, .border-gray-hover:hover {border-color: $gray; }
+    .border-stone, .border-stone-hover:hover {border-color: $stone; }
+    .border-silver, .border-silver-hover:hover {border-color: $silver; }
+    .border-platinum, .border-platinum-hover:hover {border-color: $platinum; }
+    .border-smoke, .border-smoke-hover:hover {border-color: $smoke; }
+    .border-haze, .border-haze-hover:hover {border-color: $haze; }
+
+}
+// Opacity
+.opacity-10, .opacity-10-hover:hover{ @include opacity(0.1); }
+.opacity-20, .opacity-20-hover:hover{ @include opacity(0.2); }
+.opacity-30, .opacity-30-hover:hover{ @include opacity(0.3); }
+.opacity-40, .opacity-40-hover:hover{ @include opacity(0.4); }
+.opacity-50, .opacity-50-hover:hover{ @include opacity(0.5); }
+.opacity-60, .opacity-60-hover:hover{ @include opacity(0.6); }
+.opacity-70, .opacity-70-hover:hover{ @include opacity(0.7); }
+.opacity-80, .opacity-80-hover:hover{ @include opacity(0.8); }
+.opacity-90, .opacity-90-hover:hover{ @include opacity(0.9); }
+.opacity-100, .opacity-100-hover:hover { @include opacity(1); }
+
+@include colors($device);

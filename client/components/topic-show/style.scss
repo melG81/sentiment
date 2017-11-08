@@ -1,21 +1,24 @@
-$font-size: 16px;
-$line-height: 1.15;
-$lines-to-show: 3;
-ul {
-  list-style: none;
-}
+// $font-size: 16px;
+// $line-height: 1.15;
+// $lines-to-show: 3;
+// ul {
+//   list-style: none;
+// }
+// .post-preview {
+//   display: block;
+//   /* Fallback for non-webkit */
+//   display: -webkit-box;
+//   height: $font-size*$line-height*$lines-to-show;
+//   /* Fallback for non-webkit */
+//   font-size: $font-size;
+//   line-height: $line-height;
+//   -webkit-line-clamp: $lines-to-show;
+//   -webkit-box-orient: vertical;
+//   overflow: hidden;
+//   text-overflow: ellipsis;
+// }
 .post-preview {
-  display: block;
-  /* Fallback for non-webkit */
-  display: -webkit-box;
-  height: $font-size*$line-height*$lines-to-show;
-  /* Fallback for non-webkit */
-  font-size: $font-size;
-  line-height: $line-height;
-  -webkit-line-clamp: $lines-to-show;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  display: none;
 }
 
 .show-more {
@@ -26,14 +29,12 @@ ul {
 
 .post-upvote {
   cursor: pointer;
-  &:hover {
-    color: green;
-  }
 }
 
 .post-downvote {
   cursor: pointer;
-  &:hover {
-    color: red;
-  }
+}
+
+.post-toggle-text {
+  cursor: pointer;
 }

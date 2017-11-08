@@ -1,21 +1,25 @@
-<li>
-  <strong>{{moment post.published 'DD-MMM-YY'}} | {{post.title}}</strong>
-</li>
-<li>
-  <span class="post-upvote" data-id="{{id}}">&uarr;</span> or <span class="post-downvote" data-id="{{id}}">&darr;</span>
-  <br/>
-  <span class="post-vote-count">{{votes}} points</span>
-</li>
-<li>
-  Sentiment score: {{documentSentiment.score}}
-</li>
-<ul>
-  <li>Site: <a href="{{post.url}}" target="_blank">{{post.site}}</a> {{#if post.author}} | Author: {{post.author}} {{/if}}</li>
-  <li>Tags: <em>[{{topic}}]</em></li>
-  <li>Facebook: {{post.social.facebook.likes}} | Linkedin: {{post.social.linkedin.shares}}</li>
-  <li class="post-text post-preview">
-    {{post.text}}
-  </li>
-  <span class="show-more">...show more</span>
-</ul>
-<hr>
+<p class="post-heading">
+  <span class="gray inline-block right-align" style="min-width: 20px">{{add @index 1}}.</span>
+  <a href="{{post.url}}" target="_blank" class="post-upvote black blue-hover" data-id="{{id}}">
+    {{post.title}}
+  </a>
+  <a href="{{post.url}}" target="_blank" class="post-upvote gray blue-hover" data-id="{{id}}">
+    ({{post.site}})
+  </a>
+  {{#if admin}}
+    <span class="post-upvote" data-id="{{id}}">&uarr;</span> or <span class="post-downvote" data-id="{{id}}">&darr;</span>
+  {{/if}}
+
+</p>
+<p class="fs-9 gray pl-26 post-subheading">
+  <span class="post-vote-count">{{votes}} points</span> |
+  {{momentFromNow post.published}} |
+  <span class="post-toggle-text" data-id="{{id}}">show</span>
+  {{#if documentSentiment.score}}
+    | sentiment <span style="color: {{sentimentColor documentSentiment.score}}">{{round documentSentiment.score 2}}</span>
+  {{/if}}
+  | tags: <em>{{topic}}</em>
+</p>
+<p class="fs-10 gray py-5 pl-26 post-text hide">
+  {{post.text}}
+</p>

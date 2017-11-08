@@ -1,0 +1,34 @@
+@mixin flex($device) {
+    .#{$device}flex {
+        display: -ms-flexbox;
+    	display: -webkit-flex;
+    	display: flex;
+    }
+    .#{$device}flex:after {
+      content: none;
+    }
+    .#{$device}items-start {
+        @include flex-align(flex-start);
+    }
+    .#{$device}items-end {
+        @include flex-align(flex-end);
+    }
+    .#{$device}items-center {
+        @include flex-align(center);
+    }
+    .#{$device}no-flex {
+        display: block;
+        [class*='col-']{
+            float: none;
+        }
+    }
+}
+
+//Generate Base Version
+@include flex($device);
+
+//Generate Responsive Versions
+@include phone 	{$device: "phone-"; @include flex($device); }
+@include tablet {$device: "tablet-"; @include flex($device); }
+@include laptop {$device: "laptop-"; @include flex($device); }
+@include desktop {$device: "desktop-"; @include flex($device); }

@@ -20,9 +20,9 @@ describe('thread', function () {
     });
   });
 
-  it('should return all the threads on GET /threads', function (done) {
+  it('should return all the threads on GET /threads/all', function (done) {
     chai.request(server)
-      .get('/threads')
+      .get('/threads/all')
       .end(function (err, resp) {
         let input = resp.body.map(el => {
           return Object.assign({}, {
@@ -40,11 +40,12 @@ describe('thread', function () {
       })
   });
 
-  it.only('should return a single doc on GET /threads/topic/id/:id', function(done){
+  it('should return a single doc on GET /threads/topic/id/:id', function(done){
     chai.request(server)
-    .get('/threads')
+    .get('/threads/all')
     .end(function (err, resp) {
       let sampleId = resp.body[0]._id;
+
       chai.request(server)
         .get(`/threads/topic/id/${sampleId}`)
         .end(function (err, resp) {
@@ -156,17 +157,17 @@ describe('thread', function () {
 
   it('should delete a topic by id on DELETE /threads/topic/id/:id', function (done) {
     Thread
-      .findOne({topic: 'bitcoin' })
+      .findOne({topic: 'monero' })
       .then(data => {
         let id = data.id;
         chai.request(server)
           .delete(`/threads/topic/id/${id}`)
           .end(function (err, resp) {
-            expect(resp.body.topic).to.eql(['bitcoin']);
+            expect(resp.body.topic).to.eql(['monero']);
             chai.request(server)
-              .get('/threads/topic/bitcoin')
+              .get('/threads/topic/monero')
               .end(function( err, resp){
-                expect(resp.body.length).to.equal(1);
+                expect(resp.body.length).to.equal(0);
                 done();
               })
           })

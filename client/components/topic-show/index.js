@@ -8,8 +8,7 @@ let makeTopicShow = function(){
     this.bindEvents()
   }
   this.cacheDom = () => {
-    this.postText = $('.post-text')
-    this.showMore = $('.show-more')
+    this.showMore = $('.post-toggle-text')
     this.upVote = $('.post-upvote')
     this.downVote = $('.post-downvote')
   }
@@ -18,17 +17,24 @@ let makeTopicShow = function(){
     this.upVote.on('click', this.postUpVote)
     this.downVote.on('click', this.postDownVote)
   }
-  this.toggleShow = function() {
-    // Find nearest post text and toggle truncate
-    let $postText = $(this).siblings('.post-text')
-    $postText.toggleClass('post-preview')
-    // Toggle show more, show less text upon clicking
-    let txt = $postText.hasClass('post-preview') ? '...show more' : '...show less';
-    $(this).text(txt)
+  this.toggleShow = (e) => {
+    let $target = $(e.target)
+    let id = $target.data('id')
+    let $postText = $target.parent('.post-subheading').next('.post-text')
+    $postText.toggleClass('hide')
+    // Toggle show hide text upon clicking
+    let txt = $postText.hasClass('hide') ? 'show' : 'hide';
+    $target.text(txt)
+    // Fetch payload for post text and render in div
+    axios.get(`/topics/topic/id/${id}`).then(payload => {
+      let postText = payload.data.post.text
+      $postText.text(postText)
+    })
   }
   this.renderVote = ($target, payload) => {
     // Find nearest vote count
-    let $voteCount = $target.siblings('.post-vote-count')
+    let $voteCount = $target.parent('.post-heading').next('.post-subheading').find('.post-vote-count')
+    console.log($voteCount);
     // If votes exist then update nearest sibling vote count
     let data = payload.data;
     let votes = payload.data.votes;
