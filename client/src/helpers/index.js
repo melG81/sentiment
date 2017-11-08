@@ -12,7 +12,7 @@ helpers.moment = (dateString, format) => {
 }
 
 helpers.momentFromNow = (dateString) => {
-  return moment(dateString).fromNow()
+  return moment(dateString).utc().fromNow()
 }
 
 helpers.join = (array) => {

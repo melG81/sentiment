@@ -18,9 +18,13 @@ helpers.sortPayload = (array, sortBy) => {
 
   // Sort by most recent published unless query param includes ?sort=descending
   if (sortBy === 'descending') {
-    return uniqPayload.sort((a, b) => new Date(moment(a.post.published).format('YYYY-MM-DD')) - new Date(moment(b.post.published).format('YYYY-MM-DD')) || a.votes - b.votes)
+    return uniqPayload.sort((a, b) => {
+      return (Date.parse(moment(a.post.crawled).utc().format('YYYY/MM/DD HH:00')) - Date.parse(moment(b.post.crawled).utc().format('YYYY/MM/DD HH:00'))) || (a.votes - b.votes)
+    })
   } else {
-    return uniqPayload.sort((a, b) => new Date(moment(b.post.published).format('YYYY-MM-DD')) - new Date(moment(a.post.published).format('YYYY-MM-DD')) || b.votes - a.votes)
+    return uniqPayload.sort((a, b) => {
+      return (Date.parse(moment(b.post.crawled).utc().format('YYYY/MM/DD HH:00')) - Date.parse(moment(a.post.crawled).utc().format('YYYY/MM/DD HH:00'))) || (b.votes - a.votes)
+    })
   }
 }
 

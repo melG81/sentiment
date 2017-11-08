@@ -3,6 +3,7 @@ let axios = require('axios');
 require('./style.scss');
 
 let makeTopicShow = function(){
+  this.idCache = [];
   this.init = () => {
     this.cacheDom()
     this.bindEvents()
@@ -25,11 +26,19 @@ let makeTopicShow = function(){
     // Toggle show hide text upon clicking
     let txt = $postText.hasClass('hide') ? 'show' : 'hide';
     $target.text(txt)
-    // Fetch payload for post text and render in div
-    axios.get(`/topics/topic/id/${id}`).then(payload => {
-      let postText = payload.data.post.text
-      $postText.text(postText)
-    })
+
+    // Check if id has already been fetched
+    let hasFetched = this.idCache.includes(id)
+    if (!hasFetched) {
+      // Fetch payload for post text and render in div    
+      axios.get(`/topics/topic/id/${id}`).then(payload => {
+        this.idCache.push(id)
+        let postText = payload.data.post.text
+        $postText.text(postText)
+      })
+    } else {
+      console.log(`${id} fetched`);
+    }
   }
   this.renderVote = ($target, payload) => {
     // Find nearest vote count
