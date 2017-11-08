@@ -37,5 +37,22 @@ module.exports = [
   "cointelegraph.com",
   "bitcoinist.com",
   "coincenter.org",
-  "cryptocoinsnews.com"
+  "cryptocoinsnews.com",
+  "techcrunch.com",
+  "hacked.com",
+  "cryptovest.com",
+  "thenextweb.com",
+  "themerkle.com",
+  "bravenewcoin.com",
+  "seekingalpha.com",
+  "futurism.com",
+  "thehill.com",
+  "channelnewsasia.com",
+  "thewrap.com",
+  "nypost.com",
+  "thestreet.com",
+  "ibtimes.com",
+  "heavy.com",
+  "computerworld.com",
+  "marketrealist.com"
 ]
