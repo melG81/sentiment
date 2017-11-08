@@ -51,7 +51,7 @@
     "webpack-bundle-analyzer": "^2.9.0"
   },
   "now": {
-    "alias": "cryptonews",
+    "alias": "thebitcoinwire",
     "dotenv": true,
     "public": true
   }
