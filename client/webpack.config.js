@@ -2,6 +2,8 @@
 const webpack = require('webpack');
 // Used for compiling specific files
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+// Use to minify css
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 module.exports = {
   // Define entry point
@@ -19,7 +21,7 @@ module.exports = {
       loader: 'babel-loader',
       query: {
         presets: ['es2015']
-      }      
+      }
     },
     {
       test: /\.scss$/,
@@ -44,6 +46,12 @@ module.exports = {
     new ExtractTextPlugin({ // define where to save the file
       filename: 'styles/main.css',
       allChunks: true,
+    }),
+    new OptimizeCssAssetsPlugin({
+      assetNameRegExp: /.css$/g,
+      cssProcessor: require('cssnano'),
+      cssProcessorOptions: { discardComments: { removeAll: true } },
+      canPrint: true
     })
-  ]  
+  ]
 }
