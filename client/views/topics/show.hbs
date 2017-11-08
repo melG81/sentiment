@@ -1,0 +1,11 @@
+<h1>TheBitcoinWire</h1>
+<p>Results: {{data.length}} </p>
+{{> topic-pagination/template}}
+
+<ul>
+  {{#each data}}
+    {{> topic-show/template post=post topic=(join topic) documentSentiment=documentSentiment id=_id }}
+  {{/each}}
+</ul>
+
+{{> topic-pagination/template}}

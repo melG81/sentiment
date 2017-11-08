@@ -1,0 +1,31 @@
+{
+  "name": "Sentiment",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "preinstall": "cd server/ && npm i",
+    "postinstall": "cd client/ && npm i",
+    "server:dev": "cd server && npm run dev",
+    "client:dev": "cd client && npm run dev",
+    "server:start": "cd server && npm run start",
+    "client:start": "cd client && npm run start",
+    "dev": "concurrently \"npm run server:dev\" \"npm run client:dev\" ",
+    "start": "concurrently \"npm run server:start\" \"npm run client:start\" "
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/howardmann/sentiment.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/howardmann/sentiment/issues"
+  },
+  "homepage": "https://github.com/howardmann/sentiment#readme",
+  "devDependencies": {
+    "concurrently": "^3.5.0"
+  },
+  "dependencies": {}
+}

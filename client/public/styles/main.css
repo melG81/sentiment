@@ -1,0 +1,35 @@
+ul {
+  list-style: none; }
+
+.post-preview {
+  display: block;
+  /* Fallback for non-webkit */
+  display: -webkit-box;
+  height: 55.2px;
+  /* Fallback for non-webkit */
+  font-size: 16px;
+  line-height: 1.15;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis; }
+
+.show-more {
+  cursor: pointer;
+  text-decoration: underline;
+  color: salmon; }
+
+.post-upvote {
+  cursor: pointer; }
+  .post-upvote:hover {
+    color: green; }
+
+.post-downvote {
+  cursor: pointer; }
+  .post-downvote:hover {
+    color: red; }
+
+body {
+  font-family: 'arial', sans-serif;
+  background: gainsboro;
+  padding: 5%; }

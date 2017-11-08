@@ -1,0 +1,21 @@
+<li>
+  <strong>{{moment post.published 'DD-MMM-YY'}} | {{post.title}}</strong>
+</li>
+<li>
+  <span class="post-upvote" data-id="{{id}}">&uarr;</span> or <span class="post-downvote" data-id="{{id}}">&darr;</span>
+  <br/>
+  <span class="post-vote-count">{{votes}} points</span>
+</li>
+<li>
+  Sentiment score: {{documentSentiment.score}}
+</li>
+<ul>
+  <li>Site: <a href="{{post.url}}" target="_blank">{{post.site}}</a> {{#if post.author}} | Author: {{post.author}} {{/if}}</li>
+  <li>Tags: <em>[{{topic}}]</em></li>
+  <li>Facebook: {{post.social.facebook.likes}} | Linkedin: {{post.social.linkedin.shares}}</li>
+  <li class="post-text post-preview">
+    {{post.text}}
+  </li>
+  <span class="show-more">...show more</span>
+</ul>
+<hr>

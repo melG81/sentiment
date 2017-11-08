@@ -1,0 +1,9 @@
+<p>
+  {{#if prevPage}}
+    <a href="/topics?page={{prevPage}}"><< Prev</a> |
+  {{/if}}
+  Page: {{page}}
+  {{#if nextPage}}
+    <a href="/topics?page={{nextPage}}">More >></a>
+  {{/if}}
+</p>
