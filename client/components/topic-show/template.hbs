@@ -1,25 +1,30 @@
-<p class="post-heading">
-  <span class="gray inline-block right-align" style="min-width: 20px">{{add @index 1}}.</span>
-  <a href="{{post.url}}" target="_blank" class="post-upvote black blue-hover" data-id="{{id}}">
-    {{post.title}}
-  </a>
-  <a href="{{post.url}}" target="_blank" class="post-upvote gray blue-hover" data-id="{{id}}">
-    ({{post.site}})
-  </a>
-  {{#if admin}}
-    <span class="post-upvote" data-id="{{id}}">&uarr;</span> or <span class="post-downvote" data-id="{{id}}">&darr;</span>
-  {{/if}}
-
-</p>
-<p class="fs-9 gray pl-26 post-subheading">
-  <span class="post-vote-count">{{votes}} points</span> |
-  {{momentFromNow post.published}} |
-  <span class="post-toggle-text" data-id="{{id}}">show</span>
-  {{#if documentSentiment.score}}
-    | sentiment <span style="color: {{sentimentColor documentSentiment.score}}">{{round documentSentiment.score 2}}</span>
-  {{/if}}
-  | tags: <em>{{topic}}</em>
-</p>
-<p class="fs-12 black py-5 pl-26 post-text hide">
-  {{post.text}}
-</p>
+<div class="post-row row phone-py-4">
+  <div class="post-number">
+    <p class="fs-13 phone-fs-15 gray inline-block">{{add @index 1}}.</p>
+  </div>
+  <div class="post-body">
+    <p class="post-heading phone-fs-15">
+      <a href="{{post.url}}" target="_blank" class="post-upvote black blue-hover" data-id="{{id}}">
+        {{post.title}}
+      </a>
+      <a href="{{post.url}}" target="_blank" class="post-upvote gray blue-hover" data-id="{{id}}">
+        ({{post.site}})
+      </a>
+      {{#if admin}}
+      <span class="post-upvote" data-id="{{id}}">&uarr;</span> or
+      <span class="post-downvote" data-id="{{id}}">&darr;</span>
+      {{/if}}
+    </p>
+    <p class="fs-9 phone-fs-12 gray post-subheading">
+      <span class="post-vote-count">{{votes}} points</span> | {{momentFromNow post.published}} |
+      <span class="post-toggle-text" data-id="{{id}}">show</span>
+      {{#if documentSentiment.score}} | sentiment
+      <span style="color: {{sentimentColor documentSentiment.score}}">{{round documentSentiment.score 2}}</span>
+      {{/if}} | tags:
+      <em>{{topic}}</em>
+    </p>
+    <p class="fs-12 phone-fs-14 black py-5 post-text hide">
+      {{post.text}}
+    </p>
+  </div>
+</div>
