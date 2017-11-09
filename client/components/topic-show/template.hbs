@@ -4,7 +4,7 @@
   </div>
   <div class="post-body">
     <p class="post-heading phone-fs-15">
-      <a href="{{post.url}}" target="_blank" class="post-upvote black blue-hover" data-id="{{id}}">
+      <a class="cursor post-heading-title black blue-hover" data-id="{{id}}">
         {{post.title}}
       </a>
       <a href="{{post.url}}" target="_blank" class="post-upvote gray blue-hover" data-id="{{id}}">
@@ -17,8 +17,7 @@
     </p>
     <p class="fs-9 phone-fs-12 gray post-subheading">
       <span class="post-vote-count">{{votes}} points</span> | {{momentFromNow post.crawled}} |
-      <span class="post-toggle-text" data-id="{{id}}">show</span>
-      {{#if documentSentiment.score}} | sentiment
+      {{#if documentSentiment.score}} | Google AI sentiment
       <span style="color: {{sentimentColor documentSentiment.score}}">{{round documentSentiment.score 2}}</span>
       {{/if}} | tags:
       <em>{{topic}}</em>

@@ -12,20 +12,21 @@ let makeTopicShow = function(){
     this.showMore = $('.post-toggle-text')
     this.upVote = $('.post-upvote')
     this.downVote = $('.post-downvote')
+    this.postTitle = $('.post-heading-title')
   }
   this.bindEvents = () => {
     this.showMore.on('click', this.toggleShow)
+    this.postTitle.on('click', this.toggleShow)
     this.upVote.on('click', this.postUpVote)
     this.downVote.on('click', this.postDownVote)
   }
   this.toggleShow = (e) => {
     let $target = $(e.target)
     let id = $target.data('id')
-    let $postText = $target.parent('.post-subheading').next('.post-text')
-    $postText.toggleClass('hide')
-    // Toggle show hide text upon clicking
-    let txt = $postText.hasClass('hide') ? 'show' : 'hide';
-    $target.text(txt)
+    let $postText = $target.closest('.post-body').find('.post-text')
+    
+    $postText.toggleClass('hide')    
+    let txt = $postText.hasClass('hide') ? 'show' : 'hide';    
 
     // Check if id has already been fetched
     let hasFetched = this.idCache.includes(id)
@@ -35,6 +36,7 @@ let makeTopicShow = function(){
         this.idCache.push(id)
         let postText = payload.data.post.text
         $postText.text(postText)
+        this.postUpVote(e)
       })
     } else {
       console.log(`${id} fetched`);
