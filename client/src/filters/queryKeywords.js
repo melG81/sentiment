@@ -17,5 +17,6 @@ module.exports = [
   "cardano coin",
   "initial coin offering",
   "ICO",
-  "cryptocurrency mining"
+  "cryptocurrency mining",
+  "SegWit2x"
 ]
