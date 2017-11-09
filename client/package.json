@@ -31,7 +31,8 @@
     "express-handlebars": "^3.0.0",
     "lodash": "^4.17.4",
     "moment": "^2.19.1",
-    "query-string": "^5.0.0"
+    "query-string": "^5.0.0",
+    "sanitize-html": "^1.15.0"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
@@ -51,7 +52,10 @@
     "webpack-bundle-analyzer": "^2.9.0"
   },
   "now": {
-    "alias": ["gokey.com.au", "www.gokey.com.au"],
+    "alias": [
+      "gokey.com.au",
+      "www.gokey.com.au"
+    ],
     "dotenv": true,
     "public": true
   }
