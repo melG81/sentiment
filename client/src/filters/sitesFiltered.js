@@ -60,5 +60,6 @@ module.exports = [
   "cnn.com",
   "venturebeat.com",
   "recode.net",
-  "newsbtc.com"
+  "newsbtc.com",
+  "linuxfoundation.org"
 ]
