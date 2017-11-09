@@ -189,7 +189,7 @@ threads.paginate = function (req, res, next) {
       "post.text": 0
     })
     .sort({
-      "post.crawled": -1
+      "post.published": -1
     })
     .limit(limit)
     .skip(skip)

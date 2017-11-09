@@ -19,12 +19,12 @@ helpers.sortPayload = (array, sortBy) => {
   // Sort by most recent published unless query param includes ?sort=descending
   if (sortBy === 'descending') {
     return uniqPayload.sort((a, b) => {
-      return (Date.parse(moment(a.post.crawled).utc().format('YYYY/MM/DD HH:00')) - Date.parse(moment(b.post.crawled).utc().format('YYYY/MM/DD HH:00'))) || (a.votes - b.votes)
+      return (Date.parse(moment(a.post.published).utc().format('YYYY/MM/DD HH:00')) - Date.parse(moment(b.post.published).utc().format('YYYY/MM/DD HH:00'))) || (a.votes - b.votes)
     })
   } else {
     // Sort by votes for the 100 unique posts per page
     return uniqPayload.sort((a, b) => {
-      return (b.votes - a.votes) || (Date.parse(moment(b.post.crawled).utc().format('YYYY/MM/DD HH:00')) - Date.parse(moment(a.post.crawled).utc().format('YYYY/MM/DD HH:00')))
+      return b.votes - a.votes || moment(b.post.published) - moment(a.post.published)
     })
   }
 }

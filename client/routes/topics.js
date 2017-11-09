@@ -42,7 +42,8 @@ topics.index = function (req, res, next) {
         page,
         nextPage,
         prevPage,
-        admin
+        admin,
+        sort
       })
     })
 }

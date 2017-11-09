@@ -1,9 +1,9 @@
 <p class="gray py-16">
   {{#if prevPage}}
-    <a href="/?page={{prevPage}}" class="text-decoration-none gray">< Prev</a>
+    <a href="/?page={{prevPage}}{{#if (eq sort 'latest')}}&sort=latest{{/if}}" class="text-decoration-none gray">< Prev</a>
   {{/if}}
   Page {{page}}
   {{#if nextPage}}
-    <a href="/?page={{nextPage}}" class="text-decoration-none gray">More ></a>
+    <a href="/?page={{nextPage}}{{#if (eq sort 'latest')}}&sort=latest{{/if}}" class="text-decoration-none gray">More ></a>
   {{/if}}
 </p>

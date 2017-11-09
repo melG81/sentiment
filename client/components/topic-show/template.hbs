@@ -16,7 +16,7 @@
       {{/if}}
     </p>
     <p class="fs-9 phone-fs-12 gray post-subheading">
-      <span class="post-vote-count">{{votes}} points</span> | {{momentFromNow post.crawled}}
+      <span class="post-vote-count">{{votes}} points</span> | {{momentFromNow post.published}}
       {{#if documentSentiment.score}} | Google AI sentiment
       <span style="color: {{sentimentColor documentSentiment.score}}">{{round documentSentiment.score 2}}</span>
       {{/if}} | tags:

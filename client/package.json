@@ -56,7 +56,6 @@
       "gokey.com.au",
       "www.gokey.com.au"
     ],
-    "dotenv": true,
-    "public": true
+    "dotenv": true
   }
 }
