@@ -27,8 +27,9 @@
       {{post.text}}
     </p>
     {{!-- Display banner adds for every 5th row --}}
-    {{#if (modulo (add @index 1) 10)}}
+    {{#if (modulo (add @index 1) 20)}}
       <div class="row col-12 google-display">
+        {{> lazy-load/template}}
       </div>
     {{/if}}
   </div>

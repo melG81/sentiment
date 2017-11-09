@@ -24,7 +24,7 @@ helpers.sortPayload = (array, sortBy) => {
   } else {
     // Sort by votes for the 100 unique posts per page
     return uniqPayload.sort((a, b) => {
-      return b.votes - a.votes
+      return (b.votes - a.votes) || (Date.parse(moment(b.post.crawled).utc().format('YYYY/MM/DD HH:00')) - Date.parse(moment(a.post.crawled).utc().format('YYYY/MM/DD HH:00')))
     })
   }
 }
