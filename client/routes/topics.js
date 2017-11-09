@@ -31,10 +31,14 @@ topics.index = function (req, res, next) {
   dbClient.getAll(page)
     .then(payload => {
       let data = payload.data
+      if (sort != 'latest') {
+        data = sortPayload(data)
+      }
+
       let nextPage = getNextPage(page, data)
       res.render('topics/show', {
         topicName: 'all',
-        data: (sort === 'latest') ? data : sortPayload(data),
+        data,
         page,
         nextPage,
         prevPage,

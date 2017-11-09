@@ -1,4 +1,4 @@
-FROM node:6.9
+FROM node:8.9.0
 LABEL maintainer="howieburger"
 
 # Create app directory

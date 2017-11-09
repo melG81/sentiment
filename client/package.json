@@ -13,7 +13,7 @@
     "build:watch": "webpack --watch",
     "dev": "NODE_ENV=development nodemon server.js",
     "start": "NODE_ENV=production node server.js",
-    "deploy": "now --docker --public",
+    "deploy": "now --docker",
     "postdeploy": "now alias",
     "prestart": "npm run build"
   },
@@ -51,7 +51,7 @@
     "webpack-bundle-analyzer": "^2.9.0"
   },
   "now": {
-    "alias": "thebitcoinwire",
+    "alias": ["gokey.com.au", "www.gokey.com.au"],
     "dotenv": true,
     "public": true
   }
