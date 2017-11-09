@@ -3,6 +3,22 @@ let helpers = module.exports = {}
 // Dependencies
 let moment = require('moment')
 
+helpers.eq = (a, b) => {
+  if (a == b) {
+    return true
+  } else {
+    return false
+  }
+}
+
+helpers.modulo = (a, b) => {
+  if (a % b === 0) {
+    return true
+  } else {
+    return false
+  }
+}
+
 helpers.capitalize = (word) => {
   return word[0].toUpperCase() + word.substr(1)
 }
