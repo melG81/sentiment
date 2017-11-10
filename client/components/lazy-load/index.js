@@ -1,7 +1,11 @@
-$( '.adsbygoogle' ).adsenseLoader(
-  {
-    onLoad: function( $ad )
+require('./adsenseloader.js')($);
+
+module.exports = function(){
+  $( '.adsbygoogle' ).adsenseLoader(
     {
-      $ad.addClass( 'adsbygoogle--loaded' );
-    }
-});
+      onLoad: function( $ad )
+      {
+        $ad.addClass( 'adsbygoogle--loaded' );
+      }
+  });
+}
