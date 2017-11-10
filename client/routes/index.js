@@ -2,17 +2,12 @@ let express = require('express')
 let router = express.Router()
 let {checkVoteCookie} = require('./helpers')
 
-// Root page
-router.get('/', function (req, res, next) {
-  res.render('home')
-})
-
 // Threads CRUD endpoints
 let topics = require('./topics.js')
 router
+  .get('/', topics.index)
   .get('/topics/browse', topics.browse)
   .get('/topics/:name', topics.show)
-  .get('/topics', topics.index)
   .get('/topics/topic/id/:id/upvote', topics.upVote)
   .get('/topics/topic/id/:id/downvote', topics.downVote)
   .get('/topics/topic/id/:id', topics.getById)

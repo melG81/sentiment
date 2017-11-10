@@ -3,6 +3,7 @@ module.exports = [
   "blockchain",
   "bitcoin",
   "ethereum",
+  "altcoin",
   "bitcoin cash",
   "ripple coin",
   "litecoin",
@@ -15,5 +16,7 @@ module.exports = [
   "qtum coin",
   "cardano coin",
   "initial coin offering",
-  "cryptocurrency mining"
+  "ICO",
+  "currency mining",
+  "SegWit2x"
 ]

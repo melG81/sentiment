@@ -1,0 +1,27 @@
+@mixin table($device) {
+    .#{$device}table {
+        display: table;
+        width: 100%;
+    }
+    .#{$device}table-cell {
+        display: table-cell;
+    }
+    .#{$device}vertical-align-middle {
+        vertical-align: middle;
+    }
+    .#{$device}vertical-align-top {
+        vertical-align: top;
+    }
+    .#{$device}vertical-align-bottom {
+        vertical-align: bottom;
+    }
+}
+
+//Generate Base Version
+@include table($device);
+
+//Generate Responsive Versions
+@include phone 	{$device: "phone-"; @include table($device); }
+@include tablet {$device: "tablet-"; @include table($device); }
+@include laptop {$device: "laptop-"; @include table($device); }
+@include desktop {$device: "desktop-"; @include table($device); }

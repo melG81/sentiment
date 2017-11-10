@@ -1,0 +1,92 @@
+
+@mixin width($device) {
+    .#{$device}width-10 {
+        width: 10%;
+    }
+    .#{$device}width-20 {
+        width: 20%;
+    }
+    .#{$device}width-30 {
+        width: 30%;
+    }
+    .#{$device}width-40 {
+        width: 40%;
+    }
+    .#{$device}width-50 {
+        width: 50%;
+    }
+    .#{$device}width-60 {
+        width: 60%;
+    }
+    .#{$device}width-70 {
+        width: 70%;
+    }
+    .#{$device}width-80 {
+        width: 80%;
+    }
+    .#{$device}width-90 {
+        width: 90%;
+    }
+    .#{$device}width-100 {
+        width: 100%;
+    }
+    .#{$device}max-width-100 {
+        max-width: 100%;
+    }
+}
+
+//Generate Base Version
+@include width($device);
+
+//Generate Responsive Versions
+@include phone 	{$device: "phone-"; @include width($device); }
+@include tablet {$device: "tablet-"; @include width($device); }
+@include laptop {$device: "laptop-"; @include width($device); }
+@include desktop {$device: "desktop-"; @include width($device); }
+
+
+
+
+
+
+@mixin height($device) {
+    .#{$device}height-10 {
+        height: 10%;
+    }
+    .#{$device}height-20 {
+        height: 20%;
+    }
+    .#{$device}height-30 {
+        height: 30%;
+    }
+    .#{$device}height-40 {
+        height: 40%;
+    }
+    .#{$device}height-50 {
+        height: 50%;
+    }
+    .#{$device}height-60 {
+        height: 60%;
+    }
+    .#{$device}height-70 {
+        height: 70%;
+    }
+    .#{$device}height-80 {
+        height: 80%;
+    }
+    .#{$device}height-90 {
+        height: 90%;
+    }
+    .#{$device}height-100 {
+        height: 100%;
+    }
+}
+
+//Generate Base Version
+@include height($device);
+
+//Generate Responsive Versions
+@include phone 	{$device: "phone-"; @include height($device); }
+@include tablet {$device: "tablet-"; @include height($device); }
+@include laptop {$device: "laptop-"; @include height($device); }
+@include desktop {$device: "desktop-"; @include height($device); }

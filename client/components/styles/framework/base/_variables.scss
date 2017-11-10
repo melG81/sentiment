@@ -1,0 +1,85 @@
+$xs-max-width: 767px; //Phone
+$sm-max-width: 992px; //Tablet
+$md-max-width: 1200px; //Laptop
+$lg-min-width: 1201px; //Desktop
+
+
+@mixin phone {
+	@media (max-width: $xs-max-width) {
+		@content;
+	}
+}
+
+@mixin tablet {
+	@media (max-width: $sm-max-width) and (min-width: 768px){
+		@content;
+	}
+}
+
+@mixin laptop {
+	@media (max-width: $md-max-width) and (min-width: 993px){
+		@content;
+	}
+}
+
+@mixin desktop {
+	@media (min-width: $lg-min-width) and (min-width: 1201px){
+		@content;
+	}
+}
+
+
+//Brand Colours
+//Colors derived directly from our logo
+$blue: #2A94E5;
+$navy: #245776;
+$storm: #27404e;
+$green: #2BB98C;
+$ocean: #187AC4;
+$forest: #21906D;
+
+//Secondary Brand Colors
+//Secondary colors from our brand guidelines
+$emerald: #00AC6F;
+$teal: #87fee0;
+$lime: #8CC63E;
+$red: #F75856;
+$yellow: #FDC93F;
+$orange: #F47F26;
+
+//Grayscale Tones
+//Various grays useful as a foundation palette
+$black: black;
+$white: #FFFFFF;
+$stone: #767676;
+$platinum: #CDCDCD;
+$silver: #A9A9A9;
+$gray: #828282;
+$darkgray: #434343;
+$smoke: #F5F5F5;
+$haze: #EBEBEB;
+$lightsmoke: #FBFBFB;
+
+
+
+@mixin roundy($radius) {
+	-moz-border-radius: $radius;
+	border-radius: $radius;
+}
+
+@mixin opacity($trans) {
+	$IEValue: $trans*100;
+		-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=#{$trans * 100})";
+			filter: alpha(opacity = $IEValue);
+	  -moz-opacity: $trans;
+	-khtml-opacity: $trans;
+	       opacity: $trans;
+}
+
+
+@mixin flex-align($flex-align){
+	-ms-flex-align: $flex-align;
+	-webkit-align-items: $flex-align;
+	-webkit-box-align: $flex-align;
+	align-items: $flex-align;
+}

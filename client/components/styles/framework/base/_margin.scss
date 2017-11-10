@@ -1,0 +1,18 @@
+@mixin margin($device){
+    @for $i from 0 through 20 {
+      $i: $i * 2;
+        .#{$device}m-#{$i} { margin: $i + px; }
+        .#{$device}mt-#{$i} { margin-top: $i + px; }
+        .#{$device}mr-#{$i}{ margin-right: $i + px; }
+        .#{$device}mb-#{$i} { margin-bottom: $i + px; }
+        .#{$device}ml-#{$i} { margin-left: $i + px; }
+        .#{$device}mx-#{$i} { margin-left: $i + px; margin-right: $i + px; }
+        .#{$device}my-#{$i} { margin-top: $i + px; margin-bottom: $i + px; }
+    }
+}
+
+@include margin($device);
+@include phone 	{$device: "phone-"; @include margin($device); }
+@include tablet {$device: "tablet-"; @include margin($device); }
+@include laptop {$device: "laptop-"; @include margin($device); }
+@include desktop {$device: "desktop-"; @include margin($device); }

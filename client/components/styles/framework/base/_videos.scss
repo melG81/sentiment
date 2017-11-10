@@ -1,0 +1,28 @@
+.video-wrapper {
+    position: relative;
+    padding-top: 0;
+    height: 0;
+    padding-bottom: 56.25%;
+    &.aspect-standard {
+        padding-bottom: 56.25%;
+    }
+    &.aspect-cinema {
+        padding-bottom: 54%;
+    }
+    &.aspect-film{
+        padding-bottom: 40%;
+    }
+    &.aspect-iphone {
+        padding-bottom: 178%;
+    }
+    &.aspect-ipad {
+        padding-bottom: 126%;
+    }
+}
+.video-wrapper iframe {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}

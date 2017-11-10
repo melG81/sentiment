@@ -1,21 +1,24 @@
-$font-size: 16px;
-$line-height: 1.15;
-$lines-to-show: 3;
-ul {
-  list-style: none;
-}
-.post-preview {
+.post-number, .post-body {
   display: block;
-  /* Fallback for non-webkit */
-  display: -webkit-box;
-  height: $font-size*$line-height*$lines-to-show;
-  /* Fallback for non-webkit */
-  font-size: $font-size;
-  line-height: $line-height;
-  -webkit-line-clamp: $lines-to-show;
-  -webkit-box-orient: vertical;
+  float: left;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  min-height: 1px;
   overflow: hidden;
-  text-overflow: ellipsis;
+}
+.post-number {
+  width: 10%;
+  max-width: 30px;
+  text-align: right;
+  padding-right: 5px;
+}
+.post-body {
+  width: 90%;
+}
+
+.post-preview {
+  display: none;
 }
 
 .show-more {
@@ -26,14 +29,12 @@ ul {
 
 .post-upvote {
   cursor: pointer;
-  &:hover {
-    color: green;
-  }
 }
 
 .post-downvote {
   cursor: pointer;
-  &:hover {
-    color: red;
-  }
+}
+
+.post-toggle-text {
+  cursor: pointer;
 }

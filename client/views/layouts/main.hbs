@@ -4,18 +4,40 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Sentiment Client</title>
+  <title>Daily Crypto News</title>
   <link rel="stylesheet" href="/styles/main.css">
+  <!-- Google Analytics -->
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-109401610-1', 'auto');
+  ga('send', 'pageview');
+  </script>
+  <!-- End Google Analytics -->
 </head>
 <body>
-  <header>
-    <a href="/">Home</a> |
-    <a href="/topics">News</a> |
-    <a href="/topics/browse">Browse</a> |
-    <a href="/admin">Admin</a>
-  </header>
-  {{{body}}}
+  <div class="container">
+    <header class="bg-black white px-4 py-4 mt-6 phone-mt-0 row">
+      <div class="col-8">
+        <p class="bold phone-fs-20">
+          <span class="logo teal fs-15 phone-fs-20 px-4" style="border: 1px solid white; padding: 2px 5px">&#8984;</span>
+          <a href="/" class="text-decoration-none white pl-4">Crypto Wire</a>
+        </p>
+      </div>
+      <div class="col-4 right-align">
+        <p class="phone-fs-20 pr-6">
+          <a href="/?sort=latest" class=" white text-decoration-none">New</a>
+        </p>
+      </div>
+    </header>
+    <div class="px-12 bg-smoke">
+      {{{body}}}
+    </div>
+  </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="/js/bundle.js"></script>
+
 </body>
 </html>

@@ -179,13 +179,14 @@ threads.paginate = function (req, res, next) {
   let page = req.query.page || 1
   let limit = Number(req.query.limit) || 100
   let skip = limit * (page - 1)
-  Thread.find({ 
+  Thread.find({
     "post.published": {$gte: publishedSince},
     $where: function(){
       this.votes = this.votes || 0
       return this.votes > -1
     }},{
-      "post.social": 0
+      "post.social": 0,
+      "post.text": 0
     })
     .sort({
       "post.published": -1

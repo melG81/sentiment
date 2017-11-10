@@ -2,6 +2,7 @@ let helpers = module.exports = {}
 
 // Dependencies
 let {parse} = require('query-string');
+let sanitizeHtml = require('sanitize-html');
 
 /**
  * @function {truncates a string based on number of characters provided}
@@ -22,4 +23,13 @@ helpers.truncate = function (string, num) {
  */
 helpers.parse = function(string, param) {
   return parse(string)[param];
+}
+
+helpers.parseHtml = function(string) {
+  // Replace new line break with with <br/>
+  let dirty = string.replace(/\n/g, "<br/>");
+  let clean = sanitizeHtml(dirty, {
+    allowedTags: ['b', 'i', 'em', 'strong', 'br']
+  });
+  return clean.trim()
 }

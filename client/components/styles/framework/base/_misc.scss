@@ -1,0 +1,43 @@
+.clear {
+    clear: both;
+}
+
+
+@mixin positioning($device){
+    .#{$device}left-align {
+        text-align: left;
+    }
+    .#{$device}right-align {
+        text-align: right;
+    }
+    .#{$device}center-align {
+        text-align: center;
+    }
+    .#{$device}center {
+        text-align: center;
+        margin: 0 auto;
+    }
+    .#{$device}inline-block {
+        display: inline-block;
+    }
+    .#{$device}block {
+        display: block;
+    }
+    .#{$device}pos-relative {
+        position: relative;
+    }
+    .#{$device}pos-absolute {
+        position: absolute;
+    }
+    .#{$device}overflow-hidden {
+        overflow: hidden;
+    }
+    .#{$device}overflow-visible {
+        overflow: visible;
+    }
+}
+@include positioning($device);
+@include phone 	{$device: "phone-"; @include positioning($device); }
+@include tablet {$device: "tablet-"; @include positioning($device); }
+@include laptop {$device: "laptop-"; @include positioning($device); }
+@include desktop {$device: "desktop-"; @include positioning($device); }

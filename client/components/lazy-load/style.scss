@@ -1,0 +1,95 @@
+/* AD STYLING */
+
+.adsbygoogle {
+  width: 970px;
+  height: 90px;
+  background-color: $smoke;
+  display: block;
+  margin: 10px auto;
+}
+
+.adsbygoogle:before {
+  display: none !important;
+}
+
+.adsbygoogle ins {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.adsbygoogle {
+  position: relative;
+}
+
+.adsbygoogle__loading {
+  width: 100%;
+  height: 100%;
+  background-color: $smoke;
+  display: table;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.adsbygoogle--loaded .adsbygoogle__loading {
+  display: none;
+}
+
+.adsbygoogle__loading span {
+  text-align: center;
+  vertical-align: middle;
+  display: table-cell;
+}
+
+@media screen and ( max-width: 64em)
+/* <= 1024 */
+
+{
+  .adsbygoogle {
+    width: 728px;
+    height: 90px;
+  }
+  .adsbygoogle:before {
+    content: '1024';
+  }
+}
+
+@media screen and ( max-width: 50em)
+/* <= 800 */
+
+{
+  .adsbygoogle {
+    width: 468px;
+    height: 60px;
+  }
+  .adsbygoogle:before {
+    content: '800';
+  }
+}
+
+@media screen and ( max-width: 33.75em)
+/* <= 540 */
+
+{
+  .adsbygoogle {
+    width: 336px;
+    height: 280px;
+  }
+  .adsbygoogle:before {
+    content: '540';
+  }
+}
+
+@media screen and ( max-width: 26.25em)
+/* <= 420 */
+
+{
+  .adsbygoogle {
+    width: 250px;
+    height: 250px;
+  }
+  .adsbygoogle:before {
+    content: '420';
+  }
+}

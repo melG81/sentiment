@@ -1,0 +1,18 @@
+@mixin padding($device){
+    @for $i from 0 through 20 {
+      $i: $i * 2;
+        .#{$device}p-#{$i} { padding: $i + px; }
+        .#{$device}pt-#{$i} { padding-top: $i + px; }
+        .#{$device}pr-#{$i}{ padding-right: $i + px; }
+        .#{$device}pb-#{$i} { padding-bottom: $i + px; }
+        .#{$device}pl-#{$i} { padding-left: $i + px; }
+        .#{$device}px-#{$i} { padding-left: $i + px; padding-right: $i + px; }
+        .#{$device}py-#{$i} { padding-top: $i + px; padding-bottom: $i + px; }
+    }
+}
+
+@include padding($device);
+@include phone 	{$device: "phone-"; @include padding($device); }
+@include tablet {$device: "tablet-"; @include padding($device); }
+@include laptop {$device: "laptop-"; @include padding($device); }
+@include desktop {$device: "desktop-"; @include padding($device); }

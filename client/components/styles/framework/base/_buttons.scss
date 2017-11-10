@@ -1,0 +1,39 @@
+.btn, button {
+    border: none;
+    background: $blue;
+    padding: 15px;
+    font-size: 16px;
+    font-weight: 400;
+    color: $white;
+    margin: 5px 2px;
+    cursor: pointer;
+    display: inline-block;
+    text-align: center;
+    &:hover {
+        background: $ocean;
+        text-decoration: none;
+    }
+    @include roundy(5px);
+}
+
+.btn-primary {
+    background: $green;
+    &:hover {
+        background: $forest;
+    }
+}
+
+.btn-square {
+    @include roundy(0px);
+}
+
+.btn-outline {
+    background: none;
+    border: 1px solid $blue;
+    color: $blue;
+    &:hover {
+        border-color: $ocean;
+        background: none;
+        color: $ocean;
+    }
+}

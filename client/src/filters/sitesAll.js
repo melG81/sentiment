@@ -897,5 +897,6 @@ module.exports = [
   "viralliberty.com",
   "computerweekly.com",
   "aptantech.com",
-  "fastcompany.com"
+  "fastcompany.com",
+  "vice.com",  
 ]
