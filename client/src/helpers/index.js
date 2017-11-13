@@ -28,7 +28,9 @@ helpers.moment = (dateString, format) => {
 }
 
 helpers.momentFromNow = (dateString) => {
-  return moment(dateString).fromNow()
+  let date = moment(dateString)
+  let now = moment()
+  return moment.min(date, now).fromNow()
 }
 
 helpers.join = (array) => {
