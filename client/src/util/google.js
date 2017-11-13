@@ -69,5 +69,8 @@ google.pollSentiment = (topic, daysAgo) => {
         resolve(`No more results, totalResults: ${results.length}`)
       })
     })
+    .catch(err => {
+      console.log(err);
+    })
   })
 }

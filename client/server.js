@@ -12,6 +12,11 @@ let compression = require('compression');
 let config = require('./config');
 let helpers = require('./src/helpers');
 
+let schedule = require('./src/schedule')
+
+// Run API polling schedule on start
+schedule.connect()
+
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
 
