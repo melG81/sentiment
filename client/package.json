@@ -14,7 +14,6 @@
     "dev": "NODE_ENV=development nodemon server.js",
     "start": "NODE_ENV=production node server.js",
     "deploy": "now --docker",
-    "postdeploy": "now alias",
     "prestart": "npm run build"
   },
   "keywords": [],
