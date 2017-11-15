@@ -15,7 +15,6 @@ module.exports = [
   "nbcnews.com",
   "latimes.com",
   "thetimesbrief.co.uk",
-  "chicagotribune.com",
   "afr.com",
   "xinhuanet.com",
   "theverge.com",
