@@ -1,9 +1,11 @@
-{{> topic-pagination/template}}
+{{> ticker-prices/template prices=prices}}
 
-{{#each data}}
-  {{> topic-show/template admin=../admin count=this post=post topic=(join topic) documentSentiment=documentSentiment id=_id}}
-{{/each}}
+<div class="px-12">
+  {{> topic-pagination/template}}
 
-
-
-{{> topic-pagination/template}}
+  {{#each data}}
+    {{> topic-show/template admin=../admin count=this post=post topic=(join topic) documentSentiment=documentSentiment id=_id}}
+  {{/each}}
+   
+  {{> topic-pagination/template}}
+</div>

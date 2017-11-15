@@ -7,6 +7,8 @@ let {sortPayload} = require('./helpers')
 let queryKeywords = require('../src/filters/queryKeywords.js')
 let { pollScript } = require('../src/util/api');
 let google = require('../src/util/google');
+let { fetchTickers } = require('../src/prices')
+let tickerArr = require('../src/filters/tickers.js')
 
 topics.index = function (req, res, next) {
   let page = Number(req.query.page || 1)
@@ -36,14 +38,21 @@ topics.index = function (req, res, next) {
       }
 
       let nextPage = getNextPage(page, data)
-      res.render('topics/show', {
-        topicName: 'all',
-        data,
-        page,
-        nextPage,
-        prevPage,
-        admin,
-        sort
+
+      // Fetch ticker data
+      fetchTickers(tickerArr).then(results => {
+        let prices = results;
+        res.render('topics/show', {
+          topicName: 'all',
+          data,
+          page,
+          nextPage,
+          prevPage,
+          admin,
+          sort,
+          prices
+        })
+        
       })
     })
 }

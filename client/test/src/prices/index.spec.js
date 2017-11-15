@@ -1,7 +1,6 @@
 // Dependencies
 let chai = require('chai');
 let expect = chai.expect;
-let sinon = require('sinon');
 let _ = require('lodash')
 
 // Modules and test data
@@ -9,7 +8,7 @@ let prices = require('../../../src/prices');
 let priceMultiData = require('../../data/prices/priceMulti.json');
 let priceMultiParsed = require('../../data/prices/priceMultiParsed')
 
-describe.only('#prices', () => {
+describe('#prices', () => {
   describe('.getPricesEndpoint', () => {
     let tickerArr = ["BTC", "ETH", "BCH", "XRP", "LTC", "DASH", "NEO", "XMR", "NEM", "ETC", "MIOTA", "QTUM", "LSK", "ZEC", "ADA", "HSR", "XLM", "BCC", "WAVES", "STRAT"]
 

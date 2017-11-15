@@ -46,7 +46,7 @@ prices.parseSingleTicker = (obj) => {
     currency: TOSYMBOL,
     price: PRICE,
     mktcap: MKTCAP,
-    changePctDay: CHANGEPCTDAY
+    changePctDay: Number(CHANGEPCTDAY) / 100
   }
 }
 
@@ -67,7 +67,7 @@ prices.fetchTickers = (tickerArr, currency="USD", request=axios) => {
   return new Promise((resolve, reject) => {
     prices.getPrices(tickerArr, "USD", request)
     .then(payload => {
-      let data = payload.data
+      let data = payload.data      
       let result = prices.parseTickers(data)
       resolve(result)
     })
