@@ -7,6 +7,7 @@ let _ = require('lodash')
 // Modules and test data
 let prices = require('../../../src/prices');
 let priceMultiData = require('../../data/prices/priceMulti.json');
+let priceMultiParsed = require('../../data/prices/priceMultiParsed')
 
 describe.only('#prices', () => {
   describe('.getPricesEndpoint', () => {
@@ -41,16 +42,26 @@ describe.only('#prices', () => {
         })
     })
   })
-  describe('.parseTicker', () => {
-    let BTC = priceMultiData.RAW.BTC;
-    let input = prices.parseTicker(BTC)
-    let actual = {
-      ticker: 'BTC',
-      currency: 'USD',
-      price: 6562.47,
-      mktcap: 109460437732.14,
-      changePctDay: 0.613573120529869
-    }
-    expect(input).to.eql(actual)
+  describe('.parseSingleTicker', () => {
+    it('should return relevant fields from a ticker', () => {
+      let BTC = priceMultiData.RAW.BTC;
+      let input = prices.parseSingleTicker(BTC)
+      let actual = {
+        ticker: 'BTC',
+        currency: 'USD',
+        price: 6562.47,
+        mktcap: 109460437732.14,
+        changePctDay: 0.613573120529869
+      }
+      expect(input).to.eql(actual)
+    })
+  })
+  describe('.parseTickers', () => {
+    it('should transform the payload to an array of parsed tickers sorted by marketcap', () => {
+      let data = priceMultiData
+      let input = prices.parseTickers(data)
+      let actual = priceMultiParsed
+      expect(input).to.eql(actual)
+    })
   })
 })

@@ -1,0 +1,110 @@
+module.exports = [
+  { ticker: 'BTC',
+    currency: 'USD',
+    price: 6562.47,
+    mktcap: 109460437732.14,
+    changePctDay: 0.613573120529869
+  },
+  { ticker: 'BCC',
+    currency: 'USD',
+    price: 6329.502315,
+    mktcap: 103365836405.802,
+    changePctDay: -3.162650602409642
+  },
+  { ticker: 'ETH',
+    currency: 'USD',
+    price: 332.64,
+    mktcap: 31843384029.448994,
+    changePctDay: 5.734265734265722
+  },
+  { ticker: 'BCH',
+    currency: 'USD',
+    price: 1264.79,
+    mktcap: 21251633975,
+    changePctDay: -6.100403872423834
+  },
+  { ticker: 'XRP',
+    currency: 'USD',
+    price: 0.204,
+    mktcap: 7814398268.459999,
+    changePctDay: 1.9490254872563653
+  },
+  { ticker: 'LTC',
+    currency: 'USD',
+    price: 62.07,
+    mktcap: 3341214591.8230324,
+    changePctDay: 1.754098360655738
+  },
+  { ticker: 'DASH',
+    currency: 'USD',
+    price: 418.43,
+    mktcap: 3218185467.1810713,
+    changePctDay: -0.7660200161267414
+  },
+  { ticker: 'NEO',
+    currency: 'USD',
+    price: 29.51,
+    mktcap: 1918150000,
+    changePctDay: 4.571226080793773
+  },
+  { ticker: 'XMR',
+    currency: 'USD',
+    price: 118.24,
+    mktcap: 1815299977.0832021,
+    changePctDay: -2.9626590069757897
+  },
+  { ticker: 'ETC',
+    currency: 'USD',
+    price: 17.23,
+    mktcap: 1679001540.92,
+    changePctDay: 8.706624605678238
+  },
+  { ticker: 'QTUM',
+    currency: 'USD',
+    price: 11.40557286,
+    mktcap: 1140557286,
+    changePctDay: 0.28851702250431543
+  },
+  { ticker: 'LSK',
+    currency: 'USD',
+    price: 7.06,
+    mktcap: 811043057.1999999,
+    changePctDay: 28.363636363636356
+  },
+  { ticker: 'ZEC',
+    currency: 'USD',
+    price: 269.74,
+    mktcap: 707000341.125,
+    changePctDay: 2.4964851616825596
+  },
+  { ticker: 'ADA',
+    currency: 'USD',
+    price: 0.02592176,
+    mktcap: 672075299.9891069,
+    changePctDay: 0.2538276223085089
+  },
+  { ticker: 'XLM',
+    currency: 'USD',
+    price: 0.0358,
+    mktcap: 593868469.2982,
+    changePctDay: 19.293568810396536
+  },
+  { ticker: 'WAVES',
+    currency: 'USD',
+    price: 5.08,
+    mktcap: 508000000,
+    changePctDay: 13.901345291479823
+  },
+  { ticker: 'STRAT',
+    currency: 'USD',
+    price: 3.59295233,
+    mktcap: 354344555.1875126,
+    changePctDay: 10.29411773283084
+  },
+  { ticker: 'HSR',
+    currency: 'USD',
+    price: 15.06743112,
+    mktcap: 0,
+    changePctDay: -4.373177842565592
+  }
+]

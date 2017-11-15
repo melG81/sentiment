@@ -3,7 +3,7 @@ let prices = module.exports = {}
 // Dependencies
 let get = require('lodash/get');
 let axios = require('axios');
-let config = require('../../config.js');
+let _ = require('lodash')
 
 /**
  * @function {Returns cryptocompare url endpoint for fetching multiple ticker prices}
@@ -33,7 +33,7 @@ prices.getPrices = (tickerArr, currency="USD", request = axios) => {
   return request.get(url)
 }
 
-prices.parseTicker = (obj) => {
+prices.parseSingleTicker = (obj) => {
   let nestedObj = obj[Object.keys(obj)[0]]
   let { FROMSYMBOL, TOSYMBOL, PRICE, MKTCAP, CHANGEPCTDAY } = nestedObj
   return {
@@ -43,6 +43,14 @@ prices.parseTicker = (obj) => {
     mktcap: MKTCAP,
     changePctDay: CHANGEPCTDAY
   }
+}
+
+prices.parseTickers = (payload) => {
+  let raw = payload.RAW
+  let rawArr = _.values(raw)
+  let transformed = rawArr.map(ticker => prices.parseSingleTicker(ticker))
+  let transformedSorted = transformed.sort((a,b) => b.mktcap - a.mktcap)
+  return transformedSorted
 }
 
 // /**
