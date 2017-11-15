@@ -13,8 +13,7 @@
     "build:watch": "webpack --watch",
     "dev": "NODE_ENV=development nodemon server.js",
     "start": "NODE_ENV=production node server.js",
-    "deploy": "now --docker",
-    "prestart": "npm run build"
+    "deploy": "now --docker"
   },
   "keywords": [],
   "author": "",

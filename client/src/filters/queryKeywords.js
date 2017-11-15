@@ -18,5 +18,9 @@ module.exports = [
   "initial coin offering",
   "ICO",
   "currency mining",
-  "SegWit2x"
+  "SegWit2x",
+  "populous blockchain",
+  "populous token",
+  "eos coin",
+  "lisk coin"
 ]
