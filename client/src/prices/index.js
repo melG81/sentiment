@@ -52,14 +52,27 @@ prices.parseSingleTicker = (obj) => {
 
 /**
  * @function {transforms raw payload into array of transformed tickers sorted by mktcap}
- * @param  {Object} payload {{RAW: {USD: {}, USD: {}} DISPLAY: {}}}
+ * @param  {Object} data {{RAW: {USD: {}, USD: {}} DISPLAY: {}}}
  * @return {Array} {[{ticker: 'BTC', price: 60000}, {ticker: 'ETH', price: 3000}]}
  */
-prices.parseTickers = (payload) => {
-  let raw = payload.RAW
+prices.parseTickers = (data) => {
+  let raw = data.RAW
   let rawArr = _.values(raw)
   let transformed = rawArr.map(ticker => prices.parseSingleTicker(ticker))
   let transformedSorted = transformed.sort((a,b) => b.mktcap - a.mktcap)
   return transformedSorted
 }
 
+prices.fetchTickers = (tickerArr, currency="USD", request=axios) => {
+  return new Promise((resolve, reject) => {
+    prices.getPrices(tickerArr, "USD", request)
+    .then(payload => {
+      let data = payload.data
+      let result = prices.parseTickers(data)
+      resolve(result)
+    })
+    .catch(err => {
+      reject(err)
+    })
+  })
+}

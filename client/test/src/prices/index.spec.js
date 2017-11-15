@@ -64,4 +64,21 @@ describe.only('#prices', () => {
       expect(input).to.eql(actual)
     })
   })
+  describe('.fetchTickers', () => {
+    it('should fetch and transform tickers', (done) => {
+      let axiosStub = {
+        get: function () {
+          return Promise.resolve({ data: priceMultiData })
+        }
+      }
+      let actual = priceMultiParsed
+      let tickerArr = ["BTC", "ETH", "BCH", "XRP", "LTC", "DASH", "NEO", "XMR", "NEM", "ETC", "MIOTA", "QTUM", "LSK", "ZEC", "ADA", "HSR", "XLM", "BCC", "WAVES", "STRAT"]
+      prices.fetchTickers(tickerArr, "USD", axiosStub)
+        .then(result => {
+          let input = result
+          expect(input).to.eql(actual)
+          done()
+        })
+    })
+  })
 })
