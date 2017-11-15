@@ -29,32 +29,28 @@ topics.index = function (req, res, next) {
     }
   }
   let prevPage = getPrevPage(page)
-
-  dbClient.getAll(page)
-    .then(payload => {
-      let data = payload.data
-      if (sort != 'latest') {
-        data = sortPayload(data)
-      }
-
-      let nextPage = getNextPage(page, data)
-
-      // Fetch ticker data
-      fetchTickers(tickerArr).then(results => {
-        let prices = results;
-        res.render('topics/show', {
-          topicName: 'all',
-          data,
-          page,
-          nextPage,
-          prevPage,
-          admin,
-          sort,
-          prices
-        })
-        
-      })
+  
+  return Promise.all([
+    dbClient.getAll(page),
+    fetchTickers(tickerArr)
+  ])
+  .then(([payload, prices]) => {
+    let data = payload.data
+    if (sort !== 'latest') {
+      data = sortPayload(data)
+    }
+    let nextPage = getNextPage(page, data)
+    res.render('topics/show', {
+      topicName: 'all',
+      data,
+      page,
+      nextPage,
+      prevPage,
+      admin,
+      sort,
+      prices
     })
+  });
 }
 
 topics.show = function (req, res, next) {
