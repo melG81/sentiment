@@ -7,6 +7,8 @@ let {sortPayload} = require('./helpers')
 let queryKeywords = require('../src/filters/queryKeywords.js')
 let { pollScript } = require('../src/util/api');
 let google = require('../src/util/google');
+let { fetchTickers } = require('../src/prices')
+let tickerArr = require('../src/filters/tickers.js')
 
 topics.index = function (req, res, next) {
   let page = Number(req.query.page || 1)
@@ -27,25 +29,28 @@ topics.index = function (req, res, next) {
     }
   }
   let prevPage = getPrevPage(page)
-
-  dbClient.getAll(page)
-    .then(payload => {
-      let data = payload.data
-      if (sort != 'latest') {
-        data = sortPayload(data)
-      }
-
-      let nextPage = getNextPage(page, data)
-      res.render('topics/show', {
-        topicName: 'all',
-        data,
-        page,
-        nextPage,
-        prevPage,
-        admin,
-        sort
-      })
+  
+  return Promise.all([
+    dbClient.getAll(page),
+    fetchTickers(tickerArr)
+  ])
+  .then(([payload, prices]) => {
+    let data = payload.data
+    if (sort !== 'latest') {
+      data = sortPayload(data)
+    }
+    let nextPage = getNextPage(page, data)
+    res.render('topics/show', {
+      topicName: 'all',
+      data,
+      page,
+      nextPage,
+      prevPage,
+      admin,
+      sort,
+      prices
     })
+  });
 }
 
 topics.show = function (req, res, next) {

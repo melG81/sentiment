@@ -1,0 +1,11 @@
+.ticker-overflow-container {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  height: 75px;
+  white-space:nowrap;
+}
+.ticker-col {
+  width: 88px;
+  display: inline-block;
+  margin-right: -6px;
+}

@@ -2,6 +2,7 @@ let helpers = module.exports = {}
 
 // Dependencies
 let moment = require('moment')
+let numeral = require('numeral')
 
 helpers.eq = (a, b) => {
   if (a == b) {
@@ -49,9 +50,9 @@ helpers.round = (string, num) => {
 
 helpers.sentimentColor = (score) => {
   let num = Number(score)
-  if (score < -0.25) {
+  if (num < -0.25) {
     return '#E45E5E'
-  } else if (score > 0.25) {
+  } else if (num > 0.25) {
     return '#56BC4E'
   } else {
     return '#828282'
@@ -68,4 +69,18 @@ helpers.times = (n, block) => {
   for (let i = 1; i <= n; ++i)
     accum += block.fn(i);
   return accum;
+}
+
+helpers.numeral = (n, stringFormat) => {
+  let num = Number(n)
+  return numeral(num).format(stringFormat)
+}
+
+helpers.tickerColor = (percentage) => {
+  let num = Number(percentage)
+  if (num < 0) {
+    return '#E45E5E'
+  } else {
+    return '#56BC4E'
+  }
 }
