@@ -33,6 +33,11 @@ prices.getPrices = (tickerArr, currency="USD", request = axios) => {
   return request.get(url)
 }
 
+/**
+ * @function {transforms a nested ticker object with relevant properties }
+ * @param  {Object} obj {{USD: PRICE: 123, FROMSYMBOL: 'BTC', TOSYMBOL: 'USD', MKTCAP: 100, CHANGEPCTDAY: 0.2}}
+ * @return {Object} {transformed ticker object}
+ */
 prices.parseSingleTicker = (obj) => {
   let nestedObj = obj[Object.keys(obj)[0]]
   let { FROMSYMBOL, TOSYMBOL, PRICE, MKTCAP, CHANGEPCTDAY } = nestedObj
@@ -45,6 +50,11 @@ prices.parseSingleTicker = (obj) => {
   }
 }
 
+/**
+ * @function {transforms raw payload into array of transformed tickers sorted by mktcap}
+ * @param  {Object} payload {{RAW: {USD: {}, USD: {}} DISPLAY: {}}}
+ * @return {Array} {[{ticker: 'BTC', price: 60000}, {ticker: 'ETH', price: 3000}]}
+ */
 prices.parseTickers = (payload) => {
   let raw = payload.RAW
   let rawArr = _.values(raw)
@@ -52,40 +62,4 @@ prices.parseTickers = (payload) => {
   let transformedSorted = transformed.sort((a,b) => b.mktcap - a.mktcap)
   return transformedSorted
 }
-
-// /**
-//  * @function {parses single post object to extract relevant metadata }
-//  * @param  {Object} data {single post from webhose api payload}
-//  * @return {Object} {transformed object with extracted data}
-//  */
-// parser.parsePost = function (data) {
-//   let { uuid, url, author, published, title, text, crawled } = data;
-
-//   return {
-//     uuid,
-//     site: get(data, 'thread.site'),
-//     url,
-//     author,
-//     published,
-//     title,
-//     crawled,
-//     text: helpers.truncate(data.text, 5000),
-//     domainRank: get(data, 'thread.domain_rank'),
-//     mainImage: get(data, 'thread.main_image'),
-//     social: get(data, 'thread.social')
-//   }
-// }
-
-// /**
-//  * @function {Parses through an entire array of posts and returns array of updated posts}
-//  * @param  {Array} array {posts payload in the form of payload.posts}
-//  * @return {Array} {array of transformed posts}
-//  */
-// parser.parseArray = function (array) {
-//   return array.map(post => {
-//     return parser.parsePost(post);
-//   })
-// }
-
-
 
