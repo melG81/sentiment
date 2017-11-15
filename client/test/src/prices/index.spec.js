@@ -1,0 +1,56 @@
+// Dependencies
+let chai = require('chai');
+let expect = chai.expect;
+let sinon = require('sinon');
+let _ = require('lodash')
+
+// Modules and test data
+let prices = require('../../../src/prices');
+let priceMultiData = require('../../data/prices/priceMulti.json');
+
+describe.only('#prices', () => {
+  describe('.getPricesEndpoint', () => {
+    let tickerArr = ["BTC", "ETH", "BCH", "XRP", "LTC", "DASH", "NEO", "XMR", "NEM", "ETC", "MIOTA", "QTUM", "LSK", "ZEC", "ADA", "HSR", "XLM", "BCC", "WAVES", "STRAT"]
+
+    it('should transform an array of tickers to the full API get endpoint with default USD equivalent', () => {
+      let input = prices.getPricesEndpoint(tickerArr)
+      let actual = "https://min-api.cryptocompare.com/data/pricemultifull?tsyms=USD&fsyms=BTC,ETH,BCH,XRP,LTC,DASH,NEO,XMR,NEM,ETC,MIOTA,QTUM,LSK,ZEC,ADA,HSR,XLM,BCC,WAVES,STRAT"
+      expect(input).to.equal(actual)
+    })
+
+    it('should filter for currency equivalent if given', () => {
+      let input = prices.getPricesEndpoint(tickerArr, 'AUD')
+      let actual = "https://min-api.cryptocompare.com/data/pricemultifull?tsyms=AUD&fsyms=BTC,ETH,BCH,XRP,LTC,DASH,NEO,XMR,NEM,ETC,MIOTA,QTUM,LSK,ZEC,ADA,HSR,XLM,BCC,WAVES,STRAT"
+      expect(input).to.equal(actual)
+    })
+  })
+  describe('.getPrices', () => {
+    let axiosStub = {
+      get: function(){
+        return Promise.resolve({data: priceMultiData})
+      }
+    }
+    it('should return a promise of given cryptocurrency results', (done) => {
+      let tickerArr = ["BTC", "ETH", "BCH", "XRP", "LTC", "DASH", "NEO", "XMR", "NEM", "ETC", "MIOTA", "QTUM", "LSK", "ZEC", "ADA", "HSR", "XLM", "BCC", "WAVES", "STRAT"]
+      prices.getPrices(tickerArr, "USD", axiosStub)
+        .then(payload => {
+          let input = payload.data
+          let actual = priceMultiData
+          expect(input).to.eql(actual)
+          done()
+        })
+    })
+  })
+  describe('.parseTicker', () => {
+    let BTC = priceMultiData.RAW.BTC;
+    let input = prices.parseTicker(BTC)
+    let actual = {
+      ticker: 'BTC',
+      currency: 'USD',
+      price: 6562.47,
+      mktcap: 109460437732.14,
+      changePctDay: 0.613573120529869
+    }
+    expect(input).to.eql(actual)
+  })
+})
