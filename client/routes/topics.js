@@ -137,3 +137,11 @@ topics.getById = function (req, res, next) {
     })
     .catch(next)
 }
+
+topics.fundamentals = function (req, res, next) {
+  dbClient.getByTopics(['fundamentals'], 100)
+    .then(payload => {
+      let data = payload.data
+      res.render('topics/fundamentals', {data})
+    })
+}
