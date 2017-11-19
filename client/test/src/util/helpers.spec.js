@@ -1,6 +1,7 @@
 var chai = require('chai');
 var expect = chai.expect;
 var helpers = require('../../../src/util/helpers');
+let sinon = require('sinon');
 
 describe('#helpers', function () {
   it('should exist', () => expect(helpers).to.not.be.undefined);
@@ -23,9 +24,14 @@ describe('#helpers', function () {
   })
   describe('parseHtml', function() {
     it('should parse utf text into html friendly string', function(){
+      let createDOMPurify = require('dompurify');
+      let { JSDOM } = require('jsdom');
+      let window = (new JSDOM('')).window;
+      let DOMPurify = createDOMPurify(window);
+
       let raw = "<SCRIPT language='JavaScript1.1' SRC=\"https://ad.doubleclick.net/ddm/adj/N5872.2787608CRYPTOCOINSNEWS/B11469652.152841306;abr=!ie;sz=728x90;ord=[timestamp];dc_lat=;dc_rdid=;tag_for_child_directed_treatment=?\"> </SCRIPT> <NOSCRIPT> <A HREF=\"https://ad.doubleclick.net/ddm/jump/N5872.2787608CRYPTOCOINSNEWS/B11469652.152841306;abr=!ie4;abr=!ie5;sz=728x90;ord=[timestamp]?\"> <IMG SRC=\"https://ad.doubleclick.net/ddm/ad/N5872.2787608CRYPTOCOINSNEWS/B11469652.152841306;abr=!ie4;abr=!ie5;sz=728x90;ord=[timestamp];dc_lat=;dc_rdid=;tag_for_child_directed_treatment=?\" BORDER=0 WIDTH=728 HEIGHT=90 ALT=\"Advertisement\"></A> </NOSCRIPT> Get Trading Recommendations and Read Analysis on Hacked.com for just $39 per month. \nBlockchain startup Dragonchain has concluded a $15 million initial coin offering (ICO) for its enterprise blockchain platform that originally began as a prototype at Disney’s innovation-focused Seattle office. \nDisney had originally conceived Dragonchain in 2014 as a blockchain-based asset management platform, but two years later it shelved the project and released it as open source software. Earlier this year, a group of former Disney employees resurrected the project and decided to raise funds through a utility token crowdsale that ran from October 2 to November 2. \nThe startup had already raised $1.4 million during a presale for its dragon tokens (DRGN), and it added approximately $13.7 billion during its public ICO, bringing its fundraising total to near $15.1 million. \nAs explained on the project website , the Dragonchain platform is a hybrid public-private blockchain solution that enables companies to maintain full control over sensitive internal data while also serving as a bridge to bitcoin and other public blockchains."
-      let input = helpers.parseHtml(raw)
-      let actual = "Get Trading Recommendations and Read Analysis on Hacked.com for just $39 per month. <br />Blockchain startup Dragonchain has concluded a $15 million initial coin offering (ICO) for its enterprise blockchain platform that originally began as a prototype at Disney’s innovation-focused Seattle office. <br />Disney had originally conceived Dragonchain in 2014 as a blockchain-based asset management platform, but two years later it shelved the project and released it as open source software. Earlier this year, a group of former Disney employees resurrected the project and decided to raise funds through a utility token crowdsale that ran from October 2 to November 2. <br />The startup had already raised $1.4 million during a presale for its dragon tokens (DRGN), and it added approximately $13.7 billion during its public ICO, bringing its fundraising total to near $15.1 million. <br />As explained on the project website , the Dragonchain platform is a hybrid public-private blockchain solution that enables companies to maintain full control over sensitive internal data while also serving as a bridge to bitcoin and other public blockchains."
+      let input = helpers.parseHtml(raw, DOMPurify)
+      let actual = "Get Trading Recommendations and Read Analysis on Hacked.com for just $39 per month. <br>Blockchain startup Dragonchain has concluded a $15 million initial coin offering (ICO) for its enterprise blockchain platform that originally began as a prototype at Disney’s innovation-focused Seattle office. <br>Disney had originally conceived Dragonchain in 2014 as a blockchain-based asset management platform, but two years later it shelved the project and released it as open source software. Earlier this year, a group of former Disney employees resurrected the project and decided to raise funds through a utility token crowdsale that ran from October 2 to November 2. <br>The startup had already raised $1.4 million during a presale for its dragon tokens (DRGN), and it added approximately $13.7 billion during its public ICO, bringing its fundraising total to near $15.1 million. <br>As explained on the project website , the Dragonchain platform is a hybrid public-private blockchain solution that enables companies to maintain full control over sensitive internal data while also serving as a bridge to bitcoin and other public blockchains."
       expect(input).to.equal(actual)
     })
   })
