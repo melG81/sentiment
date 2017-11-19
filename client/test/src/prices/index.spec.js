@@ -50,7 +50,7 @@ describe('#prices', () => {
         currency: 'USD',
         price: 6562.47,
         mktcap: 109460437732.14,
-        changePctDay: 0.613573120529869
+        changePctDay: 0.613573120529869 / 100
       }
       expect(input).to.eql(actual)
     })

@@ -3,7 +3,7 @@ let prices = module.exports = {}
 // Dependencies
 let get = require('lodash/get');
 let axios = require('axios');
-let _ = require('lodash')
+let values = require('lodash/values');
 
 /**
  * @function {Returns cryptocompare url endpoint for fetching multiple ticker prices}
@@ -57,7 +57,7 @@ prices.parseSingleTicker = (obj) => {
  */
 prices.parseTickers = (data) => {
   let raw = data.RAW
-  let rawArr = _.values(raw)
+  let rawArr = values(raw)
   let transformed = rawArr.map(ticker => prices.parseSingleTicker(ticker))
   let transformedSorted = transformed.sort((a,b) => b.mktcap - a.mktcap)
   return transformedSorted

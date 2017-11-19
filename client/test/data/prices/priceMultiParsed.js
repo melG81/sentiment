@@ -3,108 +3,108 @@ module.exports = [
     currency: 'USD',
     price: 6562.47,
     mktcap: 109460437732.14,
-    changePctDay: 0.613573120529869
+    changePctDay: 0.613573120529869 / 100
   },
   { ticker: 'BCC',
     currency: 'USD',
     price: 6329.502315,
     mktcap: 103365836405.802,
-    changePctDay: -3.162650602409642
+    changePctDay: -3.162650602409642 / 100
   },
   { ticker: 'ETH',
     currency: 'USD',
     price: 332.64,
     mktcap: 31843384029.448994,
-    changePctDay: 5.734265734265722
+    changePctDay: 5.734265734265722 / 100
   },
   { ticker: 'BCH',
     currency: 'USD',
     price: 1264.79,
     mktcap: 21251633975,
-    changePctDay: -6.100403872423834
+    changePctDay: -6.100403872423834 / 100
   },
   { ticker: 'XRP',
     currency: 'USD',
     price: 0.204,
     mktcap: 7814398268.459999,
-    changePctDay: 1.9490254872563653
+    changePctDay: 1.9490254872563653 / 100
   },
   { ticker: 'LTC',
     currency: 'USD',
     price: 62.07,
     mktcap: 3341214591.8230324,
-    changePctDay: 1.754098360655738
+    changePctDay: 1.754098360655738 / 100
   },
   { ticker: 'DASH',
     currency: 'USD',
     price: 418.43,
     mktcap: 3218185467.1810713,
-    changePctDay: -0.7660200161267414
+    changePctDay: -0.7660200161267414 / 100
   },
   { ticker: 'NEO',
     currency: 'USD',
     price: 29.51,
     mktcap: 1918150000,
-    changePctDay: 4.571226080793773
+    changePctDay: 4.571226080793773 / 100
   },
   { ticker: 'XMR',
     currency: 'USD',
     price: 118.24,
     mktcap: 1815299977.0832021,
-    changePctDay: -2.9626590069757897
+    changePctDay: -2.9626590069757897 / 100
   },
   { ticker: 'ETC',
     currency: 'USD',
     price: 17.23,
     mktcap: 1679001540.92,
-    changePctDay: 8.706624605678238
+    changePctDay: 8.706624605678238 / 100
   },
   { ticker: 'QTUM',
     currency: 'USD',
     price: 11.40557286,
     mktcap: 1140557286,
-    changePctDay: 0.28851702250431543
+    changePctDay: 0.28851702250431543 / 100
   },
   { ticker: 'LSK',
     currency: 'USD',
     price: 7.06,
     mktcap: 811043057.1999999,
-    changePctDay: 28.363636363636356
+    changePctDay: 28.363636363636356 / 100
   },
   { ticker: 'ZEC',
     currency: 'USD',
     price: 269.74,
     mktcap: 707000341.125,
-    changePctDay: 2.4964851616825596
+    changePctDay: 2.4964851616825596 / 100
   },
   { ticker: 'ADA',
     currency: 'USD',
     price: 0.02592176,
     mktcap: 672075299.9891069,
-    changePctDay: 0.2538276223085089
+    changePctDay: 0.2538276223085089 / 100
   },
   { ticker: 'XLM',
     currency: 'USD',
     price: 0.0358,
     mktcap: 593868469.2982,
-    changePctDay: 19.293568810396536
+    changePctDay: 19.293568810396536 / 100
   },
   { ticker: 'WAVES',
     currency: 'USD',
     price: 5.08,
     mktcap: 508000000,
-    changePctDay: 13.901345291479823
+    changePctDay: 13.901345291479823 / 100
   },
   { ticker: 'STRAT',
     currency: 'USD',
     price: 3.59295233,
     mktcap: 354344555.1875126,
-    changePctDay: 10.29411773283084
+    changePctDay: 10.29411773283084 / 100
   },
   { ticker: 'HSR',
     currency: 'USD',
     price: 15.06743112,
     mktcap: 0,
-    changePctDay: -4.373177842565592
+    changePctDay: -4.373177842565592 / 100
   }
 ]
