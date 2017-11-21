@@ -1,0 +1,1694 @@
+{
+  "posts": [
+    {
+      "thread": {
+        "uuid": "bca66ca27ea0e7b97b4fc06674ebc183091c00b9",
+        "url": "http://omgili.com/ri/.wHSUbtEfZQ2F8au4ugZad_J4qnGXapSb6YSL21UuCC9QPfwa1nB9HlE2GRh2hqaqOn4N1N1cC5hZUjyoZsmJX5AmyVch8NNV9D2Zu5wIeIRRWRnyrDp_R2ObTK3FyiA",
+        "site_full": "www.reddit.com",
+        "site": "reddit.com",
+        "site_section": "https://www.reddit.com/r/CryptoCurrency/",
+        "site_categories": [
+          "media",
+          "adult",
+          "non_standard_content"
+        ],
+        "section_title": "Cryptocurrency news and discussions.",
+        "title": "Tether Critical Announcement",
+        "title_full": "Tether Critical Announcement : CryptoCurrency",
+        "published": "2017-11-21T11:34:00.000+02:00",
+        "replies_count": 186,
+        "participants_count": 119,
+        "site_type": "discussions",
+        "country": "US",
+        "spam_score": 0.0,
+        "main_image": "",
+        "performance_score": 0,
+        "domain_rank": 33,
+        "social": {
+          "facebook": {
+            "likes": 0,
+            "comments": 0,
+            "shares": 0
+          },
+          "gplus": {
+            "shares": 0
+          },
+          "pinterest": {
+            "shares": 0
+          },
+          "linkedin": {
+            "shares": 0
+          },
+          "stumbledupon": {
+            "shares": 0
+          },
+          "vk": {
+            "shares": 0
+          }
+        }
+      },
+      "uuid": "bca66ca27ea0e7b97b4fc06674ebc183091c00b9",
+      "url": "http://omgili.com/ri/.wHSUbtEfZQ2F8au4ugZad_J4qnGXapSb6YSL21UuCC9QPfwa1nB9HlE2GRh2hqaqOn4N1N1cC5hZUjyoZsmJX5AmyVch8NNV9D2Zu5wIeIRRWRnyrDp_R2ObTK3FyiA",
+      "ord_in_thread": 0,
+      "author": "keygen4ever",
+      "published": "2017-11-21T11:34:00.000+02:00",
+      "title": "Tether Critical Announcement",
+      "text": "https://tether.to/tether-critical-announcement/\nTether Critical Announcement\nYesterday, we discovered that funds were improperly removed from the Tether treasury wallet through malicious action by an external attacker. Tether integrators must take immediate action, as discussed below, to prevent further ecosystem disruption.\n$30,950,010 USDT was removed from the Tether Treasury wallet on November 19, 2017 and sent to an unauthorized bitcoin address. As Tether is the issuer of the USDT managed asset, we will not redeem any of the stolen tokens, and we are in the process of attempting token recovery to prevent them from entering the broader ecosystem. The attacker is holding funds in the following address: 16tg2RJuEPtZooy18Wxn2me2RhUdC94N7r. If you receive any USDT tokens from the above address, or from any downstream address that receives these tokens, do not accept them, as they have been flagged and will not be redeemable by Tether for USD.\nThe following steps have been taken to address this matter:\nThe tether.to back-end wallet service has been temporarily suspended. A thorough investigation on the cause of the attack is being undertaken to prevent similar actions in the future. We are providing new builds of Omni Core to the community. (Omni Core is the software used by Tether integrators to support Omni Layer transactions.) These builds should prevent any movement of the stolen coins from the attacker’s address. We strongly urge all Tether integrators to install this software immediately to prevent the coins from entering the ecosystem. Again, any tokens from the attacker’s address will not be redeemed. Accordingly, any and all exchanges, wallets, and other Tether integrators should install this software immediately in order to prevent loss:\nhttps://github.com/tetherto/omnicore/releases/tag/0.2.99.s\nNote that this software will cause a consensus change to currently running Omni Core clients, meaning that it is effectively a temporary hard fork to the Omni Layer. Integrators running this build will not accept any token sends from the attacker’s address, preventing the coins from moving further from the attacker’s address. We are working with the Omni Foundation to investigate ways that will allow Tether to reclaim stranded tokens and rectify the hard fork created by the above software. Once this protocol enhancement is complete, the Omni Foundation will provide updated binaries for all integrators to install. These builds will supersede the binaries provided above by Tether.to. After the protocol upgrades to the Omni Layer are in place, Tether will reclaim the stolen tokens and return them to treasury. Tether issuances have not been affected by this attack, and all Tether tokens remain fully backed by assets in the Tether reserve. The only tokens that will not be redeemed are the ones that were stolen from Tether treasury yesterday. Those tokens will be returned to treasury once the Omni Layer protocol enhancements are in place.\nWe will provide further updates as they come available, and we appreciate the community’s patience, understanding, and support while we work to rectify the situation in the best possible manner to everyone’s benefit.\nThe Tether Team\n submitted by /u/keygen4ever\n[link] [comments]",
+      "highlightText": "",
+      "highlightTitle": "",
+      "language": "english",
+      "external_links": [
+        "https://github.com/tetherto/omnicore/releases/tag/0.2.99.s",
+        "https://tether.to/tether-critical-announcement/"
+      ],
+      "entities": {
+        "persons": [],
+        "organizations": [],
+        "locations": []
+      },
+      "rating": null,
+      "crawled": "2017-11-21T07:21:16.004+02:00"
+    },
+    {
+      "thread": {
+        "uuid": "4573bab7c14021a622de35fcd8541f25c0be7693",
+        "url": "http://omgili.com/ri/.wHSUbtEfZQ2F8au4ugZad_J4qnGXapSKlBCa5SRpBYk8DEckqg2Vj67lrgMgxRxRWBj4AX89lcdsvPF9WBxAPVDrNUhCypB5aj7s3u_ur7Hl68EVeyX0.rYP3f0GksC",
+        "site_full": "www.reddit.com",
+        "site": "reddit.com",
+        "site_section": "https://www.reddit.com/r/btc",
+        "site_categories": [
+          "media",
+          "adult",
+          "non_standard_content"
+        ],
+        "section_title": "Bitcoin - The Internet of Money",
+        "title": "PSA: There will be blood in the streets.",
+        "title_full": "PSA: There will be blood in the streets. : btc",
+        "published": "2017-11-20T21:01:00.000+02:00",
+        "replies_count": 161,
+        "participants_count": 92,
+        "site_type": "discussions",
+        "country": "US",
+        "spam_score": 0.001,
+        "main_image": "",
+        "performance_score": 0,
+        "domain_rank": 33,
+        "social": {
+          "facebook": {
+            "likes": 0,
+            "comments": 0,
+            "shares": 0
+          },
+          "gplus": {
+            "shares": 0
+          },
+          "pinterest": {
+            "shares": 0
+          },
+          "linkedin": {
+            "shares": 0
+          },
+          "stumbledupon": {
+            "shares": 0
+          },
+          "vk": {
+            "shares": 0
+          }
+        }
+      },
+      "uuid": "4573bab7c14021a622de35fcd8541f25c0be7693",
+      "url": "http://omgili.com/ri/.wHSUbtEfZQ2F8au4ugZad_J4qnGXapSKlBCa5SRpBYk8DEckqg2Vj67lrgMgxRxRWBj4AX89lcdsvPF9WBxAPVDrNUhCypB5aj7s3u_ur7Hl68EVeyX0.rYP3f0GksC",
+      "ord_in_thread": 0,
+      "author": "omaegloe",
+      "published": "2017-11-20T21:01:00.000+02:00",
+      "title": "PSA: There will be blood in the streets.",
+      "text": "It may not be this week, or the next, but before long there will be a time when the price ranges we are currently at will seem unreachable again. Not some easy-to-spot dip of 30%, but a sustained decline of over 75% that will hurt even those that have been through it before.\nThis post will get downvoted, but it has to be known. Don't try to time it, you can't. Just be aware that at some point in the future suicide hotline threads might once again be stickied on crypto subreddits.\nThe tides will turn and the moment will come when opening a short will simply be the better way to make money, as it is easier to push the markt down than up. When that time comes, you can be sure people will take advantage of it. Even though it is the opposite of what we have seen in the past year and you may think Bitcoin is some ever-appreciating asset, mind-boggling losses are just as much part of the game.\nDo not invest more than you can afford to lose.\nEdit: I submitted the same post to /r/bitcoin , but it was removed. No idea why.\nEdit II: the post has now been un-removed from /r/bitcoin .\n submitted by /u/omaegloe\n[link] [comments]",
+      "highlightText": "",
+      "highlightTitle": "",
+      "language": "english",
+      "external_links": [],
+      "entities": {
+        "persons": [],
+        "organizations": [],
+        "locations": []
+      },
+      "rating": null,
+      "crawled": "2017-11-20T19:46:10.003+02:00"
+    },
+    {
+      "thread": {
+        "uuid": "1ddbd61b6c83a54d9262ad934349587588105b96",
+        "url": "http://omgili.com/ri/.wHSUbtEfZQ2F8au4ugZad_J4qnGXapSKlBCa5SRpBYk8DEckqg2VijAwtO4r88mq.oZyYcw3xQheI1SVXYKTrnE44VTNvNjacwvdJ5Dqh_sGOrJvvRU0XwlE32DqkiqlegDFfcH3g6AYj07vcPc2w--",
+        "site_full": "www.reddit.com",
+        "site": "reddit.com",
+        "site_section": "https://www.reddit.com/r/btc",
+        "site_categories": [
+          "media",
+          "adult",
+          "non_standard_content"
+        ],
+        "section_title": "Bitcoin - The Internet of Money",
+        "title": "To the Censorship loving tyrants in /r/Bitcoin, don't Say Bitcoin.com didn't warn you! \"In the unlikely event that the 2MB block size increase portion of Segwit2x fails to activate, Bitcoin.com will immediately shift all company resources to supporting Bitcoin Cash exclusively.\"",
+        "title_full": "To the Censorship loving tyrants in /r/Bitcoin, don't Say Bitcoin.com didn't warn you! \"In the unlikely event that the 2MB block size increase portion of Segwit2x fails to activate, Bitcoin.com will immediately shift all company resources to supporting Bitcoin Cash exclusively.\" : btc",
+        "published": "2017-11-21T03:10:00.000+02:00",
+        "replies_count": 82,
+        "participants_count": 51,
+        "site_type": "discussions",
+        "country": "US",
+        "spam_score": 0.0,
+        "main_image": "",
+        "performance_score": 0,
+        "domain_rank": 33,
+        "social": {
+          "facebook": {
+            "likes": 0,
+            "comments": 0,
+            "shares": 0
+          },
+          "gplus": {
+            "shares": 0
+          },
+          "pinterest": {
+            "shares": 0
+          },
+          "linkedin": {
+            "shares": 0
+          },
+          "stumbledupon": {
+            "shares": 0
+          },
+          "vk": {
+            "shares": 0
+          }
+        }
+      },
+      "uuid": "1ddbd61b6c83a54d9262ad934349587588105b96",
+      "url": "http://omgili.com/ri/.wHSUbtEfZQ2F8au4ugZad_J4qnGXapSKlBCa5SRpBYk8DEckqg2VijAwtO4r88mq.oZyYcw3xQheI1SVXYKTrnE44VTNvNjacwvdJ5Dqh_sGOrJvvRU0XwlE32DqkiqlegDFfcH3g6AYj07vcPc2w--",
+      "ord_in_thread": 0,
+      "author": "MemoryDealers",
+      "published": "2017-11-21T03:10:00.000+02:00",
+      "title": "To the Censorship loving tyrants in /r/Bitcoin, don't Say Bitcoin.com didn't warn you! \"In the unlikely event that the 2MB block size increase portion of Segwit2x fails to activate, Bitcoin.com will immediately shift all company resources to supporting Bitcoin Cash exclusively.\"",
+      "text": "submitted by /u/MemoryDealers\n[link] [comments]",
+      "highlightText": "",
+      "highlightTitle": "",
+      "language": "english",
+      "external_links": [
+        "https://forum.bitcoin.com/bitcoin-discussion/bitcoin-com-statement-on-bitcoin-cash-bcc-t35101.html"
+      ],
+      "entities": {
+        "persons": [],
+        "organizations": [],
+        "locations": []
+      },
+      "rating": null,
+      "crawled": "2017-11-21T00:57:19.008+02:00"
+    },
+    {
+      "thread": {
+        "uuid": "1bb1f64197e5be2cb719af2b1c2c650807efa50b",
+        "url": "http://omgili.com/ri/.wHSUbtEfZQ2F8au4ugZad_J4qnGXapSckcr3SEMLwMoJpPKLuZLjgXdHVQSDNbQj3p3gl59ERi3WHAYAAAnnDbi7ArPfQuLhm2j4meLMlxod_QJ_8vYgfd0ZVoiofGvuFSCTDIPbQk-",
+        "site_full": "www.reddit.com",
+        "site": "reddit.com",
+        "site_section": "https://www.reddit.com/r/tifu/",
+        "site_categories": [
+          "media",
+          "adult",
+          "non_standard_content"
+        ],
+        "section_title": "Today I Fucked Up",
+        "title": "TIFU by giving away 20 BitCoins. KillMePlease.",
+        "title_full": "TIFU by giving away 20 BitCoins. KillMePlease. : tifu",
+        "published": "2017-11-20T17:00:00.000+02:00",
+        "replies_count": 75,
+        "participants_count": 64,
+        "site_type": "discussions",
+        "country": "US",
+        "spam_score": 0.0,
+        "main_image": "",
+        "performance_score": 0,
+        "domain_rank": 33,
+        "social": {
+          "facebook": {
+            "likes": 0,
+            "comments": 0,
+            "shares": 0
+          },
+          "gplus": {
+            "shares": 0
+          },
+          "pinterest": {
+            "shares": 0
+          },
+          "linkedin": {
+            "shares": 0
+          },
+          "stumbledupon": {
+            "shares": 0
+          },
+          "vk": {
+            "shares": 0
+          }
+        }
+      },
+      "uuid": "1bb1f64197e5be2cb719af2b1c2c650807efa50b",
+      "url": "http://omgili.com/ri/.wHSUbtEfZQ2F8au4ugZad_J4qnGXapSckcr3SEMLwMoJpPKLuZLjgXdHVQSDNbQj3p3gl59ERi3WHAYAAAnnDbi7ArPfQuLhm2j4meLMlxod_QJ_8vYgfd0ZVoiofGvuFSCTDIPbQk-",
+      "ord_in_thread": 0,
+      "author": "wapakels27",
+      "published": "2017-11-20T17:00:00.000+02:00",
+      "title": "TIFU by giving away 20 BitCoins. KillMePlease.",
+      "text": "Obligatory TIFU. Didn’t actually happened today.\nEarly 2013, I was 3rd year college when my school required Computer Science(which I belong) and IT students to attend a forum to be held in another school.\nThe forum was technology related. There were different companies who presented and had a quick Q&A from students.\nOne of the presenters were people from BitCoin. To be honest, I wasn’t really interested before, during and after their presentation. It didn’t get my attention(yeah fuck me). The main reason it disappointed me was there were only VERY FEW establishments in my country who accepts BitCoin at that time. It didn’t look promising to me because of that.\nSo, they had Q&A just like the other presenters and there were few students who were quite interested and asked them questions.\nThen here’s the fuck up.\nAfter the presenters from BitCoin have finished their presentation. They told us, the attendees, that they have a surprise for us. There will be few people who will be receiving BitCoin(and again, I wasn’t interested). They told us to check the under of our chair to see if there’s something. All the attendees were checking their chairs and because I wasn’t even interested at all, I didn’t even bother checking the chair I was seated on.\nThen the person beside me who was my classmate, checked the under of the chair I was sitting on. And VOILA! My classmate saw the surprise, and because it was my chair, I took that “something” from him(Haha!).\nIt was a pouch. Just a small pouch. There were around three(3) items IIRC. One of which was a piece of paper where a code was written on it(of course not a simple type piece of paper). Apparently, it was the “BitCoin code” with the instructions which I didn’t bother reading.\nThe amount? 20 bitcoin. Yes, 20 FUCK*NG BITCOIN.\nSuddenly, another classmate of mine(a girl) rushed to me who looked so happy(I can still remember how happy she was that time) and asked me to give her the BitCoin, if it was OK with me.\nAnd yes, yes, you’re right. Because of my fucking ignorance, I just gave it to her and just kept with me the pouch. Yes. ONLY THE POUCH(fucking genius, right?). I forgot who I gave the other items.\nAnd now the value of bitcoin is already at ~$8,000. It just makes me want to kill my self. KillMePlease.\nTL;DR: Had 20 BitCoin. Gave it to my classmate because of my ignorance.\nEDIT: Spelling\nEDIT2: I’m not sure if the speakers said something about the current price of BitCoin at that time. Maybe they did and just so happened that I was not paying attention. The girl I gave the BitCoin to is my officemate. We work in the same company. Recently just asked her where the BitCoins are and she told me “It’s gone.”\nI don’t mean to sound rude or whatsoever, but reading some of the comments made me feel better. Knowing that there are people out there who had far worse experience with BitCoin compared to me is comforting.\nEDIT3: “people from BitCoin”, what I mean is “presenters promoting BitCoin”. I forgot the name of the company those people belonged to.\nEDIT4: Thanks for the gold!\nP.S. not a native English speaker. Forgive me if there are some grammatical errors.\n submitted by /u/wapakels27\n[link] [comments]",
+      "highlightText": "",
+      "highlightTitle": "",
+      "language": "english",
+      "external_links": [],
+      "entities": {
+        "persons": [],
+        "organizations": [],
+        "locations": []
+      },
+      "rating": null,
+      "crawled": "2017-11-20T18:47:34.000+02:00"
+    },
+    {
+      "thread": {
+        "uuid": "d8a850a28281be37e203c71dd80ad07dcbea4b58",
+        "url": "http://omgili.com/ri/.wHSUbtEfZQ2F8au4ugZad_J4qnGXapSb6YSL21UuCC9QPfwa1nB9HlE2GRh2hqaMHMljFhtFOf1mKWLa68H1cAmuREw2Vf0hvZPaFYtq9GpCAfi01Sh.w0nP1Pl14vQA6xO0c6VEVpG.v2IE6ceNQ--",
+        "site_full": "www.reddit.com",
+        "site": "reddit.com",
+        "site_section": "https://www.reddit.com/r/CryptoCurrency/",
+        "site_categories": [
+          "media",
+          "adult",
+          "non_standard_content"
+        ],
+        "section_title": "Cryptocurrency news and discussions.",
+        "title": "USDT - Tether Hacking Discussion (21st Nov 2017)",
+        "title_full": "USDT - Tether Hacking Discussion (21st Nov 2017) : CryptoCurrency",
+        "published": "2017-11-21T15:02:00.000+02:00",
+        "replies_count": 59,
+        "participants_count": 33,
+        "site_type": "discussions",
+        "country": "US",
+        "spam_score": 0.0,
+        "main_image": "",
+        "performance_score": 0,
+        "domain_rank": 33,
+        "social": {
+          "facebook": {
+            "likes": 0,
+            "comments": 0,
+            "shares": 0
+          },
+          "gplus": {
+            "shares": 0
+          },
+          "pinterest": {
+            "shares": 0
+          },
+          "linkedin": {
+            "shares": 0
+          },
+          "stumbledupon": {
+            "shares": 0
+          },
+          "vk": {
+            "shares": 0
+          }
+        }
+      },
+      "uuid": "d8a850a28281be37e203c71dd80ad07dcbea4b58",
+      "url": "http://omgili.com/ri/.wHSUbtEfZQ2F8au4ugZad_J4qnGXapSb6YSL21UuCC9QPfwa1nB9HlE2GRh2hqaMHMljFhtFOf1mKWLa68H1cAmuREw2Vf0hvZPaFYtq9GpCAfi01Sh.w0nP1Pl14vQA6xO0c6VEVpG.v2IE6ceNQ--",
+      "ord_in_thread": 0,
+      "author": "CryptoCurrencyMod",
+      "published": "2017-11-21T15:02:00.000+02:00",
+      "title": "USDT - Tether Hacking Discussion (21st Nov 2017)",
+      "text": "We are pooling all discussion of this topic into one thread.\nMajor Situation Developing:\nTether Limited has announced that $30,950,010 USDT has been stolen from it's Official Tether Treasury wallet.\nThe company is attempting to recover the tokens to prevent them from entering the broader cryptocurrency market.\nUpdating News List:\nOfficial Reddit Announcement\nTether Official Website Announcement\nCNBC.com - \"More than $30 million worth of cryptocurrency was just stolen by hackers\"\nCoindesk.com - \"Tether Claims $30 Million in US Dollar Token Stolen By Attacker\"\nBloomberg.com - \"Bitcoin Falls After $31 Million Theft of Cryptocurrency Tether\"\nTechcrunch.com - \"Tether, a startup that works with bitcoin exchanges, claims a hacker stole $31M\"\nOfficial Statements from Cryptocurrency Exchanges:\n....",
+      "highlightText": "",
+      "highlightTitle": "",
+      "language": "english",
+      "external_links": [
+        "https://www.coindesk.com/tether-claims-30-million-stable-token-stolen-attacker/",
+        "https://techcrunch.com/2017/11/20/tether-claims-a-hacker-stole-31m/",
+        "https://tether.to/tether-critical-announcement/",
+        "https://www.cnbc.com/2017/11/21/tether-hack-attacker-reportedly-steals-30-million-of-digital-tokens.html",
+        "https://www.bloomberg.com/news/articles/2017-11-21/bitcoin-falls-after-31-million-theft-of-cryptocurrency-tether"
+      ],
+      "entities": {
+        "persons": [],
+        "organizations": [],
+        "locations": []
+      },
+      "rating": null,
+      "crawled": "2017-11-21T11:45:38.003+02:00"
+    },
+    {
+      "thread": {
+        "uuid": "1b4c6fdd413be37db8bc8e294c9920b5f17ac6af",
+        "url": "http://omgili.com/ri/.wHSUbtEfZSTzW1XIcyCxIKJ78R_I43R_HKqCR94venXQAunt3ywY_DhisAATSdc",
+        "site_full": "news.ycombinator.com",
+        "site": "ycombinator.com",
+        "site_section": "https://news.ycombinator.com/rss",
+        "site_categories": [
+          "non_standard_content",
+          "adult"
+        ],
+        "section_title": "Hacker News",
+        "title": "Tether Critical Announcement",
+        "title_full": "Tether Critical Announcement | Hacker News",
+        "published": "2017-11-21T02:00:00.000+02:00",
+        "replies_count": 58,
+        "participants_count": 41,
+        "site_type": "discussions",
+        "country": "US",
+        "spam_score": 0.0,
+        "main_image": "",
+        "performance_score": 0,
+        "domain_rank": 2232,
+        "social": {
+          "facebook": {
+            "likes": 0,
+            "comments": 0,
+            "shares": 0
+          },
+          "gplus": {
+            "shares": 0
+          },
+          "pinterest": {
+            "shares": 0
+          },
+          "linkedin": {
+            "shares": 0
+          },
+          "stumbledupon": {
+            "shares": 0
+          },
+          "vk": {
+            "shares": 0
+          }
+        }
+      },
+      "uuid": "1b4c6fdd413be37db8bc8e294c9920b5f17ac6af",
+      "url": "http://omgili.com/ri/.wHSUbtEfZSTzW1XIcyCxIKJ78R_I43R_HKqCR94venXQAunt3ywY_DhisAATSdc",
+      "ord_in_thread": 0,
+      "author": "patio11",
+      "published": "2017-11-21T02:00:00.000+02:00",
+      "title": "Tether Critical Announcement",
+      "text": "If you haven't been following along, here's why this matters:\nTethers is a sole-source cryptocurrency, pegged to the US dollar. Bitfinex produces it, though they're cagey (some would say outright lying at times) about the level of involvement.\nThe primary purpose of tethers is money laundering, even more so than cryptocurrency generally. Bitfinex was cut off from the US financial system, which makes it impossible for them to clear USD-denominated wires. Their clients have ~$400M of USD on deposit with Bitfinex. Their solution: issue a cryptocurrency which is claimed to be 100% backed by USD and say that it is redeemable 1-to-1 for dollars... we just can't actually physically give you the dollars.\nIncredibly, this has worked so far. Bitfinex has issued approximately $600 million in tethers, all but $10 million or so in the last 6 months. They're usable on a handful of exchanges, for the purpose of buying BTC and other cryptocurrencies.\nTether claims that someone has stolen 5% or so of their $600 million tethers -- the digital claims, not the underlying dollars sitting at their totally-exists-we-promise bank account. They've made a technological change to the Omni client to disallow transactions on the stolen tokens, but there is no guarantee that they succeed in convincing all parties to use this.\nThe nightmare scenario for them is 1+ exchanges say \"Well, actually, we rely on your money actually being money to list it here, so pick: we delist you or we don't, but we don't have any incentive to apply that patch.\" [0] The thief immediately exfiltrates to Bitcoin, and suddenly 30 million hot tethers are contaminating the money stream at the exchange, and they cannot be conveniently disambiguated from clean tethers, because money is fungible.\nHilarity then ensues, for values of hilarity which probably mean \"bank run\" on a bank which is structurally incapable of paying out most holders of money.\n[0] Why does Bitfinex care whether their cryptocurrency is listed at other exchanges? Because they need to launder money to support their exchange business. Tethers are institutionalizing a sort of crypto-hawala (or crypto-Liberty Reserve), allowing the physical transfer of real money to happen at legal remoteness to the cryptocurrency exchange.\nBitfinex has an order book filled with something people want. A way to get access to that orderbook is to say \"Bitfinex, I want some tether, how do you sell them to me if you can't accept a wire?\" Bitfinex might say \"Are you a trustworthy US VC? Spiffy. Move $20 million from your left hand pocket to your right hand pocket. The right hand pocket is now ours; here's $20 to $21 million in Tether, which are good for BTC at your favorite exchanges. At some time in the future, a trustworthy US VC other than yourself is going to ask you to buy some tether from them at par value. You will do that, and pay them from your right pocket. If a regulator asks you about this transaction, you bat your eyes and say 'Oh, sophisticated investors doing a cryptocurrency transaction, nothing to see here.'\"\nPost-script: Is this good news for Bitcoin? Oh this is great news for Bitcoin. If you don't believe Bitfinex's $600 million in liabilities are worth a copper shilling, the only option for getting your value out of Bitfinex is to swap your liability for Bitcoin, which drives up the price of Bitcoin at the margin.\nThis is exactly what happened in the final months of Mt. Gox.",
+      "highlightText": "",
+      "highlightTitle": "",
+      "language": "english",
+      "external_links": [],
+      "entities": {
+        "persons": [],
+        "organizations": [],
+        "locations": []
+      },
+      "rating": null,
+      "crawled": "2017-11-21T08:12:02.000+02:00"
+    },
+    {
+      "thread": {
+        "uuid": "5adf6fa0378513d9f3d25b3be8f74dcd35ebd101",
+        "url": "http://omgili.com/ri/.wHSUbtEfZQ2F8au4ugZad_J4qnGXapSKlBCa5SRpBYk8DEckqg2VjLPSH0vnikMK7wMI1ykcaI949zq1ClfwKt4I5m1wZZuQz2iQnQz4QtvkHKrYhNBWNyJUCWo1suFLHrisXsmU_s-",
+        "site_full": "www.reddit.com",
+        "site": "reddit.com",
+        "site_section": "https://www.reddit.com/r/btc",
+        "site_categories": [
+          "media",
+          "adult",
+          "non_standard_content"
+        ],
+        "section_title": "Bitcoin - The Internet of Money",
+        "title": "/r/bitcoin has a point, \"Bitcoin\" & \"Bitcoin Cash\" are confusing, let's always use \"Bitcoin Core\" & \"Bitcoin Cash\".",
+        "title_full": "/r/bitcoin has a point, \"Bitcoin\" & \"Bitcoin Cash\" are confusing, let's always use \"Bitcoin Core\" & \"Bitcoin Cash\". : btc",
+        "published": "2017-11-20T21:41:00.000+02:00",
+        "replies_count": 55,
+        "participants_count": 37,
+        "site_type": "discussions",
+        "country": "US",
+        "spam_score": 0.001,
+        "main_image": "",
+        "performance_score": 0,
+        "domain_rank": 33,
+        "social": {
+          "facebook": {
+            "likes": 0,
+            "comments": 0,
+            "shares": 0
+          },
+          "gplus": {
+            "shares": 0
+          },
+          "pinterest": {
+            "shares": 0
+          },
+          "linkedin": {
+            "shares": 0
+          },
+          "stumbledupon": {
+            "shares": 0
+          },
+          "vk": {
+            "shares": 0
+          }
+        }
+      },
+      "uuid": "5adf6fa0378513d9f3d25b3be8f74dcd35ebd101",
+      "url": "http://omgili.com/ri/.wHSUbtEfZQ2F8au4ugZad_J4qnGXapSKlBCa5SRpBYk8DEckqg2VjLPSH0vnikMK7wMI1ykcaI949zq1ClfwKt4I5m1wZZuQz2iQnQz4QtvkHKrYhNBWNyJUCWo1suFLHrisXsmU_s-",
+      "ord_in_thread": 0,
+      "author": "seweso",
+      "published": "2017-11-20T21:41:00.000+02:00",
+      "title": "/r/bitcoin has a point, \"Bitcoin\" & \"Bitcoin Cash\" are confusing, let's always use \"Bitcoin Core\" & \"Bitcoin Cash\".",
+      "text": "submitted by /u/seweso\n[link] [comments]",
+      "highlightText": "",
+      "highlightTitle": "",
+      "language": "english",
+      "external_links": [
+        "https://twitter.com/seweso/status/932604852475187201",
+        "https://b.thumbs.redditmedia.com/bCczmXAJ3OFK5npHg08RGeT3j0JoUOWaSCIa5uWeW5I.jpg"
+      ],
+      "entities": {
+        "persons": [],
+        "organizations": [],
+        "locations": []
+      },
+      "rating": null,
+      "crawled": "2017-11-20T19:46:41.002+02:00"
+    },
+    {
+      "thread": {
+        "uuid": "53d9e0f6a73c8ce827017883d5a29c289c5b9332",
+        "url": "http://omgili.com/ri/.wHSUbtEfZQ2F8au4ugZad_J4qnGXapSb6YSL21UuCC9QPfwa1nB9HlE2GRh2hqa8cma_7wa98N1xvyf6il9sMaQYCe2dB.vWaH6duU2Eedegatx3lZe1bmfWRxNcDEFCnnfEJeAlIXAIjrLz.I8LEDa6I7FMzTn",
+        "site_full": "www.reddit.com",
+        "site": "reddit.com",
+        "site_section": "https://www.reddit.com/r/CryptoCurrency/",
+        "site_categories": [
+          "media",
+          "adult",
+          "non_standard_content"
+        ],
+        "section_title": "Cryptocurrency news and discussions.",
+        "title": "r/bitcoin and r/btc are so damn petty. Grow up and stop attacking each other. If you don't like the others coin then JUST DON'T USE IT.",
+        "title_full": "r/bitcoin and r/btc are so damn petty. Grow up and stop attacking each other. If you don't like the others coin then JUST DON'T USE IT. : CryptoCurrency",
+        "published": "2017-11-21T09:11:00.000+02:00",
+        "replies_count": 47,
+        "participants_count": 30,
+        "site_type": "discussions",
+        "country": "US",
+        "spam_score": 0.0,
+        "main_image": "",
+        "performance_score": 0,
+        "domain_rank": 33,
+        "social": {
+          "facebook": {
+            "likes": 0,
+            "comments": 0,
+            "shares": 0
+          },
+          "gplus": {
+            "shares": 0
+          },
+          "pinterest": {
+            "shares": 0
+          },
+          "linkedin": {
+            "shares": 0
+          },
+          "stumbledupon": {
+            "shares": 0
+          },
+          "vk": {
+            "shares": 0
+          }
+        }
+      },
+      "uuid": "53d9e0f6a73c8ce827017883d5a29c289c5b9332",
+      "url": "http://omgili.com/ri/.wHSUbtEfZQ2F8au4ugZad_J4qnGXapSb6YSL21UuCC9QPfwa1nB9HlE2GRh2hqa8cma_7wa98N1xvyf6il9sMaQYCe2dB.vWaH6duU2Eedegatx3lZe1bmfWRxNcDEFCnnfEJeAlIXAIjrLz.I8LEDa6I7FMzTn",
+      "ord_in_thread": 0,
+      "author": "thirdworldsociety",
+      "published": "2017-11-21T09:11:00.000+02:00",
+      "title": "r/bitcoin and r/btc are so damn petty. Grow up and stop attacking each other. If you don't like the others coin then JUST DON'T USE IT.",
+      "text": "These kids are pathetic.\nAnyone from a more civilized crypto community.. I'd advise you to please refrain from visiting r/bitcoin and r/btc\n submitted by /u/thirdworldsociety\n[link] [comments]",
+      "highlightText": "",
+      "highlightTitle": "",
+      "language": "english",
+      "external_links": [],
+      "entities": {
+        "persons": [],
+        "organizations": [],
+        "locations": []
+      },
+      "rating": null,
+      "crawled": "2017-11-21T07:20:38.000+02:00"
+    },
+    {
+      "thread": {
+        "uuid": "9f6b7985d88ab9b3ec5a855a7a5a66f231b59a02",
+        "url": "http://omgili.com/ri/.wHSUbtEfZQ2F8au4ugZad_J4qnGXapSKlBCa5SRpBYk8DEckqg2Vp6BKdoF6iCkaK2PbMxj7CSXWBsWz_3JRSgwywi7VqXpOpL4m_Xwe3yql7IcYWooqRR26.DS7DRs11ZExjbpKTE-",
+        "site_full": "www.reddit.com",
+        "site": "reddit.com",
+        "site_section": "https://www.reddit.com/r/btc",
+        "site_categories": [
+          "media",
+          "adult",
+          "non_standard_content"
+        ],
+        "section_title": "Bitcoin - The Internet of Money",
+        "title": "The bitcoin.com wallet app is under attack by /r/bitcoin. Please help to counter it.",
+        "title_full": "The bitcoin.com wallet app is under attack by /r/bitcoin. Please help to counter it. : btc",
+        "published": "2017-11-21T01:06:00.000+02:00",
+        "replies_count": 41,
+        "participants_count": 23,
+        "site_type": "discussions",
+        "country": "US",
+        "spam_score": 0.0,
+        "main_image": "",
+        "performance_score": 0,
+        "domain_rank": 33,
+        "social": {
+          "facebook": {
+            "likes": 0,
+            "comments": 0,
+            "shares": 0
+          },
+          "gplus": {
+            "shares": 0
+          },
+          "pinterest": {
+            "shares": 0
+          },
+          "linkedin": {
+            "shares": 0
+          },
+          "stumbledupon": {
+            "shares": 0
+          },
+          "vk": {
+            "shares": 0
+          }
+        }
+      },
+      "uuid": "9f6b7985d88ab9b3ec5a855a7a5a66f231b59a02",
+      "url": "http://omgili.com/ri/.wHSUbtEfZQ2F8au4ugZad_J4qnGXapSKlBCa5SRpBYk8DEckqg2Vp6BKdoF6iCkaK2PbMxj7CSXWBsWz_3JRSgwywi7VqXpOpL4m_Xwe3yql7IcYWooqRR26.DS7DRs11ZExjbpKTE-",
+      "ord_in_thread": 0,
+      "author": "viners",
+      "published": "2017-11-21T01:06:00.000+02:00",
+      "title": "The bitcoin.com wallet app is under attack by /r/bitcoin. Please help to counter it.",
+      "text": "They are actively telling everyone to download and leave 1 star reviews on the iPhone and Android apps.\nhttps://np.reddit.com/r/Bitcoin/comments/7e98o4/please_give_5_minutes_from_your_time_to_downvote/\nThey are lying and telling people that it's a scam and only creates BCH wallets by default, but it creates both BTC and BCH by default.\nhttps://np.reddit.com/r/Bitcoin/comments/7e7n15/this_scam_is_unacceptable_lets_do_something_about/\nThis is a legitimate attack, so if you want to help counter it, please download the app and leave a 5 star review if you like it. All of the recent reviews include lies and are 1 star.\nIf we allow this to happen, it will scare companies away from developing on BCH because /r/Bitcoin will just start another witch hunt.\niPhone: https://itunes.apple.com/us/app/bitcoin-wallet-by-bitcoin-com/id1252903728?mt=8\nAndroid: https://play.google.com/store/apps/details?id=com.bitcoin.mwallet\nYou can also flag all the 1 star reviews as spam on Android.\n submitted by /u/viners\n[link] [comments]",
+      "highlightText": "",
+      "highlightTitle": "",
+      "language": "english",
+      "external_links": [
+        "https://itunes.apple.com/us/app/bitcoin-wallet-by-bitcoin-com/id1252903728?mt=8",
+        "https://play.google.com/store/apps/details?id=com.bitcoin.mwallet"
+      ],
+      "entities": {
+        "persons": [],
+        "organizations": [],
+        "locations": []
+      },
+      "rating": null,
+      "crawled": "2017-11-21T00:58:02.005+02:00"
+    },
+    {
+      "thread": {
+        "uuid": "88b46daff8fb29798a898f2b895edd8f125db86e",
+        "url": "http://omgili.com/ri/.wHSUbtEfZQ2F8au4ugZad_J4qnGXapSKlBCa5SRpBYk8DEckqg2VkH5iaIjmmWMw0KZjdB7w_MwrlZ0Kc1ndu1hz0COM6z1x1OuDVybZfU_0bZGx_3XVWv1TL2fuQrzHOEIEj5a7sw-",
+        "site_full": "www.reddit.com",
+        "site": "reddit.com",
+        "site_section": "https://www.reddit.com/r/btc",
+        "site_categories": [
+          "media",
+          "adult",
+          "non_standard_content"
+        ],
+        "section_title": "Bitcoin - The Internet of Money",
+        "title": "Bitcoin Cash will hit 50,000 tx/second this time next year. You can stick to 3 tx/second, I'm not going to stop you - Dr. Craig Wright.",
+        "title_full": "Bitcoin Cash will hit 50,000 tx/second this time next year. You can stick to 3 tx/second, I'm not going to stop you - Dr. Craig Wright. : btc",
+        "published": "2017-11-20T14:49:00.000+02:00",
+        "replies_count": 40,
+        "participants_count": 27,
+        "site_type": "discussions",
+        "country": "US",
+        "spam_score": 0.0,
+        "main_image": "",
+        "performance_score": 0,
+        "domain_rank": 33,
+        "social": {
+          "facebook": {
+            "likes": 0,
+            "comments": 0,
+            "shares": 0
+          },
+          "gplus": {
+            "shares": 0
+          },
+          "pinterest": {
+            "shares": 0
+          },
+          "linkedin": {
+            "shares": 0
+          },
+          "stumbledupon": {
+            "shares": 0
+          },
+          "vk": {
+            "shares": 0
+          }
+        }
+      },
+      "uuid": "88b46daff8fb29798a898f2b895edd8f125db86e",
+      "url": "http://omgili.com/ri/.wHSUbtEfZQ2F8au4ugZad_J4qnGXapSKlBCa5SRpBYk8DEckqg2VkH5iaIjmmWMw0KZjdB7w_MwrlZ0Kc1ndu1hz0COM6z1x1OuDVybZfU_0bZGx_3XVWv1TL2fuQrzHOEIEj5a7sw-",
+      "ord_in_thread": 0,
+      "author": "etherbid",
+      "published": "2017-11-20T14:49:00.000+02:00",
+      "title": "Bitcoin Cash will hit 50,000 tx/second this time next year. You can stick to 3 tx/second, I'm not going to stop you - Dr. Craig Wright.",
+      "text": "submitted by /u/etherbid\n[link] [comments]",
+      "highlightText": "",
+      "highlightTitle": "",
+      "language": "english",
+      "external_links": [
+        "https://vimeo.com/242870813#t=4626s",
+        "https://b.thumbs.redditmedia.com/_Qt1OigpObFCkIh1Sw4dqePVgWI-ASlJmi49YrP5AIw.jpg"
+      ],
+      "entities": {
+        "persons": [],
+        "organizations": [],
+        "locations": []
+      },
+      "rating": null,
+      "crawled": "2017-11-20T14:24:15.008+02:00"
+    },
+    {
+      "thread": {
+        "uuid": "785a4333758bd9e9bf102a7a468732182eb317d2",
+        "url": "http://omgili.com/ri/.wHSUbtEfZQ2F8au4ugZad_J4qnGXapSKlBCa5SRpBYk8DEckqg2VgYMEX0_LTu3YrnzQE5Lqzqf6ALYN.6EdmsGcyHcwfxlsFXDDcPwEj2D0nzw635ERNr5apBzAJtfUD9OFomRFAc-",
+        "site_full": "www.reddit.com",
+        "site": "reddit.com",
+        "site_section": "https://www.reddit.com/r/btc",
+        "site_categories": [
+          "media",
+          "adult",
+          "non_standard_content"
+        ],
+        "section_title": "Bitcoin - The Internet of Money",
+        "title": "Just a friendly reminder that a $30M hack on Tether caused an $8B (6%) drop in Bitcoin",
+        "title_full": "Just a friendly reminder that a $30M hack on Tether caused an $8B (6%) drop in Bitcoin : btc",
+        "published": "2017-11-21T13:00:00.000+02:00",
+        "replies_count": 38,
+        "participants_count": 36,
+        "site_type": "discussions",
+        "country": "US",
+        "spam_score": 0.0,
+        "main_image": "",
+        "performance_score": 0,
+        "domain_rank": 33,
+        "social": {
+          "facebook": {
+            "likes": 0,
+            "comments": 0,
+            "shares": 0
+          },
+          "gplus": {
+            "shares": 0
+          },
+          "pinterest": {
+            "shares": 0
+          },
+          "linkedin": {
+            "shares": 0
+          },
+          "stumbledupon": {
+            "shares": 0
+          },
+          "vk": {
+            "shares": 0
+          }
+        }
+      },
+      "uuid": "785a4333758bd9e9bf102a7a468732182eb317d2",
+      "url": "http://omgili.com/ri/.wHSUbtEfZQ2F8au4ugZad_J4qnGXapSKlBCa5SRpBYk8DEckqg2VgYMEX0_LTu3YrnzQE5Lqzqf6ALYN.6EdmsGcyHcwfxlsFXDDcPwEj2D0nzw635ERNr5apBzAJtfUD9OFomRFAc-",
+      "ord_in_thread": 0,
+      "author": "Duality_Of_Reality",
+      "published": "2017-11-21T13:00:00.000+02:00",
+      "title": "Just a friendly reminder that a $30M hack on Tether caused an $8B (6%) drop in Bitcoin",
+      "text": "This is in response to those who claimed a $675M market cap coin couldn’t impact BTC’s price in any significant way.\n submitted by /u/Duality_Of_Reality\n[link] [comments]",
+      "highlightText": "",
+      "highlightTitle": "",
+      "language": "english",
+      "external_links": [],
+      "entities": {
+        "persons": [],
+        "organizations": [],
+        "locations": []
+      },
+      "rating": null,
+      "crawled": "2017-11-21T11:39:33.004+02:00"
+    },
+    {
+      "thread": {
+        "uuid": "053d891452b6ea925e31fba2058359f682441666",
+        "url": "http://omgili.com/ri/.wHSUbtEfZQ2F8au4ugZad_J4qnGXapSKlBCa5SRpBYk8DEckqg2VsukEuYAICRpK9R1XGaecWtwm9vGXa5D5Qei6eow0EId1MR4.c8f5HFRwYlrn.7iTixPNZWyFUN0",
+        "site_full": "www.reddit.com",
+        "site": "reddit.com",
+        "site_section": "https://www.reddit.com/r/btc",
+        "site_categories": [
+          "media",
+          "adult",
+          "non_standard_content"
+        ],
+        "section_title": "Bitcoin - The Internet of Money",
+        "title": "Just purchased my first ever 0.02 BCH!",
+        "title_full": "Just purchased my first ever 0.02 BCH! : btc",
+        "published": "2017-11-21T07:01:00.000+02:00",
+        "replies_count": 26,
+        "participants_count": 16,
+        "site_type": "discussions",
+        "country": "US",
+        "spam_score": 0.0,
+        "main_image": "",
+        "performance_score": 0,
+        "domain_rank": 33,
+        "social": {
+          "facebook": {
+            "likes": 0,
+            "comments": 0,
+            "shares": 0
+          },
+          "gplus": {
+            "shares": 0
+          },
+          "pinterest": {
+            "shares": 0
+          },
+          "linkedin": {
+            "shares": 0
+          },
+          "stumbledupon": {
+            "shares": 0
+          },
+          "vk": {
+            "shares": 0
+          }
+        }
+      },
+      "uuid": "053d891452b6ea925e31fba2058359f682441666",
+      "url": "http://omgili.com/ri/.wHSUbtEfZQ2F8au4ugZad_J4qnGXapSKlBCa5SRpBYk8DEckqg2VsukEuYAICRpK9R1XGaecWtwm9vGXa5D5Qei6eow0EId1MR4.c8f5HFRwYlrn.7iTixPNZWyFUN0",
+      "ord_in_thread": 0,
+      "author": "Gnarseph",
+      "published": "2017-11-21T07:01:00.000+02:00",
+      "title": "Just purchased my first ever 0.02 BCH!",
+      "text": "Never been involved with Bitcoin/Bitcoin Cash before. Found /r/bitcoin from /r/all , found this sub, read both voraciously... The truth is evident. Kudos to you guys! Hopefully I can grow my 0.02 into more in the future! Living paycheck to paycheck atm :')\nGlad I didn't have to pay >$3 in fees.\n submitted by /u/Gnarseph\n[link] [comments]",
+      "highlightText": "",
+      "highlightTitle": "",
+      "language": "english",
+      "external_links": [],
+      "entities": {
+        "persons": [],
+        "organizations": [],
+        "locations": []
+      },
+      "rating": null,
+      "crawled": "2017-11-21T07:14:48.002+02:00"
+    },
+    {
+      "thread": {
+        "uuid": "4798052df3b34261d75565c731b839e78844f14c",
+        "url": "http://omgili.com/ri/.wHSUbtEfZQ2F8au4ugZad_J4qnGXapSKlBCa5SRpBYk8DEckqg2Vh40mW4zN7jrFFgX7ktZBdg2yC8Kd32EynhkvLZEuGBIUXX3Fe08Sh0YpnMvQEjlfQ--",
+        "site_full": "www.reddit.com",
+        "site": "reddit.com",
+        "site_section": "https://www.reddit.com/r/btc",
+        "site_categories": [
+          "media",
+          "adult",
+          "non_standard_content"
+        ],
+        "section_title": "Bitcoin - The Internet of Money",
+        "title": "r/bitcoin has jumped the shark",
+        "title_full": "r/bitcoin has jumped the shark : btc",
+        "published": "2017-11-20T16:06:00.000+02:00",
+        "replies_count": 25,
+        "participants_count": 16,
+        "site_type": "discussions",
+        "country": "US",
+        "spam_score": 0.0,
+        "main_image": "",
+        "performance_score": 0,
+        "domain_rank": 33,
+        "social": {
+          "facebook": {
+            "likes": 0,
+            "comments": 0,
+            "shares": 0
+          },
+          "gplus": {
+            "shares": 0
+          },
+          "pinterest": {
+            "shares": 0
+          },
+          "linkedin": {
+            "shares": 0
+          },
+          "stumbledupon": {
+            "shares": 0
+          },
+          "vk": {
+            "shares": 0
+          }
+        }
+      },
+      "uuid": "4798052df3b34261d75565c731b839e78844f14c",
+      "url": "http://omgili.com/ri/.wHSUbtEfZQ2F8au4ugZad_J4qnGXapSKlBCa5SRpBYk8DEckqg2Vh40mW4zN7jrFFgX7ktZBdg2yC8Kd32EynhkvLZEuGBIUXX3Fe08Sh0YpnMvQEjlfQ--",
+      "ord_in_thread": 0,
+      "author": "SwedishSalsa",
+      "published": "2017-11-20T16:06:00.000+02:00",
+      "title": "r/bitcoin has jumped the shark",
+      "text": "r/bitcoin has jumped the shark big time. At least it used to be somewhat interesting to read their twisted logic and arguments. Now the average mental age seems to be 14 years. The front is filled with tired memes of Leonardo DiCaprio, Teslas, anime characters and pure greed. It's what I imagine the subreddit for the BitConnect pyramid scheme would look like.\n submitted by /u/SwedishSalsa\n[link] [comments]",
+      "highlightText": "",
+      "highlightTitle": "",
+      "language": "english",
+      "external_links": [],
+      "entities": {
+        "persons": [],
+        "organizations": [],
+        "locations": []
+      },
+      "rating": null,
+      "crawled": "2017-11-20T14:25:03.017+02:00"
+    },
+    {
+      "thread": {
+        "uuid": "890e4aea1df8eb8e92dff060c10842f321ec9f5e",
+        "url": "http://omgili.com/ri/.wHSUbtEfZQ2F8au4ugZad_J4qnGXapSKOlPvBjFDQ95sRoSYpOQsqkWFlaq2OTz_wzM1bau3KgFD4gXJHxVpDjkO6ase1gxNwwBH3B2dGMy6P2kT8ahueWSC7qVs3W7hYNKST.lOW8-",
+        "site_full": "www.reddit.com",
+        "site": "reddit.com",
+        "site_section": "https://www.reddit.com/r/worldnews/",
+        "site_categories": [
+          "media",
+          "adult",
+          "non_standard_content"
+        ],
+        "section_title": "World News",
+        "title": "The CEO of one of Asia's largest banks says bitcoin is a 'Ponzi scheme'",
+        "title_full": "The CEO of one of Asia's largest banks says bitcoin is a 'Ponzi scheme' : worldnews",
+        "published": "2017-11-21T03:28:00.000+02:00",
+        "replies_count": 23,
+        "participants_count": 22,
+        "site_type": "discussions",
+        "country": "US",
+        "spam_score": 0.057,
+        "main_image": "",
+        "performance_score": 0,
+        "domain_rank": 33,
+        "social": {
+          "facebook": {
+            "likes": 0,
+            "comments": 0,
+            "shares": 0
+          },
+          "gplus": {
+            "shares": 0
+          },
+          "pinterest": {
+            "shares": 0
+          },
+          "linkedin": {
+            "shares": 0
+          },
+          "stumbledupon": {
+            "shares": 0
+          },
+          "vk": {
+            "shares": 0
+          }
+        }
+      },
+      "uuid": "890e4aea1df8eb8e92dff060c10842f321ec9f5e",
+      "url": "http://omgili.com/ri/.wHSUbtEfZQ2F8au4ugZad_J4qnGXapSKOlPvBjFDQ95sRoSYpOQsqkWFlaq2OTz_wzM1bau3KgFD4gXJHxVpDjkO6ase1gxNwwBH3B2dGMy6P2kT8ahueWSC7qVs3W7hYNKST.lOW8-",
+      "ord_in_thread": 0,
+      "author": "Viscabarca_",
+      "published": "2017-11-21T03:28:00.000+02:00",
+      "title": "The CEO of one of Asia's largest banks says bitcoin is a 'Ponzi scheme'",
+      "text": "submitted by /u/Viscabarca_\n[link] [comments]",
+      "highlightText": "",
+      "highlightTitle": "",
+      "language": "english",
+      "external_links": [
+        "http://uk.businessinsider.com/bitcoin-a-ponzi-scheme-ceo-of-one-of-asias-largest-banks-says-2017-11"
+      ],
+      "entities": {
+        "persons": [],
+        "organizations": [],
+        "locations": []
+      },
+      "rating": null,
+      "crawled": "2017-11-21T06:45:10.002+02:00"
+    },
+    {
+      "thread": {
+        "uuid": "8f464be694a47a0886f314efe6eb9686fee0ca51",
+        "url": "http://omgili.com/ri/.wHSUbtEfZQ2F8au4ugZad_J4qnGXapSKlBCa5SRpBYk8DEckqg2VufR6HXNd5xqjIqlASxX768HO.O_UnICmrsRXCWI3ifBn_0H44FDibwuGw2YY5VjM8GpJHMuoiaE7PtkccTarfU-",
+        "site_full": "www.reddit.com",
+        "site": "reddit.com",
+        "site_section": "https://www.reddit.com/r/btc",
+        "site_categories": [
+          "media",
+          "adult",
+          "non_standard_content"
+        ],
+        "section_title": "Bitcoin - The Internet of Money",
+        "title": "Relax, the bitcoin.com wallet doesnt actually let noobs lose bitcoins by accidentally sending them to a BCH wallet",
+        "title_full": "Relax, the bitcoin.com wallet doesnt actually let noobs lose bitcoins by accidentally sending them to a BCH wallet : btc",
+        "published": "2017-11-21T05:22:00.000+02:00",
+        "replies_count": 22,
+        "participants_count": 17,
+        "site_type": "discussions",
+        "country": "US",
+        "spam_score": 0.0,
+        "main_image": "",
+        "performance_score": 0,
+        "domain_rank": 33,
+        "social": {
+          "facebook": {
+            "likes": 0,
+            "comments": 0,
+            "shares": 0
+          },
+          "gplus": {
+            "shares": 0
+          },
+          "pinterest": {
+            "shares": 0
+          },
+          "linkedin": {
+            "shares": 0
+          },
+          "stumbledupon": {
+            "shares": 0
+          },
+          "vk": {
+            "shares": 0
+          }
+        }
+      },
+      "uuid": "8f464be694a47a0886f314efe6eb9686fee0ca51",
+      "url": "http://omgili.com/ri/.wHSUbtEfZQ2F8au4ugZad_J4qnGXapSKlBCa5SRpBYk8DEckqg2VufR6HXNd5xqjIqlASxX768HO.O_UnICmrsRXCWI3ifBn_0H44FDibwuGw2YY5VjM8GpJHMuoiaE7PtkccTarfU-",
+      "ord_in_thread": 0,
+      "author": "thegreen4me",
+      "published": "2017-11-21T05:22:00.000+02:00",
+      "title": "Relax, the bitcoin.com wallet doesnt actually let noobs lose bitcoins by accidentally sending them to a BCH wallet",
+      "text": "That's pretty friendly. Better than the BTC.com wallet that immediately sweeps both networks for funds.",
+      "highlightText": "",
+      "highlightTitle": "",
+      "language": "english",
+      "external_links": [],
+      "entities": {
+        "persons": [],
+        "organizations": [],
+        "locations": []
+      },
+      "rating": null,
+      "crawled": "2017-11-21T00:58:01.009+02:00"
+    },
+    {
+      "thread": {
+        "uuid": "ad50abcb374e66fc8c61651d3ce63823b789e434",
+        "url": "http://omgili.com/ri/.wHSUbtEfZQ2F8au4ugZad_J4qnGXapSKlBCa5SRpBYk8DEckqg2VuoqByBWSjMIRtU_.LNVMwL7m1jYAfc75acixl_iT5lhZg_V0HlyG3QNFS_7Lxoeo8zrjr2G599TMjrvy0fk3IA-",
+        "site_full": "www.reddit.com",
+        "site": "reddit.com",
+        "site_section": "https://www.reddit.com/r/btc",
+        "site_categories": [
+          "media",
+          "adult",
+          "non_standard_content"
+        ],
+        "section_title": "Bitcoin - The Internet of Money",
+        "title": "8 out of 25 posts on /r/bitcoin's front page are about Bitcoin Cash",
+        "title_full": "8 out of 25 posts on /r/bitcoin's front page are about Bitcoin Cash : btc",
+        "published": "2017-11-21T03:36:00.000+02:00",
+        "replies_count": 21,
+        "participants_count": 18,
+        "site_type": "discussions",
+        "country": "US",
+        "spam_score": 0.059,
+        "main_image": "",
+        "performance_score": 0,
+        "domain_rank": 33,
+        "social": {
+          "facebook": {
+            "likes": 0,
+            "comments": 0,
+            "shares": 0
+          },
+          "gplus": {
+            "shares": 0
+          },
+          "pinterest": {
+            "shares": 0
+          },
+          "linkedin": {
+            "shares": 0
+          },
+          "stumbledupon": {
+            "shares": 0
+          },
+          "vk": {
+            "shares": 0
+          }
+        }
+      },
+      "uuid": "ad50abcb374e66fc8c61651d3ce63823b789e434",
+      "url": "http://omgili.com/ri/.wHSUbtEfZQ2F8au4ugZad_J4qnGXapSKlBCa5SRpBYk8DEckqg2VuoqByBWSjMIRtU_.LNVMwL7m1jYAfc75acixl_iT5lhZg_V0HlyG3QNFS_7Lxoeo8zrjr2G599TMjrvy0fk3IA-",
+      "ord_in_thread": 0,
+      "author": "fiah84",
+      "published": "2017-11-21T03:36:00.000+02:00",
+      "title": "8 out of 25 posts on /r/bitcoin's front page are about Bitcoin Cash",
+      "text": "Whatever happened to the policy of not allowing altcoin discussions over there? Oh wait, that only applies for positive posts about BCH.",
+      "highlightText": "",
+      "highlightTitle": "",
+      "language": "english",
+      "external_links": [
+        "https://b.thumbs.redditmedia.com/L8-zs9FjIYRP07RNISWVOE1AkkDarBFA96VvjWRv7Fk.jpg",
+        "https://i.imgur.com/46BfZDN.png"
+      ],
+      "entities": {
+        "persons": [],
+        "organizations": [],
+        "locations": []
+      },
+      "rating": null,
+      "crawled": "2017-11-21T00:58:39.015+02:00"
+    },
+    {
+      "thread": {
+        "uuid": "09d94757a7243235a1fb6dacc821995f0b3b8e5b",
+        "url": "http://omgili.com/ri/.wHSUbtEfZQ2F8au4ugZad_J4qnGXapSKlBCa5SRpBYk8DEckqg2Vn3VrfXQhbJHIsp_Q7BaNzW8BfHLTZAJv6b0P.ZOm4xawR2GwY9WVON2EZpjVWrvQIZCWJSZSu_FWY6eRrfg57w-",
+        "site_full": "www.reddit.com",
+        "site": "reddit.com",
+        "site_section": "https://www.reddit.com/r/btc",
+        "site_categories": [
+          "media",
+          "adult",
+          "non_standard_content"
+        ],
+        "section_title": "Bitcoin - The Internet of Money",
+        "title": "They said it, \"We need high fees to create demand for alternative solutions.\"",
+        "title_full": "They said it, \"We need high fees to create demand for alternative solutions.\" : btc",
+        "published": "2017-11-20T21:42:00.000+02:00",
+        "replies_count": 21,
+        "participants_count": 12,
+        "site_type": "discussions",
+        "country": "US",
+        "spam_score": 0.444,
+        "main_image": "",
+        "performance_score": 0,
+        "domain_rank": 33,
+        "social": {
+          "facebook": {
+            "likes": 0,
+            "comments": 0,
+            "shares": 0
+          },
+          "gplus": {
+            "shares": 0
+          },
+          "pinterest": {
+            "shares": 0
+          },
+          "linkedin": {
+            "shares": 0
+          },
+          "stumbledupon": {
+            "shares": 0
+          },
+          "vk": {
+            "shares": 0
+          }
+        }
+      },
+      "uuid": "09d94757a7243235a1fb6dacc821995f0b3b8e5b",
+      "url": "http://omgili.com/ri/.wHSUbtEfZQ2F8au4ugZad_J4qnGXapSKlBCa5SRpBYk8DEckqg2Vn3VrfXQhbJHIsp_Q7BaNzW8BfHLTZAJv6b0P.ZOm4xawR2GwY9WVON2EZpjVWrvQIZCWJSZSu_FWY6eRrfg57w-",
+      "ord_in_thread": 0,
+      "author": "warboat",
+      "published": "2017-11-20T21:42:00.000+02:00",
+      "title": "They said it, \"We need high fees to create demand for alternative solutions.\"",
+      "text": "https://www.reddit.com/r/Bitcoin/comments/7e56xg/core_is_not_a_group_of_specific_individuals_but/\n\"[–]Vertigo722 3 points 4 hours ago*\nWhat makes you think increasing the block size would even achieve what you think it will? If transaction fees are low, there are countless applications for storing data in a super secure, immutable public ledger. From spam to storing contracts, source code, identities, timestamps, asset management, secure messaging, provably fair gambling, whatever. Oh and yeah, transmitting value. Many of those will be (far) more valuable than processing a pizza payment, so no matter what blocksize you pick, your pizza payment will eventually be out competed by more valuable transactions.\nThe effect large blocks has on transaction fees is therefore only short term and will phase out if adoption increases. But the effect it has on blockchain size, and thus decentralisation and trustlessness is permanent (at least until sharding becomes an option).\nNo block size is ever big enough, but its easily too big. The only real solution to this is layered off-chain solutions, where you can selectively sacrifice some of bitcoin's traits (censorship resistance, trustlessness etc) for transactions that may not require it, but need to be cheap.\nAlso keep in mind you need an incentive to develop these solutions. As long as transactions are cheap and space in the blockchain plentyful, who wil care to develop and implement off chain scaling solution? Who would want to use it, when its less secure and less decentralised? We need high fees to create demand for alternative solutions.\nSo until then, use paypal for your pizza. Or alt coins. But please dont undermine the long term security of bitcoin. \"\n submitted by /u/warboat\n[link] [comments]",
+      "highlightText": "",
+      "highlightTitle": "",
+      "language": "english",
+      "external_links": [],
+      "entities": {
+        "persons": [],
+        "organizations": [],
+        "locations": []
+      },
+      "rating": null,
+      "crawled": "2017-11-20T19:46:22.003+02:00"
+    },
+    {
+      "thread": {
+        "uuid": "61f7c4e459917d3d2631d2c228ffbf2eaa181a2f",
+        "url": "http://omgili.com/ri/.wHSUbtEfZQ2F8au4ugZad_J4qnGXapSKlBCa5SRpBYk8DEckqg2VlnGboIMUIEtPKzsJsALBaM80luRJs4GgWfkpbRFEGn3U3ogonZTz7_N2TNp5wZHe1fMOGKo9rfUA66Xw..6E_A-",
+        "site_full": "www.reddit.com",
+        "site": "reddit.com",
+        "site_section": "https://www.reddit.com/r/btc",
+        "site_categories": [
+          "media",
+          "adult",
+          "non_standard_content"
+        ],
+        "section_title": "Bitcoin - The Internet of Money",
+        "title": "Huge advertising campaign for Bitcoin Cash on r/bitcoin! Most top posts now about Bitcoin Cash",
+        "title_full": "Huge advertising campaign for Bitcoin Cash on r/bitcoin! Most top posts now about Bitcoin Cash : btc",
+        "published": "2017-11-21T02:49:00.000+02:00",
+        "replies_count": 19,
+        "participants_count": 18,
+        "site_type": "discussions",
+        "country": "US",
+        "spam_score": 0.0,
+        "main_image": "",
+        "performance_score": 0,
+        "domain_rank": 33,
+        "social": {
+          "facebook": {
+            "likes": 0,
+            "comments": 0,
+            "shares": 0
+          },
+          "gplus": {
+            "shares": 0
+          },
+          "pinterest": {
+            "shares": 0
+          },
+          "linkedin": {
+            "shares": 0
+          },
+          "stumbledupon": {
+            "shares": 0
+          },
+          "vk": {
+            "shares": 0
+          }
+        }
+      },
+      "uuid": "61f7c4e459917d3d2631d2c228ffbf2eaa181a2f",
+      "url": "http://omgili.com/ri/.wHSUbtEfZQ2F8au4ugZad_J4qnGXapSKlBCa5SRpBYk8DEckqg2VlnGboIMUIEtPKzsJsALBaM80luRJs4GgWfkpbRFEGn3U3ogonZTz7_N2TNp5wZHe1fMOGKo9rfUA66Xw..6E_A-",
+      "ord_in_thread": 0,
+      "author": "Shock_The_Stream",
+      "published": "2017-11-21T02:49:00.000+02:00",
+      "title": "Huge advertising campaign for Bitcoin Cash on r/bitcoin! Most top posts now about Bitcoin Cash",
+      "text": "submitted by /u/Shock_The_Stream\n[link] [comments]",
+      "highlightText": "",
+      "highlightTitle": "",
+      "language": "english",
+      "external_links": [],
+      "entities": {
+        "persons": [],
+        "organizations": [],
+        "locations": []
+      },
+      "rating": null,
+      "crawled": "2017-11-21T00:57:52.002+02:00"
+    },
+    {
+      "thread": {
+        "uuid": "65eb5b124613a5a87406275e55fee22482f70203",
+        "url": "http://omgili.com/ri/.wHSUbtEfZQ2F8au4ugZad_J4qnGXapSKlBCa5SRpBYk8DEckqg2VtVyJN8AuRxdqrYmT_hrSgK9akosqUw.zWQXqEW4STdbpD6zngRp_OQ1AF9LLDB5XqsbIBxfM_kd",
+        "site_full": "www.reddit.com",
+        "site": "reddit.com",
+        "site_section": "https://www.reddit.com/r/btc",
+        "site_categories": [
+          "media",
+          "adult",
+          "non_standard_content"
+        ],
+        "section_title": "Bitcoin - The Internet of Money",
+        "title": "r/bitcoin crying over Bitcoin.com's wallet",
+        "title_full": "r/bitcoin crying over Bitcoin.com's wallet : btc",
+        "published": "2017-11-21T00:17:00.000+02:00",
+        "replies_count": 19,
+        "participants_count": 16,
+        "site_type": "discussions",
+        "country": "US",
+        "spam_score": 0.0,
+        "main_image": "",
+        "performance_score": 0,
+        "domain_rank": 33,
+        "social": {
+          "facebook": {
+            "likes": 0,
+            "comments": 0,
+            "shares": 0
+          },
+          "gplus": {
+            "shares": 0
+          },
+          "pinterest": {
+            "shares": 0
+          },
+          "linkedin": {
+            "shares": 0
+          },
+          "stumbledupon": {
+            "shares": 0
+          },
+          "vk": {
+            "shares": 0
+          }
+        }
+      },
+      "uuid": "65eb5b124613a5a87406275e55fee22482f70203",
+      "url": "http://omgili.com/ri/.wHSUbtEfZQ2F8au4ugZad_J4qnGXapSKlBCa5SRpBYk8DEckqg2VtVyJN8AuRxdqrYmT_hrSgK9akosqUw.zWQXqEW4STdbpD6zngRp_OQ1AF9LLDB5XqsbIBxfM_kd",
+      "ord_in_thread": 0,
+      "author": "Sqamemal",
+      "published": "2017-11-21T00:17:00.000+02:00",
+      "title": "r/bitcoin crying over Bitcoin.com's wallet",
+      "text": "submitted by /u/Sqamemal\n[link] [comments]",
+      "highlightText": "",
+      "highlightTitle": "",
+      "language": "english",
+      "external_links": [
+        "https://b.thumbs.redditmedia.com/05gFnwDF5fTzRxjqlHG_Irrp_RbeobssiWO6baJ1ktY.jpg",
+        "https://i.redd.it/fdvchpdmj3zz.jpg"
+      ],
+      "entities": {
+        "persons": [],
+        "organizations": [],
+        "locations": []
+      },
+      "rating": null,
+      "crawled": "2017-11-20T19:46:00.000+02:00"
+    },
+    {
+      "thread": {
+        "uuid": "488b8bc1e9eee92445e6b69efbf9dd85cacaa985",
+        "url": "http://omgili.com/ri/.wHSUbtEfZQ2F8au4ugZad_J4qnGXapSKlBCa5SRpBYk8DEckqg2VmmhDGss48mEH3zy3Ym7qiClxKKuk5jc4zFx7CbMX5wfBNknOW6JvJl6vPJcbYZGJo9ebwaX8zc4g5pemJKNWvQ-",
+        "site_full": "www.reddit.com",
+        "site": "reddit.com",
+        "site_section": "https://www.reddit.com/r/btc",
+        "site_categories": [
+          "media",
+          "adult",
+          "non_standard_content"
+        ],
+        "section_title": "Bitcoin - The Internet of Money",
+        "title": "I honestly don't think of myself owning Bitcoin anymore, I just own stocks in Blockstream.",
+        "title_full": "I honestly don't think of myself owning Bitcoin anymore, I just own stocks in Blockstream. : btc",
+        "published": "2017-11-20T22:45:00.000+02:00",
+        "replies_count": 17,
+        "participants_count": 12,
+        "site_type": "discussions",
+        "country": "US",
+        "spam_score": 0.0,
+        "main_image": "",
+        "performance_score": 0,
+        "domain_rank": 33,
+        "social": {
+          "facebook": {
+            "likes": 0,
+            "comments": 0,
+            "shares": 0
+          },
+          "gplus": {
+            "shares": 0
+          },
+          "pinterest": {
+            "shares": 0
+          },
+          "linkedin": {
+            "shares": 0
+          },
+          "stumbledupon": {
+            "shares": 0
+          },
+          "vk": {
+            "shares": 0
+          }
+        }
+      },
+      "uuid": "488b8bc1e9eee92445e6b69efbf9dd85cacaa985",
+      "url": "http://omgili.com/ri/.wHSUbtEfZQ2F8au4ugZad_J4qnGXapSKlBCa5SRpBYk8DEckqg2VmmhDGss48mEH3zy3Ym7qiClxKKuk5jc4zFx7CbMX5wfBNknOW6JvJl6vPJcbYZGJo9ebwaX8zc4g5pemJKNWvQ-",
+      "ord_in_thread": 0,
+      "author": "AgrajagOmega",
+      "published": "2017-11-20T22:45:00.000+02:00",
+      "title": "I honestly don't think of myself owning Bitcoin anymore, I just own stocks in Blockstream.",
+      "text": "Hey, these stocks are going up in value and that's great, but it's not what I signed up for.\n submitted by /u/AgrajagOmega\n[link] [comments]",
+      "highlightText": "",
+      "highlightTitle": "",
+      "language": "english",
+      "external_links": [],
+      "entities": {
+        "persons": [],
+        "organizations": [],
+        "locations": []
+      },
+      "rating": null,
+      "crawled": "2017-11-20T19:47:01.006+02:00"
+    },
+    {
+      "thread": {
+        "uuid": "37b294e3b3c0944382dbb1838aa9e726417d66bf",
+        "url": "http://omgili.com/ri/.wHSUbtEfZQ2F8au4ugZad_J4qnGXapSb6YSL21UuCC9QPfwa1nB9HlE2GRh2hqa0H.2Y8yGNoJm0dPk69rAnKhFzwFQ0M9MMbDx_7E52l4g27ZULf_lJjqf2BoiHUOJAB8gr2_C0CbxgFmWUwPnvw--",
+        "site_full": "www.reddit.com",
+        "site": "reddit.com",
+        "site_section": "https://www.reddit.com/r/CryptoCurrency/",
+        "site_categories": [
+          "media",
+          "adult",
+          "non_standard_content"
+        ],
+        "section_title": "Cryptocurrency news and discussions.",
+        "title": "I posted this on r/NEO in response to toxic comments and what I believe was a huge mistake by NEO. Can't find it on r/NEO now",
+        "title_full": "I posted this on r/NEO in response to toxic comments and what I believe was a huge mistake by NEO. Can't find it on r/NEO now : CryptoCurrency",
+        "published": "2017-11-21T10:30:00.000+02:00",
+        "replies_count": 17,
+        "participants_count": 9,
+        "site_type": "discussions",
+        "country": "US",
+        "spam_score": 0.0,
+        "main_image": "",
+        "performance_score": 0,
+        "domain_rank": 33,
+        "social": {
+          "facebook": {
+            "likes": 0,
+            "comments": 0,
+            "shares": 0
+          },
+          "gplus": {
+            "shares": 0
+          },
+          "pinterest": {
+            "shares": 0
+          },
+          "linkedin": {
+            "shares": 0
+          },
+          "stumbledupon": {
+            "shares": 0
+          },
+          "vk": {
+            "shares": 0
+          }
+        }
+      },
+      "uuid": "37b294e3b3c0944382dbb1838aa9e726417d66bf",
+      "url": "http://omgili.com/ri/.wHSUbtEfZQ2F8au4ugZad_J4qnGXapSb6YSL21UuCC9QPfwa1nB9HlE2GRh2hqa0H.2Y8yGNoJm0dPk69rAnKhFzwFQ0M9MMbDx_7E52l4g27ZULf_lJjqf2BoiHUOJAB8gr2_C0CbxgFmWUwPnvw--",
+      "ord_in_thread": 0,
+      "author": "eddiedavislex",
+      "published": "2017-11-21T10:30:00.000+02:00",
+      "title": "I posted this on r/NEO in response to toxic comments and what I believe was a huge mistake by NEO. Can't find it on r/NEO now",
+      "text": "First off I started buying antshares at $10. I've been investing in various projects for a little over a year. I've made money and have few complaints. Today, however, I watched something unfold that deeply troubled me. A project with one of the most supportive communities in all of crypto played a very childish game with their supporters, and hurt a lot of them financially.\nAnd before you decide I'm spreading FUD or shilling another coin, please do me the courtesy of answering this one question honestly. If WTC or VTC or any other project had pulled this kind of stunt today what would you, a full blown NEO supporter, being saying about that project and their dev team? You'd be screaming \"shitcoin!\" at the top of your lungs.\nWe are all investors. Period. Nobody is putting their hard earned money into cryptocurrency for the betterment of humanity. We're all attempting to better our lives. And our individual goals are no one else's business. If somebody actually wants to buy a lambo is it our place to judge? No it isn't.\nA lot of people have little to no money and are scraping together whatever small amount they can to invest. If all they have is $100 are they \"assholes\" for trying to trade and turn it into more? The daily feed is full of comments calling them that or worse for trying to trade up. If you have nothing to start with, how the hell can you \"hodl\" and ever have any hope of a better life? Attacking people for trying to make sound investments and turn a profit is wrong. The more money people put into crypto, the more there is for everyone. How many new investors got burned by NEO today? How many will never be supportive of NEO in the future? Are they assholes and crybabies for trusting NEO's team when they tweeted about big news?\nWould you call someone who invested their life savings in Microsoft, Amazon, or Apple 20 years ago a dumb fuck? Then why would so many people call the ones who have enough faith in NEO to invest heavily dumb fucks like they did all day on the daily feed? Those investors aren't the ones who sent out unsolicited tweets promising big things. NEO did that.\nFor a multi billion dollar market cap business to send out ridiculous tweets like NEO did today is not only unprofessional, it's irresponsible. Make no mistake. Big money and institutional investors are coming. The stock market is past due for a drastic correction. Crypto is going to look extremely attractive to the big boys trying to make up for their huge stock market losses.\nWhat do you think will happen when sneaky fucks the likes of Jamie Dimon go all in with crypto? Do you really believe they won't figure out ways to bully even the largest current crypto investors into submission? The only hope we have of being able to keep crypto out of the hands of these manipulators is to stick together and support one another. A stunt like today that harmed a bunch of small, individual investors cannot be good for crypto. Toying with people and convincing them that earth shattering news is coming plays right into the hands of institutional investors who can't wait to run to their respective governments and urge for regulation. A Wall Street firm has already promised publicly to 'tame bitcoin'. Today's NEO fiasco smells a lot like market manipulation, and trust me it won't go unnoticed by regulators.\nIf you're thinking crypto can't be regulated, you're being naive. In order to become mainstream and make the kind of money people believe it will, crypto will have to submit to some regulation. Screw a bunch of small investors out of their money by manipulating the market and you're virtually guaranteeing heavy handed regulation.\nI'm not done with NEO. I still believe it has a lot of merit. But credibility and trust are difficult to come by. So it seems like utter madness to me to piss it away so carelessly the way NEO did today.\nWhat should have been a public relations coup for NEO has become a full blown disaster. I spent years in crisis and media management. Fucking up is bound to happen. It's how you handle the aftermath and blowback that separates the quality companies from the scammers. I've yet to see any real damage control from NEO. Maybe they feel they don't need any, but if they look at the thousands of comments on the daily discussion they are clearly wrong.\nThere's an old saying that applies to this debacle. Perception is reality. What your company looks like is what it is to people. Is the way NEO looked today truly the project you want to be behind and invested in?\nWake up NEO. Get your shit together. Hang your head. Say you're sorry. Get ahead of this thing before it turns more people off to a fantastic project. All you guys sitting on fat stacks need to realize nobody in crypto is king yet. Support matters. Trust matters. Credibility matters. Lose those and there will be another coin standing in the wings to take your place.\n submitted by /u/eddiedavislex\n[link] [comments]",
+      "highlightText": "",
+      "highlightTitle": "",
+      "language": "english",
+      "external_links": [],
+      "entities": {
+        "persons": [],
+        "organizations": [],
+        "locations": []
+      },
+      "rating": null,
+      "crawled": "2017-11-21T07:21:43.003+02:00"
+    },
+    {
+      "thread": {
+        "uuid": "ed7da143fa61fa6aa7075d17d7ee951c76f94e44",
+        "url": "http://omgili.com/ri/.wHSUbtEfZQ2F8au4ugZad_J4qnGXapSKlBCa5SRpBYk8DEckqg2VsPDX357czzHEMEgbSILivgbFMRUFLULcym7ZhxGK2Iq4Ad4DIweI.dpaqFKNFKDdCCRXmzbC84gt.d3aDmpM00-",
+        "site_full": "www.reddit.com",
+        "site": "reddit.com",
+        "site_section": "https://www.reddit.com/r/btc",
+        "site_categories": [
+          "media",
+          "adult",
+          "non_standard_content"
+        ],
+        "section_title": "Bitcoin - The Internet of Money",
+        "title": "Roger Ver declares Bitcoin Cash to be the \"True Bitcoin\"",
+        "title_full": "Roger Ver declares Bitcoin Cash to be the \"True Bitcoin\" : btc",
+        "published": "2017-11-20T22:05:00.000+02:00",
+        "replies_count": 16,
+        "participants_count": 15,
+        "site_type": "discussions",
+        "country": "US",
+        "spam_score": 0.0,
+        "main_image": "",
+        "performance_score": 0,
+        "domain_rank": 33,
+        "social": {
+          "facebook": {
+            "likes": 0,
+            "comments": 0,
+            "shares": 0
+          },
+          "gplus": {
+            "shares": 0
+          },
+          "pinterest": {
+            "shares": 0
+          },
+          "linkedin": {
+            "shares": 0
+          },
+          "stumbledupon": {
+            "shares": 0
+          },
+          "vk": {
+            "shares": 0
+          }
+        }
+      },
+      "uuid": "ed7da143fa61fa6aa7075d17d7ee951c76f94e44",
+      "url": "http://omgili.com/ri/.wHSUbtEfZQ2F8au4ugZad_J4qnGXapSKlBCa5SRpBYk8DEckqg2VsPDX357czzHEMEgbSILivgbFMRUFLULcym7ZhxGK2Iq4Ad4DIweI.dpaqFKNFKDdCCRXmzbC84gt.d3aDmpM00-",
+      "ord_in_thread": 0,
+      "author": "Crypto_Daily",
+      "published": "2017-11-20T22:05:00.000+02:00",
+      "title": "Roger Ver declares Bitcoin Cash to be the \"True Bitcoin\"",
+      "text": "submitted by /u/Crypto_Daily\n[link] [comments]",
+      "highlightText": "",
+      "highlightTitle": "",
+      "language": "english",
+      "external_links": [
+        "https://b.thumbs.redditmedia.com/KgK6FP4Jyk-aXUXw0KPtr5Fv4PZDCciTTwc2Kd4GGdY.jpg",
+        "https://cryptodaily.co.uk/2017/11/roger-ver-declares-bitcoin-cash-true-bitcoin/"
+      ],
+      "entities": {
+        "persons": [],
+        "organizations": [],
+        "locations": []
+      },
+      "rating": null,
+      "crawled": "2017-11-20T19:46:24.004+02:00"
+    },
+    {
+      "thread": {
+        "uuid": "dd594e63acdffa9394c8d14bbf8a880d5e48f266",
+        "url": "http://omgili.com/ri/.wHSUbtEfZQ2F8au4ugZad_J4qnGXapSKlBCa5SRpBYk8DEckqg2Vt90LyrDe5fUKa5e8VUu7wnRER3rqku5oxXokpd2qGavq9zB_ctVt5Ku3fq4bPdSW505KY51Qk25",
+        "site_full": "www.reddit.com",
+        "site": "reddit.com",
+        "site_section": "https://www.reddit.com/r/btc",
+        "site_categories": [
+          "media",
+          "adult",
+          "non_standard_content"
+        ],
+        "section_title": "Bitcoin - The Internet of Money",
+        "title": "#Bullish! BCH price decoupled from BTC",
+        "title_full": "#Bullish! BCH price decoupled from BTC : btc",
+        "published": "2017-11-20T23:21:00.000+02:00",
+        "replies_count": 13,
+        "participants_count": 10,
+        "site_type": "discussions",
+        "country": "US",
+        "spam_score": 0.0,
+        "main_image": "",
+        "performance_score": 0,
+        "domain_rank": 33,
+        "social": {
+          "facebook": {
+            "likes": 0,
+            "comments": 0,
+            "shares": 0
+          },
+          "gplus": {
+            "shares": 0
+          },
+          "pinterest": {
+            "shares": 0
+          },
+          "linkedin": {
+            "shares": 0
+          },
+          "stumbledupon": {
+            "shares": 0
+          },
+          "vk": {
+            "shares": 0
+          }
+        }
+      },
+      "uuid": "dd594e63acdffa9394c8d14bbf8a880d5e48f266",
+      "url": "http://omgili.com/ri/.wHSUbtEfZQ2F8au4ugZad_J4qnGXapSKlBCa5SRpBYk8DEckqg2Vt90LyrDe5fUKa5e8VUu7wnRER3rqku5oxXokpd2qGavq9zB_ctVt5Ku3fq4bPdSW505KY51Qk25",
+      "ord_in_thread": 0,
+      "author": "Z13xcs",
+      "published": "2017-11-20T23:21:00.000+02:00",
+      "title": "#Bullish! BCH price decoupled from BTC",
+      "text": "The price of Bitcoin Cash looks like its sitting on its new floor of ~$1200 although BTC has jumped ~$250 BCH is holding steady.\n submitted by /u/Z13xcs\n[link] [comments]",
+      "highlightText": "",
+      "highlightTitle": "",
+      "language": "english",
+      "external_links": [],
+      "entities": {
+        "persons": [],
+        "organizations": [],
+        "locations": []
+      },
+      "rating": null,
+      "crawled": "2017-11-20T19:46:12.004+02:00"
+    },
+    {
+      "thread": {
+        "uuid": "056d5b314a1f0eeeb4833ba32c254001f91b5ae3",
+        "url": "http://omgili.com/ri/.wHSUbtEfZQ2F8au4ugZad_J4qnGXapSKlBCa5SRpBYk8DEckqg2VjEZWRZPANOUB.W.LQnmUheKDZ7DjiamDNEIIGR3XpyROk1HbfP1W.9qt2JqmHLIFXm8Q1EKSxoLCPR0t3gx5XI-",
+        "site_full": "www.reddit.com",
+        "site": "reddit.com",
+        "site_section": "https://www.reddit.com/r/btc",
+        "site_categories": [
+          "media",
+          "adult",
+          "non_standard_content"
+        ],
+        "section_title": "Bitcoin - The Internet of Money",
+        "title": "Roger Ver tells Bloomberg news why Bitcoin Cash is the Future back when it was only $450 each.",
+        "title_full": "Roger Ver tells Bloomberg news why Bitcoin Cash is the Future back when it was only $450 each. : btc",
+        "published": "2017-11-21T02:28:00.000+02:00",
+        "replies_count": 12,
+        "participants_count": 11,
+        "site_type": "discussions",
+        "country": "US",
+        "spam_score": 0.0,
+        "main_image": "",
+        "performance_score": 0,
+        "domain_rank": 33,
+        "social": {
+          "facebook": {
+            "likes": 0,
+            "comments": 0,
+            "shares": 0
+          },
+          "gplus": {
+            "shares": 0
+          },
+          "pinterest": {
+            "shares": 0
+          },
+          "linkedin": {
+            "shares": 0
+          },
+          "stumbledupon": {
+            "shares": 0
+          },
+          "vk": {
+            "shares": 0
+          }
+        }
+      },
+      "uuid": "056d5b314a1f0eeeb4833ba32c254001f91b5ae3",
+      "url": "http://omgili.com/ri/.wHSUbtEfZQ2F8au4ugZad_J4qnGXapSKlBCa5SRpBYk8DEckqg2VjEZWRZPANOUB.W.LQnmUheKDZ7DjiamDNEIIGR3XpyROk1HbfP1W.9qt2JqmHLIFXm8Q1EKSxoLCPR0t3gx5XI-",
+      "ord_in_thread": 0,
+      "author": "MemoryDealers",
+      "published": "2017-11-21T02:28:00.000+02:00",
+      "title": "Roger Ver tells Bloomberg news why Bitcoin Cash is the Future back when it was only $450 each.",
+      "text": "submitted by /u/MemoryDealers\n[link] [comments]",
+      "highlightText": "",
+      "highlightTitle": "",
+      "language": "english",
+      "external_links": [
+        "http://www.youtube.com/watch?v=qx4URUAhZwQ",
+        "https://b.thumbs.redditmedia.com/i3NsWJP-n6HtXnclbQ83aK28qYm7_67HFMIB6-gPcWo.jpg"
+      ],
+      "entities": {
+        "persons": [],
+        "organizations": [],
+        "locations": []
+      },
+      "rating": null,
+      "crawled": "2017-11-21T00:58:39.003+02:00"
+    },
+    {
+      "thread": {
+        "uuid": "8efa35572e2c529a51b59eed09f482618e30093d",
+        "url": "http://omgili.com/ri/.wHSUbtEfZQ2F8au4ugZad_J4qnGXapSKlBCa5SRpBYk8DEckqg2Vopf3tqEyXiiAK4_e0LFqDLVvaM2dPYzXl.1wIqm9Xm_xKGNtB6RwzKwcXq6GidCXraSwUPrTTFmd7ndvPBeFDM-",
+        "site_full": "www.reddit.com",
+        "site": "reddit.com",
+        "site_section": "https://www.reddit.com/r/btc",
+        "site_categories": [
+          "media",
+          "adult",
+          "non_standard_content"
+        ],
+        "section_title": "Bitcoin - The Internet of Money",
+        "title": "Bitcoin.com wallet creates both BTC and BCH wallets by default (updated changelog)",
+        "title_full": "Bitcoin.com wallet creates both BTC and BCH wallets by default (updated changelog) : btc",
+        "published": "2017-11-21T10:07:00.000+02:00",
+        "replies_count": 12,
+        "participants_count": 10,
+        "site_type": "discussions",
+        "country": "US",
+        "spam_score": 0.001,
+        "main_image": "",
+        "performance_score": 0,
+        "domain_rank": 33,
+        "social": {
+          "facebook": {
+            "likes": 0,
+            "comments": 0,
+            "shares": 0
+          },
+          "gplus": {
+            "shares": 0
+          },
+          "pinterest": {
+            "shares": 0
+          },
+          "linkedin": {
+            "shares": 0
+          },
+          "stumbledupon": {
+            "shares": 0
+          },
+          "vk": {
+            "shares": 0
+          }
+        }
+      },
+      "uuid": "8efa35572e2c529a51b59eed09f482618e30093d",
+      "url": "http://omgili.com/ri/.wHSUbtEfZQ2F8au4ugZad_J4qnGXapSKlBCa5SRpBYk8DEckqg2Vopf3tqEyXiiAK4_e0LFqDLVvaM2dPYzXl.1wIqm9Xm_xKGNtB6RwzKwcXq6GidCXraSwUPrTTFmd7ndvPBeFDM-",
+      "ord_in_thread": 0,
+      "author": "zowki",
+      "published": "2017-11-21T10:07:00.000+02:00",
+      "title": "Bitcoin.com wallet creates both BTC and BCH wallets by default (updated changelog)",
+      "text": "submitted by /u/zowki\n[link] [comments]",
+      "highlightText": "",
+      "highlightTitle": "",
+      "language": "english",
+      "external_links": [
+        "https://b.thumbs.redditmedia.com/KOSQjEIZvUQUzEHkmmUlU4GaHvAlcU8SX0ykszofWDo.jpg",
+        "https://i.redd.it/k0b4th79l8zz.png"
+      ],
+      "entities": {
+        "persons": [],
+        "organizations": [],
+        "locations": []
+      },
+      "rating": null,
+      "crawled": "2017-11-21T07:15:28.000+02:00"
+    }
+  ],
+  "totalResults": 25,
+  "moreResultsAvailable": 0,
+  "next": "/filterWebContent?token=da347ad6-b6b4-4135-839d-4308c3989db4&format=html&ts=1511001232135&q=published%3A%3E1511174015960%28site%3Areddit.com+OR+site%3Aycombinator.com%29replies_count%3A%3E10+language%3Aenglish+site_type%3Adiscussions+is_first%3Atrue+bitcoin&sort=thread.replies_count&from=100",
+  "requestsLeft": 183
+}

@@ -8,6 +8,7 @@ let helpers = require('./helpers');
 let parser = require('./parser');
 let dbClient = require('./dbClient');
 let sitesFiltered = require('../filters/sitesFiltered');
+let sitesFilteredDiscussion = require('../filters/sitesFilteredDiscussion');
 
 /**
  * @function {Returns webhose url endpoint}
@@ -22,7 +23,20 @@ api.getWebhoseEndpoint = (daysAgo=1) => {
   let sinceDate = new Date() - (daysAgo*24*60*60*1000);
   let publishedAfter = `published%3A%3E${sinceDate}`
   let sitesFilter = "(site%3A" + sitesFiltered.join('%20OR%20site%3A') + ")";
-  let filters = `q=${publishedAfter}${sitesFilter}language%3Aenglish%20site_type%3Anews%20is_first%3Atrue%20`;
+  let filters = `q=${publishedAfter}${sitesFilter}language%3Aenglish%20site_type%3Adiscussion%20is_first%3Atrue%20`;
+  return `${endpoint}${token}&${sort}&${filters}`
+}
+
+api.getWebhoseEndpointDiscussion = (daysAgo=1) => {
+  let token = config.webhoseTOKEN;
+  let endpoint = "https://webhose.io/filterWebContent?token=";
+  let sort = "sort=replies_count";
+  let sinceDate = new Date() - (daysAgo * 24 * 60 * 60 * 1000);
+  let publishedAfter = `published%3A%3E${sinceDate}`
+  let sitesFilter = "(site%3A" + sitesFilteredDiscussion.join('%20OR%20site%3A') + ")";
+  const COUNT = 10;
+  let repliesCount = `replies_count%3A%3E${COUNT}%20`
+  let filters = `q=${publishedAfter}${sitesFilter}${repliesCount}language%3Aenglish%20site_type%3Adiscussions%20is_first%3Atrue%20`;
   return `${endpoint}${token}&${sort}&${filters}`
 }
 
