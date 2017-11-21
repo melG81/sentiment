@@ -38,9 +38,23 @@ module.exports = {
       test: /\.scss$/,
       include: __dirname + '/components/styles',
       use: ExtractTextPlugin.extract(['css-loader','sass-loader'])
+    },
+    {
+      test: /\.hbs$/, 
+      loader: "handlebars-loader",
+			query: { 
+				helperDirs: [
+					__dirname + "/src/helpers"
+				]
+      }
     }
   ]
   },
+  resolve: {
+    alias: {
+      handlebars: 'handlebars/dist/handlebars.min.js'
+    }
+  },  
   plugins: [
     new webpack.optimize.UglifyJsPlugin(),
     new ExtractTextPlugin({ // define where to save the file

@@ -6,6 +6,7 @@ let {checkVoteCookie} = require('./helpers')
 let topics = require('./topics.js')
 router
   .get('/', topics.index)
+  .get('/fundamentals', topics.fundamentals)
   .get('/topics/browse', topics.browse)
   .get('/topics/:name', topics.show)
   .get('/topics/topic/id/:id/upvote', topics.upVote)

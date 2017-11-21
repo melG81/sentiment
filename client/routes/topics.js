@@ -7,8 +7,6 @@ let {sortPayload} = require('./helpers')
 let queryKeywords = require('../src/filters/queryKeywords.js')
 let { pollScript } = require('../src/util/api');
 let google = require('../src/util/google');
-let { fetchTickers } = require('../src/prices')
-let tickerArr = require('../src/filters/tickers.js')
 
 topics.index = function (req, res, next) {
   let page = Number(req.query.page || 1)
@@ -30,27 +28,23 @@ topics.index = function (req, res, next) {
   }
   let prevPage = getPrevPage(page)
   
-  return Promise.all([
-    dbClient.getAll(page),
-    fetchTickers(tickerArr)
-  ])
-  .then(([payload, prices]) => {
-    let data = payload.data
-    if (sort !== 'latest') {
-      data = sortPayload(data)
-    }
-    let nextPage = getNextPage(page, data)
-    res.render('topics/show', {
-      topicName: 'all',
-      data,
-      page,
-      nextPage,
-      prevPage,
-      admin,
-      sort,
-      prices
-    })
-  });
+  dbClient.getAll(page)
+    .then((payload) => {
+      let data = payload.data
+      if (sort !== 'latest') {
+        data = sortPayload(data)
+      }
+      let nextPage = getNextPage(page, data)
+      res.render('topics/show', {
+        topicName: 'all',
+        data,
+        page,
+        nextPage,
+        prevPage,
+        admin,
+        sort
+      })
+    });
 }
 
 topics.show = function (req, res, next) {
@@ -136,4 +130,12 @@ topics.getById = function (req, res, next) {
       res.send(payload.data)
     })
     .catch(next)
+}
+
+topics.fundamentals = function (req, res, next) {
+  dbClient.getByTopics(['fundamentals'], 100)
+    .then(payload => {
+      let data = payload.data
+      res.render('topics/fundamentals', {data})
+    })
 }
