@@ -40,14 +40,54 @@ let postNew = {
     }
   }
 }
+let postDiscussion = require('../../data/bitcoinDiscussion.json').posts[0]
+let postNewDiscussion = {
+  uuid: 'bca66ca27ea0e7b97b4fc06674ebc183091c00b9',
+  site: 'reddit.com',
+  url: 'http://omgili.com/ri/.wHSUbtEfZQ2F8au4ugZad_J4qnGXapSb6YSL21UuCC9QPfwa1nB9HlE2GRh2hqaqOn4N1N1cC5hZUjyoZsmJX5AmyVch8NNV9D2Zu5wIeIRRWRnyrDp_R2ObTK3FyiA',
+  author: 'keygen4ever',
+  published: '2017-11-21T11:34:00.000+02:00',
+  title: 'Tether Critical Announcement',
+  crawled: '2017-11-21T07:21:16.004+02:00',
+  text: "https://tether.to/tether-critical-announcement/\nTether Critical Announcement\nYesterday, we discovered that funds were improperly removed from the Tether treasury wallet through malicious action by an external attacker. Tether integrators must take immediate action, as discussed below, to prevent further ecosystem disruption.\n$30,950,010 USDT was removed from the Tether Treasury wallet on November 19, 2017 and sent to an unauthorized bitcoin address. As Tether is the issuer of the USDT managed asset, we will not redeem any of the stolen tokens, and we are in the process of attempting token recovery to prevent them from entering the broader ecosystem. The attacker is holding funds in the following address: 16tg2RJuEPtZooy18Wxn2me2RhUdC94N7r. If you receive any USDT tokens from the above address, or from any downstream address that receives these tokens, do not accept them, as they have been flagged and will not be redeemable by Tether for USD.\nThe following steps have been taken to address this matter:\nThe tether.to back-end wallet service has been temporarily suspended. A thorough investigation on the cause of the attack is being undertaken to prevent similar actions in the future. We are providing new builds of Omni Core to the community. (Omni Core is the software used by Tether integrators to support Omni Layer transactions.) These builds should prevent any movement of the stolen coins from the attacker’s address. We strongly urge all Tether integrators to install this software immediately to prevent the coins from entering the ecosystem. Again, any tokens from the attacker’s address will not be redeemed. Accordingly, any and all exchanges, wallets, and other Tether integrators should install this software immediately in order to prevent loss:\nhttps://github.com/tetherto/omnicore/releases/tag/0.2.99.s\nNote that this software will cause a consensus change to currently running Omni Core clients, meaning that it is effectively a temporary hard fork to the Omni Layer. Integrators running this build will not accept any token sends from the attacker’s address, preventing the coins from moving further from the attacker’s address. We are working with the Omni Foundation to investigate ways that will allow Tether to reclaim stranded tokens and rectify the hard fork created by the above software. Once this protocol enhancement is complete, the Omni Foundation will provide updated binaries for all integrators to install. These builds will supersede the binaries provided above by Tether.to. After the protocol upgrades to the Omni Layer are in place, Tether will reclaim the stolen tokens and return them to treasury. Tether issuances have not been affected by this attack, and all Tether tokens remain fully backed by assets in the Tether reserve. The only tokens that will not be redeemed are the ones that were stolen from Tether treasury yesterday. Those tokens will be returned to treasury once the Omni Layer protocol enhancements are in place.\nWe will provide further updates as they come available, and we appreciate the community’s patience, understanding, and support while we work to rectify the situation in the best possible manner to everyone’s benefit.\nThe Tether Team\n submitted by /u/keygen4ever\n[link] [comments]...",
+  domainRank: 33,
+  mainImage: '',
+  social: {
+    facebook: {
+      likes: 0,
+      comments: 0,
+      shares: 0
+    },
+    gplus: {
+      shares: 0
+    },
+    pinterest: {
+      shares: 0
+    },
+    linkedin: {
+      shares: 0
+    },
+    stumbledupon: {
+      shares: 0
+    },
+    vk: {
+      shares: 0
+    }
+  }
+}
 
 describe('#parser', function(){
   it('should exist', () => expect(parser).to.not.be.undefined)
   describe('.parsePost', function(){
     it('should exist', () => expect(parser.parsePost).to.not.be.undefined)
-    it('should extract relevant properties from a single post object', function(){
+    it('should extract relevant properties from a single news post object', function(){
       let input = parser.parsePost(post);
       let actual = postNew
+      expect(input).to.eql(actual);
+    })
+    it('should do the same for a single discussions post object', function(){
+      let input = parser.parsePost(postDiscussion);
+      let actual = postNewDiscussion
       expect(input).to.eql(actual);
     })
   });

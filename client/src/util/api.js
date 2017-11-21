@@ -44,6 +44,7 @@ api.getWebhoseEndpointDiscussion = (daysAgo=1) => {
 /**
  * @function {Fetches initial api payload based on query paramater}
  * @param  {String} query {topic you want to search webhouse for e.g. bitcoin or donald trump}
+ * @param  {String} type {query news type or discussions/ forums}
  * @param  {Object} request {request dependency defaults to axios}
  * @return {Promise} {axios get promise}
  */
@@ -113,6 +114,8 @@ api.pollNext = function (query, payload, request=axios) {
 /**
  * @function {Queries, parses and posts data from the api until no more results available}
  * @param  {String} query {query paramater}
+ * @param  {Number} daysAgo {poll published since number of days ago}
+ * @param  {String} type {news or discussions types}
  * @param  {Object} request {request dependency defaults to axios}
  * @return {Promise} resolves to 'No more results' when completed polling
  */
