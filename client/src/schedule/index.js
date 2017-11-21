@@ -69,10 +69,30 @@ schedule.connect = function () {
       })
   });
 
+  // Define script poll for query bitcoin on forums
+  agenda.define('poll bitcoin discussions', function (job, done) {
+    console.log('poll bitcoin discussions start');
+
+    let query = 'bitcoin';
+    let daysAgo = '1';
+
+    pollScript(query, daysAgo, 'discussions')
+      .then(() => google.pollSentiment(query, daysAgo))
+      .then(results => {
+        console.log(results);
+        done();
+      })
+      .catch(err => {
+        console.log(err);
+      })
+  });
+  
+
   agenda.on('ready', function () {
     console.log('Agenda ready');
     agenda.every('3 hours', 'poll cryptocurrency');
     agenda.every('4 hours', 'poll bitcoin');
+    agenda.every('4 hours', 'poll bitcoin discussions');
     agenda.every('12 hours', 'poll ethereum');
     agenda.start();
   });

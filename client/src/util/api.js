@@ -1,3 +1,6 @@
+// ENV variables
+require('dotenv').config({ path: __dirname + '/./../../.env' });
+
 let api = module.exports = {}
 
 // Dependencies
