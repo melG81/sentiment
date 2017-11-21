@@ -27,6 +27,7 @@ api.getWebhoseEndpoint = (daysAgo=1) => {
   return `${endpoint}${token}&${sort}&${filters}`
 }
 
+// gets specific endpoint for querying forum topics
 api.getWebhoseEndpointDiscussion = (daysAgo=1) => {
   let token = config.webhoseTOKEN;
   let endpoint = "https://webhose.io/filterWebContent?token=";
@@ -46,8 +47,8 @@ api.getWebhoseEndpointDiscussion = (daysAgo=1) => {
  * @param  {Object} request {request dependency defaults to axios}
  * @return {Promise} {axios get promise}
  */
-api.query = function (query, daysAgo, request=axios) {
-  let endpoint = api.getWebhoseEndpoint(daysAgo);
+api.query = function (query, daysAgo, type='news', request=axios) {  
+  let endpoint = (type === 'news') ? api.getWebhoseEndpoint(daysAgo) : api.getWebhoseEndpointDiscussion(daysAgo)
   let queryParam = encodeURI(query);
   let url = endpoint + queryParam;
   return request.get(url)
@@ -115,9 +116,9 @@ api.pollNext = function (query, payload, request=axios) {
  * @param  {Object} request {request dependency defaults to axios}
  * @return {Promise} resolves to 'No more results' when completed polling
  */
-api.pollScript = function (query, daysAgo, request=axios) {
+api.pollScript = function (query, daysAgo, type='news', request=axios) {
   return new Promise(function(resolve){
-    api.query(query, daysAgo, request)
+    api.query(query, daysAgo, type, request)
       .then(payload => {
         return api.pollNext(query, payload, request);
       })

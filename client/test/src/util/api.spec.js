@@ -7,6 +7,7 @@ let sinon = require('sinon');
 let bitcoinPage1 = require('../../data/bitcoinPage1.json');
 let bitcoinPage2 = require('../../data/bitcoinPage2.json');
 let bitcoinPage3 = require('../../data/bitcoinPage3.json');
+let bitcoinDiscussion = require('../../data/bitcoinDiscussion.json');
 let bitcoinPage1Parsed = require('../../data/bitcoinPage1Parsed.json');
 let sitesFilteredDiscussion = require('../../../src/filters/sitesFilteredDiscussion');
 
@@ -18,7 +19,7 @@ let axios = {
 
 describe('#api', function () {
   it('should exist', () => expect(api).to.not.be.undefined);
-  describe.only('getWebhoseEndpointDiscussion', () => {
+  describe('getWebhoseEndpointDiscussion', () => {
     it('should return the webhose endpoint for querying', () => {
       let daysAgo = 1
       let input = api.getWebhoseEndpointDiscussion(daysAgo)
@@ -32,16 +33,40 @@ describe('#api', function () {
   describe('query', function () {
     it('should exist', () => expect(api.query).to.not.be.undefined);
     it('should return a payload from api when given a valid query', function(done){
+      let getWebhoseEndpointDiscussionSpy = sinon.spy(api, 'getWebhoseEndpointDiscussion')
+      let getWebhoseEndpointSpy = sinon.spy(api, 'getWebhoseEndpoint')
       let payload = {
         data: bitcoinPage1
       }
       axios.get.returns(Promise.resolve(payload));
-      api.query('bitcoin', 1, axios)
+      api.query('bitcoin', 1, 'news', axios)
         .then(data => {
           expect(data).to.eql(payload)
+          expect(getWebhoseEndpointSpy.callCount).to.equal(1);
+          expect(getWebhoseEndpointDiscussionSpy.callCount).to.equal(0);
           axios.get.reset();
+          getWebhoseEndpointSpy.restore();
+          getWebhoseEndpointDiscussionSpy.restore();
           done();
         })
+    })
+    it('should call the discussion endpoint if the topic is discussion', function(done){
+      let getWebhoseEndpointDiscussionSpy = sinon.spy(api, 'getWebhoseEndpointDiscussion')
+      let getWebhoseEndpointSpy = sinon.spy(api, 'getWebhoseEndpoint')
+      let payload = {
+        data: bitcoinDiscussion
+      }
+      axios.get.returns(Promise.resolve(payload));
+      api.query('bitcoin', 1, 'discussion', axios)
+        .then(data => {
+          expect(data).to.eql(payload)
+          expect(getWebhoseEndpointSpy.callCount).to.equal(0);
+          expect(getWebhoseEndpointDiscussionSpy.callCount).to.equal(1);
+          axios.get.reset();
+          getWebhoseEndpointSpy.restore();
+          getWebhoseEndpointDiscussionSpy.restore();
+          done();
+        })      
     })
   });
   describe('getNext', function(){
@@ -51,7 +76,7 @@ describe('#api', function () {
       let payload2 = { data: bitcoinPage2 }
       axios.get.onFirstCall().returns(Promise.resolve(payload1));
       axios.get.onSecondCall().returns(Promise.resolve(payload2));
-      api.query('bitcoin', 1, axios)
+      api.query('bitcoin', 1, 'news', axios)
         .then(data => {
           expect(data).to.eql(payload1)
           return data
@@ -71,7 +96,7 @@ describe('#api', function () {
       axios.get.onSecondCall().returns(Promise.resolve(payload2));
       axios.get.onThirdCall().returns(Promise.resolve(payload3));
 
-      api.query('bitcoin',1, axios)
+      api.query('bitcoin',1, 'news', axios)
         .then(data => {
           expect(data).to.eql(payload1)
           return api.getNext(data, axios)
@@ -126,7 +151,7 @@ describe('#api', function () {
 
       let numPosts = bitcoinPage1.posts.length + bitcoinPage2.posts.length + bitcoinPage3.posts.length
 
-      api.pollScript('bitcoin', 1, axios)
+      api.pollScript('bitcoin', 1, 'news', axios)
         .then(msg => {
           expect(msg).to.equal('No more results, totalResults: 2101');
           expect(axios.get.callCount).to.equal(3);
