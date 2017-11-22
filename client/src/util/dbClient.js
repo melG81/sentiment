@@ -119,7 +119,8 @@ dbClient.getByTopicAndSites = function (topic, sitesArr, request=axios) {
  * @param  {Object} request  {request dependency defaults to axios}
  * @return {Promise} {axios.get promise}
  */
-dbClient.getAll = function (page, request=axios) {
-  let url = `${config.sentimentDBHost}/threads?page=${page}`;
+dbClient.getAll = function (page, topic, request=axios) {
+  let topicQuery = topic ? `&topic=${topic}` : null;
+  let url = `${config.sentimentDBHost}/threads?page=${page}${topicQuery}`;
   return request.get(url)
 }
