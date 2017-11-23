@@ -69,11 +69,47 @@ schedule.connect = function () {
       })
   });
 
+  // Define script poll for query ethereum on forums
+  agenda.define('poll ethereum discussions', function (job, done) {
+    console.log('poll ethereum discussions start');
+    
+    let query = 'ethereum';
+    let daysAgo = '1';
+    
+    pollScript(query, daysAgo, 'discussions')
+      .then(() => google.pollSentiment(query, daysAgo))
+      .then(results => {
+        console.log(results);
+        done();
+      })
+      .catch(err => {
+        console.log(err);
+      })
+  });
+
   // Define script poll for query bitcoin on forums
   agenda.define('poll bitcoin discussions', function (job, done) {
     console.log('poll bitcoin discussions start');
 
     let query = 'bitcoin';
+    let daysAgo = '1';
+
+    pollScript(query, daysAgo, 'discussions')
+      .then(() => google.pollSentiment(query, daysAgo))
+      .then(results => {
+        console.log(results);
+        done();
+      })
+      .catch(err => {
+        console.log(err);
+      })
+  });
+  
+  // Define script poll for query ripple coin XRP on forums
+  agenda.define('poll xrp discussions', function (job, done) {
+    console.log('poll xrp discussions start');
+
+    let query = 'xrp';
     let daysAgo = '1';
 
     pollScript(query, daysAgo, 'discussions')
@@ -94,6 +130,8 @@ schedule.connect = function () {
     agenda.every('4 hours', 'poll bitcoin');
     agenda.every('4 hours', 'poll bitcoin discussions');
     agenda.every('12 hours', 'poll ethereum');
+    agenda.every('12 hours', 'poll ethereum discussions');
+    agenda.every('12 hours', 'poll xrp discussions');
     agenda.start();
   });
 
