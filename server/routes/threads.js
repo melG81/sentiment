@@ -179,7 +179,12 @@ threads.paginate = function (req, res, next) {
   let page = req.query.page || 1
   let limit = Number(req.query.limit) || 100
   let skip = limit * (page - 1)
+  
+  let topicName = req.query.topic
+  let topicQuery = (!topicName) ? { $exists: true } : topicName
+
   Thread.find({
+    "topic": topicQuery,
     "post.published": {$gte: publishedSince},
     $where: function(){
       this.votes = this.votes || 0

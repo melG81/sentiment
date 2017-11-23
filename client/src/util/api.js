@@ -1,3 +1,6 @@
+// ENV variables
+require('dotenv').config({ path: __dirname + '/./../../.env' });
+
 let api = module.exports = {}
 
 // Dependencies
@@ -8,6 +11,7 @@ let helpers = require('./helpers');
 let parser = require('./parser');
 let dbClient = require('./dbClient');
 let sitesFiltered = require('../filters/sitesFiltered');
+let sitesFilteredDiscussion = require('../filters/sitesFilteredDiscussion');
 
 /**
  * @function {Returns webhose url endpoint}
@@ -22,18 +26,33 @@ api.getWebhoseEndpoint = (daysAgo=1) => {
   let sinceDate = new Date() - (daysAgo*24*60*60*1000);
   let publishedAfter = `published%3A%3E${sinceDate}`
   let sitesFilter = "(site%3A" + sitesFiltered.join('%20OR%20site%3A') + ")";
-  let filters = `q=${publishedAfter}${sitesFilter}language%3Aenglish%20site_type%3Anews%20is_first%3Atrue%20`;
+  let filters = `q=${publishedAfter}${sitesFilter}language%3Aenglish%20site_type%3Adiscussion%20is_first%3Atrue%20`;
+  return `${endpoint}${token}&${sort}&${filters}`
+}
+
+// gets specific endpoint for querying forum topics
+api.getWebhoseEndpointDiscussion = (daysAgo=1) => {
+  let token = config.webhoseTOKEN;
+  let endpoint = "https://webhose.io/filterWebContent?token=";
+  let sort = "sort=replies_count";
+  let sinceDate = new Date() - (daysAgo * 24 * 60 * 60 * 1000);
+  let publishedAfter = `published%3A%3E${sinceDate}`
+  let sitesFilter = "(site%3A" + sitesFilteredDiscussion.join('%20OR%20site%3A') + ")";
+  const COUNT = 10;
+  let repliesCount = `replies_count%3A%3E${COUNT}%20`
+  let filters = `q=${publishedAfter}${sitesFilter}${repliesCount}language%3Aenglish%20site_type%3Adiscussions%20is_first%3Atrue%20`;
   return `${endpoint}${token}&${sort}&${filters}`
 }
 
 /**
  * @function {Fetches initial api payload based on query paramater}
  * @param  {String} query {topic you want to search webhouse for e.g. bitcoin or donald trump}
+ * @param  {String} type {query news type or discussions/ forums}
  * @param  {Object} request {request dependency defaults to axios}
  * @return {Promise} {axios get promise}
  */
-api.query = function (query, daysAgo, request=axios) {
-  let endpoint = api.getWebhoseEndpoint(daysAgo);
+api.query = function (query, daysAgo, type='news', request=axios) {  
+  let endpoint = (type === 'news') ? api.getWebhoseEndpoint(daysAgo) : api.getWebhoseEndpointDiscussion(daysAgo)
   let queryParam = encodeURI(query);
   let url = endpoint + queryParam;
   return request.get(url)
@@ -98,12 +117,14 @@ api.pollNext = function (query, payload, request=axios) {
 /**
  * @function {Queries, parses and posts data from the api until no more results available}
  * @param  {String} query {query paramater}
+ * @param  {Number} daysAgo {poll published since number of days ago}
+ * @param  {String} type {news or discussions types}
  * @param  {Object} request {request dependency defaults to axios}
  * @return {Promise} resolves to 'No more results' when completed polling
  */
-api.pollScript = function (query, daysAgo, request=axios) {
+api.pollScript = function (query, daysAgo, type='news', request=axios) {
   return new Promise(function(resolve){
-    api.query(query, daysAgo, request)
+    api.query(query, daysAgo, type, request)
       .then(payload => {
         return api.pollNext(query, payload, request);
       })

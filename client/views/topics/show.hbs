@@ -1,10 +1,14 @@
 <div id="ticker-prices" style="height: 75px"></div>
 
 <div class="px-12">
+  {{#if topicName}}
+    <p class="fs-16 pt-2 center">{{capitalize topicName}} news</p>
+  {{/if}}
+
   {{> topic-pagination/template}}
 
   {{#each data}}
-    {{> topic-show/template admin=../admin count=this post=post topic=(join topic) documentSentiment=documentSentiment id=_id}}
+    {{> topic-show/template admin=../admin count=this post=post topic=topic documentSentiment=documentSentiment id=_id}}
   {{/each}}
    
   {{> topic-pagination/template}}

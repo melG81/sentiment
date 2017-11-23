@@ -11,6 +11,7 @@ let google = require('../src/util/google');
 topics.index = function (req, res, next) {
   let page = Number(req.query.page || 1)
   let admin = req.query.admin
+  let topic = req.params.name || null
   let sort = req.query.sort
   let getNextPage = function(page, data) {
     if (data.length >= 80) {
@@ -28,7 +29,7 @@ topics.index = function (req, res, next) {
   }
   let prevPage = getPrevPage(page)
   
-  dbClient.getAll(page)
+  dbClient.getAll(page, topic)
     .then((payload) => {
       let data = payload.data
       if (sort !== 'latest') {
@@ -36,7 +37,7 @@ topics.index = function (req, res, next) {
       }
       let nextPage = getNextPage(page, data)
       res.render('topics/show', {
-        topicName: 'all',
+        topicName: topic,
         data,
         page,
         nextPage,

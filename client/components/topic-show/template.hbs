@@ -20,7 +20,9 @@
       {{#if documentSentiment.score}} | Google AI sentiment
       <span style="color: {{sentimentColor documentSentiment.score}}">{{round documentSentiment.score 2}}</span>
       {{/if}} | tags:
-      <em>{{topic}}</em>
+      {{#each topic}}
+        <em><a class="gray blue-hover" href="/topics/{{this}}">{{this}}</a></em> 
+      {{/each}}
     </p>
     <p class="fs-12 phone-fs-14 black py-5 post-text hide">
       {{post.text}}

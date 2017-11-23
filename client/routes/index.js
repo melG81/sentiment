@@ -8,7 +8,7 @@ router
   .get('/', topics.index)
   .get('/fundamentals', topics.fundamentals)
   .get('/topics/browse', topics.browse)
-  .get('/topics/:name', topics.show)
+  .get('/topics/:name', topics.index)
   .get('/topics/topic/id/:id/upvote', topics.upVote)
   .get('/topics/topic/id/:id/downvote', topics.downVote)
   .get('/topics/topic/id/:id', topics.getById)
