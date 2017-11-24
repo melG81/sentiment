@@ -5,6 +5,7 @@ let mongoose = require('mongoose');
 let Thread = require('../models/thread');
 let _ = require('lodash')
 let moment = require('moment')
+let {dashes} = require('../test/helpers/decode')
 
 /**
  * @function {fetches all thread documents}
@@ -213,3 +214,16 @@ threads.topicById = function (req, res, next) {
     .catch(next)
 }
 
+
+threads.article = function (req, res, next) {
+  let id = dashes(req.params.id)
+  Thread.find({_id: id})
+  .then(data => {
+    if (data.length > 0) {
+      res.send(data)
+    } else {
+      next()
+    }
+  })
+  .catch(next)
+}

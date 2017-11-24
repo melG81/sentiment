@@ -124,3 +124,10 @@ dbClient.getAll = function (page, topic, request=axios) {
   let url = `${config.sentimentDBHost}/threads?page=${page}${topicQuery}`;
   return request.get(url)
 }
+
+
+dbClient.getArticle = function (id, title, request=axios) {
+  let url = `${config.sentimentDBHost}/threads/news/${title}/${id}`;
+  console.log(url);
+  return request.get(url)
+}

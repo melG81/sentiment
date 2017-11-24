@@ -7,6 +7,7 @@ let {sortPayload} = require('./helpers')
 let queryKeywords = require('../src/filters/queryKeywords.js')
 let { pollScript } = require('../src/util/api');
 let google = require('../src/util/google');
+let { parseHtml } = require('../src/util/helpers')
 
 topics.index = function (req, res, next) {
   let page = Number(req.query.page || 1)
@@ -138,5 +139,32 @@ topics.fundamentals = function (req, res, next) {
     .then(payload => {
       let data = payload.data
       res.render('topics/fundamentals', {data})
+    })
+}
+
+topics.article = function (req, res, next) {
+  let title = req.params.title
+  let id = req.params.id
+
+  dbClient.getArticle(id, title)
+    .then(payload => {
+      let {post, documentSentiment, topic, votes} = payload.data[0]
+      let {site, url, author, published, title, text} = post
+      res.render('topics/article',{
+        post: {
+          site,
+          url,
+          author,
+          published,
+          title,
+          text
+        },
+        documentSentiment,
+        topic: topic[0],
+        votes
+      })
+    })
+    .catch(err => {
+      console.log(err.message);
     })
 }
