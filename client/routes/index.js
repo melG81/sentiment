@@ -15,6 +15,10 @@ router
   .get('/topics/topic/id/:id', topics.getById)
   .post('/topics/pollscript', topics.pollscript)
 
+// Sitemap
+let sitemap = require('./sitemap.js')
+router
+  .get('/sitemap', sitemap.index )
 
 // Admin endpoints
 let admin = require('./admin.js')
