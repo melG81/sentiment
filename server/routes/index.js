@@ -17,8 +17,9 @@ router
   .get('/threads/topic/query', threads.topicQuery)
   .get('/threads', threads.paginate)
   .get('/threads/all', threads.index)
+  .get('/threads/news/:title/:id', threads.article)
   .get('/threads/topic/:topic/latest', threads.topicLatest)
-  .get('/threads/topic/:topic', threads.topic)
+  .get('/threads/topic/:topic', threads.topic)  
   .delete('/threads/topic/id/:id', threads.topicDelete)
 
 module.exports = router;

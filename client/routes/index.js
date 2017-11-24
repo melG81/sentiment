@@ -8,12 +8,17 @@ router
   .get('/', topics.index)
   .get('/fundamentals', topics.fundamentals)
   .get('/topics/browse', topics.browse)
+  .get('/topics/news/:title/:id', topics.article)
   .get('/topics/:name', topics.index)
   .get('/topics/topic/id/:id/upvote', topics.upVote)
   .get('/topics/topic/id/:id/downvote', topics.downVote)
   .get('/topics/topic/id/:id', topics.getById)
   .post('/topics/pollscript', topics.pollscript)
 
+// Sitemap
+let sitemap = require('./sitemap.js')
+router
+  .get('/sitemap', sitemap.index )
 
 // Admin endpoints
 let admin = require('./admin.js')

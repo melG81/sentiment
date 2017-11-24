@@ -36,7 +36,8 @@
     "moment": "^2.19.1",
     "numeral": "^2.0.6",
     "query-string": "^5.0.0",
-    "sanitize-html": "^1.15.0"
+    "sanitize-html": "^1.15.0",
+    "sitemap": "^1.13.0"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",

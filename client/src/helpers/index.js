@@ -2,6 +2,7 @@ let helpers = module.exports = {}
 
 helpers.add = require('./add')
 helpers.capitalize = require('./capitalize')
+helpers.encodeDasherize = require('./encodeDasherize')
 helpers.eq = require('./eq')
 helpers.join = require('./join')
 helpers.modulo = require('./modulo')
@@ -12,3 +13,4 @@ helpers.round = require('./round')
 helpers.sentimentColor = require('./sentimentColor')
 helpers.tickerColor = require('./tickerColor')
 helpers.times = require('./times')
+helpers.truncate = require('./truncate')

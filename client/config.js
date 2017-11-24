@@ -9,8 +9,10 @@ config.PORT = process.env.PORT;
 config.webhoseTOKEN = process.env.WEBHOSETOKEN;
 if (process.env.NODE_ENV === 'development') {
   config.sentimentDBHost = 'http://localhost:3000';
+  config.host = 'http://localhost:4000'
 } else {  
   config.sentimentDBHost = 'https://cryptoserver.now.sh';
+  config.host = 'https://cryptonewsagency.com'
 }
 // Instantiate google natural language client
 config.googleClient = new language.LanguageServiceClient({
