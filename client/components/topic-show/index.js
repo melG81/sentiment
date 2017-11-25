@@ -1,5 +1,6 @@
 let axios = require('axios');
-let helpers =  require('../../src/util/helpers');
+let truncate =  require('../../src/helpers/truncate');
+let parseHtml =  require('../../src/helpers/parseHtml');
 // CSS dependencies
 require('./style.scss');
 
@@ -35,9 +36,9 @@ let makeTopicShow = function(){
       // Fetch payload for post text and render in div    
       axios.get(`/topics/topic/id/${id}`).then(payload => {
         this.idCache.push(id)
-        let parsedText = helpers.parseHtml(payload.data.post.text)
+        let parsedText = parseHtml(payload.data.post.text)
         console.log(parsedText);
-        let postText = helpers.truncate(parsedText, 2000)
+        let postText = truncate(parsedText, 2000)
         $postText.html(postText)
         this.postUpVote(e)
       })

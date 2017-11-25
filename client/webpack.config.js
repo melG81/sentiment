@@ -66,6 +66,7 @@ module.exports = {
       cssProcessor: require('cssnano'),
       cssProcessorOptions: { discardComments: { removeAll: true } },
       canPrint: true
-    })
+    }),
+    new webpack.IgnorePlugin(/jsdom/),
   ]
 }

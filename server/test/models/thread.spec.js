@@ -55,7 +55,16 @@ describe('thread', function () {
           done();
         })
     })
+  })
 
+  it('should return error message if no doc exists with that id on GET /threads/topic/id/:id', function(done){
+    chai.request(server)
+      .get('/threads/topic/id/123')
+      .end(function(err, resp){
+        expect(resp.status).to.equal(422)
+        expect(resp.body.error).to.equal('Cast to ObjectId failed for value "123" at path "_id" for model "Thread"')
+        done()
+      })
   })
 
   it('should add a single thread on POST /threads', function (done) {
@@ -207,8 +216,7 @@ describe('thread', function () {
           done();
         })
     })
-})
-
+  })
   it('should find all topics by topic name and published since on GET /threads/topic/query?topic=name%20daysAgo=number', function (done) {
     chai.request(server)
       .get('/threads/topic/query?topic=crypto&topic=bitcoin&daysAgo=100')
@@ -216,5 +224,5 @@ describe('thread', function () {
         expect(resp.body[0].topic).to.eql(['bitcoin', 'crypto'])
         done()
       })
-  })
+  })  
 })

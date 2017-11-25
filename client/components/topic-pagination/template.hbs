@@ -2,11 +2,19 @@
   <div class="col-7">
     <p class="gray py-16">
       {{#if prevPage}}
-        <a href="/?page={{prevPage}}{{#if (eq sort 'latest')}}&sort=latest{{/if}}" class="text-decoration-none gray">< Prev</a>
+        {{#if topicName}}
+          <a href="/topics/{{topicName}}?page={{prevPage}}{{#if (eq sort 'latest')}}&sort=latest{{/if}}" class="text-decoration-none gray">< Prev</a>
+        {{else}}
+          <a href="/?page={{prevPage}}{{#if (eq sort 'latest')}}&sort=latest{{/if}}" class="text-decoration-none gray">< Prev</a>
+        {{/if}}
       {{/if}}
       Page {{page}}
       {{#if nextPage}}
-        <a href="/?page={{nextPage}}{{#if (eq sort 'latest')}}&sort=latest{{/if}}" class="text-decoration-none gray">More ></a>
+        {{#if topicName}}
+          <a href="/topics/{{topicName}}?page={{nextPage}}{{#if (eq sort 'latest')}}&sort=latest{{/if}}" class="text-decoration-none gray">More ></a>
+        {{else}}
+          <a href="/?page={{nextPage}}{{#if (eq sort 'latest')}}&sort=latest{{/if}}" class="text-decoration-none gray">More ></a>
+        {{/if}}
       {{/if}}
     </p>
   </div>

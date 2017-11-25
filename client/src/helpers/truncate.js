@@ -6,5 +6,5 @@
  */
 module.exports = function (string, num) {
   let sliced = string.slice(0, num)
-  return `${sliced}`;
+  return `${sliced}...`;
 }
