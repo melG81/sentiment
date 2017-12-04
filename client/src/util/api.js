@@ -26,7 +26,7 @@ api.getWebhoseEndpoint = (daysAgo=1) => {
   let sinceDate = new Date() - (daysAgo*24*60*60*1000);
   let publishedAfter = `published%3A%3E${sinceDate}`
   let sitesFilter = "(site%3A" + sitesFiltered.join('%20OR%20site%3A') + ")";
-  let filters = `q=${publishedAfter}${sitesFilter}language%3Aenglish%20site_type%3Adiscussion%20is_first%3Atrue%20`;
+  let filters = `q=${publishedAfter}${sitesFilter}language%3Aenglish%20site_type%3Anews%20is_first%3Atrue%20`;
   return `${endpoint}${token}&${sort}&${filters}`
 }
 

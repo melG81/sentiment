@@ -13,13 +13,13 @@ let server = require('../../server.js');
 let mongoose = require('mongoose');
 let Thread = require('../../models/thread');
 
-describe('thread', function () {
-  beforeEach('drop the collection and reseed database', function(done){
-    mongoose.connection.collections.threads.drop(function () {
-      seeder.threads(done)
-    });
+beforeEach('drop the collection and reseed database', function (done) {
+  mongoose.connection.collections.threads.drop(function () {
+    seeder.threads(done)
   });
+});
 
+describe('thread', function () {
   it('should return all the threads on GET /threads/all', function (done) {
     chai.request(server)
       .get('/threads/all')
@@ -219,7 +219,7 @@ describe('thread', function () {
   })
   it('should find all topics by topic name and published since on GET /threads/topic/query?topic=name%20daysAgo=number', function (done) {
     chai.request(server)
-      .get('/threads/topic/query?topic=crypto&topic=bitcoin&daysAgo=100')
+      .get('/threads/topic/query?topic=crypto&topic=bitcoin&daysAgo=300')
       .end(function (err, resp) {
         expect(resp.body[0].topic).to.eql(['bitcoin', 'crypto'])
         done()
