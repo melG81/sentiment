@@ -6,6 +6,7 @@ let Thread = require('../models/thread');
 let _ = require('lodash')
 let moment = require('moment')
 let {dashes} = require('../test/helpers/decode')
+let { CheckPostId, CheckPostTopic, UpdatePostTopic } = require('./util/checkPost')
 
 /**
  * @function {fetches all thread documents}
@@ -54,7 +55,6 @@ threads.sites = function (req, res, next) {
   .catch(next)
 }
 
-
 /**
  * @function {creates a new thread document}
  */
@@ -63,37 +63,16 @@ threads.create = function (req, res, next) {
   let payload = req.body
   let uuid = _.get(payload, 'post.uuid')
   let topic = _.get(payload, 'topic')[0]
-  Thread.find({'post.uuid': uuid})
-    .then(results => {
-      if (results.length > 0) {
-        let result = results[0]
-        let hasTopic = _.includes(result.topic, topic)
-        if (hasTopic) {
-          console.log('post already exists');
-          res.send({
-            message: 'Post already exists'
-          });
-        } else {
-          let newTopic = _.concat(result.topic, topic)
-          let newPayload = Object.assign({}, payload, {
-            topic: newTopic
-          })
-          Thread.findByIdAndUpdate(result._id, newPayload, { new: true })
-            .then(data => {
-              console.log('updated: ', data.topic);
-              res.send(data)
-            })
-            .catch(next);
-        }
-      } else {
-        Thread.create(payload)
-          .then(data => {
-            console.log('created: ', data.post.title);
-            res.send(data)
-          })
-          .catch(next);
-      }
-    })
+  let opts = {payload, uuid, topic, req, res, next}
+
+  let checkPostId = new CheckPostId()
+  let checkPostTopic = new CheckPostTopic()
+  let updatePostTopic = new UpdatePostTopic()  
+
+  checkPostId.setNext(checkPostTopic)
+  checkPostTopic.setNext(updatePostTopic)
+
+  return checkPostId.exec(opts)
 };
 
 /**
@@ -156,7 +135,7 @@ threads.topicQuery = function (req, res, next) {
     findQuery = {}
   } else {
     findQuery = {
-      topic: {$in: topicNameArr},
+      "topic": {$in: topicNameArr},
       "post.published": {$gte: publishedSince}
     }
   }
