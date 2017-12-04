@@ -2,18 +2,17 @@ let helpers = module.exports = {}
 
 // Dependencies
 let {parse} = require('query-string');
-let dompurify = require('dompurify');
 
-/**
- * @function {truncates a string based on number of characters provided}
- * @param  {String} string {Sentence to be truncated}
- * @param  {Number} num    {Number of characters to truncate}
- * @return {String} {truncated string}
- */
-helpers.truncate = function (string, num) {
-  let sliced = string.slice(0, num)
-  return `${sliced}...`;
-}
+// /**
+//  * @function {truncates a string based on number of characters provided}
+//  * @param  {String} string {Sentence to be truncated}
+//  * @param  {Number} num    {Number of characters to truncate}
+//  * @return {String} {truncated string}
+//  */
+// helpers.truncate = function (string, num) {
+//   let sliced = string.slice(0, num)
+//   return `${sliced}...`;
+// }
 
 /**
  * @function {parses a query string url}
@@ -25,11 +24,3 @@ helpers.parse = function(string, param) {
   return parse(string)[param];
 }
 
-helpers.parseHtml = function(string, lib = dompurify) {
-  // Replace new line break with with <br/>
-  let dirty = string.replace(/\n/g, "<br/>");
-  let clean = lib.sanitize(dirty, {
-    ALLOWED_TAGS: ['b', 'i', 'em', 'strong', 'br']
-  });
-  return clean.trim()
-}

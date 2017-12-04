@@ -1,7 +1,7 @@
 let parser = module.exports = {};
 
 // Dependencies
-let helpers = require('./helpers.js')
+let helpers = require('../helpers')
 let get = require('lodash/get')
 
 /**

@@ -1,7 +1,7 @@
 var chai = require('chai');
 var expect = chai.expect;
 var parser = require('../../../src/util/parser');
-let helpers = require('../../../src/util/helpers')
+let helpers = require('../../../src/helpers')
 
 // Require sample json data
 let bitcoinPage1 = require('../../data/bitcoinPage1.json');

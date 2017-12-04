@@ -143,12 +143,11 @@ topics.fundamentals = function (req, res, next) {
 }
 
 topics.article = function (req, res, next) {
-  let title = req.params.title
   let id = req.params.id
 
-  dbClient.getArticle(id, title)
+  dbClient.getDoc(id)
     .then(payload => {
-      let {post, documentSentiment, topic, votes} = payload.data[0]
+      let {post, documentSentiment, topic, votes} = payload.data
       let {site, url, author, published, title, text} = post
       res.render('topics/article',{
         post: {

@@ -210,13 +210,15 @@ threads.paginate = function (req, res, next) {
 threads.topicById = function (req, res, next) {
   let id = req.params.id;
   Thread.findById(id)
-    .then(data => res.status(200).send(data))
+    .then(data => {
+      res.status(200).send(data)
+    })
     .catch(next)
 }
 
 
 threads.article = function (req, res, next) {
-  let id = dashes(req.params.id)
+  let id = req.params.id;
   Thread.find({_id: id})
   .then(data => {
     if (data.length > 0) {

@@ -120,14 +120,8 @@ dbClient.getByTopicAndSites = function (topic, sitesArr, request=axios) {
  * @return {Promise} {axios.get promise}
  */
 dbClient.getAll = function (page, topic, request=axios) {
-  let topicQuery = topic ? `&topic=${topic}` : null;
+  let topicQuery = topic ? `&topic=${topic}` : "";
   let url = `${config.sentimentDBHost}/threads?page=${page}${topicQuery}`;
   return request.get(url)
 }
 
-
-dbClient.getArticle = function (id, title, request=axios) {
-  let url = `${config.sentimentDBHost}/threads/news/${title}/${id}`;
-  console.log(url);
-  return request.get(url)
-}
