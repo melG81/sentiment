@@ -30,6 +30,7 @@ app.use(cookieParser());
 app.engine('.hbs', exphbs({
   extname: '.hbs',
   defaultLayout: 'main',
+  layoutsDir: __dirname + '/views/layouts/',
   helpers,
   partialsDir: __dirname + '/components/'
 }));

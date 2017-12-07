@@ -144,12 +144,14 @@ topics.fundamentals = function (req, res, next) {
 
 topics.article = function (req, res, next) {
   let id = req.params.id
-
+  let fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
   dbClient.getDoc(id)
     .then(payload => {
       let {post, documentSentiment, topic, votes} = payload.data
       let {site, url, author, published, title, text} = post
-      res.render('topics/article',{
+      res.render('topics/article', {
+        layout: 'amp',
+        canonUrl: fullUrl,
         post: {
           site,
           url,
