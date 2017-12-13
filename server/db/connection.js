@@ -17,7 +17,10 @@ db.connect = function () {
     // Using mongoose to connect to MLAB database (Create new database single node free and create new user and set name and password)
     const username = process.env.MONGO_USER;
     const password = process.env.MONGO_PW;
-    mongoose.connect(`mongodb://${username}:${password}@ds243285.mlab.com:43285/sentiment-production`, { useMongoClient: true });   
+    // `mongodb://${username}:${password}@ds139816-a0.mlab.com:39816/sentiment-production-live`
+    mongoose.connect(`mongodb://${username}:${password}@ds139816-a0.mlab.com:39816,ds139816-a1.mlab.com:39816/sentiment-production-live?replicaSet=rs-ds139816`, {
+      useMongoClient: true
+    });
   }
 
   // Signal connection
