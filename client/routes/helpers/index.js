@@ -13,8 +13,9 @@ let moment = require('moment')
  */
 
 helpers.sortPayload = (array, sortBy) => {
-  // Filter by unique post titles
-  let uniqPayload = _.uniqBy(array, 'post.title')
+  // Filter by positive votes and unique post titles
+  let plusVotesArr = array.filter(el => el.votes >= 0)
+  let uniqPayload = _.uniqBy(plusVotesArr, 'post.title')
 
   // Sort by most recent published unless query param includes ?sort=descending
   if (sortBy === 'descending') {

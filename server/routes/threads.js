@@ -163,18 +163,13 @@ threads.paginate = function (req, res, next) {
   let topicName = req.query.topic
   let topicQuery = (!topicName) ? { $exists: true } : topicName
 
-  Thread.find({
-    "topic": topicQuery,
-    "post.published": {$gte: publishedSince},
-    $where: function(){
-      this.votes = this.votes || 0
-      return this.votes > -1
-    }},{
+  Thread.find({},{
       "post.social": 0,
       "post.text": 0
     })
     .sort({
-      "post.published": -1
+      "post.published": -1,
+      "topic": 1
     })
     .limit(limit)
     .skip(skip)

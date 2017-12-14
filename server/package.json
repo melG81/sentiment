@@ -7,8 +7,7 @@
     "test": "NODE_ENV=test mocha",
     "dev": "NODE_ENV=development nodemon ./server.js",
     "start": "NODE_ENV=production node ./server.js",
-    "deploy": "now --docker",
-    "postdeploy": "now alias"
+    "deploy": "now --docker"
   },
   "keywords": [],
   "author": "",
