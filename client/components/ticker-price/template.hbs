@@ -2,5 +2,6 @@
    <p class="fs-11 bg-platinum">{{ticker}}</p>
    <p class="fs-11">{{numeral price '0,0.00'}}</p>
    <p class="fs-11 bg-platinum" style="color: {{tickerColor changePctDay}}">{{numeral changePctDay '(0.00%)'}}</p>
-   <p class="fs-11">{{numeral mktcap '(0.0 a)'}}</p>
+   <p class="fs-11" style="color: {{tickerColor changePctWeek}}">{{numeral changePctWeek '(0.00%)'}}</p>
+   <p class="fs-11 bg-platinum">{{numeral mktcap '(0.0 a)'}}</p>
 </div>
