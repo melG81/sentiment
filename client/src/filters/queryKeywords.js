@@ -6,6 +6,8 @@ module.exports = [
   "altcoin",
   "bitcoin cash",
   "ripple coin",
+  "ripple",
+  "xrp",
   "litecoin",
   "dash coin",
   "bitconnect",

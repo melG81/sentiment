@@ -3,9 +3,6 @@
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
-  "engines": {
-    "node": "8.9.0"
-  },
   "scripts": {
     "test": "find ./test -name '*.spec.js' | xargs mocha -R spec",
     "test:int": "find ./test -name '*.int_spec.js' | xargs mocha -R spec",

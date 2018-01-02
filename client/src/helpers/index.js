@@ -16,22 +16,22 @@ helpers.tickerColor = require('./tickerColor')
 helpers.times = require('./times')
 helpers.truncate = require('./truncate')
 
-// Font-Awesome 5
-let fontawesome = require('@fortawesome/fontawesome');
-let solid = require('@fortawesome/fontawesome-free-solid');
-let brands = require('@fortawesome/fontawesome-free-brands');
+// // Font-Awesome 5
+// let fontawesome = require('@fortawesome/fontawesome');
+// let solid = require('@fortawesome/fontawesome-free-solid');
+// let brands = require('@fortawesome/fontawesome-free-brands');
 
-// Adds all the icons from the Solid style into our library for easy lookup
-fontawesome.library.add(solid, brands)
+// // Adds all the icons from the Solid style into our library for easy lookup
+// fontawesome.library.add(solid, brands)
 
-helpers.fontawesomeCSS = function () {
-  return fontawesome.dom.css()
-}
+// helpers.fontawesomeCSS = function () {
+//   return fontawesome.dom.css()
+// }
 
-helpers.fontawesomeIcon = function (args) {
-  return fontawesome.icon({ prefix: 'fas', iconName: args.hash.icon }).html
-}
+// helpers.fontawesomeIcon = function (args) {
+//   return fontawesome.icon({ prefix: 'fas', iconName: args.hash.icon }).html
+// }
 
-helpers.fontawesomeBrand = function (args) {
-  return fontawesome.icon({ prefix: 'fab', iconName: args.hash.icon }).html
-}
+// helpers.fontawesomeBrand = function (args) {
+//   return fontawesome.icon({ prefix: 'fab', iconName: args.hash.icon }).html
+// }
