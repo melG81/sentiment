@@ -21,7 +21,7 @@ beforeEach('drop the collection and reseed database', function (done) {
   });
 });
 
-describe.only('#User', function () {
+describe('#User', function () {
   it('should return all the users on GET /users/all', function (done) {
     chai.request(server)
       .get('/users')
@@ -55,189 +55,74 @@ describe.only('#User', function () {
       })
   });
 
-  // it('should return a single doc on GET /threads/topic/id/:id', function (done) {
-  //   chai.request(server)
-  //     .get('/threads/all')
-  //     .end(function (err, resp) {
-  //       let sampleId = resp.body[0]._id;
+  it('should create a single user on POST /users', function (done) {
+    chai.request(server)
+      .post('/users')
+      .send({
+        email: 'hela@gmail.com',
+        password: 'chicken'
+      })
+      .end(function (err, res) {
+        let input = _.pick(res.body, ['email', 'admin'])
+        let actual = {email: 'hela@gmail.com', admin: false}
+        expect(input).to.eql(actual)
+        done()
+      })
+  });
 
-  //       chai.request(server)
-  //         .get(`/threads/topic/id/${sampleId}`)
-  //         .end(function (err, resp) {
-  //           let input = resp.body._id
-  //           let actual = sampleId
-  //           expect(input).to.equal(actual)
-  //           done();
-  //         })
-  //     })
-  // })
+  it('should update a single user on PUT /users/:id', function (done) {
+    let newPassword = 'salad'
 
-  // it('should return error message if no doc exists with that id on GET /threads/topic/id/:id', function (done) {
-  //   chai.request(server)
-  //     .get('/threads/topic/id/123')
-  //     .end(function (err, resp) {
-  //       expect(resp.status).to.equal(422)
-  //       expect(resp.body.error).to.equal('Cast to ObjectId failed for value "123" at path "_id" for model "Thread"')
-  //       done()
-  //     })
-  // })
+    chai.request(server)
+      .get('/users')
+      .end(function (err, res) {
+        let howie = res.body.filter(user => user.email === 'howie@gmail.com')[0]
+        chai.request(server)
+          .put(`/users/${howie._id}`)
+          .send({
+            password: newPassword
+          })
+          .end(function (err, res) {
+            let data = res.body
+            let input = _.pick(data, ['email', 'admin'])
+            let actual = {email: 'howie@gmail.com', admin: true}
+            expect(input).to.eql(actual)
+            // Check password
+            let checkPassword = bcrypt.compareSync(newPassword, data.password)
+            expect(checkPassword).to.be.ok
+            done();
+          })
+      })
+  });
 
-  // it('should add a single thread on POST /threads', function (done) {
-  //   let posts = require('../data/posts.json');
-  //   let post = posts[2]
+  it('should delete a single user on DELETE /users/:id', function (done) {
+    let howieEmail = 'howie@gmail.com'
 
-  //   chai.request(server)
-  //     .post('/threads')
-  //     .send({ topic: ['banana boat'], post })
-  //     .end(function (err, resp) {
-  //       let data = resp.body;
-  //       let topic = data.topic;
-  //       let date = moment(data.date).format('YYYY');
-  //       let today = moment().format('YYYY');
-  //       expect(topic).to.eql(['banana boat']);
-  //       expect(date).to.equal(today);
-  //       expect(data.post).to.eql(post);
-  //       done();
-  //     })
-  // });
+    chai.request(server)
+      .get('/users')
+      .end(function (err, res) {
+        let howie = res.body.filter(user => user.email === howieEmail)[0]
 
-  // it('should validate if the post uuid already exists with same topic before creating thread via POST /threads', function (done) {
-  //   let posts = require('../data/posts.json');
-  //   let post = posts[1];
-  //   chai.request(server)
-  //     .post('/threads')
-  //     .send({ topic: ['bitcoin'], post })
-  //     .end(function (err, resp) {
-  //       let input = resp.body;
-  //       let actual = {
-  //         message: 'Post already exists'
-  //       }
-  //       expect(input).to.eql(actual)
-  //       done();
-  //     })
-  // })
+        let input = res.body.map(user => user.email)
+        let actual = howieEmail
+        expect(input).to.include(actual)
 
-  // it('should update if the post uuid already exists but topic is different via POST /threads', function (done) {
-  //   let posts = require('../data/posts.json');
-  //   let post = posts[1];
-  //   chai.request(server)
-  //     .post('/threads')
-  //     .send({ topic: ['fatcat'], post })
-  //     .end(function (err, resp) {
-  //       let input = resp.body.topic;
-  //       let actual = ['bitcoin', 'crypto', 'fatcat']
-  //       expect(input).to.eql(actual)
-  //       done();
-  //     })
-  // })
+        chai.request(server)
+          .delete(`/users/${howie._id}`)
+          .end(function (err, res) {
+            
+            chai.request(server)
+              .get('/users')
+              .end(function(err, res){
+                let input = res.body.map(user => user.email)
+                let actual = howieEmail
+                expect(input).to.not.include(actual)
+                done()
+              })
+          })
+      })
+  });
 
-  // it('should return all topic threads on GET /threads/topic/:topic', function (done) {
-  //   chai.request(server)
-  //     .get('/threads/topic/bitcoin')
-  //     .end(function (err, resp) {
-  //       let input = resp.body.map(el => {
-  //         return Object.assign({}, {
-  //           topic: el.topic,
-  //           createdAt: moment(el.createdAt).format('YYYY')
-  //         })
-  //       })
-  //       let actual = [
-  //         { topic: ['bitcoin'], createdAt: '2018' },
-  //         { topic: ['bitcoin'], createdAt: '2018' },
-  //       ]
-  //       expect(input).to.deep.include.members(actual);
-  //       done();
-  //     })
-  // });
 
-  // it('should return the latest topic thread on GET /threads/topic/:topic/latest', function (done) {
-  //   chai.request(server)
-  //     .get('/threads/topic/bitcoin/latest')
-  //     .end(function (err, resp) {
-  //       expect(resp.body.length).to.equal(1);
-  //       let data = resp.body[0];
-  //       let topic = data.topic;
-  //       let post = data.post;
-  //       let posts = require('../data/posts.json');
-  //       let actual = posts[1]
 
-  //       expect(topic).to.eql(['bitcoin', 'crypto']);
-  //       expect(post).to.eql(actual);
-  //       done();
-  //     })
-  // });
-
-  // it('should return all relevant site documents when passed an array of sites via POST /threads/sites', function (done) {
-  //   chai.request(server)
-  //     .post('/threads/sites')
-  //     .send({ topic: 'bitcoin', sites: ['businessinsider.com'] })
-  //     .end(function (err, resp) {
-  //       let input = resp.body[0].post.site;
-  //       let actual = 'businessinsider.com'
-  //       expect(input).to.equal(actual)
-  //       done()
-  //     })
-  // })
-
-  // it('should delete a topic by id on DELETE /threads/topic/id/:id', function (done) {
-  //   Thread
-  //     .findOne({ topic: 'monero' })
-  //     .then(data => {
-  //       let id = data.id;
-  //       chai.request(server)
-  //         .delete(`/threads/topic/id/${id}`)
-  //         .end(function (err, resp) {
-  //           expect(resp.body.topic).to.eql(['monero']);
-  //           chai.request(server)
-  //             .get('/threads/topic/monero')
-  //             .end(function (err, resp) {
-  //               expect(resp.body.length).to.equal(0);
-  //               done();
-  //             })
-  //         })
-  //     })
-  // });
-
-  // it('should update a topic by id on PUT /threads/topic/id/:id', function (done) {
-  //   Thread
-  //     .findOne({ topic: 'bitcoin' })
-  //     .then(data => {
-  //       let id = data.id;
-  //       let document = { topic: ['miaow'], post: { title: 'cat hero' } }
-
-  //       chai.request(server)
-  //         .put(`/threads/topic/id/${id}`)
-  //         .send(document)
-  //         .end(function (err, resp) {
-  //           expect(resp.body.topic).to.eql(['miaow']);
-  //           expect(resp.body.post).to.eql(document.post);
-  //           done();
-  //         })
-  //     })
-  // });
-
-  // it('should update a topic with given votes on PUT /threads/topic/id/:id', function (done) {
-  //   Thread
-  //     .findOne({ topic: 'bitcoin' })
-  //     .then(data => {
-  //       let id = data.id;
-
-  //       chai.request(server)
-  //         .put(`/threads/topic/id/${id}`)
-  //         .send({ post: { title: 'optional' }, votes: 1 })
-  //         .end(function (err, resp) {
-  //           expect(resp.body.topic).to.eql(['bitcoin'])
-  //           expect(resp.body.votes).to.equal(1)
-  //           done();
-  //         })
-  //     })
-  // })
-  // it('should find all topics by topic name and published since on GET /threads/topic/query?topic=name%20daysAgo=number', function (done) {
-  //   chai.request(server)
-  //     .get('/threads/topic/query?topic=crypto&topic=bitcoin&daysAgo=300')
-  //     .end(function (err, resp) {
-  //       expect(resp.body[0].topic).to.eql(['bitcoin', 'crypto'])
-  //       done()
-  //     })
-  // })
 })
