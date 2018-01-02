@@ -3,7 +3,9 @@ let seeder = module.exports = {};
 // Dependencies
 let mongoose = require('mongoose');
 let Thread = require('../../models/thread');
+let User = require('../../models/user');
 let posts = require('../data/posts.json');
+let bcrypt = require('bcrypt')
 
 /**
  * @function {wraps the defalt mongoose.create method in a promise}
@@ -31,5 +33,16 @@ seeder.threads = function (done) {
   let bitcoin2 = Thread.seed({ topic: ['bitcoin', 'crypto'], post: posts[1] });
 
   Promise.all([bitcoin, monero, gold, bitcoin2])
+    .then(() => done());
+};
+
+seeder.users = function (done) {
+  let howiePassword = bcrypt.hashSync('chicken', 10)
+  let felixPassword = bcrypt.hashSync('chicken', 10)
+
+  let howie = User.seed({ email: 'howie@gmail.com', password: howiePassword, admin: true});
+  let felix = User.seed({ email: 'felix@gmail.com', password: felixPassword});
+
+  Promise.all([howie, felix])
     .then(() => done());
 };

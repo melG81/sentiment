@@ -21,4 +21,11 @@ router
   .get('/threads/topic/:topic', threads.topic)  
   .delete('/threads/topic/id/:id', threads.topicDelete)
 
+// Users CRUD endpoints
+var users = require('./users.js');
+router
+  .get('/users', users.index)
+  .get('/users/:id', users.show)
+
+
 module.exports = router;
