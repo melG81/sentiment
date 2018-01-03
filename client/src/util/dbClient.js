@@ -124,4 +124,3 @@ dbClient.getAll = function (page, topic, request=axios) {
   let url = `${config.sentimentDBHost}/threads?page=${page}${topicQuery}`;
   return request.get(url)
 }
-

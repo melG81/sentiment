@@ -7,7 +7,8 @@ let queryKeywords = require('../src/filters/queryKeywords.js')
 
 admin.index = function (req, res, next) {
   res.render('admin/index', {
-    queryKeywords
+    queryKeywords,
+    isAuthenticated: req.isAuthenticated() 
   })
 }
 

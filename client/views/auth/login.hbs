@@ -1,0 +1,16 @@
+
+<div class="p-12" style="min-height: 100vh">
+  <h3>Login</h3>
+  <form action="/login" method="POST">
+  <input type="email" name="email" placeholder="email"><br>
+  <input type="password" name="password" placeholder="password"><br>
+  <input type="submit" value="Login">
+
+  </form>
+
+  <p class="py-20 flash-message">{{message}}</p>
+
+  {{#if isAuthenticated}}
+    <p class="py-20"><a href="/logout">Logout</a></p> 
+  {{/if}}
+</div>

@@ -6,13 +6,18 @@ var bodyParser = require('body-parser');
 let exphbs = require('express-handlebars');
 let path = require('path');
 let cookieParser = require('cookie-parser');
+// Authentication
+let passport = require('passport');
+let session = require('cookie-session');
+let flash = require('connect-flash');
 
-let app = express();
 let compression = require('compression');
 let config = require('./config');
 let helpers = require('./src/helpers');
 
 let schedule = require('./src/schedule')
+
+let app = express();
 
 // Run API polling schedule on start
 schedule.connect()
@@ -25,6 +30,15 @@ app.use(bodyParser.json())
 
 // Use session and cookie parser
 app.use(cookieParser());
+
+// Authentication
+app.use(session({
+  name: 'session',
+  keys: ['ilovekfc42']
+}))
+app.use(passport.initialize())
+app.use(passport.session())
+app.use(flash())
 
 // Set view engine
 app.engine('.hbs', exphbs({

@@ -20,9 +20,17 @@ let sitemap = require('./sitemap.js')
 router
   .get('/sitemap', sitemap.index )
 
+// Authorisation endpoints
+let auth = require('./auth.js')
+router
+  .post('/login', auth.login)
+  .get('/login', auth.loginPage)
+  .get('/logout', auth.logout)
+
 // Admin endpoints
 let admin = require('./admin.js')
 router
-  .get('/admin', admin.index)
+  .get('/admin', auth.loginRequired, admin.index)
+
 
 module.exports = router
