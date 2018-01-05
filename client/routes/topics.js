@@ -15,7 +15,7 @@ topics.index = function (req, res, next) {
   let topic = req.params.name || null
   let sort = req.query.sort
   let getNextPage = function(page, data) {
-    if (data.length >= 80) {
+    if (data.length >= 50) {
       return page + 1
     } else {
       return null
