@@ -26,6 +26,28 @@ passport.use('local-login', new LocalStrategy({
   }
 ));
 
+passport.use('local-signup', new LocalStrategy({
+    usernameField: 'email',
+    passwordField: 'password',
+    passReqToCallback: true
+  },
+  function (req, email, password, done) {
+    User
+      .findByEmail(email)
+      .then(res => {
+        let user = res.data[0]
+        if (user) {
+          return done(null, false)
+        }
+        User.create({email, password})
+          .then(res => {
+            let user = res.data
+            return done(null, user);
+          })        
+      })
+  }
+));
+
 passport.serializeUser(function (user, done) {
   done(null, user)
 })

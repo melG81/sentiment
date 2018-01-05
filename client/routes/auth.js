@@ -10,6 +10,13 @@ exports.loginPage = (req, res, next) => {
   })
 }
 
+exports.signupPage = (req, res, next) => {
+  res.render('auth/signup', { 
+    message: req.flash('message'), 
+    isAuthenticated: req.isAuthenticated() 
+  })
+}
+
 exports.profilePage = (req, res, next) => {
   res.render('auth/profile', { 
     message: req.flash('message')[0], 
@@ -17,6 +24,19 @@ exports.profilePage = (req, res, next) => {
     user: req.user
   })
 }
+
+exports.signup = passport.authenticate('local-signup', {
+  successRedirect: '/profile',
+  failureRedirect: '/signup',
+  failureFlash: {
+    type: 'message',
+    message: 'Email already taken.'
+  },
+  successFlash: {
+    type: 'message',
+    message: 'Successfully signed up.'
+  }
+})
 
 exports.login = passport.authenticate('local-login', {
   successRedirect: '/admin',

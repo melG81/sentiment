@@ -105,5 +105,44 @@ describe.only('server', function () {
         done();
       })
   });
+
+  it('should create a new user on POST /signup', function(done){
+    chai.request.agent(server)
+      .post('/signup')
+      .send({
+        email: 'valid@gmail.com',
+        password: 'chicken'
+      })
+      .end(function (err, res) {
+        let $ = cheerio.load(res.text)
+        let input = $('.flash-message').text()
+        let actual = 'Successfully signed up.'
+        expect(input).to.equal(actual)
+        
+        User.findByEmail('valid@gmail.com')
+          .then(res => {
+            let user = res.data[0]
+            let userId = user._id
+            return User.delete(userId)
+          })
+          .then(() => done())
+      })
+  })
+  
+  it('should check if email is taken on POST /signup', function(done){
+    chai.request.agent(server)
+      .post('/signup')
+      .send({
+        email: 'howie@gmail.com',
+        password: 'chicken'
+      })
+      .end(function (err, res) {
+        let $ = cheerio.load(res.text)
+        let input = $('.flash-message').text()
+        let actual = 'Email already taken.'
+        expect(input).to.equal(actual)
+        done()
+      })
+  })
   
 })
