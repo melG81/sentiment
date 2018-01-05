@@ -6,20 +6,22 @@ chai.use(chaiHttp);
 var server = require('../server.js');
 let User = require('../src/util/user')
 
-describe('server', function () {
+describe.only('server', function () {
   beforeEach('create user', function(done){
-    User.create({email: 'howie@gmail.com', password: 'chicken', admin: true })
+    let howieAdmin = User.create({ email: 'howie@gmail.com', password: 'chicken', admin: true })
+    let joe = User.create({ email: 'joe@gmail.com', password: 'chicken' })
+    Promise.all([howieAdmin, joe])
       .then(() => done())
   });
   
   afterEach(function(done){
-    User
-      .findByEmail('howie@gmail.com')
-      .then(res => {
-        let user = res.data[0]
-        return User.delete(user._id)
-      })
-      .then(() => done())
+    User.find().then(res => {
+      let data = res.data
+      let howieAdmin = data.filter(user => user.email === "howie@gmail.com")[0]
+      let joe = data.filter(user => user.email === "joe@gmail.com")[0]
+      return Promise.all([User.delete(howieAdmin._id), User.delete(joe._id)])
+    })
+    .then(() => done())
   });
 
   it('should return the login page on GET /', function (done) {
@@ -65,6 +67,28 @@ describe('server', function () {
       })
   });
 
+  it('should redirect to /profile if unauthorized non-admin visit to /admin', function (done) {
+    let agent = chai.request.agent(server)
+    agent
+      .post('/login')
+      .send({
+        email: 'joe@gmail.com',
+        password: 'chicken'
+      })
+      .end(function (err, res) {
+        agent
+          .get('/admin')
+          .end(function (err, res) {
+            let $ = cheerio.load(res.text)
+            let input = $('h3').text()
+            let actual = 'User Profile'
+
+            expect(input).to.equal(actual)
+            done();
+          })        
+      })
+  });
+
   it('should flash error message on login page if invalid POST /login', function (done) {
     chai.request.agent(server)
       .post('/login')
@@ -81,4 +105,5 @@ describe('server', function () {
         done();
       })
   });
+  
 })

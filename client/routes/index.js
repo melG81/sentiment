@@ -26,6 +26,7 @@ router
   .post('/login', auth.login)
   .get('/login', auth.loginPage)
   .get('/logout', auth.logout)
+  .get('/profile', auth.profilePage)
 
 // Admin endpoints
 let admin = require('./admin.js')

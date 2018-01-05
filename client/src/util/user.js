@@ -7,7 +7,11 @@ let User = module.exports = {}
 let config = require('../../config.js');
 let axios = require('axios');
 
-console.log(process.env.NODE_ENV, config.sentimentDBHost)
+User.find = function (request = axios) {
+  let url = `${config.sentimentDBHost}/users`;
+  return request.get(url)
+}
+
 User.findByEmail = function (email, request = axios) {
   let url = `${config.sentimentDBHost}/users/email/${email}`;
   return request.get(url)

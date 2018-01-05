@@ -1,11 +1,20 @@
 // Authentication
 let passport = require('passport')
 require('./passport.js')
+let _ = require('lodash')
 
 exports.loginPage = (req, res, next) => {
   res.render('auth/login', { 
     message: req.flash('message'), 
     isAuthenticated: req.isAuthenticated() 
+  })
+}
+
+exports.profilePage = (req, res, next) => {
+  res.render('auth/profile', { 
+    message: req.flash('message')[0], 
+    isAuthenticated: req.isAuthenticated(),
+    user: req.user
   })
 }
 
@@ -31,9 +40,18 @@ exports.logout = function (req, res, next) {
 // =========AUTHORIZATION MIDDLEWARE=======
 // Beautiful middleware syntax, if you are not authenticated then redirect, otherwise proceed with next
 exports.loginRequired = function (req, res, next) {
-  if (!req.isAuthenticated()) {
+  let isAuthenticated = req.isAuthenticated();
+  let isAdmin = _.get(req, "user.admin")
+
+  if (!isAuthenticated) {
     req.flash('message', 'Must be authenticated');
     return res.redirect("/login");
   }
+
+  if (!isAdmin) {
+    req.flash('message', 'Must be admin');  
+    return res.redirect("/profile");  
+  }
+
   next()
 };
