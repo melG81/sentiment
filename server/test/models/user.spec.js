@@ -55,6 +55,27 @@ describe('#User', function () {
       })
   });
 
+  it('should return a single user on GET /users/email/:email', function (done) {
+    chai.request(server)
+      .get('/users')
+      .end(function (err, res) {
+        let howie = res.body.filter(user => user.email === 'howie@gmail.com')[0]
+        chai.request(server)
+          .get(`/users/email/${howie.email}`)
+          .end(function(err, res){
+            let data = res.body[0]
+            let input = _.pick(data, ['email', 'admin'])
+            let actual = { email: 'howie@gmail.com', admin: true }
+            expect(input).to.eql(actual)
+
+            // Check password
+            let checkPassword = bcrypt.compareSync('chicken', data.password)
+            expect(checkPassword).to.be.ok
+            done();            
+          })
+      })
+  });
+
   it('should create a single user on POST /users', function (done) {
     chai.request(server)
       .post('/users')

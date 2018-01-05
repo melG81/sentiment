@@ -1,9 +1,9 @@
 require('dotenv').config();
 
-var express = require('express');
-var bodyParser = require('body-parser');
+let express = require('express');
+let bodyParser = require('body-parser');
 
-var app = express();
+let app = express();
 
 // Connect to MongoDB on start
 var db = require('./db/connection.js');

@@ -18,6 +18,12 @@ users.show = function (req, res, next) {
     .catch(next);
 };
 
+users.findByEmail = function (req, res, next) {
+  User.find({email: req.params.email})
+    .then(data => res.status(200).send(data))
+    .catch(next);
+};
+
 users.create = function (req, res, next) {
   let {email, password, admin} = req.body
   let payload = {
