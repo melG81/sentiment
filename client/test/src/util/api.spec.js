@@ -26,7 +26,7 @@ describe('#api', function () {
       let sinceDate = new Date() - (daysAgo * 24 * 60 * 60 * 1000)
       let publishedAfter = `published%3A%3E${sinceDate}`
       let sitesFilter = "(site%3A" + sitesFilteredDiscussion.join('%20OR%20site%3A') + ")";
-      let actual = `https://webhose.io/filterWebContent?token=da347ad6-b6b4-4135-839d-4308c3989db4&sort=replies_count&q=${publishedAfter}${sitesFilter}replies_count%3A%3E10%20language%3Aenglish%20site_type%3Adiscussions%20is_first%3Atrue%20`
+      let actual = `https://webhose.io/filterWebContent?token=${process.env.WEBHOSETOKEN}&sort=replies_count&q=${publishedAfter}${sitesFilter}replies_count%3A%3E10%20language%3Aenglish%20site_type%3Adiscussions%20is_first%3Atrue%20`
       expect(input).to.equal(actual)
     })
   })
