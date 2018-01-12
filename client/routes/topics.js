@@ -6,7 +6,7 @@ let _ = require('lodash')
 let {sortPayload} = require('./helpers')
 let queryKeywords = require('../src/filters/queryKeywords.js')
 let { pollScript } = require('../src/util/api');
-let google = require('../src/util/google');
+// let google = require('../src/util/google');
 let { parseHtml } = require('../src/util/helpers')
 
 topics.index = function (req, res, next) {
@@ -15,7 +15,7 @@ topics.index = function (req, res, next) {
   let topic = req.params.name || null
   let sort = req.query.sort
   let getNextPage = function(page, data) {
-    if (data.length >= 80) {
+    if (data.length >= 50) {
       return page + 1
     } else {
       return null
@@ -101,7 +101,7 @@ topics.pollscript = function (req, res, next) {
   let query = _.get(payload, 'query')
   let daysAgo = _.get(payload, 'daysAgo')
   pollScript(query, daysAgo)
-    .then(() => google.pollSentiment(query, daysAgo))
+    // .then(() => google.pollSentiment(query, daysAgo))
     .then(results => {
       res.send(results)
     })

@@ -1,2 +1,10 @@
-<h1>Admin page</h1>
-{{> poll-form/template queryKeywords=queryKeywords}}
+<div class="p-12" style="min-height: 100vh">
+  <h3>Admin page</h3>
+  {{> poll-form/template queryKeywords=queryKeywords}} 
+
+  {{#if isAuthenticated}}
+    <p class="py-20">
+      <a href="/logout">Logout</a>
+    </p>
+  {{/if}}
+</div>

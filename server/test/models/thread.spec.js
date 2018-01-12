@@ -31,9 +31,9 @@ describe('thread', function () {
           })
         })
         let actual = [
-          {topic: ['bitcoin'], createdAt: '2017'},
-          {topic: ['gold'], createdAt: '2017' },
-          {topic: ['monero'], createdAt: '2017' }
+          {topic: ['bitcoin'], createdAt: '2018'},
+          {topic: ['gold'], createdAt: '2018' },
+          {topic: ['monero'], createdAt: '2018' }
         ]
         expect(input).to.deep.include.members(actual);
         done();
@@ -127,8 +127,8 @@ describe('thread', function () {
           })
         })
         let actual = [
-          { topic: ['bitcoin'], createdAt: '2017' },
-          { topic: ['bitcoin'], createdAt: '2017' },
+          { topic: ['bitcoin'], createdAt: '2018' },
+          { topic: ['bitcoin'], createdAt: '2018' },
         ]
         expect(input).to.deep.include.members(actual);
         done();

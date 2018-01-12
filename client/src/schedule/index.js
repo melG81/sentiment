@@ -9,7 +9,6 @@ let agenda = new Agenda({ db: { address: mongoConnectionString } });
 
 // API poll
 let { pollScript } = require('../util/api')
-let google = require('../util/google')
 
 schedule.connect = function () {
 
@@ -23,7 +22,6 @@ schedule.connect = function () {
     let daysAgo = '1';
     
     pollScript(query, daysAgo)
-      .then(() => google.pollSentiment(query, daysAgo))
       .then(results => {
         console.log(results);
         done();
@@ -41,7 +39,6 @@ schedule.connect = function () {
     let daysAgo = '1';
     
     pollScript(query, daysAgo)
-      .then(() => google.pollSentiment(query, daysAgo))
       .then(results => {
         console.log(results);
         done();
@@ -59,7 +56,6 @@ schedule.connect = function () {
     let daysAgo = '1';
     
     pollScript(query, daysAgo)
-      .then(() => google.pollSentiment(query, daysAgo))
       .then(results => {
         console.log(results);
         done();
@@ -77,7 +73,6 @@ schedule.connect = function () {
     let daysAgo = '1';
     
     pollScript(query, daysAgo, 'discussions')
-      .then(() => google.pollSentiment(query, daysAgo))
       .then(results => {
         console.log(results);
         done();
@@ -95,7 +90,6 @@ schedule.connect = function () {
     let daysAgo = '1';
 
     pollScript(query, daysAgo, 'discussions')
-      .then(() => google.pollSentiment(query, daysAgo))
       .then(results => {
         console.log(results);
         done();
@@ -113,7 +107,6 @@ schedule.connect = function () {
     let daysAgo = '1';
 
     pollScript(query, daysAgo, 'discussions')
-      .then(() => google.pollSentiment(query, daysAgo))
       .then(results => {
         console.log(results);
         done();

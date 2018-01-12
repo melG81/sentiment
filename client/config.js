@@ -7,7 +7,7 @@ const language = require('@google-cloud/language');
 
 config.PORT = process.env.PORT;
 config.webhoseTOKEN = process.env.WEBHOSETOKEN;
-if (process.env.NODE_ENV === 'development') {
+if (process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'test') {
   config.sentimentDBHost = 'http://localhost:3000';
   config.host = 'http://localhost:4000'
 } else {  

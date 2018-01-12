@@ -11,12 +11,7 @@ describe('server', function () {
     chai.request(server)
       .get('/')
       .end(function (err, res) {
-        let $ = cheerio.load(res.text);
-        let $welcome = $('#welcome');
-        let input = $welcome.text();
-        let actual = 'Hello World';
-
-        expect(input).to.equal(actual);
+        expect(res.status).to.equal(200)
         done();
       })
   });
