@@ -24,6 +24,12 @@ dbClient.postThread = function (topic, post, request=axios) {
   return request.post(url, thread)
 }
 
+dbClient.deleteThread = function (id, request=axios) {
+  let url = `${config.sentimentDBHost}/threads/topic/id/${id}`;
+
+  return request.delete(url)
+}
+
 /**
  * @function {makes a PUT request to sentiment-db/threads/topic/id with document id and updated document}
  * @param  {String} id       {unique document id}

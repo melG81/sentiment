@@ -11,7 +11,8 @@ let bitcoinPage1Parsed = require('../../data/bitcoinPage1Parsed.json');
 let axiosStub = {
   get: sinon.stub(),
   post: sinon.stub(),
-  put: sinon.stub()
+  put: sinon.stub(),
+  delete: sinon.stub()
 }
 
 describe('#dbClient', () => {
@@ -43,6 +44,22 @@ describe('#dbClient', () => {
         })
     })
   })
+  describe('.deleteThread', () => {
+    it.only('should send a delete request to sentiment-db with given id', (done) => {
+      let id = '123456'
+
+      axiosStub.delete.returns(Promise.resolve('ok'))
+
+      dbClient.deleteThread(id, axiosStub)
+        .then(data => {
+          let url = config.sentimentDBHost + `/threads/topic/id/${id}`
+          expect(axiosStub.delete.calledWith(url)).to.be.true
+          axiosStub.delete.reset();
+          done();
+        })
+    })
+  })
+
 
   describe('.updateThread', () => {
     it('should send a PUT request to sentiment-db with payload', (done) => {
