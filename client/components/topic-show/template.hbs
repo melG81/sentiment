@@ -10,9 +10,10 @@
       <a href="{{post.url}}" target="_blank" class="post-upvote gray blue-hover" data-id="{{id}}">
         ({{post.site}})
       </a>
-      {{#if admin}}
-      <span class="post-upvote" data-id="{{id}}">&uarr;</span> or
-      <span class="post-downvote" data-id="{{id}}">&darr;</span>
+      {{#if isAdmin}}
+        <span class="post-upvote" data-id="{{id}}">&uarr;</span> or
+        <span class="post-downvote" data-id="{{id}}">&darr;</span> |
+        <a class="post-delete cursor red-hover" data-id="{{id}}">Delete</a>
       {{/if}}
     </p>
     <p class="fs-9 phone-fs-12 gray post-subheading">

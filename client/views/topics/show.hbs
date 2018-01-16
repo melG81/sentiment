@@ -15,7 +15,7 @@
   {{> topic-pagination/template}}
 
   {{#each data}}
-    {{> topic-show/template admin=../admin count=this post=post topic=topic documentSentiment=documentSentiment id=_id}}
+    {{> topic-show/template isAdmin=../isAdmin admin=../admin count=this post=post topic=topic documentSentiment=documentSentiment id=_id}}
   {{/each}}
    
   {{> topic-pagination/template}}

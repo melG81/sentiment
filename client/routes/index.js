@@ -18,6 +18,7 @@ router
   .get('/topics/topic/id/:id/downvote', topics.downVote)
   .get('/topics/topic/id/:id', topics.getById)
   .post('/topics/pollscript', topics.pollscript)
+  .delete('/topics/topic/id/:id', topics.delete)  
 
 // Sitemap
 let sitemap = require('./sitemap.js')

@@ -15,12 +15,14 @@ let makeTopicShow = function(){
     this.upVote = $('.post-upvote')
     this.downVote = $('.post-downvote')
     this.postTitle = $('.post-heading-title')
+    this.deletePost = $('.post-delete')
   }
   this.bindEvents = () => {
     this.showMore.on('click', this.toggleShow)
     this.postTitle.on('click', this.toggleShow)
     this.upVote.on('click', this.postUpVote)
     this.downVote.on('click', this.postDownVote)
+    this.deletePost.on('click', this.postDelete)
   }
   this.toggleShow = (e) => {
     let $target = $(e.target)
@@ -76,6 +78,20 @@ let makeTopicShow = function(){
       .then(payload => {
         this.renderVote($target, payload)
       })
+  }
+  this.postDelete = (e) => {
+    let $target = $(e.target);
+    // get attr id
+    let id = $target.data('id')
+
+    let result = confirm('Do you want to delete?')
+    if (result) {
+      // make delete request
+      axios.delete(`/topics/topic/id/${id}`)
+        .then(payload => {
+          location.reload()
+        })
+    }
   }
 
 }

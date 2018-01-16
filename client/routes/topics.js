@@ -13,6 +13,7 @@ let moment = require('moment');
 topics.index = function (req, res, next) {
   let page = Number(req.query.page || 1)
   let admin = req.query.admin
+  let isAdmin = _.get(req, "user.admin")
   let topic = req.params.name || null
   let sort = req.query.sort
   let getNextPage = function(page, data) {
@@ -45,7 +46,8 @@ topics.index = function (req, res, next) {
         nextPage,
         prevPage,
         admin,
-        sort
+        sort,
+        isAdmin
       })
     });
 }
@@ -194,6 +196,17 @@ topics.create = function (req, res, next) {
       let title = data.title
       let url = `/topics/news/${title}/${id}`
       res.redirect(url)
+    })
+    .catch(next)
+}
+
+topics.delete = function (req, res, next) {
+  let id = req.params.id
+
+  dbClient.deleteThread(id)
+    .then(resp => {
+      let data = resp.data
+      res.json(data)
     })
     .catch(next)
 }
