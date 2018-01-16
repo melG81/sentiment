@@ -16,7 +16,6 @@ let axios = require('axios');
  */
 dbClient.postThread = function (topic, post, request=axios) {
   let url = `${config.sentimentDBHost}/threads`;
-  console.log(url)
 
   let thread = {
     topic,

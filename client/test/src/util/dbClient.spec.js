@@ -18,10 +18,10 @@ let axiosStub = {
 describe('#dbClient', () => {
   describe('.postThread', () => {
     it('should send a post request to sentiment-db with payload', (done) => {
-      let topic = 'bitcoin'
+      let topic = ['bitcoin']
       let post = bitcoinPage1Parsed[0];
       let postNew = {
-        topic: [topic],
+        topic,
         createdAt: new Date(),
         updatedAt: new Date(),
         _id: 'uid',
@@ -34,7 +34,7 @@ describe('#dbClient', () => {
         .then(data => {
           let url = config.sentimentDBHost + '/threads'
           let thread = {
-            topic: [topic],
+            topic,
             post
           }
           expect(axiosStub.post.calledWith(url, thread)).to.be.true
@@ -45,7 +45,7 @@ describe('#dbClient', () => {
     })
   })
   describe('.deleteThread', () => {
-    it.only('should send a delete request to sentiment-db with given id', (done) => {
+    it('should send a delete request to sentiment-db with given id', (done) => {
       let id = '123456'
 
       axiosStub.delete.returns(Promise.resolve('ok'))
