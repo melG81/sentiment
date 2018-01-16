@@ -67,7 +67,7 @@ describe('thread', function () {
       })
   })
 
-  it.only('should add a single thread on POST /threads', function (done) {
+  it('should add a single thread on POST /threads', function (done) {
     let post = {
       uuid: "c677c138dcad7393cc5609590c34576d408f8b6c",
       site: "thestreet.com",
