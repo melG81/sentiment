@@ -67,21 +67,27 @@ describe('thread', function () {
       })
   })
 
-  it('should add a single thread on POST /threads', function (done) {
-    let posts = require('../data/posts.json');
-    let post = posts[2]
+  it.only('should add a single thread on POST /threads', function (done) {
+    let post = {
+      uuid: "c677c138dcad7393cc5609590c34576d408f8b6c",
+      site: "thestreet.com",
+      url: "http://omgili.com/ri/jHIAmI4hxg.uirYnf46ccQYSWX9yPpewflRULc2uSxrfppfBAYFoUrE4j2nmpgcR5kR.6Wb4EJEggSTJeEBOvmHQcCLJ33b8uzgW7Ta5yX25SZ6tcknc07Z6D9cSvkUpL6RvV0z4zwRCtQTIiYaUbfO9losXvQ.f",
+      author: "Brian O'Connell",
+      published: "2017-08-25T22:42:00.000+03:00",
+      title: "Bitcoin Investors, Beware: The IRS Is Coming for Your Vast Riches",
+      crawled: "2017-08-25T22:08:28.006+03:00",
+      text: "Uncle Sam has Bitcoin traders on the radar these days, as the cryptocurrency passes $4,300 in late August trading.\nWith more assets pouring into digital currencies, the federal government, via the Internal Revenue Service , is looking to get its fair share from Bitcoin -- a cut that the IRS doesn't believe it's been getting until now.\nThat could change, and fast, as the IRS is using a software program that monitors Bitcoin-based digital addresses, in a campaign to identify potential tax evaders.\nUsing a customized software program from Chainalysis, a blockchain data analysis firm in New York C..."
+    }
 
     chai.request(server)
       .post('/threads')
       .send({topic: ['banana boat'], post})
       .end(function (err, resp) {
         let data = resp.body;
-        let topic = data.topic;
-        let date = moment(data.date).format('YYYY');
-        let today = moment().format('YYYY');
-        expect(topic).to.eql(['banana boat']);
-        expect(date).to.equal(today);
+        expect(data).to.have.all.keys(['__v', '_id', 'updatedAt', 'createdAt', 'post', 'topic', 'votes']);
+        expect(data.topic).to.eql(['banana boat']);
         expect(data.post).to.eql(post);
+        expect(data.votes).to.eql(0);
         done();
       })
   });
