@@ -2,18 +2,18 @@
   <h3>New Post</h3>
   <form action="/topics" method="POST">
     <p>Title:</p>
-    <input name="title" type="text" ><br>
+    <input name="title" type="text" required=true ><br>
     <p>URL:</p>
-    <input name="url" type="text" ><br>
+    <input name="url" type="text" required=true ><br>
     <p>Site:</p>
-    <input name="site" type="text" ><br>
+    <input name="site" type="text" required=true ><br>
     <p>Author:</p>
-    <input name="author" type="text" ><br>
+    <input name="author" type="text" required=true ><br>
     <p>Text:</p>
     <textarea name="text" rows="10" cols="100">
     </textarea>
     <p>Topics:</p>
-    <select multiple name="topic">
+    <select multiple name="topic" required=true>
       {{#each queryKeywords as |keyword|}}
         <option value={{keyword}}>{{keyword}}</option>
       {{/each}}
