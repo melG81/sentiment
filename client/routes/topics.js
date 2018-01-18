@@ -8,10 +8,12 @@ let queryKeywords = require('../src/filters/queryKeywords.js')
 let { pollScript } = require('../src/util/api');
 // let google = require('../src/util/google');
 let { parseHtml } = require('../src/util/helpers')
+let moment = require('moment');
 
 topics.index = function (req, res, next) {
   let page = Number(req.query.page || 1)
   let admin = req.query.admin
+  let isAdmin = _.get(req, "user.admin")
   let topic = req.params.name || null
   let sort = req.query.sort
   let getNextPage = function(page, data) {
@@ -44,7 +46,8 @@ topics.index = function (req, res, next) {
         nextPage,
         prevPage,
         admin,
-        sort
+        sort,
+        isAdmin
       })
     });
 }
@@ -168,4 +171,42 @@ topics.article = function (req, res, next) {
     .catch(err => {
       console.log(err.message);
     })
+}
+
+topics.new = function (req, res, next) {
+  res.render('topics/new', { queryKeywords, today: moment().format('YYYY-MM-DDTHH:mm')})
+}
+
+topics.create = function (req, res, next) {
+  let {site, url, author, published, title, text, topic } = req.body
+  let post = { 
+    site, 
+    url, 
+    author, 
+    published, 
+    title, 
+    text, 
+    uuid: Math.random().toString(36).substring(7)
+  }
+
+  dbClient.postThread(topic, post)
+    .then(resp => {
+      let data = resp.data
+      let id = data._id
+      let title = data.title
+      let url = `/topics/news/${title}/${id}`
+      res.redirect(url)
+    })
+    .catch(next)
+}
+
+topics.delete = function (req, res, next) {
+  let id = req.params.id
+
+  dbClient.deleteThread(id)
+    .then(resp => {
+      let data = resp.data
+      res.json(data)
+    })
+    .catch(next)
 }

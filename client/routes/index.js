@@ -2,6 +2,8 @@ let express = require('express')
 let router = express.Router()
 let {checkVoteCookie} = require('./helpers')
 
+let auth = require('./auth.js')
+
 // Threads CRUD endpoints
 let topics = require('./topics.js')
 router
@@ -9,11 +11,14 @@ router
   .get('/fundamentals', topics.fundamentals)
   .get('/topics/browse', topics.browse)
   .get('/topics/news/:title/:id', topics.article)
+  .get('/topics/new', auth.loginRequired, topics.new)
+  .post('/topics', topics.create)
   .get('/topics/:name', topics.index)
   .get('/topics/topic/id/:id/upvote', topics.upVote)
   .get('/topics/topic/id/:id/downvote', topics.downVote)
   .get('/topics/topic/id/:id', topics.getById)
   .post('/topics/pollscript', topics.pollscript)
+  .delete('/topics/topic/id/:id', topics.delete)  
 
 // Sitemap
 let sitemap = require('./sitemap.js')
@@ -21,7 +26,6 @@ router
   .get('/sitemap', sitemap.index )
 
 // Authorisation endpoints
-let auth = require('./auth.js')
 router
   .post('/login', auth.login)
   .get('/login', auth.loginPage)

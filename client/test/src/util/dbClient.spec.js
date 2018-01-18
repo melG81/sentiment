@@ -11,16 +11,17 @@ let bitcoinPage1Parsed = require('../../data/bitcoinPage1Parsed.json');
 let axiosStub = {
   get: sinon.stub(),
   post: sinon.stub(),
-  put: sinon.stub()
+  put: sinon.stub(),
+  delete: sinon.stub()
 }
 
 describe('#dbClient', () => {
   describe('.postThread', () => {
     it('should send a post request to sentiment-db with payload', (done) => {
-      let topic = 'bitcoin'
+      let topic = ['bitcoin']
       let post = bitcoinPage1Parsed[0];
       let postNew = {
-        topic: [topic],
+        topic,
         createdAt: new Date(),
         updatedAt: new Date(),
         _id: 'uid',
@@ -33,7 +34,7 @@ describe('#dbClient', () => {
         .then(data => {
           let url = config.sentimentDBHost + '/threads'
           let thread = {
-            topic: [topic],
+            topic,
             post
           }
           expect(axiosStub.post.calledWith(url, thread)).to.be.true
@@ -43,6 +44,22 @@ describe('#dbClient', () => {
         })
     })
   })
+  describe('.deleteThread', () => {
+    it('should send a delete request to sentiment-db with given id', (done) => {
+      let id = '123456'
+
+      axiosStub.delete.returns(Promise.resolve('ok'))
+
+      dbClient.deleteThread(id, axiosStub)
+        .then(data => {
+          let url = config.sentimentDBHost + `/threads/topic/id/${id}`
+          expect(axiosStub.delete.calledWith(url)).to.be.true
+          axiosStub.delete.reset();
+          done();
+        })
+    })
+  })
+
 
   describe('.updateThread', () => {
     it('should send a PUT request to sentiment-db with payload', (done) => {

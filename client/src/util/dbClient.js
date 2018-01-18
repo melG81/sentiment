@@ -6,22 +6,30 @@ let dbClient = module.exports = {}
 // Dependencies
 let config = require('../../config.js');
 let axios = require('axios');
+let _ = require('lodash')
 
 /**
  * @function {makes a POST request to sentiment-db/threads with relevant payload}
- * @param  {String} topic {query paramater from api.query search}
+ * @param  {String || Array} topicParam {query paramater from api.query search}
  * @param  {Object} posts  {array of parsed posts}
  * @param  {Object} request {request dependency defaults to axios}
  * @return {Promise} {axios.post promise}
  */
-dbClient.postThread = function (topic, post, request=axios) {
-  let url = `${config.sentimentDBHost}/threads`;
+dbClient.postThread = function (topicParam, post, request=axios) {
+  let url = `${config.sentimentDBHost}/threads`
+  let topic = _.isString(topicParam) ? topicParam.split() : topicParam
 
   let thread = {
-    topic: [topic],
-    post: post
+    topic,
+    post
   }
   return request.post(url, thread)
+}
+
+dbClient.deleteThread = function (id, request=axios) {
+  let url = `${config.sentimentDBHost}/threads/topic/id/${id}`;
+
+  return request.delete(url)
 }
 
 /**
