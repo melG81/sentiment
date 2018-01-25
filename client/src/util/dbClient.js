@@ -49,7 +49,7 @@ dbClient.getDoc = function (id, request=axios) {
   return request.get(url)
 }
 /**
- * @function {upvote a document or set as vote: 1 if none exists}
+ * @function {upvote a document by 50 points or set as vote: 1 if none exists}
  * @param  {String} id       {unique document id}
  * @param  {Object} request  {request dependency defaults to axios}
  * @return {Promise} {axios.put promise}
@@ -62,7 +62,7 @@ dbClient.upVote = function (id, request=axios) {
       let hasVotes = document.votes;
       let voteOpts;
       if (hasVotes) {
-        voteOpts = {votes: document.votes += 1}
+        voteOpts = {votes: document.votes += 50}
       } else {
         voteOpts = {votes: 1}
       }
