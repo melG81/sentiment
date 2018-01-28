@@ -26,7 +26,7 @@ describe('#Favorite', function () {
       .get('/favorites')
       .end(function (err, res) {
         let data = res.body
-        let input = res.body.length
+        let input = data.length
         let actual = 2
         expect(input).to.equal(actual)
         done();
@@ -49,6 +49,33 @@ describe('#Favorite', function () {
             done();
           })
       })
+  });
+  it('should delete a favorite on DELETE /favorites/:id', function (done) {
+    chai.request(server)
+      .get('/favorites')
+      .end((err, res) => {
+        let data = res.body
+        var input = data.length
+        var actual = 2
+        expect(input).to.equal(actual)
+
+        let fav = res.body[0]
+        chai.request(server)
+          .delete(`/favorites/${fav._id}`)
+          .end((err, res) => {
+            chai.request(server)
+              .get('/favorites')
+              .end((err, res) => {
+                let data = res.body
+                var input = data.length
+                var actual = 1
+                expect(input).to.equal(actual)
+                done()
+              })
+          })
+
+      })
+
   });
 })
 

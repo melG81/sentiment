@@ -25,3 +25,10 @@ favorites.show = function (req, res, next) {
     .catch(next)
 
 }
+
+favorites.delete = function (req, res, next) {
+  Favorite.findByIdAndRemove(req.params.id)
+    .then(data => res.status(200).send(data))
+    .catch(next);
+};
+
