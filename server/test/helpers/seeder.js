@@ -57,6 +57,7 @@ seeder.favorites = async function (done) {
   let hela = await User.seed({ email: 'hela@gmail.com', password: bcrypt.hashSync('chicken', 10)});
   let bitcoinThread = await Thread.seed({ topic: ['bitcoin', 'crypto'], post: posts[1] });
   let cryptoThread = await Thread.seed({ topic: ['crypto'], post: posts[3] });
+  let bitcoin2Thread = await Thread.seed({ topic: ['bitcoin'], post: posts[2] });
 
   let favoriteBitcoin = await Favorite.seed({user: hela._id, thread: bitcoinThread._id})
   let favoriteCrypto = await Favorite.seed({user: hela._id, thread: cryptoThread._id})

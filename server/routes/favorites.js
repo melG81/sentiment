@@ -26,6 +26,13 @@ favorites.show = function (req, res, next) {
 
 }
 
+favorites.create = function (req, res, next) {
+  let { user, thread } = req.body
+  Favorite.create({user, thread})
+    .then(data => res.status(200).send(data))
+    .catch(next);
+}
+
 favorites.delete = function (req, res, next) {
   Favorite.findByIdAndRemove(req.params.id)
     .then(data => res.status(200).send(data))

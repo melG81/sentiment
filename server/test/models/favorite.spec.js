@@ -11,6 +11,8 @@ let seeder = require('../helpers/seeder.js');
 let server = require('../../server.js');
 let mongoose = require('mongoose');
 let Favorite = require('../../models/favorite');
+let User = require('../../models/user');
+let Thread = require('../../models/thread');
 let _ = require('lodash')
 
 
@@ -50,6 +52,25 @@ describe('#Favorite', function () {
           })
       })
   });
+  it('should create a single favorite on POST /favorites', async () => {
+    let user = await User.find({email: 'hela@gmail.com'})
+    let thread = await Thread.find({})
+    let helaId = user[0]._id
+    let bitcoinId = thread[2]._id
+    
+
+    let res = await chai.request(server)
+      .post('/favorites')
+      .send({
+        user: helaId,
+        thread: bitcoinId
+      })
+    
+    let fav = res.body
+    expect(fav.user).to.equal(helaId.toString())
+    expect(fav.thread).to.equal(bitcoinId.toString())
+  });
+
   it('should delete a favorite on DELETE /favorites/:id', function (done) {
     chai.request(server)
       .get('/favorites')
