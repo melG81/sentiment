@@ -36,6 +36,7 @@ var favorites = require('./favorites.js');
 router
   .get('/favorites', favorites.index)
   .get('/users/:id/favorites', favorites.show)
+  .delete('/favorites/:user_id/:thread_id', favorites.deleteByUserAndThread)  
   .delete('/favorites/:id', favorites.delete)
 
 

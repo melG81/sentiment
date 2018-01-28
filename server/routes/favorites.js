@@ -32,3 +32,21 @@ favorites.delete = function (req, res, next) {
     .catch(next);
 };
 
+favorites.deleteByUserAndThread = function (req, res, next) {
+  let userId = req.params.user_id
+  let threadId = req.params.thread_id
+
+  Favorite.find({
+    user: userId,
+    thread: threadId
+  })
+  .then(result => {
+    let favId = result[0]._id
+    return Favorite.findByIdAndRemove(favId)
+  })
+  .then(data => res.status(200).send(data))
+  .catch(next);
+};
+
+
+

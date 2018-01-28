@@ -73,10 +73,38 @@ describe('#Favorite', function () {
                 done()
               })
           })
-
       })
 
   });
+  it('should also delete a favorite on DELETE /favorites/:user_id/:thread_id', function (done) {
+    chai.request(server)
+      .get('/favorites')
+      .end((err, res) => {
+        let data = res.body
+        var input = data.length
+        var actual = 2
+        expect(input).to.equal(actual)
+
+        let fav = res.body[0]
+        let userId = fav.user
+        let threadId = fav.thread
+        chai.request(server)
+          .delete(`/favorites/${userId}/${threadId}`)
+          .end((err, res) => {
+            chai.request(server)
+              .get('/favorites')
+              .end((err, res) => {
+                let data = res.body
+                var input = data.length
+                var actual = 1
+                expect(input).to.equal(actual)
+                done()
+              })
+          })
+      })
+
+
+  })
 })
 
 
