@@ -31,6 +31,11 @@ router
   .put('/users/:id', users.update)
   .delete('/users/:id', users.delete)
 
+// Favorites CRUD endpoints
+var favorites = require('./favorites.js');
+router
+  .get('/favorites', favorites.index)
+  .get('/users/:id/favorites', favorites.show)
 
 
 module.exports = router;

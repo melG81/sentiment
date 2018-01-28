@@ -13,13 +13,14 @@ let server = require('../../server.js');
 let mongoose = require('mongoose');
 let Thread = require('../../models/thread');
 
-beforeEach('drop the collection and reseed database', function (done) {
-  mongoose.connection.collections.threads.drop(function () {
-    seeder.threads(done)
-  });
-});
 
 describe('thread', function () {
+  beforeEach('drop the collection and reseed database', function (done) {
+    mongoose.connection.collections.threads.drop(function () {
+      seeder.threads(done)
+    });
+  });
+
   it('should return all the threads on GET /threads/all', function (done) {
     chai.request(server)
       .get('/threads/all')

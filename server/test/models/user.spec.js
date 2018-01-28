@@ -15,13 +15,14 @@ let User = require('../../models/user');
 let bcrypt = require('bcrypt')
 let _ = require('lodash')
 
-beforeEach('drop the collection and reseed database', function (done) {
-  mongoose.connection.collections.users.drop(function () {
-    seeder.users(done)
-  });
-});
 
 describe('#User', function () {
+  beforeEach('drop the collection and reseed database', function (done) {
+    mongoose.connection.collections.users.drop(function () {
+      seeder.users(done)
+    });
+  });
+
   it('should return all the users on GET /users/all', function (done) {
     chai.request(server)
       .get('/users')

@@ -4,6 +4,7 @@ let seeder = module.exports = {};
 let mongoose = require('mongoose');
 let Thread = require('../../models/thread');
 let User = require('../../models/user');
+let Favorite = require('../../models/favorite');
 let posts = require('../data/posts.json');
 let bcrypt = require('bcrypt')
 
@@ -15,8 +16,9 @@ let bcrypt = require('bcrypt')
 mongoose.Model.seed = function (obj) {
   return new Promise((resolve, reject) => {
     this.create(obj, function (err) {
-      if (err) { reject(err); }
-      resolve();
+      if (err) { reject(err); }      
+    }).then(data => {
+      resolve(data);
     });
   });
 };
@@ -45,4 +47,19 @@ seeder.users = function (done) {
 
   Promise.all([howie, felix])
     .then(() => done());
+};
+
+seeder.favorites = async function (done) {
+  // Drop users and threads before starting
+  await mongoose.connection.collections.users.drop()
+  await mongoose.connection.collections.threads.drop()
+  
+  let hela = await User.seed({ email: 'hela@gmail.com', password: bcrypt.hashSync('chicken', 10)});
+  let bitcoinThread = await Thread.seed({ topic: ['bitcoin', 'crypto'], post: posts[1] });
+  let cryptoThread = await Thread.seed({ topic: ['crypto'], post: posts[3] });
+
+  let favoriteBitcoin = await Favorite.seed({user: hela._id, thread: bitcoinThread._id})
+  let favoriteCrypto = await Favorite.seed({user: hela._id, thread: cryptoThread._id})
+  
+  done()
 };
