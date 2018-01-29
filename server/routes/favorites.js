@@ -5,7 +5,6 @@ let mongoose = require('mongoose');
 let Thread = require('../models/thread');
 let Favorite = require('../models/favorite');
 let _ = require('lodash')
-let moment = require('moment')
 
 favorites.index = function (req, res, next) {
   Favorite.find({})

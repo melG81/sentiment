@@ -5,7 +5,6 @@ let chaiHttp = require('chai-http');
 chai.use(chaiHttp);
 
 // Helpers
-let moment = require('moment');
 let seeder = require('../helpers/seeder.js');
 
 // App requires

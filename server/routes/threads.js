@@ -4,7 +4,7 @@ let threads = module.exports = {};
 let mongoose = require('mongoose');
 let Thread = require('../models/thread');
 let _ = require('lodash')
-let moment = require('moment')
+let format = require('date-fns/format')
 let {dashes} = require('../test/helpers/decode')
 let { CheckPostId, CheckPostTopic, UpdatePostTopic } = require('./util/checkPost')
 
@@ -125,7 +125,7 @@ threads.topicQuery = function (req, res, next) {
   let topicNameArr = _.castArray(req.query.topic);
   let daysAgo = req.query.daysAgo || 3
   let date = new Date() - (daysAgo * 24 * 60 * 60 * 1000)
-  let publishedSince = moment(date).format('YYYY-MM-DD')
+  let publishedSince = format(date, 'YYYY-MM-DD')
   let page = req.query.page || 1
   let limit = Number(req.query.limit) || 40
   let skip = limit * (page - 1)
@@ -155,7 +155,7 @@ threads.topicQuery = function (req, res, next) {
 threads.paginate = function (req, res, next) {
   let daysAgo = 30
   let date = new Date() - (daysAgo * 24 * 60 * 60 * 1000)
-  let publishedSince = moment(date).format('YYYY-MM-DD')
+  let publishedSince = format(date, 'YYYY-MM-DD')
   let page = req.query.page || 1
   let limit = Number(req.query.limit) || 100
   let skip = limit * (page - 1)

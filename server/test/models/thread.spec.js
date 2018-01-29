@@ -5,7 +5,7 @@ let chaiHttp = require('chai-http');
 chai.use(chaiHttp);
 
 // Helpers
-let moment = require('moment');
+let format = require('date-fns/format')
 let seeder = require('../helpers/seeder.js');
 
 // App requires
@@ -28,7 +28,7 @@ describe('thread', function () {
         let input = resp.body.map(el => {
           return Object.assign({}, {
             topic: el.topic,
-            createdAt: moment(el.createdAt).format('YYYY')
+            createdAt: format(el.createdAt, 'YYYY')
           })
         })
         let actual = [
@@ -130,7 +130,7 @@ describe('thread', function () {
         let input = resp.body.map(el => {
           return Object.assign({}, {
             topic: el.topic,
-            createdAt: moment(el.createdAt).format('YYYY')
+            createdAt: format(el.createdAt, 'YYYY')
           })
         })
         let actual = [
