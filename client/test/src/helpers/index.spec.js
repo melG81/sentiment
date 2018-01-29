@@ -22,4 +22,21 @@ describe('#helpers', function () {
       expect(input).to.equal(actual)
     })
   })
+  describe('moment', function () {
+    it('should format date correctly', function () {
+      let date = new Date('2017-02-01')
+      let input = helpers.moment(date, 'YYYY-MM-DD')
+      let actual = '2017-02-01'
+      expect(input).to.equal(actual)
+    })
+  })
+  describe('momentFromNow', function () {
+    it('should format from dates correctly', function () {
+      let date = new Date()
+      let yesterday = new Date(date - 1000 * 60 * 60 * 24 * 1)
+      let input = helpers.momentFromNow(yesterday)
+      let actual = 'a day ago'
+      expect(input).to.equal(actual)
+    })
+  })
 });

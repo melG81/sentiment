@@ -1,5 +1,5 @@
-let moment = require('moment')
+let format = require('date-fns/format')
 
-module.exports = (dateString, format) => {
-  return moment(dateString).format(format)
+module.exports = (dateString, formatString) => {
+  return format(dateString, formatString)
 }
