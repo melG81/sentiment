@@ -45,6 +45,7 @@ describe('#Favorite', function () {
           .get(`/users/${userId}/favorites`)
           .end(function (err, res) {
             let data = res.body
+            
             let input = data.map(el => el.topic)
             let actual = [['bitcoin', 'crypto'], ['crypto']]
             expect(input).to.eql(actual)
@@ -67,6 +68,7 @@ describe('#Favorite', function () {
       })
     
     let fav = res.body
+    
     expect(fav.user).to.equal(helaId.toString())
     expect(fav.thread).to.equal(bitcoinId.toString())
   });

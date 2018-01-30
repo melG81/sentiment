@@ -138,3 +138,8 @@ dbClient.createFavorite = function (userId, threadId, request=axios) {
   let payload = {user: userId, thread: threadId}
   return request.post(url, payload)
 } 
+
+dbClient.getUserFavorites = function (userId, request = axios) {
+  let url = `${config.sentimentDBHost}/users/${userId}/favorites`;
+  return request.get(url)
+} 
