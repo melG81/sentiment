@@ -273,4 +273,33 @@ describe('#dbClient', () => {
         })
     })
   })
+
+  describe('.createFavorite', () => {
+    it('should send a POST request to sentiment-db with userId and threadId payload', (done) => {
+      let userId = '5a6fdd8796616cb174d746e3'
+      let threadId = '5a6fdd8796616cb174d746e6'
+      let favNew = {
+        data: {
+          __v: 0,
+          updatedAt: '2018-01-30T02:50:47.462Z',
+          createdAt: '2018-01-30T02:50:47.462Z',
+          user: userId,
+          thread: threadId,
+          _id: '5a6fdd8796616cb174d746e9'
+        }
+      }
+
+      axiosStub.post.returns(Promise.resolve(favNew))
+
+      dbClient.createFavorite(userId, threadId, axiosStub)
+        .then(data => {
+          let url = `${config.sentimentDBHost}/favorites`
+          expect(axiosStub.post.args[0]).to.eql([url, { user: userId, thread: threadId }])
+          expect(data).to.eql(favNew);
+          axiosStub.post.reset();
+          done();
+        })
+    })
+  })
+  
 })

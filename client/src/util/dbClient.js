@@ -132,3 +132,9 @@ dbClient.getAll = function (page, topic, request=axios) {
   let url = `${config.sentimentDBHost}/threads?page=${page}${topicQuery}`;
   return request.get(url)
 }
+
+dbClient.createFavorite = function (userId, threadId, request=axios) {
+  let url = `${config.sentimentDBHost}/favorites`;
+  let payload = {user: userId, thread: threadId}
+  return request.post(url, payload)
+} 
