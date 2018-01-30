@@ -1,10 +1,16 @@
 <div class="p-12" style="min-height: 100vh">
   <h3>Favorites: {{user.email}}</h3>
   <p><a href="/profile">Profile</a></p>
+  {{#if isAuthenticated}}
+    <p>
+      <a href="/logout">Logout</a>
+    </p>
+  {{/if}}
+  
 
   <div class="py-12">
     {{#each data}} 
-      {{> topic-show/template isAdmin=../isAdmin admin=../admin count=this post=post topic=topic documentSentiment=documentSentiment id=_id}} 
+      {{> topic-show/template isFave=../isFave isAdmin=../isAdmin admin=../admin count=this post=post topic=topic documentSentiment=documentSentiment id=_id}} 
     {{/each}}
   </div>
   

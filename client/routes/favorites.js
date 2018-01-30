@@ -15,7 +15,8 @@ exports.show = (req, res, next) => {
       message: req.flash('message')[0],
       isAuthenticated: req.isAuthenticated(),
       user: req.user,
-      data
+      data,
+      isFave: true
     })
   })
 }
