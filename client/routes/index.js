@@ -36,14 +36,14 @@ router
 // Favorites endpoints
 let favorites = require('./favorites.js')
 router
-  .get('/favorites/:user_id', favorites.show)
-  .get('/fave/:thread_id', favorites.create)
-  .get('/unfave/:thread_id', favorites.delete)
+  .get('/favorites/:user_id', auth.loginRequired, favorites.show)
+  .get('/fave/:thread_id', auth.signupRequired, favorites.create)
+  .get('/unfave/:thread_id', auth.loginRequired, favorites.delete)
 
 // Admin endpoints
 let admin = require('./admin.js')
 router
-  .get('/admin', auth.loginRequired, admin.index)
+  .get('/admin', auth.adminRequired, admin.index)
 
 
 module.exports = router

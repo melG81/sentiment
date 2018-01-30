@@ -40,6 +40,13 @@ app.use(passport.initialize())
 app.use(passport.session())
 app.use(flash())
 
+// Global route middleware set property login if authenticated
+app.use(function (req, res, next) {
+  res.locals.login = req.isAuthenticated();
+  next();
+});
+
+
 // Set view engine
 app.engine('.hbs', exphbs({
   extname: '.hbs',
