@@ -358,5 +358,22 @@ describe('#dbClient', () => {
         })
     })
   })
+
+  describe('.deleteFavorite', () => {
+    it('should send a DELETE request to sentiment-db to url /favorites/:user_id/:thread_id', (done) => {
+      let userId = '5a6fdd8796616cb174d746e3'
+      let threadId = '5a6fdd8796616cb174d746e6'
+
+      axiosStub.delete.returns(Promise.resolve('ok'))
+
+      dbClient.deleteFavorite(userId, threadId, axiosStub)
+        .then(data => {
+          let url = `${config.sentimentDBHost}/favorites/${userId}/${threadId}`
+          expect(axiosStub.delete.calledWith(url)).to.be.true
+          axiosStub.delete.reset();
+          done();
+        })
+    })
+  })
   
 })

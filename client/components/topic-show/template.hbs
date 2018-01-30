@@ -18,7 +18,17 @@
     </p>
     <p class="fs-9 phone-fs-12 gray post-subheading">
       <span class="post-vote-count">{{votes}} points</span> | {{momentFromNow post.published}} |
-      <span><a class="gray blue-hover" href="/topics/news/{{encodeDasherize post.title}}/{{id}}">more</a></span>
+      <span><a class="gray blue-hover" href="/topics/news/{{encodeDasherize post.title}}/{{id}}">more</a></span> |
+      {{#if isFave}}
+        <span>
+          <a class="gray blue-hover" href="/unfave/{{id}}">un-favorite</a>
+        </span>
+      {{else}}
+        <span>
+          <a class="gray blue-hover" href="/fave/{{id}}">favorite</a>
+        </span>
+      {{/if}}
+
       {{#if documentSentiment.score}} | Google AI sentiment
       <span style="color: {{sentimentColor documentSentiment.score}}">{{round documentSentiment.score 2}}</span>
       {{/if}} | tags:

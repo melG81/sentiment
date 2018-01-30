@@ -1,0 +1,12 @@
+<div class="p-12" style="min-height: 100vh">
+  <h3>Favorites: {{user.email}}</h3>
+  <p><a href="/profile">Profile</a></p>
+
+  <div class="py-12">
+    {{#each data}} 
+      {{> topic-show/template isAdmin=../isAdmin admin=../admin count=this post=post topic=topic documentSentiment=documentSentiment id=_id}} 
+    {{/each}}
+  </div>
+  
+</div>
+

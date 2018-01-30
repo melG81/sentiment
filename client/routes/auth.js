@@ -1,7 +1,10 @@
 // Authentication
 let passport = require('passport')
 require('./passport.js')
+
+// Dependencies
 let _ = require('lodash')
+let dbClient = require('../src/util/dbClient')
 
 exports.loginPage = (req, res, next) => {
   res.render('auth/login', { 
