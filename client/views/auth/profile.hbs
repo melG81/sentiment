@@ -1,13 +1,16 @@
 <div class="p-12" style="min-height: 100vh">
-  <h3>User Profile</h3>
+  <h3>Profile</h3>
   <p class="py-20 flash-message">{{message}}</p>
   <p>Email: {{user.email}}</p>
-  <p>Admin: {{user.admin}}</p>
   <p>Created: {{moment user/createdAt "DD-MM-YYYY"}}</p>
 
+  <p>
+    <a href="/favorites/{{user._id}}">Favorite posts</a>
+  </p> 
+
   {{#if isAuthenticated}}
-  <p class="py-20">
-    <a href="/logout">Logout</a>
-  </p>
+    <p class="py-20">
+      <a href="/logout">Logout</a>
+    </p>
   {{/if}}
 </div>

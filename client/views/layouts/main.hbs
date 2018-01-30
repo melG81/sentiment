@@ -24,14 +24,20 @@
     <header class="bg-black white px-4 py-4 mt-6 phone-mt-0 row">
       <div class="col-6 phone-col-12">
         <p class="bold phone-fs-20">
-        <a href="/" class="text-decoration-none white pl-4">Cryptocurrency Trading News</a>
+          <a href="/" class="text-decoration-none white pl-4">Cryptocurrency News</a>
         </p>
       </div>
-      <div class="col-6 right-align phone-hide">
-        <p class="phone-fs-18 pr-6">
+      <div class="col-6 right-align phone-left-align phone-col-12">
+        <p class="phone-pl-12 phone-fs-12">
           <a href="/fundamentals" class="white text-decoration-none">101</a>
           |
           <a href="/?sort=latest" class="white text-decoration-none">Latest</a>
+          |
+          {{#if login}}            
+            <a href="/logout" class="white text-decoration-none">Logout</a>
+          {{else}}
+            <a href="/login" class="white text-decoration-none">Login</a>
+          {{/if}}
         </p>
       </div>
     </header>

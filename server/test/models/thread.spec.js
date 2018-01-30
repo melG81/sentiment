@@ -5,7 +5,7 @@ let chaiHttp = require('chai-http');
 chai.use(chaiHttp);
 
 // Helpers
-let moment = require('moment');
+let format = require('date-fns/format')
 let seeder = require('../helpers/seeder.js');
 
 // App requires
@@ -13,13 +13,14 @@ let server = require('../../server.js');
 let mongoose = require('mongoose');
 let Thread = require('../../models/thread');
 
-beforeEach('drop the collection and reseed database', function (done) {
-  mongoose.connection.collections.threads.drop(function () {
-    seeder.threads(done)
-  });
-});
 
 describe('thread', function () {
+  beforeEach('drop the collection and reseed database', function (done) {
+    mongoose.connection.collections.threads.drop(function () {
+      seeder.threads(done)
+    });
+  });
+
   it('should return all the threads on GET /threads/all', function (done) {
     chai.request(server)
       .get('/threads/all')
@@ -27,7 +28,7 @@ describe('thread', function () {
         let input = resp.body.map(el => {
           return Object.assign({}, {
             topic: el.topic,
-            createdAt: moment(el.createdAt).format('YYYY')
+            createdAt: format(el.createdAt, 'YYYY')
           })
         })
         let actual = [
@@ -129,7 +130,7 @@ describe('thread', function () {
         let input = resp.body.map(el => {
           return Object.assign({}, {
             topic: el.topic,
-            createdAt: moment(el.createdAt).format('YYYY')
+            createdAt: format(el.createdAt, 'YYYY')
           })
         })
         let actual = [

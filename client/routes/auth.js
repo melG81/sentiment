@@ -1,7 +1,10 @@
 // Authentication
 let passport = require('passport')
 require('./passport.js')
+
+// Dependencies
 let _ = require('lodash')
+let dbClient = require('../src/util/dbClient')
 
 exports.loginPage = (req, res, next) => {
   res.render('auth/login', { 
@@ -59,7 +62,7 @@ exports.logout = function (req, res, next) {
 
 // =========AUTHORIZATION MIDDLEWARE=======
 // Beautiful middleware syntax, if you are not authenticated then redirect, otherwise proceed with next
-exports.loginRequired = function (req, res, next) {
+exports.adminRequired = function (req, res, next) {
   let isAuthenticated = req.isAuthenticated();
   let isAdmin = _.get(req, "user.admin")
 
@@ -71,6 +74,28 @@ exports.loginRequired = function (req, res, next) {
   if (!isAdmin) {
     req.flash('message', 'Must be admin');  
     return res.redirect("/profile");  
+  }
+
+  next()
+};
+
+exports.loginRequired = function (req, res, next) {
+  let isAuthenticated = req.isAuthenticated();
+
+  if (!isAuthenticated) {
+    req.flash('message', 'Must be authenticated');
+    return res.redirect("/login");
+  }
+
+  next()
+};
+
+exports.signupRequired = function (req, res, next) {
+  let isAuthenticated = req.isAuthenticated();
+
+  if (!isAuthenticated) {
+    req.flash('message', 'Sign up for free to save favorites');
+    return res.redirect("/signup");
   }
 
   next()

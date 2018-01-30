@@ -49,7 +49,7 @@ dbClient.getDoc = function (id, request=axios) {
   return request.get(url)
 }
 /**
- * @function {upvote a document by 50 points or set as vote: 1 if none exists}
+ * @function {upvote a document by 1 point or set as vote: 1 if none exists}
  * @param  {String} id       {unique document id}
  * @param  {Object} request  {request dependency defaults to axios}
  * @return {Promise} {axios.put promise}
@@ -62,7 +62,7 @@ dbClient.upVote = function (id, request=axios) {
       let hasVotes = document.votes;
       let voteOpts;
       if (hasVotes) {
-        voteOpts = {votes: document.votes += 50}
+        voteOpts = {votes: document.votes += 1}
       } else {
         voteOpts = {votes: 1}
       }
@@ -132,3 +132,24 @@ dbClient.getAll = function (page, topic, request=axios) {
   let url = `${config.sentimentDBHost}/threads?page=${page}${topicQuery}`;
   return request.get(url)
 }
+
+dbClient.createFavorite = function (userId, threadId, request=axios) {
+  let url = `${config.sentimentDBHost}/favorites`;
+  let payload = {user: userId, thread: threadId}
+  return request.post(url, payload)
+} 
+
+dbClient.getUserFavorites = function (userId, request = axios) {
+  let url = `${config.sentimentDBHost}/users/${userId}/favorites`;
+  return request.get(url)
+} 
+
+dbClient.deleteFavorite = function (userId, threadId, request = axios) {
+  let url = `${config.sentimentDBHost}/favorites/${userId}/${threadId}`;
+  return request.delete(url)
+} 
+
+dbClient.getUsers = function (request = axios) {
+  let url = `${config.sentimentDBHost}/users`;
+  return request.get(url)
+} 
