@@ -29,8 +29,10 @@ favorites.create = function (req, res, next) {
   let { user, thread } = req.body
   Favorite
     .find({ user })
-    .then(resp => {
-      let hasThread = _.includes(_.map(resp, el => el.thread.toString()), thread.toString() )
+    .then(resp => {      
+      let threadIdArr = resp.map(el => el.thread ? el.thread.toString() : false).filter( el => el !== false)      
+      let hasThread = _.includes(threadIdArr, thread)
+
       if (hasThread) {
         return res.status(200).send({message: 'already exists'})
       }
