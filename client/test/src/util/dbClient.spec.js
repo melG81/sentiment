@@ -359,6 +359,20 @@ describe('#dbClient', () => {
     })
   })
 
+  describe.only('.getUsers', () => {
+    it('should send a GET request to sentiment-db to url /users', (done) => {      
+      axiosStub.get.returns(Promise.resolve('array of users'))
+
+      dbClient.getUsers(axiosStub)
+        .then(data => {
+          let url = `${config.sentimentDBHost}/users`
+          expect(axiosStub.get.calledWith(url)).to.be.true
+          axiosStub.get.reset();
+          done();
+        })
+    })
+  })
+
   describe('.deleteFavorite', () => {
     it('should send a DELETE request to sentiment-db to url /favorites/:user_id/:thread_id', (done) => {
       let userId = '5a6fdd8796616cb174d746e3'

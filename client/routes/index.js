@@ -40,6 +40,11 @@ router
   .get('/fave/:thread_id', auth.signupRequired, favorites.create)
   .get('/unfave/:thread_id', auth.loginRequired, favorites.delete)
 
+// Users endpoints
+let users = require('./users.js')
+router
+  .get('/users', auth.adminRequired, users.index)
+
 // Admin endpoints
 let admin = require('./admin.js')
 router

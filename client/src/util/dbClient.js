@@ -148,3 +148,8 @@ dbClient.deleteFavorite = function (userId, threadId, request = axios) {
   let url = `${config.sentimentDBHost}/favorites/${userId}/${threadId}`;
   return request.delete(url)
 } 
+
+dbClient.getUsers = function (request = axios) {
+  let url = `${config.sentimentDBHost}/users`;
+  return request.get(url)
+} 
