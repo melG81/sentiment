@@ -27,9 +27,18 @@ favorites.show = function (req, res, next) {
 
 favorites.create = function (req, res, next) {
   let { user, thread } = req.body
-  Favorite.create({user, thread})
-    .then(data => res.status(200).send(data))
-    .catch(next);
+  Favorite
+    .find({ user })
+    .then(resp => {
+      let hasThread = _.includes(_.map(resp, el => el.thread.toString()), thread.toString() )
+      if (hasThread) {
+        return res.status(200).send({message: 'already exists'})
+      }
+      Favorite.create({user, thread})
+        .then(data => res.status(200).send(data))
+        .catch(next);
+    })
+  
 }
 
 favorites.delete = function (req, res, next) {

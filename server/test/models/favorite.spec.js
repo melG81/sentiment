@@ -73,6 +73,26 @@ describe('#Favorite', function () {
     expect(fav.thread).to.equal(bitcoinId.toString())
   });
 
+  it('should validate if favorite exists on POST /favorites', async () => {
+    let user = await User.find({email: 'hela@gmail.com'})
+    let thread = await Thread.find({})
+    let helaId = user[0]._id
+    let bitcoinId = thread[0]._id
+    
+
+    let res = await chai.request(server)
+      .post('/favorites')
+      .send({
+        user: helaId,
+        thread: bitcoinId
+      })
+    
+    let input = res.body
+    let actual = {message: 'already exists'}
+      
+    expect(input).to.eql(actual)
+  });
+
   it('should delete a favorite on DELETE /favorites/:id', function (done) {
     chai.request(server)
       .get('/favorites')
