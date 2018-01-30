@@ -122,7 +122,7 @@ describe('#dbClient', () => {
           done();
         })
     })
-    it('should send a PUT request with vote +50 if vote exists to sentiment-db', (done) => {
+    it('should send a PUT request with vote +1 if vote exists to sentiment-db', (done) => {
       let document = {
         data:{
           topic: [topic],
@@ -136,7 +136,7 @@ describe('#dbClient', () => {
         updatedAt: new Date(),
         _id: id,
         post,
-        votes: 54
+        votes: 5
       }
 
       let dbClientStub = sinon.stub(dbClient, 'getDoc').returns(Promise.resolve(document))
@@ -145,7 +145,7 @@ describe('#dbClient', () => {
       dbClient.upVote(id, axiosStub)
         .then(data => {
           let url = `${config.sentimentDBHost}/threads/topic/id/${id}`
-          expect(axiosStub.put.args[0]).to.eql([url, {votes: 54}])
+          expect(axiosStub.put.args[0]).to.eql([url, {votes: 5}])
           expect(data).to.eql(postNew);
           dbClient.getDoc.restore()
           axiosStub.put.reset();
@@ -359,7 +359,7 @@ describe('#dbClient', () => {
     })
   })
 
-  describe.only('.getUsers', () => {
+  describe('.getUsers', () => {
     it('should send a GET request to sentiment-db to url /users', (done) => {      
       axiosStub.get.returns(Promise.resolve('array of users'))
 
