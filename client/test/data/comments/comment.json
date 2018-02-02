@@ -27,7 +27,7 @@
     "thread_id": "abc",
     "comment_id": null,
     "user_id": "Moter8",
-    "text": "I can't middleclick links. Unusable for me.\nAlso, please don't attach /?sort=new (or remove it) to reddit threads. It overrides the user's sorting"
+    "text": "I can't middleclick links. Unusable for me. Also, please don't attach."
   },
   {
     "id": 4,
@@ -37,7 +37,7 @@
     "thread_id": "abc",
     "comment_id": "3",
     "user_id": "akerro",
-    "text": "I almost liked it, but then I wanted to open 5 links in new tabs and it didn't work, also left-click also doesnt work, it just tries to load some information from external source, only reddit link worked \"OK\" (but really not OK, I wanted to see comments not content of a post) for me."
+    "text": "I almost liked it, but then I wanted to open 5 links in new tabs and it didn't work."
   },
   {
     "id": 5,
@@ -67,7 +67,7 @@
     "thread_id": "abc",
     "comment_id": "3",
     "user_id": "4lun",
-    "text": "Not just middle click, I can’t long press on mobile in order to open a new tab either. I suspect it’s just a <div> element with an onclick handler."
+    "text": "Not just middle click, I can’t long press on mobile."
   },
   {
     "id": 8,
@@ -127,6 +127,6 @@
     "thread_id": "abc",
     "comment_id": null,
     "user_id": "howiem",
-    "text": "I built this using the webhose api to scrape and filter for cryptocurrency related topics from reputable news sources and trending forum posts. I'm a terrible designer so I eyeballed the hacker news layout and finger painted some CSS over it. Hope people find it interesting :P"
+    "text": "I built this using the webhose api to scrape and filter for cryptocurrency."
   }
 ]

@@ -2,6 +2,12 @@ var chai = require('chai');
 var expect = chai.expect;
 var comments = require('../../../src/comments');
 let util = require('util')
+let fs = require('fs')
+let path = require('path')
+const chaiHtml = require('chai-html')
+
+chai.use(chaiHtml)
+
 
 describe.only('#comments', function () {
   describe('flattenNested', function () {
@@ -13,6 +19,17 @@ describe.only('#comments', function () {
       // console.log(util.inspect(input, false, null));
       let actual = commentNested
       expect(input).to.eql(actual)
+    })
+  })
+
+  describe('parse', function (){
+    it('should return html friendly and ordered comments and replies with relevant indenting', () => {
+      let commentRaw = require('../../data/comments/comment.json')
+      let html = fs.readFileSync(path.join(__dirname, '../../data/comments/commentHTML.html'), 'utf-8')
+
+      let input = comments.parse(commentRaw)
+      let actual = html
+      expect(input).html.to.equal(actual)
     })
   })
 });
