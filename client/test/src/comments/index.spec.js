@@ -9,7 +9,7 @@ const chaiHtml = require('chai-html')
 chai.use(chaiHtml)
 
 
-describe.only('#comments', function () {
+describe('#comments', function () {
   describe('flattenNested', function () {
     it('should create a nested array of comments and children replies recursively sorted by date created', () => {
       let commentRaw = require('../../data/comments/comment.json')
