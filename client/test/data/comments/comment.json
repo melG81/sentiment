@@ -7,7 +7,7 @@
     "thread_id": "abc",
     "comment_id": null,
     "user_id": "eggbrain",
-    "text": "If you model your site after Hacker News, people are going to try to use it like Hacker News, and the expected behavior of your site is incredibly not-hacker-news-like.\n1. I click on a story expecting for it to take me to the site, but nothing happens. After feeling confused, I realize it actually added some text content after the story. What? It was only after looking in the comments here that I realized I had to click the link in parentheses (which on Hacker News shows you submissions from that website, not links you to the content)\n\n2. I see a lot of \"points\", so I try to understand how things are upvoted - is it accounts? No, no accounts for your site. Is it based on the links popularity (eg trending tweets, hot news, hot reddit stories, etc)? No, there are some stories with hundreds of points, but linking to a reddit post with 2 upvotes. It's only then do I realize by clicking on the title, or the link, I'm \"up-voting\" it, even though it might not be good content (and in fact, each time I click it adds a point).\n\n3. I search for the ability to comment, but realize that's not there, but again since it looks like Hacker News I think there's comments and go to click on something that doesn't exist.\n\nIn general, I think your site could be really useful, and there's a lot of cool stuff you did, but I'd either change your design so people don't treat your site (interaction wise) like the site your referencing, or try to at least link up expected behavior in a more consistent way."
+    "text": "If you model your site after Hacker News."
   },
   {
     "id": 2,
@@ -17,7 +17,7 @@
     "thread_id": "abc",
     "comment_id": "1",
     "user_id": "howiem",
-    "text": "Thanks for your comments. This is very much an early prototype and I appreciate your comments. I will be looking to add the ability to comment next. Regarding adding text at the bottom I thought it might be easier for people to read a glimpse of text before deciding to open the link, I’ve found this useful in my own browsing. The actual link has a 5 second redirect because I am using the free tier currently for webhose.io api (a great news scraping provider). if I get enough traction I may look at getting a paid account, but this is very much a side project"
+    "text": "Thanks for your comments. This is very much an early prototype and I appreciate your comments."
   },
   {
     "id": 3,
@@ -117,7 +117,7 @@
     "thread_id": "abc",
     "comment_id": null,
     "user_id": "sickcodebruh",
-    "text": "One of the reasons I love Hacker News is because of the high quality of content and discussion. Looking like HN is nice but the fact that your top post includes a nice little \"(((bankers)))\" remark from /u/BigNuts881 was a rough reminder that this isn't to be a much better than just looking through the results of a broad Twitter search."
+    "text": "One of the reasons I love Hacker News is because of the high quality of content and discussion."
   },
   {
     "id": 13,
@@ -128,15 +128,5 @@
     "comment_id": null,
     "user_id": "howiem",
     "text": "I built this using the webhose api to scrape and filter for cryptocurrency related topics from reputable news sources and trending forum posts. I'm a terrible designer so I eyeballed the hacker news layout and finger painted some CSS over it. Hope people find it interesting :P"
-  },
-  {
-    "id": null,
-    "days_ago": null,
-    "created_at": "",
-    "updated_at": "",
-    "thread_id": "",
-    "comment_id": "",
-    "user_id": "",
-    "text": ""
   }
 ]
