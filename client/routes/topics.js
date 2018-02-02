@@ -112,7 +112,9 @@ topics.pollscript = function (req, res, next) {
 
 topics.upVote = function (req, res, next) {
   let id = req.params.id
-  dbClient.upVote(id)
+  let isAdmin = _.get(req, "user.admin")
+  
+  dbClient.upVote(id, isAdmin)
     .then(payload => {
       res.send(payload.data)
     })

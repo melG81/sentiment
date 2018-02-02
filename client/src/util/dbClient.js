@@ -54,7 +54,7 @@ dbClient.getDoc = function (id, request=axios) {
  * @param  {Object} request  {request dependency defaults to axios}
  * @return {Promise} {axios.put promise}
  */
-dbClient.upVote = function (id, request=axios) {
+dbClient.upVote = function (id, admin=false, request=axios) {
   return new Promise((resolve) => {
     dbClient.getDoc(id)
     .then(payload => {
@@ -62,7 +62,8 @@ dbClient.upVote = function (id, request=axios) {
       let hasVotes = document.votes;
       let voteOpts;
       if (hasVotes) {
-        voteOpts = {votes: document.votes += 1}
+        let voteCount = admin ? document.votes += 50 : document.votes +=1
+        voteOpts = { votes: voteCount}
       } else {
         voteOpts = {votes: 1}
       }
