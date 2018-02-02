@@ -8,7 +8,7 @@
         {{post.title}}
       </a>
       <a href="{{post.url}}" target="_blank" class="post-upvote gray blue-hover" data-id="{{id}}">
-        ({{post.site}})
+        (link: {{post.site}})
       </a>
       {{#if isAdmin}}
         <span class="post-upvote" data-id="{{id}}">&uarr;</span> or
@@ -21,11 +21,11 @@
       <span><a class="gray blue-hover" href="/topics/news/{{encodeDasherize post.title}}/{{id}}">more</a></span> |
       {{#if isFave}}
         <span>
-          <a class="gray blue-hover" href="/unfave/{{id}}">Nie Lubię</a>
+          <a class="gray blue-hover" href="/unfave/{{id}}">Un-favorite</a>
         </span>
       {{else}}
         <span>
-          <a class="gray blue-hover" href="/fave/{{id}}">Lubię</a>
+          <a class="gray blue-hover" href="/fave/{{id}}">Favorite</a>
         </span>
       {{/if}}
 
