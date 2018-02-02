@@ -52,7 +52,7 @@ let makeTopicShow = function(){
     let data = payload.data;
     let votes = payload.data.votes;
     if (votes) {
-      $voteCount.text(`${votes} points`)
+      $voteCount.text(`${votes} clicks`)
     }
   }
   this.postUpVote = (e) => {
