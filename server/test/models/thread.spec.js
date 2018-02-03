@@ -85,7 +85,7 @@ describe('thread', function () {
       .send({topic: ['banana boat'], post})
       .end(function (err, resp) {
         let data = resp.body;
-        expect(data).to.have.all.keys(['__v', '_id', 'updatedAt', 'createdAt', 'post', 'topic', 'votes']);
+        expect(data).to.have.all.keys(['__v', '_id', 'updatedAt', 'createdAt', 'post', 'topic', 'votes', 'comments']);
         expect(data.topic).to.eql(['banana boat']);
         expect(data.post).to.eql(post);
         expect(data.votes).to.eql(0);
