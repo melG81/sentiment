@@ -7,7 +7,8 @@ let Comment = require('../models/comment');
 let _ = require('lodash')
 
 comments.create = function (req, res, next) {
-  let { threadId, userId, commentId, text } = req.body
+  let { threadId, userId, text } = req.body
+  let commentId = _.get(req, 'body.commentId', null)
   Thread
     .findById(threadId)
     .then(resp => {

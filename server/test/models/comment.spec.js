@@ -18,7 +18,7 @@ let _ = require('lodash')
 let util = require('util')
 
 
-describe.only('#Comment', function () {
+describe('#Comment', function () {
   beforeEach('drop the collection and reseed database', function (done) {
     mongoose.connection.collections.threads.drop(function () {
       seeder.comments(done)
@@ -45,7 +45,26 @@ describe.only('#Comment', function () {
     expect(input).to.eql(actual)
   });
 
-  it('should add a single post on POST /comments', async () => {
+  it('should add a single comment (not a reply) on POST /comments', async () => {
+    let threads = await Thread.find()
+    let threadId = await threads[0]._id
+    let user = await User.find({ email: 'howie@gmail.com' })
+    let userId = user[0]._id
+
+    let payload = {
+      threadId,
+      userId,
+      text: 'This is a comment'
+    }
+
+    let postRes = await chai.request(server).post('/comments').send(payload)
+    let reply = postRes.body.comments[2]
+    expect(reply.text).to.equal(payload.text)
+    expect(reply.comment_id).to.equal(null)
+    expect(reply.user).to.equal(userId.toString())
+  });
+  
+  it('should add a single reply on POST /comments', async () => {
     let threads = await Thread.find()
     let threadId = await threads[0]._id
     let res = await chai.request(server).get(`/threads/${threadId}`)
@@ -66,6 +85,7 @@ describe.only('#Comment', function () {
     expect(reply.comment_id).to.equal(comment._id)
     expect(reply.user).to.equal(userId.toString())    
   });
+
 })
 
 
