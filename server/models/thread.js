@@ -1,6 +1,8 @@
 // Dependencies
 var mongoose = require('mongoose');
 
+var CommentSchema = require('./comment.js');
+
 // Thread Schema
 // `topic` represents array of topic query/ tags e.g. ['bitcoin', 'crypto', 'monero']
 // `post` represents the parsed API post payload which will be backed up (mixed schema, will change)
@@ -13,7 +15,8 @@ var Schema = new mongoose.Schema({
     votes: {
      type: Number,
      default: 0
-    }
+    },
+    comments: [CommentSchema]
   },{
     timestamps: true
 });
