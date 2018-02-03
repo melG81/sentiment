@@ -18,7 +18,7 @@ let _ = require('lodash')
 let util = require('util')
 
 
-describe('#Comment', function () {
+describe.only('#Comment', function () {
   beforeEach('drop the collection and reseed database', function (done) {
     mongoose.connection.collections.threads.drop(function () {
       seeder.comments(done)
@@ -43,6 +43,28 @@ describe('#Comment', function () {
       { email: 'howie@gmail.com', text: 'Hela that is amazing' }
     ]
     expect(input).to.eql(actual)
+  });
+
+  it('should add a single post on POST /comments', async () => {
+    let threads = await Thread.find()
+    let threadId = await threads[0]._id
+    let res = await chai.request(server).get(`/threads/${threadId}`)
+    let comment = res.body.comments[0]
+    let user = await User.find({email: 'howie@gmail.com'})
+    let userId = user[0]._id
+
+    let payload = {
+      threadId,
+      userId,
+      commentId: comment._id,
+      text: 'This is a reply'
+    }
+
+    let postRes = await chai.request(server).post('/comments').send(payload)
+    let reply = postRes.body.comments[2]
+    expect(reply.text).to.equal(payload.text)
+    expect(reply.comment_id).to.equal(comment._id)
+    expect(reply.user).to.equal(userId.toString())    
   });
 })
 

@@ -22,6 +22,11 @@ router
   .get('/threads/:id', threads.show)
   .delete('/threads/topic/id/:id', threads.topicDelete)
 
+// Comments CRUD endpoints
+var comments = require('./comments.js');
+router
+  .post('/comments', comments.create)
+  
 // Users CRUD endpoints
 var users = require('./users.js');
 router
