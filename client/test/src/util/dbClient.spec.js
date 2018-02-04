@@ -163,8 +163,8 @@ describe('#dbClient', () => {
       let document = {data:{
         topic: [topic],
         post
+        }
       }
-}
       let postNew = {
         topic: [topic],
         createdAt: new Date(),
@@ -383,6 +383,44 @@ describe('#dbClient', () => {
       dbClient.deleteFavorite(userId, threadId, axiosStub)
         .then(data => {
           let url = `${config.sentimentDBHost}/favorites/${userId}/${threadId}`
+          expect(axiosStub.delete.calledWith(url)).to.be.true
+          axiosStub.delete.reset();
+          done();
+        })
+    })
+  })
+
+  describe('.createComment', () => {
+    it('should send a POST request to sentiment-db /comments with threadId, userId, commentId and text payload', (done) => {
+      let payload = { 
+        threadId: '5a6fdd8796616cb174d746e3',  
+        userId: '5a6fdd8796616cb174d746e3', 
+        commentId: 'abc', 
+        text: 'this is a reply comment' 
+      }      
+
+      axiosStub.post.returns(Promise.resolve('ok'))
+
+      dbClient.createComment(payload, axiosStub)
+        .then(data => {
+          let url = `${config.sentimentDBHost}/comments`
+          expect(axiosStub.post.args[0]).to.eql([url, payload])
+          axiosStub.post.reset();
+          done();
+        })
+    })
+  })
+  
+  describe('.deleteComment', () => {
+    it('should send a DELETE request to sentiment-db to url /comments/:thread_id/:comment_id', (done) => {
+      let threadId = '5a6fdd8796616cb174d746e6'
+      let commentId = 'abc'
+
+      axiosStub.delete.returns(Promise.resolve('ok'))
+
+      dbClient.deleteComment(threadId, commentId, axiosStub)
+        .then(data => {
+          let url = `${config.sentimentDBHost}/comments/${threadId}/${commentId}`
           expect(axiosStub.delete.calledWith(url)).to.be.true
           axiosStub.delete.reset();
           done();
