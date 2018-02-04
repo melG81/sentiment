@@ -154,3 +154,17 @@ dbClient.getUsers = function (request = axios) {
   let url = `${config.sentimentDBHost}/users`;
   return request.get(url)
 } 
+
+dbClient.createComment = function (opts, request = axios) {
+  let {threadId, userId, commentId, text } = opts
+  let payload = { threadId, userId, commentId, text }
+  
+  let url = `${config.sentimentDBHost}/comments`;
+  
+  return request.post(url, payload)
+} 
+
+dbClient.deleteComment = function (threadId, commentId, request = axios) {
+  let url = `${config.sentimentDBHost}/comments/${threadId}/${commentId}`;
+  return request.delete(url)
+} 

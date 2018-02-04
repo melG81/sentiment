@@ -9,7 +9,7 @@ router.get('/', function(req, res, next){
 // Threads CRUD endpoints
 var threads = require('./threads.js');
 router
-  .get('/threads/topic/id/:id', threads.topicById)
+  .get('/threads/topic/id/:id', threads.show)
   .get('/threads/author/:author', threads.author)
   .put('/threads/topic/id/:id', threads.topicUpdate)
   .post('/threads/sites', threads.sites)
@@ -19,8 +19,15 @@ router
   .get('/threads/all', threads.index)
   .get('/threads/topic/:topic/latest', threads.topicLatest)
   .get('/threads/topic/:topic', threads.topic)  
+  .get('/threads/:id', threads.show)
   .delete('/threads/topic/id/:id', threads.topicDelete)
 
+// Comments CRUD endpoints
+var comments = require('./comments.js');
+router
+  .post('/comments', comments.create)
+  .delete('/comments/:thread_id/:comment_id', comments.delete)
+  
 // Users CRUD endpoints
 var users = require('./users.js');
 router

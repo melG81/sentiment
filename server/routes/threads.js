@@ -181,9 +181,10 @@ threads.paginate = function (req, res, next) {
     })
 }
 
-threads.topicById = function (req, res, next) {
+threads.show = function (req, res, next) {
   let id = req.params.id;
   Thread.findById(id)
+    .populate('comments.user', 'email')
     .then(data => {
       res.status(200).send(data)
     })

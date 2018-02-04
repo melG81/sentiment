@@ -73,7 +73,7 @@ describe('#Favorite', function () {
     expect(fav.thread).to.equal(bitcoinId.toString())
   });
 
-  it.only('should validate if favorite exists on POST /favorites', async () => {
+  it('should validate if favorite exists on POST /favorites', async () => {
     let user = await User.find({email: 'hela@gmail.com'})
     let thread = await Thread.find({})
     let helaId = user[0]._id

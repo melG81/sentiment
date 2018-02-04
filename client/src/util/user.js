@@ -18,9 +18,9 @@ User.findByEmail = function (email, request = axios) {
 }
 
 User.create = function (body, request = axios) {
-  let {email, password, admin} = body
+  let {email, password, username, admin} = body
   let url = `${config.sentimentDBHost}/users`;
-  return request.post(url, {email, password, admin})
+  return request.post(url, {email, password, username, admin})
 }
 
 User.delete = function (id, request = axios) {

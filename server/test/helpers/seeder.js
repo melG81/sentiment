@@ -5,6 +5,7 @@ let mongoose = require('mongoose');
 let Thread = require('../../models/thread');
 let User = require('../../models/user');
 let Favorite = require('../../models/favorite');
+let Comment = require('../../models/comment');
 let posts = require('../data/posts.json');
 let bcrypt = require('bcrypt')
 
@@ -42,8 +43,8 @@ seeder.users = function (done) {
   let howiePassword = bcrypt.hashSync('chicken', 10)
   let felixPassword = bcrypt.hashSync('chicken', 10)
 
-  let howie = User.seed({ email: 'howie@gmail.com', password: howiePassword, admin: true});
-  let felix = User.seed({ email: 'felix@gmail.com', password: felixPassword});
+  let howie = User.seed({ email: 'howie@gmail.com', password: howiePassword, username: 'howieburger', admin: true});
+  let felix = User.seed({ email: 'felix@gmail.com', password: felixPassword, username: 'son'});
 
   Promise.all([howie, felix])
     .then(() => done());
@@ -64,3 +65,33 @@ seeder.favorites = async function (done) {
   
   done()
 };
+
+seeder.comments = async function (done) {
+  // Drop users and threads before starting
+  await mongoose.connection.collections.users.drop()
+
+  let hela = await User.seed({ email: 'hela@gmail.com', password: bcrypt.hashSync('chicken', 10) });
+  let howie = await User.seed({ email: 'howie@gmail.com', password: bcrypt.hashSync('chicken', 10) });
+  let bitcoinThread = await Thread.seed({ topic: ['bitcoin', 'crypto'], post: posts[1] });
+  let cryptoThread = await Thread.seed({ topic: ['crypto'], post: posts[3] });
+
+  // Create comments
+  let comment1 = {
+    text: 'I love bitcoin',
+    user: hela._id,
+    comment_id: null
+  }
+  await bitcoinThread.comments.push(comment1)
+  await bitcoinThread.save()
+  
+  let comment1Reply = {
+    text: 'Hela that is amazing',
+    user: howie._id,
+    comment_id: bitcoinThread.comments[0]._id
+  }
+  await bitcoinThread.comments.push(comment1Reply)
+  await bitcoinThread.save()
+  
+  done()
+  
+}

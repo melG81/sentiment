@@ -25,9 +25,10 @@ users.findByEmail = function (req, res, next) {
 };
 
 users.create = function (req, res, next) {
-  let {email, password, admin} = req.body
+  let {email, username, password, admin} = req.body
   let payload = {
     email: email,
+    username,
     password: bcrypt.hashSync(password, 10),
     admin: admin
   }
@@ -37,9 +38,10 @@ users.create = function (req, res, next) {
 };
 
 users.update = function (req, res, next) {
-  let {email, password, admin} = req.body
+  let {email, password, username, admin} = req.body
   let payload = _.omitBy({
     email,
+    username,
     password: bcrypt.hashSync(password, 10),
     admin
   }, _.isNil)

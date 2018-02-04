@@ -1,0 +1,38 @@
+<div class="post-row row phone-py-4 py-20 px-10">
+  <div class="post-body">
+    <h2 class="post-heading fs-20 phone-fs-15">
+      {{post.title}}
+      <a href="{{post.url}}" target="_blank" class="post-upvote gray blue-hover" data-id="{{id}}">
+        (Link: {{post.site}})
+      </a>
+    </h2>
+    <p class="fs-9 phone-fs-12 gray post-subheading">
+      <span class="post-vote-count">{{votes}} clicks</span> | {{momentFromNow post.published}} 
+      {{#if documentSentiment.score}} | Google AI sentiment
+        <span>{{round documentSentiment.score 2}}</span>
+      {{/if}} | 
+      <span class="post-comment-count">
+        comments: {{#if comments}} {{comments.length}} {{else}} discuss {{/if}}
+      </span> |
+      <span>tags: {{#each topic}}</span>
+      <em>
+        <a class="gray blue-hover" href="/topics/{{this}}">{{this}}</a>
+      </em>
+      {{/each}}
+    </p>
+  </div>
+
+   {{> comment-list/template comments=comments}}
+
+  <div class="article-preview pt-20">
+    <h3>Article preview (bot search)</h3>
+    <p>
+      <a href="{{post.url}}" target="_blank" class="post-upvote gray blue-hover" data-id="{{id}}">
+        (Original link: {{post.site}})
+      </a>  
+    </p>
+    <p class="fs-12 phone-fs-14 black py-5 post-text">
+      {{{parseHtml post.text}}}
+    </p>    
+  </div>
+</div>
