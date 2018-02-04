@@ -39,7 +39,8 @@ passport.use('local-signup', new LocalStrategy({
         if (user) {
           return done(null, false)
         }
-        User.create({email, password})
+        let username = req.body.username
+        User.create({email, username, password})
           .then(res => {
             let user = res.data
             return done(null, user);

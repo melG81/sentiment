@@ -28,10 +28,11 @@ users.create = function (req, res, next) {
   let {email, username, password, admin} = req.body
   let payload = {
     email: email,
-    username,
+    username: username,
     password: bcrypt.hashSync(password, 10),
     admin: admin
   }
+  console.log(payload);
   User.create(payload)
     .then(data => res.status(200).send(data))
     .catch(next);
