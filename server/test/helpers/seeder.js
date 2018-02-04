@@ -43,8 +43,8 @@ seeder.users = function (done) {
   let howiePassword = bcrypt.hashSync('chicken', 10)
   let felixPassword = bcrypt.hashSync('chicken', 10)
 
-  let howie = User.seed({ email: 'howie@gmail.com', password: howiePassword, admin: true});
-  let felix = User.seed({ email: 'felix@gmail.com', password: felixPassword});
+  let howie = User.seed({ email: 'howie@gmail.com', password: howiePassword, username: 'howieburger', admin: true});
+  let felix = User.seed({ email: 'felix@gmail.com', password: felixPassword, username: 'son'});
 
   Promise.all([howie, felix])
     .then(() => done());

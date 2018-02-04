@@ -27,8 +27,8 @@ describe('#User', function () {
       .get('/users')
       .end(function (err, res) {
         let data = res.body
-        let input = data.map(user => _.pick(user, ['email', 'admin']))
-        let actual = [{ email: 'howie@gmail.com', admin: true }, { email: 'felix@gmail.com', admin: false }]
+        let input = data.map(user => _.pick(user, ['email', 'username', 'admin']))
+        let actual = [{ email: 'howie@gmail.com', username: 'howieburger', admin: true }, { email: 'felix@gmail.com', username: 'son', admin: false }]
         expect(input).to.deep.include.members(actual)
         done();
       })
@@ -43,8 +43,8 @@ describe('#User', function () {
           .get(`/users/${howie._id}`)
           .end(function(err, res){
             let data = res.body
-            let input = _.pick(data, ['email', 'admin'])
-            let actual = { email: 'howie@gmail.com', admin: true }
+            let input = _.pick(data, ['email', 'username', 'admin'])
+            let actual = { email: 'howie@gmail.com', username: 'howieburger', admin: true }
             expect(input).to.eql(actual)
 
             // Check password
@@ -64,8 +64,8 @@ describe('#User', function () {
           .get(`/users/email/${howie.email}`)
           .end(function(err, res){
             let data = res.body[0]
-            let input = _.pick(data, ['email', 'admin'])
-            let actual = { email: 'howie@gmail.com', admin: true }
+            let input = _.pick(data, ['email', 'username', 'admin'])
+            let actual = { email: 'howie@gmail.com', username: 'howieburger', admin: true }
             expect(input).to.eql(actual)
 
             // Check password
@@ -81,11 +81,12 @@ describe('#User', function () {
       .post('/users')
       .send({
         email: 'hela@gmail.com',
+        username: 'badga',
         password: 'chicken'
       })
       .end(function (err, res) {
-        let input = _.pick(res.body, ['email', 'admin'])
-        let actual = {email: 'hela@gmail.com', admin: false}
+        let input = _.pick(res.body, ['email', 'username', 'admin'])
+        let actual = {email: 'hela@gmail.com', username: 'badga', admin: false}
         expect(input).to.eql(actual)
         done()
       })
@@ -105,8 +106,8 @@ describe('#User', function () {
           })
           .end(function (err, res) {
             let data = res.body
-            let input = _.pick(data, ['email', 'admin'])
-            let actual = {email: 'howie@gmail.com', admin: true}
+            let input = _.pick(data, ['email', 'username', 'admin'])
+            let actual = {email: 'howie@gmail.com', username: 'howieburger', admin: true}
             expect(input).to.eql(actual)
             // Check password
             let checkPassword = bcrypt.compareSync(newPassword, data.password)
