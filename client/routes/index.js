@@ -28,6 +28,17 @@ router
   .post('/topics/pollscript', topics.pollscript)
   .delete('/topics/topic/id/:id', topics.delete)  
 
+// Thread single endpoints
+let threads = require('./threads.js')
+router
+  .get('/threads/:id', threads.show)
+
+// Comments endpoints
+let comments = require('./comments.js')
+router  
+  .post('/comments', comments.create)
+  .get('/commentsDelete/:thread_id/:comment_id', comments.delete)
+
 // Sitemap
 let sitemap = require('./sitemap.js')
 router

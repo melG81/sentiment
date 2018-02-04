@@ -1,0 +1,58 @@
+<div class="post-row row phone-py-4 py-20 px-10">
+  <div class="post-body">
+    <h2 class="post-heading fs-20 phone-fs-15">
+      {{post.title}}
+      <a href="{{post.url}}" target="_blank" class="post-upvote gray blue-hover" data-id="{{id}}">
+        ({{post.site}})
+      </a>
+    </h2>
+    <p class="fs-9 phone-fs-12 gray post-subheading">
+      <span class="post-vote-count">{{votes}} clicks</span> | {{momentFromNow post.published}} 
+      {{#if documentSentiment.score}} | Google AI sentiment
+        <span>{{round documentSentiment.score 2}}</span>
+      {{/if}} | 
+      <span class="post-comment-count">
+        comments: {{#if comments}} {{comments.length}} {{else}} discuss {{/if}}
+      </span> |
+      <span>tags: {{#each topic}}</span>
+      <em>
+        <a class="gray blue-hover" href="/topics/{{this}}">{{this}}</a>
+      </em>
+      {{/each}}
+    </p>
+    <p class="fs-12 phone-fs-14 black py-5 post-text">
+      {{{parseHtml post.text}}}
+    </p>
+  </div>
+  {{!-- Refactor comments list --}}
+  <div class="comment-body">
+    <form action="/comments" method="POST">
+      <textarea name="text" id="" cols="60" rows="6"></textarea>
+      <input type="hidden" name="threadId" value="{{id}}">
+      <input type="hidden" name="userId" value="{{user._id}}">
+      <br>
+      <input type="submit" value="add comment">
+    </form>    
+  </div>
+  <div class="comment-list pt-20">
+   {{#each comments as |comment|}} {{!-- Refactor comments show--}}
+    <div class="comment-single pb-10">
+      <p class="fs-11 gray">
+        {{#if comment.user.name}}
+          {{comment.user.name}} 
+        {{else}}
+          {{comment.user.email}}
+        {{/if}}
+        {{momentFromNow comment.createdAt}}
+      </p>
+      <p class="fs-13">
+        {{{parseHtml comment.text}}}
+      </p>
+      {{!-- Wrap in admin --}}
+      <p class="comment-delete fs-11">
+        <a href="/commentsDelete/{{../id}}/{{comment._id}}" class="red">Delete</a>
+      </p>
+    </div>
+   {{/each}}
+  </div>
+</div>
