@@ -9,6 +9,10 @@ comments.create = function (req, res, next) {
   let { threadId, userId, commentId, text } = req.body
   let clean = sanitizeHtml(text)
   let payload = { threadId, userId, commentId, text: clean }
+  let login = req.isAuthenticated()
+  if (!login) {
+    res.redirect('/signup')
+  }
   dbClient.createComment(payload)
     .then(payload => {
       res.redirect(`threads/${threadId}`)

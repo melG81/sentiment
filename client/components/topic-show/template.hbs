@@ -8,7 +8,7 @@
         {{post.title}}
       </a>
       <a href="{{post.url}}" target="_blank" class="post-upvote gray blue-hover" data-id="{{id}}">
-        ({{post.site}})
+        (link: {{post.site}})
       </a>
       {{#if isAdmin}}
         <span class="post-upvote" data-id="{{id}}">&uarr;</span> or
@@ -21,20 +21,25 @@
       <span><a class="gray blue-hover" href="/topics/news/{{encodeDasherize post.title}}/{{id}}">more</a></span> |
       {{#if isFave}}
         <span>
-          <a class="gray blue-hover" href="/unfave/{{id}}">Nie Lubię</a>
+          <a class="gray blue-hover" href="/unfave/{{id}}">un-favorite</a>
         </span>
       {{else}}
         <span>
-          <a class="gray blue-hover" href="/fave/{{id}}">Lubię</a>
+          <a class="gray blue-hover" href="/fave/{{id}}">favorite</a>
         </span>
       {{/if}}
-
       {{#if documentSentiment.score}} | Google AI sentiment
       <span style="color: {{sentimentColor documentSentiment.score}}">{{round documentSentiment.score 2}}</span>
       {{/if}} | tags:
       {{#each topic}}
         <em><a class="gray blue-hover" href="/topics/{{this}}">{{this}}</a></em> 
       {{/each}}
+      |
+      <span>
+        <a href="/threads/{{id}}">
+          {{#if comments}} {{comments.length }} comments {{else}} discuss {{/if}}
+        </a>
+      </span>      
     </p>
     <p class="fs-12 phone-fs-14 black py-5 post-text hide">
       {{post.text}}

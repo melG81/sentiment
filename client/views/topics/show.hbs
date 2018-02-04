@@ -1,8 +1,5 @@
 <div id="ticker-prices" style="height: 75px">
   <div class="row flex items-center fs-30" style="height: 75px">
-    <span class="col-12 center fa-spin">
-      {{{fontawesomeBrand icon="bitcoin"}}}
-    </span>
   </div>
 </div>
 
@@ -15,7 +12,7 @@
   {{> topic-pagination/template}}
 
   {{#each data}}
-    {{> topic-show/template isAdmin=../isAdmin admin=../admin count=this post=post topic=topic documentSentiment=documentSentiment id=_id}}
+    {{> topic-show/template isAdmin=../isAdmin comments=comments admin=../admin count=this post=post topic=topic documentSentiment=documentSentiment id=_id}}
   {{/each}}
    
   {{> topic-pagination/template}}

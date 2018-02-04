@@ -8,8 +8,8 @@ let moment = require('moment');
 
 threads.show = function (req, res, next) {
   let id = req.params.id
-  let user = req.user
-  let isAdmin = user.admin && req.isAuthenticated()
+  let user = _.get(req, 'user')
+  let isAdmin = _.get(req, 'user.admin') && req.isAuthenticated()
   dbClient.getDoc(id)
     .then(payload => {
       let data = payload.data
@@ -18,6 +18,5 @@ threads.show = function (req, res, next) {
         user,
         isAdmin
       })   
-      // res.send(isAdmin)
     })
 }
