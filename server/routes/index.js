@@ -26,6 +26,7 @@ router
 var comments = require('./comments.js');
 router
   .post('/comments', comments.create)
+  .delete('/comments/:thread_id/:comment_id', comments.delete)
   
 // Users CRUD endpoints
 var users = require('./users.js');

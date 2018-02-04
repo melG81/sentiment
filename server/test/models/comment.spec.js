@@ -86,6 +86,20 @@ describe('#Comment', function () {
     expect(reply.user).to.equal(userId.toString())    
   });
 
+  it('should delete a single comment on DELETE /comment/:thread_id/:comment_id', async () => {
+    let threads = await Thread.find()
+    let threadId = await threads[0]._id
+    let res = await chai.request(server).get(`/threads/${threadId}`)
+    let comments = res.body.comments
+    let comment = comments[0]
+    let commentId = comment._id
+    expect(comments.length).to.equal(2)
+
+    res = await chai.request(server).delete(`/comments/${threadId}/${commentId}`)
+    let updatedComments = res.body.comments
+    expect(updatedComments.length).to.equal(1)
+  });
+
 })
 
 
