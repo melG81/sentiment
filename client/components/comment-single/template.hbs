@@ -1,0 +1,17 @@
+{{#each comments as |comment|}}
+  <div class="comment-single pb-10">
+    <p class="fs-11 gray">
+      {{#if comment.user.name}} {{comment.user.name}} {{else}} {{comment.user.email}} {{/if}} {{momentFromNow comment.createdAt}}
+    </p>
+    <p class="fs-13">
+      {{{parseHtml comment.text}}}
+    </p>
+
+    {{!-- Delete comment link --}}
+    {{#if ../isAdmin}}
+      <p class="comment-delete fs-11">
+        <a href="/commentsDelete/{{../id}}/{{comment._id}}" class="red">Delete</a>
+      </p>
+    {{/if}}
+  </div>
+{{/each}}
