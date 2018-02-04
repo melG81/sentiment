@@ -37,7 +37,7 @@ router
 let comments = require('./comments.js')
 router  
   .post('/comments', comments.create)
-  .get('/commentsDelete/:thread_id/:comment_id', comments.delete)
+  .get('/commentsDelete/:thread_id/:comment_id', auth.adminRequired, comments.delete)
 
 // Sitemap
 let sitemap = require('./sitemap.js')

@@ -9,13 +9,15 @@ let moment = require('moment');
 threads.show = function (req, res, next) {
   let id = req.params.id
   let user = req.user
+  let isAdmin = user.admin && req.isAuthenticated()
   dbClient.getDoc(id)
     .then(payload => {
       let data = payload.data
       res.render('threads/show', {
         data,
-        user
+        user,
+        isAdmin
       })   
-      // res.send(data)
+      // res.send(isAdmin)
     })
 }

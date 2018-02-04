@@ -42,8 +42,8 @@ app.use(flash())
 
 // Global route middleware set property login if authenticated
 app.use(function (req, res, next) {
-  res.locals.login = req.isAuthenticated();
-  next();
+  res.locals.login = req.isAuthenticated()
+  next()
 });
 
 

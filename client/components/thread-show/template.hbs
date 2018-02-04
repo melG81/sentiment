@@ -20,9 +20,9 @@
       </em>
       {{/each}}
     </p>
-    <p class="fs-12 phone-fs-14 black py-5 post-text">
+    {{!-- <p class="fs-12 phone-fs-14 black py-5 post-text">
       {{{parseHtml post.text}}}
-    </p>
+    </p> --}}
   </div>
   {{!-- Refactor comments list --}}
   <div class="comment-body">
@@ -48,10 +48,12 @@
       <p class="fs-13">
         {{{parseHtml comment.text}}}
       </p>
-      {{!-- Wrap in admin --}}
-      <p class="comment-delete fs-11">
-        <a href="/commentsDelete/{{../id}}/{{comment._id}}" class="red">Delete</a>
-      </p>
+
+      {{#if ../isAdmin}}
+        <p class="comment-delete fs-11">
+          <a href="/commentsDelete/{{../id}}/{{comment._id}}" class="red">Delete</a>
+        </p>
+      {{/if}}
     </div>
    {{/each}}
   </div>
