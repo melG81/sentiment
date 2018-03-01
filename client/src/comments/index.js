@@ -50,10 +50,21 @@ let getNestedChildren = (arr, parent) => {
   return parent
 }
 
+let hasReplies = (commentArr) => {
+  let replies = commentArr.filter(el => el.comment_id && el.comment_id !== null)
+  if (replies.length > 0) {
+    return true
+  }
+  return false
+}
+
 /**
  * recursively creates an array of comments and nested replies sorted by date created
  */
 comments.flattenNested = (arr) => {
+  if (!hasReplies(arr)) {
+    return arr
+  }
   let parents = getParents(arr)
   return parents.map(comment => {
     return getNestedChildren(arr, comment)
