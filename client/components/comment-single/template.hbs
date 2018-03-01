@@ -6,12 +6,12 @@
     <p class="fs-13">
       {{{parseHtml comment.text}}}
     </p>
+  {{#if ../isAdmin}}
+    {{> comment-delete/template comment=comment id=../id}}
+  {{/if}}
 
-    {{!-- Delete comment link --}}
-    {{#if ../isAdmin}}
-      <p class="comment-delete fs-11">
-        <a href="/commentsDelete/{{../id}}/{{comment._id}}" class="red">Delete</a>
-      </p>
-    {{/if}}
+  {{#if comment.children}}
+    {{!-- TODO add nested children replies --}}
+  {{/if}}
   </div>
 {{/each}}
