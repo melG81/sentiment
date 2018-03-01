@@ -1,26 +1,43 @@
-let comments = module.exports = {}
-
 // Dependencies
 let _ = require('lodash')
-
+let momentFromNow = require('./momentFromNow') 
 let indent = 0;
 
+{/* <div class="comment-single pb-10">
+  <p class="fs-11 gray">
+    {{#if comment.user.username}} {{ comment.user.username }} {{ else}} {{ comment.user.email }} {{/if}} {{ momentFromNow comment.createdAt }}
+  </p>
+  <p class="fs-13">
+    {{{parseHtml comment.text}}}
+    </p>
+
+  {{!-- Delete comment link --}}
+    {{#if ../isAdmin}}
+      <p class="comment-delete fs-11">
+    <a href="/commentsDelete/{{../id}}/{{comment._id}}" class="red">Delete</a>
+  </p>
+  {{/if}}
+  </div> */}
+
 let renderComment = (comment, indent) => {
-  let {user_id, days_ago, text, children, id, thread_id} = comment
+  let { user, createdAt, text, children, _id, thread_id } = comment
   let replies = children ? `Replies: ${children.length}` : 'discuss'
   let parentComment = `
-    <div class="indent-${indent}" data-id="${id}" data-thread-id="${thread_id}">
-      <p>${user_id} ${days_ago} days ago</p>
-      <p>${text}</p>
+    <div class="indent-${indent}" data-id="${_id}" data-thread-id="${thread_id}">
+      <p class="fs-11 gray">${user.email} ${momentFromNow(createdAt)} days ago</p>
+      <p class="fs-13">${text}</p>
       <p>${replies}</p>
+      <p class="comment-delete fs-11">
+        <a href="/commentsDelete/{{../id}}/{{comment._id}}" class="red">Delete</a>
+      </p>
     </div>
   `
-  let childComment = children ? renderComments(children, indent+=1) : ''
+  let childComment = children ? renderComments(children, indent += 1) : ''
 
   return parentComment + childComment
 }
 
-let renderComments = (commentArr, indent=0) => {
+let renderComments = (commentArr, indent = 0) => {
   return commentArr.map(comment => renderComment(comment, indent)).join(' ')
 }
 
@@ -42,9 +59,9 @@ let getNestedChildren = (arr, parent) => {
       children.push(comment)
     }
   })
-  
+
   if (children.length) {
-    parent.children = children  
+    parent.children = children
   }
 
   return parent
@@ -61,9 +78,9 @@ let hasReplies = (commentArr) => {
 /**
  * recursively creates an array of comments and nested replies sorted by date created
  */
-comments.flattenNested = (arr) => {
+let flattenNested = (arr) => {
   if (!hasReplies(arr)) {
-    return _.sortBy(arr, 'created_at').reverse()
+    return arr
   }
   let parents = getParents(arr)
   return parents.map(comment => {
@@ -71,7 +88,7 @@ comments.flattenNested = (arr) => {
   })
 }
 
-comments.parse = (arr) => {
-  let flattened = comments.flattenNested(arr)
+module.exports = (arr) => {
+  let flattened = flattenNested(arr)
   return renderComments(flattened)
 }
