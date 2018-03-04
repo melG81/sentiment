@@ -14,10 +14,11 @@ let makeTopicShow = function(){
     this.upVote = $('.post-upvote')
     this.downVote = $('.post-downvote')
     this.postTitle = $('.post-heading-title')
+    this.postPreview = $('.post-more-preview')
     this.deletePost = $('.post-delete')
   }
   this.bindEvents = () => {
-    this.postTitle.on('mouseover', this.toggleShow)
+    this.postPreview.on('click', this.toggleShow)
     this.postTitle.on('click', this.postUpVote)
     this.upVote.on('click', this.postUpVote)
     this.downVote.on('click', this.postDownVote)
