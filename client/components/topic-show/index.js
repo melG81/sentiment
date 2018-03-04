@@ -11,15 +11,14 @@ let makeTopicShow = function(){
     this.bindEvents()
   }
   this.cacheDom = () => {
-    this.showMore = $('.post-toggle-text')
     this.upVote = $('.post-upvote')
     this.downVote = $('.post-downvote')
     this.postTitle = $('.post-heading-title')
     this.deletePost = $('.post-delete')
   }
   this.bindEvents = () => {
-    this.showMore.on('click', this.toggleShow)
-    this.postTitle.on('click', this.toggleShow)
+    this.postTitle.on('mouseover', this.toggleShow)
+    this.postTitle.on('click', this.postUpVote)
     this.upVote.on('click', this.postUpVote)
     this.downVote.on('click', this.postDownVote)
     this.deletePost.on('click', this.postDelete)
@@ -41,7 +40,6 @@ let makeTopicShow = function(){
         let parsedText = parseHtml(payload.data.post.text)
         let postText = truncate(parsedText, 2000)
         $postText.html(postText)
-        this.postUpVote(e)
       })
     }
   }

@@ -21,8 +21,12 @@
       {{/each}}
     </p>
   </div>
-
-   {{> comment-list/template comments=comments}}
+  
+  {{!-- comment form --}}
+  {{> comment-form/template userId=user._id id=id}}
+  
+  {{!-- comment list --}}
+  {{> comment-list/template comments=comments userId=user._id id=id isAdmin=isAdmin}}
 
   <div class="article-preview pt-20">
     <h3>Article preview (bot search)</h3>
