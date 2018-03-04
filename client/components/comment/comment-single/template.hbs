@@ -14,7 +14,7 @@
   
   {{!-- Delete comment --}}
   {{#if isAdmin}} 
-    {{> comment-delete/template comment=comment id=id}} 
+    {{> comment/comment-delete/template comment=comment id=id}} 
   {{/if}} 
 
   {{!-- Hidden reply form --}}
@@ -22,11 +22,11 @@
     Reply
   </p>
   <div class="comment-reply-form hide">
-    {{> comment-form/template comment=comment userId=userId id=id login=login}}
+    {{> comment/comment-form/template comment=comment userId=userId id=id login=login}}
   </div>
 
   {{!-- Nested reply comments --}}
   {{#if comment.children}}
-    {{>commentReply-list/template comments=comment.children userId=userId id=id isAdmin=isAdmin login=login}}
+    {{> comment/commentReply-list/template comments=comment.children userId=userId id=id isAdmin=isAdmin login=login}}
   {{/if}}
 </div>
