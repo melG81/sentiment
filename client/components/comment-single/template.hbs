@@ -1,17 +1,29 @@
-{{#each comments as |comment|}}
-  <div class="comment-single pb-10">
-    <p class="fs-11 gray">
-      {{#if comment.user.username}} {{comment.user.username}} {{else}} {{comment.user.email}} {{/if}} {{momentFromNow comment.createdAt}}
-    </p>
-    <p class="fs-13">
-      {{{parseHtml comment.text}}}
-    </p>
-  {{#if ../isAdmin}}
-    {{> comment-delete/template comment=comment id=../id}}
-  {{/if}}
+<div class="comment-single pb-10">
+  <p class="fs-11 gray">
+    {{#if comment.user.username}} 
+      {{comment.user.username}} 
+    {{else}} 
+      {{comment.user.email}} 
+    {{/if}} 
+    {{momentFromNow comment.createdAt}}
+  </p>
+  <p class="fs-13">
+    {{{parseHtml comment.text}}}
+  </p>
+  {{#if isAdmin}} 
+    {{> comment-delete/template comment=comment id=id}} 
+  {{/if}} 
+  {{!-- Add reply --}}
+  <p class="comment-reply cursor blue-hover fs-11">
+    Reply
+  </p>
+  <div class="comment-reply-form hide">
+    {{> comment-form/template comment=comment userId=userId id=id login=login}}
+  </div>
 
   {{#if comment.children}}
-    {{!-- TODO add nested children replies --}}
-  {{/if}}
+  <div class="comment-reply-list pl-10">
+    {{>comment-list/template comments=comment.children userId=userId id=id isAdmin=isAdmin login=login}}
   </div>
-{{/each}}
+  {{/if}}
+</div>

@@ -7,7 +7,7 @@ let _ = require('lodash')
 let { parseHtml } = require('../src/util/helpers')
 let moment = require('moment');
 let flattenNested = require('../src/comments').flattenNested;
-
+let util = require('util')
 
 threads.show = function (req, res, next) {
   let id = req.params.id

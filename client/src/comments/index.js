@@ -5,46 +5,26 @@ let _ = require('lodash')
 
 let indent = 0;
 
-let renderComment = (comment, indent) => {
-  let {user_id, days_ago, text, children, id, thread_id} = comment
-  let replies = children ? `Replies: ${children.length}` : 'discuss'
-  let parentComment = `
-    <div class="indent-${indent}" data-id="${id}" data-thread-id="${thread_id}">
-      <p>${user_id} ${days_ago} days ago</p>
-      <p>${text}</p>
-      <p>${replies}</p>
-    </div>
-  `
-  let childComment = children ? renderComments(children, indent+=1) : ''
-
-  return parentComment + childComment
-}
-
-let renderComments = (commentArr, indent=0) => {
-  return commentArr.map(comment => renderComment(comment, indent)).join(' ')
-}
-
 let getParents = (commentArr) => {
   let parentComments = commentArr.filter(el => !el.comment_id)
-  return _.sortBy(parentComments, 'created_at').reverse()
+  return _.sortBy(parentComments, 'createdAt').reverse()
 }
 
-let getNestedChildren = (arr, parent) => {
+let getNestedChildren = (arr, parent, indent=0) => {
   let children = []
-
   arr.forEach(comment => {
-    if (comment.comment_id == parent.id) {
+    if (comment.comment_id == parent._id) {
       let grandChildren = getNestedChildren(arr, comment)
 
       if (grandChildren.length) {
-        comment.children = _.sortBy(grandChildren, 'created_at')
+        comment.children = _.sortBy(grandChildren, 'createdAt').reverse()
       }
       children.push(comment)
     }
   })
   
   if (children.length) {
-    parent.children = children  
+    parent.children = _.sortBy(children, 'createdAt').reverse()
   }
 
   return parent
@@ -63,15 +43,10 @@ let hasReplies = (commentArr) => {
  */
 comments.flattenNested = (arr) => {
   if (!hasReplies(arr)) {
-    return _.sortBy(arr, 'created_at').reverse()
+    return _.sortBy(arr, 'createdAt').reverse()
   }
   let parents = getParents(arr)
   return parents.map(comment => {
     return getNestedChildren(arr, comment)
   })
-}
-
-comments.parse = (arr) => {
-  let flattened = comments.flattenNested(arr)
-  return renderComments(flattened)
 }

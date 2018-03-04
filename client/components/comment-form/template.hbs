@@ -1,0 +1,13 @@
+{{!-- Create comment form --}}
+<div class="comment-form pb-10">
+  <form action="/comments" method="POST">
+    <textarea name="text" id="" cols="60" rows="6"></textarea>
+    <input type="hidden" name="threadId" value="{{id}}">
+    <input type="hidden" name="userId" value="{{userId}}">
+    {{#if comment}}
+    <input type="hidden" name="commentId" value="{{comment._id}}">
+    {{/if}}
+    <br>
+    <input type="submit" value="{{#if login}} add comment{{else}} signup to comment {{/if}}">
+  </form>
+</div>
