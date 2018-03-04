@@ -1,4 +1,5 @@
 <div class="comment-single pb-10">
+  {{!-- Render comment --}}
   <p class="fs-11 gray">
     {{#if comment.user.username}} 
       {{comment.user.username}} 
@@ -10,20 +11,22 @@
   <p class="fs-13">
     {{{parseHtml comment.text}}}
   </p>
+  
+  {{!-- Delete comment --}}
   {{#if isAdmin}} 
-    {{> comment-delete/template comment=comment id=id}} 
+    {{> comment/comment-delete/template comment=comment id=id}} 
   {{/if}} 
-  {{!-- Add reply --}}
+
+  {{!-- Hidden reply form --}}
   <p class="comment-reply cursor blue-hover fs-11">
     Reply
   </p>
   <div class="comment-reply-form hide">
-    {{> comment-form/template comment=comment userId=userId id=id login=login}}
+    {{> comment/comment-form/template comment=comment userId=userId id=id login=login}}
   </div>
 
+  {{!-- Nested reply comments --}}
   {{#if comment.children}}
-  <div class="comment-reply-list pl-10">
-    {{>comment-list/template comments=comment.children userId=userId id=id isAdmin=isAdmin login=login}}
-  </div>
+    {{> comment/commentReply-list/template comments=comment.children userId=userId id=id isAdmin=isAdmin login=login}}
   {{/if}}
 </div>

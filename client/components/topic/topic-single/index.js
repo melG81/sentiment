@@ -1,10 +1,10 @@
 let axios = require('axios');
-let truncate =  require('../../src/helpers/truncate');
-let parseHtml =  require('../../src/helpers/parseHtml');
+let truncate =  require('../../../src/helpers/truncate');
+let parseHtml =  require('../../../src/helpers/parseHtml');
 // CSS dependencies
 require('./style.scss');
 
-let makeTopicShow = function(){
+let makeTopicSingle = function(){
   this.idCache = [];
   this.init = () => {
     this.cacheDom()
@@ -14,10 +14,11 @@ let makeTopicShow = function(){
     this.upVote = $('.post-upvote')
     this.downVote = $('.post-downvote')
     this.postTitle = $('.post-heading-title')
+    this.postPreview = $('.post-more-preview')
     this.deletePost = $('.post-delete')
   }
   this.bindEvents = () => {
-    this.postTitle.on('mouseover', this.toggleShow)
+    this.postPreview.on('click', this.toggleShow)
     this.postTitle.on('click', this.postUpVote)
     this.upVote.on('click', this.postUpVote)
     this.downVote.on('click', this.postDownVote)
@@ -90,5 +91,5 @@ let makeTopicShow = function(){
 
 }
 
-let topicShow = new makeTopicShow()
-module.exports = topicShow
+let topicSingle = new makeTopicSingle()
+module.exports = topicSingle

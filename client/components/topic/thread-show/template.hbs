@@ -1,9 +1,9 @@
 <div class="post-row row phone-py-4 py-20 px-10">
   <div class="post-body">
     <h2 class="post-heading fs-20 phone-fs-15">
-      {{post.title}}
-      <a href="{{post.url}}" target="_blank" class="post-upvote gray blue-hover" data-id="{{id}}">
-        (Link: {{post.site}})
+      <a href="{{post.url}}" target="_blank" class="post-upvote blue-hover" data-id="{{id}}">
+        {{post.title}} <br>      
+        (Source: {{post.site}})
       </a>
     </h2>
     <p class="fs-9 phone-fs-12 gray post-subheading">
@@ -23,10 +23,10 @@
   </div>
   
   {{!-- comment form --}}
-  {{> comment-form/template userId=user._id id=id}}
+  {{> comment/comment-form/template userId=user._id id=id}}
   
   {{!-- comment list --}}
-  {{> comment-list/template comments=comments userId=user._id id=id isAdmin=isAdmin}}
+  {{> comment/comment-list/template comments=comments userId=user._id id=id isAdmin=isAdmin}}
 
   <div class="article-preview pt-20">
     <h3>Article preview (bot search)</h3>

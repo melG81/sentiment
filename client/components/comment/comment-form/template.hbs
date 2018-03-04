@@ -4,8 +4,9 @@
     <textarea name="text" id="" cols="60" rows="6"></textarea>
     <input type="hidden" name="threadId" value="{{id}}">
     <input type="hidden" name="userId" value="{{userId}}">
+    {{!-- If comment then its a reply otherwise its a first post and no comment._id needed --}}
     {{#if comment}}
-    <input type="hidden" name="commentId" value="{{comment._id}}">
+      <input type="hidden" name="commentId" value="{{comment._id}}">
     {{/if}}
     <br>
     <input type="submit" value="{{#if login}} add comment{{else}} signup to comment {{/if}}">
