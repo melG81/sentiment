@@ -1,10 +1,10 @@
 let axios = require('axios');
-let truncate =  require('../../src/helpers/truncate');
-let parseHtml =  require('../../src/helpers/parseHtml');
+let truncate =  require('../../../src/helpers/truncate');
+let parseHtml =  require('../../../src/helpers/parseHtml');
 // CSS dependencies
 require('./style.scss');
 
-let makeTopicShow = function(){
+let makeTopicSingle = function(){
   this.idCache = [];
   this.init = () => {
     this.cacheDom()
@@ -91,5 +91,5 @@ let makeTopicShow = function(){
 
 }
 
-let topicShow = new makeTopicShow()
-module.exports = topicShow
+let topicSingle = new makeTopicSingle()
+module.exports = topicSingle

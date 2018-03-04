@@ -9,11 +9,9 @@
     <p class="fs-16 pt-2 center">{{capitalize topicName}} news</p>
   {{/if}}
 
-  {{> topic-pagination/template}}
+  {{> topic/topic-pagination/template}}
 
-  {{#each data}}
-    {{> topic-show/template isAdmin=../isAdmin comments=comments admin=../admin count=this post=post topic=topic documentSentiment=documentSentiment id=_id}}
-  {{/each}}
+  {{> topic/topic-list/template threads=data }}
    
-  {{> topic-pagination/template}}
+  {{> topic/topic-pagination/template}}
 </div>

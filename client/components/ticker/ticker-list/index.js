@@ -1,5 +1,5 @@
 // Dependencies
-let { fetchTickers } = require('../../src/prices/coin')
+let { fetchTickers } = require('../../../src/prices/coin')
 // let tickerArr = require('../../src/filters/tickers.js')
 
 var template = require('./template.hbs')

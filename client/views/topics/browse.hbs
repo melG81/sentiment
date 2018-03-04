@@ -1,10 +1,8 @@
 <h1>Topic: {{topicNames}}</h1>
 <p>Results: {{data.length}} | Published since: {{daysAgo}} days ago</p>
 
-{{> topic-browse/template queryKeywords=queryKeywords}}
+{{> topic/topic-browse/template queryKeywords=queryKeywords}}
 
 <ul>
-  {{#each data}}
-    {{> topic-show/template post=post topic=(join topic) documentSentiment=documentSentiment id=_id }}
-  {{/each}}
+  {{> topic/topic-list/template threads=data}}
 </ul>
