@@ -38,7 +38,7 @@ api.getWebhoseEndpointDiscussion = (daysAgo=1) => {
   let sinceDate = new Date() - (daysAgo * 24 * 60 * 60 * 1000);
   let publishedAfter = `published%3A%3E${sinceDate}`
   let sitesFilter = "(site%3A" + sitesFilteredDiscussion.join('%20OR%20site%3A') + ")";
-  const COUNT = 10;
+  const COUNT = 100;
   let repliesCount = `replies_count%3A%3E${COUNT}%20`
   let filters = `q=${publishedAfter}${sitesFilter}${repliesCount}language%3Aenglish%20site_type%3Adiscussions%20is_first%3Atrue%20`;
   return `${endpoint}${token}&${sort}&${filters}`
