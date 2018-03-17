@@ -9,9 +9,7 @@
   
 
   <div class="py-12">
-    {{#each data}} 
-      {{> topic-show/template isFave=../isFave isAdmin=../isAdmin admin=../admin count=this post=post topic=topic documentSentiment=documentSentiment id=_id}} 
-    {{/each}}
+    {{> topic/topic-list/template threads=data isFave=isFave}} 
   </div>
   
 </div>

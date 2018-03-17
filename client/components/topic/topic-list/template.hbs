@@ -1,4 +1,4 @@
 {{#each threads as |thread|}} 
-  {{> topic/topic-single/template isAdmin=../isAdmin comments=thread.comments admin=../admin count=this post=thread.post topic=thread.topic
+  {{> topic/topic-single/template isAdmin=../isAdmin isFave=../isFave comments=thread.comments admin=../admin count=this post=thread.post topic=thread.topic
   documentSentiment=thread.documentSentiment id=thread._id}} 
 {{/each}}
