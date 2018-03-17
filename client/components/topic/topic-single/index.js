@@ -19,7 +19,7 @@ let makeTopicSingle = function(){
   }
   this.bindEvents = () => {
     this.postPreview.on('click', this.toggleShow)
-    this.postTitle.on('click', this.postUpVote)
+    this.postTitle.on('click', this.toggleShow)
     this.upVote.on('click', this.postUpVote)
     this.downVote.on('click', this.postDownVote)
     this.deletePost.on('click', this.postDelete)
@@ -41,6 +41,7 @@ let makeTopicSingle = function(){
         let parsedText = parseHtml(payload.data.post.text)
         let postText = truncate(parsedText, 2000)
         $postText.html(postText)
+        this.postUpVote(e)
       })
     }
   }
