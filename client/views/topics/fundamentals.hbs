@@ -1,8 +1,5 @@
 <div class="px-12 pb-30">
   <h4 class="py-20">Cryptocurrency 101: Helpful guides and articles help you get up the curve</h4>
   
-  {{#each data}} 
-    {{> topic/topic-show/template admin=../admin count=this post=post topic=(join topic)
-  documentSentiment=documentSentiment id=_id}} 
-  {{/each}} 
+   {{> topic/topic-list/template threads=data }}
 </div>

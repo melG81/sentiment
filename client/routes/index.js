@@ -61,5 +61,9 @@ let admin = require('./admin.js')
 router
   .get('/admin', auth.adminRequired, admin.index)
 
+// Static page endpoints
+let static = require('./static.js')
+router  
+  .get('/resources', static.resources)
 
-module.exports = router
+  module.exports = router
