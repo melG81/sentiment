@@ -41,9 +41,14 @@ let makeTopicSingle = function(){
       // Fetch payload for post text and render in div    
       axios.get(`/topics/topic/id/${id}`).then(payload => {
         this.idCache.push(id)
-        let parsedText = parseHtml(payload.data.post.text)
-        let postText = truncate(parsedText, 2000)
-        $postText.html(postText)
+        let payloadText = payload.data.post.text
+        if (payloadText) {
+          let parsedText = parseHtml(payloadText)
+          let postText = truncate(parsedText, 2000)
+          $postText.html(postText)
+        } else {
+          $postText.html('No preview available')          
+        }
         this.postUpVote(e)
       })
     }
