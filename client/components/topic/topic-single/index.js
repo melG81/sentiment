@@ -49,7 +49,7 @@ let makeTopicSingle = function(){
   }
   this.renderVote = ($target, payload) => {
     // Find nearest vote count
-    let $voteCount = $target.parent('.post-heading').next('.post-subheading').find('.post-vote-count')
+    let $voteCount = $target.parents('.post-admin').siblings('.post-subheading').find('.post-vote-count')
     // If votes exist then update nearest sibling vote count
     let data = payload.data;
     let votes = payload.data.votes;
