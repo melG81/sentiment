@@ -6,7 +6,7 @@ let _ = require('lodash')
 let {sortPayload} = require('./helpers')
 let queryKeywords = require('../src/filters/queryKeywords.js')
 let { pollScript } = require('../src/util/api');
-// let google = require('../src/util/google');
+let google = require('../src/util/google');
 let { parseHtml } = require('../src/util/helpers')
 let moment = require('moment');
 
@@ -104,7 +104,7 @@ topics.pollscript = function (req, res, next) {
   let query = _.get(payload, 'query')
   let daysAgo = _.get(payload, 'daysAgo')
   pollScript(query, daysAgo)
-    // .then(() => google.pollSentiment(query, daysAgo))
+    .then(() => google.pollSentiment(query, daysAgo))
     .then(results => {
       res.send(results)
     })
