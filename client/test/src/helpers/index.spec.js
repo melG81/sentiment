@@ -39,7 +39,7 @@ describe('#helpers', function () {
       expect(input).to.equal(actual)
     })
   })
-  describe.only('scoreEmoji', function () {
+  describe('scoreEmoji', function () {
     it('should show relevant emoji face for appropriate score number', function () {
       let scoreArr = [0.8, "0.5", 0.1, -0.2, "-0.6", -1.0]      
       let input = scoreArr.map(num => helpers.scoreEmoji(num));
