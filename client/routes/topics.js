@@ -31,7 +31,6 @@ topics.index = function (req, res, next) {
     }
   }
   let prevPage = getPrevPage(page)
-  
   dbClient.getAll(page, topic)
     .then((payload) => {
       let data = payload.data

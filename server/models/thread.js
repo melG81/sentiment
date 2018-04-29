@@ -13,12 +13,10 @@ var Schema = new mongoose.Schema({
     post: mongoose.Schema.Types.Mixed,
     documentSentiment: {
       score: {
-        type: mongoose.Schema.Types.Mixed,
-        default: 0
+        type: mongoose.Schema.Types.Mixed
       },
       magnitude: {
-        type: mongoose.Schema.Types.Mixed,
-        default: 0
+        type: mongoose.Schema.Types.Mixed
       }
     },
     votes: {
