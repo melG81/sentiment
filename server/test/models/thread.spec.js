@@ -225,7 +225,7 @@ describe('thread', function () {
     })
   })
 
-  it('should update a sentiment score on PUT /threads/topic/id/:id', function (done) {
+  it.only('should update a sentiment score on PUT /threads/topic/id/:id', function (done) {
     Thread
     .findOne({topic: 'bitcoin' })
     .then(data => {
@@ -237,6 +237,7 @@ describe('thread', function () {
         .end(function (err, resp) {
           expect(resp.body.topic).to.eql(['bitcoin'])
           expect(resp.body.documentSentiment.score).to.equal(1)
+          console.log(resp.body);
           done();
         })
     })

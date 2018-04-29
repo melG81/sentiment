@@ -168,3 +168,13 @@ dbClient.deleteComment = function (threadId, commentId, request = axios) {
   let url = `${config.sentimentDBHost}/comments/${threadId}/${commentId}`;
   return request.delete(url)
 } 
+
+dbClient.updateSentimentScore = function (id, score, request = axios) {
+  let url = `${config.sentimentDBHost}/threads/topic/id/${id}`;
+  let payload = {
+    documentSentiment: {
+      score: Number(score)
+    }    
+  } 
+  return request.put(url, payload)
+}
