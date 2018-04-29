@@ -16,6 +16,7 @@ let makeTopicSingle = function(){
     this.postTitle = $('.post-heading-title')
     this.postPreview = $('.post-more-preview')
     this.deletePost = $('.post-delete')
+    this.postSentiment = $('.post-sentiment')
   }
   this.bindEvents = () => {
     this.postPreview.on('click', this.toggleShow)
@@ -23,6 +24,7 @@ let makeTopicSingle = function(){
     this.upVote.on('click', this.postUpVote)
     this.downVote.on('click', this.postDownVote)
     this.deletePost.on('click', this.postDelete)
+    this.postSentiment.on('click', this.postUpdateSentiment)
   }
   this.toggleShow = (e) => {
     let $target = $(e.target)
@@ -89,7 +91,12 @@ let makeTopicSingle = function(){
         })
     }
   }
-
+  this.postUpdateSentiment = (e) => {
+    let $target = $(e.target)
+    let id = $target.parents('.post-admin').data('id')
+    let score = Number($target.data('score'))
+    console.log(score, id);
+  }
 }
 
 let topicSingle = new makeTopicSingle()

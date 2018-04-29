@@ -11,9 +11,7 @@
         (link: {{post.site}})
       </a>
       {{#if isAdmin}}
-        <span class="post-upvote" data-id="{{id}}">&uarr;</span> or
-        <span class="post-downvote" data-id="{{id}}">&darr;</span> |
-        <a class="post-delete cursor red-hover" data-id="{{id}}">Delete</a>
+        {{>topic/admin-controls/template}}
       {{/if}}
     </p>
     <p class="fs-10 phone-fs-12 gray post-subheading">
