@@ -11,7 +11,14 @@ var CommentSchema = require('./comment.js');
 var Schema = new mongoose.Schema({
     topic: [String],
     post: mongoose.Schema.Types.Mixed,
-    documentSentiment: mongoose.Schema.Types.Mixed,
+    documentSentiment: {
+      score: {
+        type: mongoose.Schema.Types.Mixed
+      },
+      magnitude: {
+        type: mongoose.Schema.Types.Mixed
+      }
+    },
     votes: {
      type: Number,
      default: 0

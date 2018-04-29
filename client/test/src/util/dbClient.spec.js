@@ -458,4 +458,38 @@ describe('#dbClient', () => {
     })
   })
   
+  describe('.updateSentimentScore', () => {
+    it('should send a PUT request to sentiment-db with documentSentiment score', (done) => {
+      let id = 'uid'
+      let score = '0.5'
+      let topic = 'bitcoin'
+      let post = { uuid: 'uuid', title: 'cat hero', text: 'cat description' };
+      let payload = {
+        documentSentiment: {
+          score
+        }
+      }
+      let postNew = {
+        _id: id,
+        updatedAt: new Date(),
+        createdAt: new Date(),
+        topic: [topic],
+        post,
+        documentSentiment: { score: 1 },
+        votes: 0        
+      }
+
+      axiosStub.put.returns(Promise.resolve(postNew))
+
+      dbClient.updateThread(id, payload, axiosStub)
+        .then(data => {
+          let url = `${config.sentimentDBHost}/threads/topic/id/${id}`
+          expect(axiosStub.put.calledWith(url, payload)).to.be.true
+          expect(data).to.eql(postNew);
+          axiosStub.put.reset();
+          done();
+        })
+    })
+  })
+  
 })

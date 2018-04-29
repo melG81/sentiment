@@ -28,17 +28,21 @@ google.postUpdateSentiment = (doc) => {
   let id = doc._id
   return new Promise ((resolve, reject) => {
     if (doc.documentSentiment) {
+      console.log('Sentiment already exists for: ', title);
       resolve('Sentiment already exists')
-    }
-    google.analyze(title)
-      .then(result => {
-        return Object.assign(doc, {
-          documentSentiment: result[0].documentSentiment
+    } else {
+      google.analyze(title)
+        .then(result => {
+          console.log(`New sentiment analyzed: score of ${result[0].documentSentiment.score} for ${title}`);
+
+          return Object.assign(doc, {
+            documentSentiment: result[0].documentSentiment
+          })
         })
-      })
-      .then(newDoc => {
-        resolve(dbClient.updateThread(id, newDoc))
-      })
+        .then(newDoc => {
+          resolve(dbClient.updateThread(id, newDoc))
+        })
+    }
   })
 }
 
@@ -56,14 +60,11 @@ google.arrayPostUpdateSentiment = (array) => {
 
 /**
  * @function {queries db based on topicsArr and analyzes sentiment and updates docs}
- * @param  {Array} topic {array of topic strings or single string}
- * @param  {String} daysAgo {published since * daysAgo}
  * @return {Promise} {Promise array of updated docs}
  */
-google.pollSentiment = (topic, daysAgo) => {
-  let topicArr = castArray(topic)
+google.pollSentiment = () => {
   return new Promise(resolve => {
-    dbClient.getByTopics(topicArr, daysAgo).then(payload => {
+    dbClient.getAll().then(payload => {
       let array = payload.data
       google.arrayPostUpdateSentiment(array).then(results => {
         resolve(`No more results, totalResults: ${results.length}`)

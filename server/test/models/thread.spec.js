@@ -224,6 +224,26 @@ describe('thread', function () {
         })
     })
   })
+
+  it.only('should update a sentiment score on PUT /threads/topic/id/:id', function (done) {
+    Thread
+    .findOne({topic: 'bitcoin' })
+    .then(data => {
+      let id = data.id;
+
+      chai.request(server)
+        .put(`/threads/topic/id/${id}`)
+        .send({documentSentiment: {score: 1.0}})
+        .end(function (err, resp) {
+          expect(resp.body.topic).to.eql(['bitcoin'])
+          expect(resp.body.documentSentiment.score).to.equal(1)
+          console.log(resp.body);
+          done();
+        })
+    })
+  })
+
+
   it('should find all topics by topic name and published since on GET /threads/topic/query?topic=name%20daysAgo=number', function (done) {
     chai.request(server)
       .get('/threads/topic/query?topic=crypto&topic=bitcoin&daysAgo=300')
@@ -232,4 +252,5 @@ describe('thread', function () {
         done()
       })
   })  
+
 })

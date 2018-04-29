@@ -6,6 +6,7 @@ const username = process.env.MONGO_USER;
 const password = process.env.MONGO_PW;
 let mongoConnectionString = `mongodb://${username}:${password}@ds243285.mlab.com:43285/sentiment-production`;
 let agenda = new Agenda({ db: { address: mongoConnectionString } });
+// let google = require('../util/google');
 
 // API poll
 let { pollScript } = require('../util/api')
@@ -31,6 +32,20 @@ schedule.connect = function () {
       })      
   });
 
+  // Define script poll for google npl
+  agenda.define('poll google npl', function (job, done) {
+    console.log('poll google npl start');
+
+    google.pollSentiment()
+      .then(msg => {
+        console.log(msg);
+        done()
+      })
+      .catch(err => {
+        console.log(err);
+      })
+  });
+  
   // Define script poll for query bitcoin
   agenda.define('poll bitcoin', function (job, done) {
     console.log('poll bitcoin start');
@@ -121,10 +136,11 @@ schedule.connect = function () {
     console.log('Agenda ready');
     agenda.every('3 hours', 'poll cryptocurrency');
     agenda.every('4 hours', 'poll bitcoin');
-    agenda.every('4 hours', 'poll bitcoin discussions');
+    // agenda.every('4 hours', 'poll bitcoin discussions');
+    agenda.every('8 hours', 'poll google npl');
     agenda.every('12 hours', 'poll ethereum');
-    agenda.every('12 hours', 'poll ethereum discussions');
-    agenda.every('12 hours', 'poll xrp discussions');
+    // agenda.every('12 hours', 'poll ethereum discussions');
+    // agenda.every('12 hours', 'poll xrp discussions');
     agenda.start();
   });
 

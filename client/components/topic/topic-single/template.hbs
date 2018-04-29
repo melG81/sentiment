@@ -11,9 +11,7 @@
         (link: {{post.site}})
       </a>
       {{#if isAdmin}}
-        <span class="post-upvote" data-id="{{id}}">&uarr;</span> or
-        <span class="post-downvote" data-id="{{id}}">&darr;</span> |
-        <a class="post-delete cursor red-hover" data-id="{{id}}">Delete</a>
+        {{>topic/admin-controls/template}}
       {{/if}}
     </p>
     <p class="fs-10 phone-fs-12 gray post-subheading">
@@ -28,8 +26,8 @@
           <a class="gray blue-hover" href="/fave/{{id}}">favorite</a>
         </span>
       {{/if}}
-      {{#if documentSentiment.score}} | Google AI sentiment
-      <span style="color: {{sentimentColor documentSentiment.score}}">{{round documentSentiment.score 2}}</span>
+      {{#if documentSentiment}} | sentiment:
+      <span class="post-sentiment-score">{{scoreEmoji documentSentiment.score}}</span>
       {{/if}} | tags:
       {{#each topic}}
         <em><a class="gray blue-hover" href="/topics/{{this}}">{{this}}</a></em> 

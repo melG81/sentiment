@@ -6,7 +6,6 @@ let _ = require('lodash')
 let {sortPayload} = require('./helpers')
 let queryKeywords = require('../src/filters/queryKeywords.js')
 let { pollScript } = require('../src/util/api');
-// let google = require('../src/util/google');
 let { parseHtml } = require('../src/util/helpers')
 let moment = require('moment');
 
@@ -31,7 +30,6 @@ topics.index = function (req, res, next) {
     }
   }
   let prevPage = getPrevPage(page)
-  
   dbClient.getAll(page, topic)
     .then((payload) => {
       let data = payload.data
@@ -104,7 +102,6 @@ topics.pollscript = function (req, res, next) {
   let query = _.get(payload, 'query')
   let daysAgo = _.get(payload, 'daysAgo')
   pollScript(query, daysAgo)
-    // .then(() => google.pollSentiment(query, daysAgo))
     .then(results => {
       res.send(results)
     })
@@ -129,6 +126,22 @@ topics.downVote = function (req, res, next) {
     })
     .catch(next)
 }
+
+topics.updateSentiment = function (req, res, next) {
+  let id = req.params.id
+  let score = req.body.score
+  let isAdmin = _.get(req, "user.admin")
+
+  if (isAdmin) {
+    dbClient.updateSentimentScore(id, score)
+      .then(payload => {
+        res.send(payload.data)
+      })
+      .catch(next)
+  }
+}
+
+
 
 topics.getById = function (req, res, next) {
   let id = req.params.id
