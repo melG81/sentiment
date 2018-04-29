@@ -173,7 +173,7 @@ dbClient.updateSentimentScore = function (id, score, request = axios) {
   let url = `${config.sentimentDBHost}/threads/topic/id/${id}`;
   let payload = {
     documentSentiment: {
-      score: Number(score)
+      score
     }    
   } 
   return request.put(url, payload)

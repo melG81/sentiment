@@ -27,6 +27,7 @@ router
   .get('/topics/topic/id/:id', topics.getById)
   .post('/topics/pollscript', topics.pollscript)
   .delete('/topics/topic/id/:id', topics.delete)  
+  .put('/topics/topic/id/:id/sentiment', topics.updateSentiment)  
 
 // Thread single endpoints
 let threads = require('./threads.js')

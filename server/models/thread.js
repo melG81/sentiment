@@ -13,11 +13,11 @@ var Schema = new mongoose.Schema({
     post: mongoose.Schema.Types.Mixed,
     documentSentiment: {
       score: {
-        type: Number,
+        type: mongoose.Schema.Types.Mixed,
         default: 0
       },
       magnitude: {
-        type: Number,
+        type: mongoose.Schema.Types.Mixed,
         default: 0
       }
     },

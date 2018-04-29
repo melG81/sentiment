@@ -26,8 +26,8 @@
           <a class="gray blue-hover" href="/fave/{{id}}">favorite</a>
         </span>
       {{/if}}
-      {{#if documentSentiment.score}} | Google AI sentiment
-      <span style="color: {{sentimentColor documentSentiment.score}}">{{round documentSentiment.score 2}}</span>
+      {{#if documentSentiment}} | sentiment:
+      <span class="post-sentiment-score">{{scoreEmoji documentSentiment.score}}</span>
       {{/if}} | tags:
       {{#each topic}}
         <em><a class="gray blue-hover" href="/topics/{{this}}">{{this}}</a></em> 

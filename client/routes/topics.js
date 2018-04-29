@@ -130,6 +130,22 @@ topics.downVote = function (req, res, next) {
     .catch(next)
 }
 
+topics.updateSentiment = function (req, res, next) {
+  let id = req.params.id
+  let score = req.body.score
+  let isAdmin = _.get(req, "user.admin")
+
+  if (isAdmin) {
+    dbClient.updateSentimentScore(id, score)
+      .then(payload => {
+        res.send(payload.data)
+      })
+      .catch(next)
+  }
+}
+
+
+
 topics.getById = function (req, res, next) {
   let id = req.params.id
   dbClient.getDoc(id)

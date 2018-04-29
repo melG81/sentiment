@@ -1,6 +1,7 @@
 let axios = require('axios');
 let truncate =  require('../../../src/helpers/truncate');
 let parseHtml =  require('../../../src/helpers/parseHtml');
+let scoreEmoji =  require('../../../src/helpers/scoreEmoji');
 // CSS dependencies
 require('./style.scss');
 
@@ -57,6 +58,12 @@ let makeTopicSingle = function(){
       $voteCount.text(`${votes} clicks`)
     }
   }
+  this.renderSentiment = ($target, score) => {
+    // Find nearest sentiment index and update text
+    let emoji = scoreEmoji(score)
+    let $sentimentScore = $target.parents('.post-admin').siblings('.post-subheading').find('.post-sentiment-score')
+    $sentimentScore.text(`${emoji}`)
+  }
   this.postUpVote = (e) => {
     let $target = $(e.target);
     // get attr id
@@ -94,8 +101,17 @@ let makeTopicSingle = function(){
   this.postUpdateSentiment = (e) => {
     let $target = $(e.target)
     let id = $target.parents('.post-admin').data('id')
-    let score = Number($target.data('score'))
+    let score = $target.data('score')
     console.log(score, id);
+    let payload = {
+      score
+    }
+    console.log(payload);
+    axios.put(`/topics/topic/id/${id}/sentiment`, payload)
+      .then(res => {
+        let newScore = res.data.documentSentiment.score
+        this.renderSentiment($target, newScore)
+      })
   }
 }
 
