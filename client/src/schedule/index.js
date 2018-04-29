@@ -121,10 +121,10 @@ schedule.connect = function () {
     console.log('Agenda ready');
     agenda.every('3 hours', 'poll cryptocurrency');
     agenda.every('4 hours', 'poll bitcoin');
-    agenda.every('4 hours', 'poll bitcoin discussions');
+    // agenda.every('4 hours', 'poll bitcoin discussions');
     agenda.every('12 hours', 'poll ethereum');
-    agenda.every('12 hours', 'poll ethereum discussions');
-    agenda.every('12 hours', 'poll xrp discussions');
+    // agenda.every('12 hours', 'poll ethereum discussions');
+    // agenda.every('12 hours', 'poll xrp discussions');
     agenda.start();
   });
 
