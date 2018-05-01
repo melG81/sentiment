@@ -6,7 +6,7 @@ const username = process.env.MONGO_USER;
 const password = process.env.MONGO_PW;
 let mongoConnectionString = `mongodb://${username}:${password}@ds243285.mlab.com:43285/sentiment-production`;
 let agenda = new Agenda({ db: { address: mongoConnectionString } });
-// let google = require('../util/google');
+let google = require('../util/google');
 
 // API poll
 let { pollScript } = require('../util/api')
