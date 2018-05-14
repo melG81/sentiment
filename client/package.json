@@ -65,6 +65,9 @@
       "cryptonewsagency.com",
       "www.cryptonewsagency.com"
     ],
-    "dotenv": true
+    "dotenv": true,
+    "env": {
+      "PRIVATE_KEY": "@google-private-key"
+    }
   }
 }
