@@ -35,12 +35,7 @@ google.postUpdateSentiment = (doc) => {
         .then(result => {
           console.log(`New sentiment analyzed: score of ${result[0].documentSentiment.score} for ${title}`);
 
-          return Object.assign(doc, {
-            documentSentiment: result[0].documentSentiment
-          })
-        })
-        .then(newDoc => {
-          resolve(dbClient.updateThread(id, newDoc))
+          resolve(dbClient.updateSentimentScore(id, result[0].documentSentiment.score))
         })
     }
   })
