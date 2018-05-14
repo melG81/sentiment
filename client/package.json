@@ -67,7 +67,8 @@
     ],
     "dotenv": true,
     "env": {
-      "PRIVATE_KEY": "@google-private-key"
+      "PRIVATE_KEY": "@google-private-key",
+      "PRIVATE_KEY_ID": "@google-private-key-id"
     }
   }
 }

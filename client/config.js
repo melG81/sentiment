@@ -19,7 +19,7 @@ config.googleClient = new language.LanguageServiceClient({
   credentials: {
     type: "service_account",
     project_id: process.env.PROJECT_ID,
-    private_key_id: process.env.PRIVATE_KEY_ID,
+    private_key_id: Buffer.from(process.env.PRIVATE_KEY_ID, 'base64').toString(),
     private_key: Buffer.from(process.env.PRIVATE_KEY, 'base64').toString(),
     client_email: process.env.CLIENT_EMAIL,
     client_id: process.env.CLIENT_ID,
