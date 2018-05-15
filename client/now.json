@@ -1,0 +1,18 @@
+{
+  "alias": [
+    "cryptonewsagency.com",
+    "www.cryptonewsagency.com"
+  ],
+  "env": {
+    "PORT": 4000,
+    "WEBHOSETOKEN": "da347ad6-b6b4-4135-839d-4308c3989db4",
+    "PROJECT_ID": "sentiment-2018",
+    "PRIVATE_KEY_ID": "154082362b25890b9ab3e7138bc8dca0e8c42304",
+    "CLIENT_EMAIL": "sentiment@sentiment-2018.iam.gserviceaccount.com",
+    "CLIENT_ID": "104538404942698132101",
+    "CERT_URL": "https://www.googleapis.com/robot/v1/metadata/x509/sentiment%40sentiment-2018.iam.gserviceaccount.com",
+    "MONGO_USER": "howardma",
+    "MONGO_PW": "chicken",
+    "PRIVATE_KEY": "@google-private-key"
+  }
+}

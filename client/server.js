@@ -1,4 +1,5 @@
-require('dotenv').config();
+require('now-env');
+// require('dotenv').config();
 
 // Dependencies
 let express = require('express');

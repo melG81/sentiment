@@ -1,9 +1,11 @@
-require('dotenv').config();
+require('now-env');
+// require('dotenv').config();
 
 let config = module.exports = {};
 
 // Dependencies
 const language = require('@google-cloud/language');
+const atob = require('atob');
 
 config.PORT = process.env.PORT;
 config.webhoseTOKEN = process.env.WEBHOSETOKEN;
@@ -15,12 +17,13 @@ if (process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'test') {
   config.host = 'https://cryptonewsagency.com'
 }
 // Instantiate google natural language client
+config.PRIVATEKEY = Buffer.from(process.env.PRIVATE_KEY, 'base64').toString();
 config.googleClient = new language.LanguageServiceClient({
   credentials: {
     type: "service_account",
     project_id: process.env.PROJECT_ID,
-    private_key_id: Buffer.from(process.env.PRIVATE_KEY_ID, 'base64').toString(),
-    private_key: Buffer.from(process.env.PRIVATE_KEY, 'base64').toString(),
+    private_key_id: process.env.PRIVATE_KEY_ID,
+    private_key: config.PRIVATEKEY,
     client_email: process.env.CLIENT_EMAIL,
     client_id: process.env.CLIENT_ID,
     auth_uri: "https://accounts.google.com/o/oauth2/auth",
@@ -29,3 +32,4 @@ config.googleClient = new language.LanguageServiceClient({
     client_x509_cert_url: process.env.CERT_URL
   }
 });
+

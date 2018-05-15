@@ -18,6 +18,7 @@
   "dependencies": {
     "@google-cloud/language": "^1.0.0",
     "agenda": "^1.0.3",
+    "atob": "^2.1.1",
     "axios": "^0.16.2",
     "bcrypt": "^1.0.3",
     "body-parser": "^1.18.2",
@@ -35,6 +36,7 @@
     "jsdom": "^11.3.0",
     "lodash": "^4.17.4",
     "moment": "^2.19.1",
+    "now-env": "^3.0.4",
     "numeral": "^2.0.6",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
@@ -59,16 +61,5 @@
     "style-loader": "^0.19.0",
     "webpack": "^3.8.1",
     "webpack-bundle-analyzer": "^2.9.0"
-  },
-  "now": {
-    "alias": [
-      "cryptonewsagency.com",
-      "www.cryptonewsagency.com"
-    ],
-    "dotenv": true,
-    "env": {
-      "PRIVATE_KEY": "@google-private-key",
-      "PRIVATE_KEY_ID": "@google-private-key-id"
-    }
   }
 }
