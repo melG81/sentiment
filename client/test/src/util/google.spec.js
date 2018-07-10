@@ -115,7 +115,7 @@ describe('#google', () => {
     })
   })
   describe('.pollSentiment', (done) => {
-    it('should search api for topicsArr and daysAgo published, then analyze and update all docs for sentiment', (done) =>{
+    it('should search api for all docs then analyze and update all docs for sentiment', (done) =>{
       let docArray = require('../../data/sampleData.json')
       let sentiment = {
         documentSentiment: {
@@ -125,13 +125,13 @@ describe('#google', () => {
       }
       let newDocArray = docArray.map(doc => Object.assign(doc, sentiment))
 
-      let stubGetByTopics = sinon.stub(dbClient, 'getByTopics').returns(Promise.resolve(docArray))
+      let stubGetAll = sinon.stub(dbClient, 'getAll').returns(Promise.resolve(docArray))
       let stubArrayPostUpdateSentiment = sinon.stub(google, 'arrayPostUpdateSentiment').returns(Promise.resolve(newDocArray))
 
-      google.pollSentiment('cryptocurrency', 1).then(results => {
+      google.pollSentiment().then(results => {
         expect(results).to.equal(`No more results, totalResults: ${newDocArray.length}`)
 
-        stubGetByTopics.restore()
+        stubGetAll.restore()
         stubArrayPostUpdateSentiment.restore()
         done()
       })
