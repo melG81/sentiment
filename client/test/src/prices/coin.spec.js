@@ -34,15 +34,30 @@ describe('#coin', () => {
   })
   describe('.fetchTickers', () => {
     it('should fetch and transform tickers', (done) => {
-      let axiosStub = {
+      let requestStub = {
         get: function () {
           return Promise.resolve({ data: priceMultiData })
         }
       }
-      coin.fetchTickers(axiosStub)
+      coin.fetchTickers(requestStub)
         .then(result => {
           let input = result
           let actual = priceMultiParsed
+          expect(input).to.eql(actual)
+          done()
+        })
+    })
+    it('should catch and throw errors', (done) => {
+      let requestStub = {
+        get: function(){
+          return Promise.reject('error')
+        }
+      }
+
+      coin.fetchTickers(requestStub)
+        .catch(err => {
+          let input = err
+          let actual = 'error'
           expect(input).to.eql(actual)
           done()
         })
