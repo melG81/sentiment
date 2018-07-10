@@ -4,7 +4,7 @@
     "www.cryptonewsagency.com"
   ],
   "env": {
-    "PORT": 4000,
+    "PORT": "4000",
     "WEBHOSETOKEN": "da347ad6-b6b4-4135-839d-4308c3989db4",
     "PROJECT_ID": "sentiment-2018",
     "PRIVATE_KEY_ID": "154082362b25890b9ab3e7138bc8dca0e8c42304",
