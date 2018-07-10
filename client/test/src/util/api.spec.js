@@ -118,7 +118,7 @@ describe('#api', function () {
   });
   describe('postThread', function() {
     it('should exist', () => expect(api.postThread).to.not.be.undefined);
-    it.only('should send a /POST request to sentiment-db and returns an array of promises', function(done){
+    it('should send a /POST request to sentiment-db and returns an array of promises', function(done){
       let payload = { data: bitcoinPage1 };
       let postParsed = bitcoinPage1Parsed[0];
       let postNew = {

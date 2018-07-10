@@ -53,17 +53,17 @@ describe('#google', () => {
       }
 
       let analyzeStub = sinon.stub(google, 'analyze').returns(Promise.resolve(sentiment))
-      let updateThreadStub = sinon.stub(dbClient, 'updateThread').returns(Promise.resolve(newDoc))
+      let updateSentimentScoreStub = sinon.stub(dbClient, 'updateSentimentScore').returns(Promise.resolve(newDoc))
 
       google.postUpdateSentiment(document).then(result => {
         let input = result
         let actual = newDoc
         expect(input).to.eql(actual)
-        expect(updateThreadStub.calledWith('uid', newDoc)).to.be.true
-        expect(updateThreadStub.callCount).to.equal(1)
+        expect(updateSentimentScoreStub.calledWith('uid', sentiment[0].documentSentiment.score)).to.be.true
+        expect(updateSentimentScoreStub.callCount).to.equal(1)
 
         analyzeStub.restore();
-        updateThreadStub.restore();
+        updateSentimentScoreStub.restore();
         done();
       })
 
