@@ -66,5 +66,6 @@ router
 let static = require('./static.js')
 router  
   .get('/resources', static.resources)
+  .get('/about', static.about)
 
   module.exports = router
