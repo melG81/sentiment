@@ -68,4 +68,9 @@ router
   .get('/resources', static.resources)
   .get('/about', static.about)
 
-  module.exports = router
+// Cryptocurrency price endpoint
+let prices = require('./prices')
+router
+  .get('/prices', prices.index)
+
+module.exports = router

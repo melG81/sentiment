@@ -34,5 +34,4 @@ coin.parseTickers = pipe(
 
 coin.fetchTickers = (request=axios) => 
   fetchLatestPrices(request)
-    .then(coin.parseTickers)
-
+    .then(resp=> coin.parseTickers(resp.data))

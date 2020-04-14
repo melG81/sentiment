@@ -1,18 +1,21 @@
 // Dependencies
-let { fetchTickers } = require('../../../src/prices/coin')
-// let tickerArr = require('../../src/filters/tickers.js')
+let axios = require('axios')
 
 var template = require('./template.hbs')
 
 let makeTickerPrices = function () {
   this.init = () => {
     let $tickerPrices = $('#ticker-prices')
-    fetchTickers().then(prices => {
-      var html = template({ tickers: prices })
-      $tickerPrices.html(html)      
+    axios.get('https://cryptonewsagency.com/prices').then(resp => {
+      let prices = resp.data
+      var html = template({
+        tickers: prices
+      })
+      $tickerPrices.html(html)
     })
   }
 }
+
 
 let tickerPrices = new makeTickerPrices()
 module.exports = tickerPrices
