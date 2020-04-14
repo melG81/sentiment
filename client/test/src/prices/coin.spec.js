@@ -36,7 +36,7 @@ describe('#coin', () => {
     it('should fetch and transform tickers', (done) => {
       let requestStub = {
         get: function () {
-          return Promise.resolve({ data: priceMultiData })
+          return Promise.resolve({ data: {data:priceMultiData} })
         }
       }
       coin.fetchTickers(requestStub)
