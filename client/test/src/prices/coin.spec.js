@@ -16,10 +16,10 @@ describe('#coin', () => {
       let actual = {
         ticker: 'BTC',
         currency: 'USD',
-        price: 13586.3,
-        mktcap: 227860932162,
-        changePctDay: -0.0647,
-        changePctWeek: -0.081
+        price: 6804.69489032,
+        mktcap: 124688460239.70108,
+        changePctDay: 0.0135184,
+        changePctWeek: -0.0725296
       }
       expect(input).to.eql(actual)
     })

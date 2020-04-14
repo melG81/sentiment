@@ -5,20 +5,25 @@ let axios = require('axios')
 let _ = require('lodash')
 let pipe = require('lodash/fp/pipe')
 
-let getURL = url => (request=axios) => {
-  return request.get(url).then(resp => resp.data)
+let CMC_PRO_API_KEY_HEADER = {
+  'X-CMC_PRO_API_KEY': '15fb1d82-0830-4c4a-b23d-8a154957ce14'
+}
+let CMC_ENDPOINT_URL = "https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest?limit=30"
+
+// FETCH DATA
+let fetchLatestPrices = (request=axios) => {
+  return request.get(CMC_ENDPOINT_URL, {headers: CMC_PRO_API_KEY_HEADER})
+    .then(resp => resp.data)
 }
 
-let getPrices = getURL("https://api.coinmarketcap.com/v1/ticker/?limit=30")
-
-coin.parseSingleTicker = ({symbol,price_usd,market_cap_usd,percent_change_24h,percent_change_7d}) => (
+coin.parseSingleTicker = ({symbol,quote}) => (
   Object.assign({}, {
     ticker: symbol,
     currency: "USD",
-    price: Number(price_usd),
-    mktcap: Number(market_cap_usd),
-    changePctDay: Number(percent_change_24h) / 100,
-    changePctWeek: Number(percent_change_7d) / 100
+    price: Number(quote["USD"]["price"]),
+    mktcap: Number(quote["USD"]["market_cap"]),
+    changePctDay: Number(quote["USD"]["percent_change_24h"]) / 100,
+    changePctWeek: Number(quote["USD"]["percent_change_7d"]) / 100
   })
 )
 
@@ -28,5 +33,6 @@ coin.parseTickers = pipe(
 )
 
 coin.fetchTickers = (request=axios) => 
-  getPrices(request)
+  fetchLatestPrices(request)
     .then(coin.parseTickers)
+

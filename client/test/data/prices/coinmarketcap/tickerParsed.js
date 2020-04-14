@@ -1,241 +1,241 @@
 module.exports = [{
     ticker: 'BTC',
     currency: 'USD',
-    price: 13586.3,
-    mktcap: 227860932162,
-    changePctDay: -0.0647,
-    changePctWeek: -0.081
-  },
-  {
-    ticker: 'XRP',
-    currency: 'USD',
-    price: 2.48095,
-    mktcap: 96109881408,
-    changePctDay: 0.41200000000000003,
-    changePctWeek: 1.1444
+    price: 6804.69489032,
+    mktcap: 124688460239.70108,
+    changePctDay: 0.0135184,
+    changePctWeek: -0.0725296
   },
   {
     ticker: 'ETH',
     currency: 'USD',
-    price: 723.354,
-    mktcap: 69919802582,
-    changePctDay: -0.0207,
-    changePctWeek: -0.0062
+    price: 156.412368812,
+    mktcap: 17285454865.928158,
+    changePctDay: 0.020240499999999998,
+    changePctWeek: -0.0879869
   },
   {
-    ticker: 'BCH',
+    ticker: 'XRP',
     currency: 'USD',
-    price: 2578.48,
-    mktcap: 43534862934,
-    changePctDay: 0.0558,
-    changePctWeek: -0.1607
-  },
-  {
-    ticker: 'ADA',
-    currency: 'USD',
-    price: 0.65203,
-    mktcap: 16905227803,
-    changePctDay: 0.4597,
-    changePctWeek: 0.5342
-  },
-  {
-    ticker: 'LTC',
-    currency: 'USD',
-    price: 227.368,
-    mktcap: 12399953417,
-    changePctDay: -0.060599999999999994,
-    changePctWeek: -0.2126
-  },
-  {
-    ticker: 'MIOTA',
-    currency: 'USD',
-    price: 3.40414,
-    mktcap: 9461910218,
-    changePctDay: -0.0435,
-    changePctWeek: -0.149
-  },
-  {
-    ticker: 'XEM',
-    currency: 'USD',
-    price: 0.971397,
-    mktcap: 8742572999,
-    changePctDay: 0.0516,
-    changePctWeek: 0.0748
-  },
-  {
-    ticker: 'DASH',
-    currency: 'USD',
-    price: 1051.27,
-    mktcap: 8182980346,
-    changePctDay: -0.036000000000000004,
-    changePctWeek: -0.16690000000000002
-  },
-  {
-    ticker: 'XLM',
-    currency: 'USD',
-    price: 0.351988,
-    mktcap: 6286139354,
-    changePctDay: 0.4325,
-    changePctWeek: 0.507
-  },
-  {
-    ticker: 'XMR',
-    currency: 'USD',
-    price: 352.015,
-    mktcap: 5470878517,
-    changePctDay: -0.0333,
-    changePctWeek: -0.0924
-  },
-  {
-    ticker: 'EOS',
-    currency: 'USD',
-    price: 9.12961,
-    mktcap: 5214843084,
-    changePctDay: -0.022099999999999998,
-    changePctWeek: 0.019299999999999998
-  },
-  {
-    ticker: 'QTUM',
-    currency: 'USD',
-    price: 61.7641,
-    mktcap: 4556375457,
-    changePctDay: 0.0892,
-    changePctWeek: 0.1355
-  },
-  {
-    ticker: 'BTG',
-    currency: 'USD',
-    price: 266.812,
-    mktcap: 4465208503,
-    changePctDay: -0.015,
-    changePctWeek: -0.1863
-  },
-  {
-    ticker: 'NEO',
-    currency: 'USD',
-    price: 68.1642,
-    mktcap: 4430673000,
-    changePctDay: 0.0572,
-    changePctWeek: 0.0898
-  },
-  {
-    ticker: 'ETC',
-    currency: 'USD',
-    price: 28.6709,
-    mktcap: 2831178207,
-    changePctDay: 0.003,
-    changePctWeek: -0.1413
-  },
-  {
-    ticker: 'BCC',
-    currency: 'USD',
-    price: 414.172,
-    mktcap: 2562085819,
-    changePctDay: -0.0665,
-    changePctWeek: 0.36369999999999997
-  },
-  {
-    ticker: 'LSK',
-    currency: 'USD',
-    price: 20.0087,
-    mktcap: 2330453787,
-    changePctDay: -0.09949999999999999,
-    changePctWeek: -0.0518
-  },
-  {
-    ticker: 'TRX',
-    currency: 'USD',
-    price: 0.0336676,
-    mktcap: 2213583845,
-    changePctDay: -0.056600000000000004,
-    changePctWeek: -0.1814
-  },
-  {
-    ticker: 'XVG',
-    currency: 'USD',
-    price: 0.147544,
-    mktcap: 2125883067,
-    changePctDay: 0.019,
-    changePctWeek: -0.223
-  },
-  {
-    ticker: 'ICX',
-    currency: 'USD',
-    price: 5.2069,
-    mktcap: 1962367907,
-    changePctDay: -0.0279,
-    changePctWeek: 0.2891
-  },
-  {
-    ticker: 'BTS',
-    currency: 'USD',
-    price: 0.63368,
-    mktcap: 1651566521,
-    changePctDay: 0.0678,
-    changePctWeek: 0.1793
-  },
-  {
-    ticker: 'ARDR',
-    currency: 'USD',
-    price: 1.53633,
-    mktcap: 1534792894,
-    changePctDay: -0.0833,
-    changePctWeek: 0.2503
-  },
-  {
-    ticker: 'ZEC',
-    currency: 'USD',
-    price: 517.904,
-    mktcap: 1526143323,
-    changePctDay: 0.053399999999999996,
-    changePctWeek: -0.1023
-  },
-  {
-    ticker: 'XRB',
-    currency: 'USD',
-    price: 11.1548,
-    mktcap: 1486358017,
-    changePctDay: -0.2939,
-    changePctWeek: 1.5094
-  },
-  {
-    ticker: 'OMG',
-    currency: 'USD',
-    price: 14.335,
-    mktcap: 1462779980,
-    changePctDay: -0.0434,
-    changePctWeek: -0.0163
+    price: 0.185735805139,
+    mktcap: 8185967058.776571,
+    changePctDay: 0.0107427,
+    changePctWeek: -0.06872600000000001
   },
   {
     ticker: 'USDT',
     currency: 'USD',
-    price: 1.03023,
-    mktcap: 1409447192,
-    changePctDay: 0.024,
-    changePctWeek: -0.0029
+    price: 1.00247671133,
+    mktcap: 6376786950.285539,
+    changePctDay: -0.00033041300000000005,
+    changePctWeek: 0.00167715
   },
   {
-    ticker: 'PPT',
+    ticker: 'BCH',
     currency: 'USD',
-    price: 36.3555,
-    mktcap: 1345299900,
-    changePctDay: -0.0404,
-    changePctWeek: -0.0815
+    price: 221.810553199,
+    mktcap: 4076760130.941233,
+    changePctDay: -0.00275466,
+    changePctWeek: -0.13745
   },
   {
-    ticker: 'STRAT',
+    ticker: 'BSV',
     currency: 'USD',
-    price: 13.5179,
-    mktcap: 1333957392,
-    changePctDay: -0.1005,
-    changePctWeek: 0.1905
+    price: 187.685285067,
+    mktcap: 3449336865.293214,
+    changePctDay: 0.012742999999999999,
+    changePctWeek: -0.013453699999999999
   },
   {
-    ticker: 'WAVES',
+    ticker: 'LTC',
     currency: 'USD',
-    price: 12.1802,
-    mktcap: 1218020000,
-    changePctDay: -0.0404,
-    changePctWeek: -0.1454
+    price: 40.7644240898,
+    mktcap: 2629535462.8555202,
+    changePctDay: 0.011638500000000001,
+    changePctWeek: -0.112582
+  },
+  {
+    ticker: 'BNB',
+    currency: 'USD',
+    price: 15.3614173141,
+    mktcap: 2389264356.0564027,
+    changePctDay: 0.10210699999999999,
+    changePctWeek: 0.017534
+  },
+  {
+    ticker: 'EOS',
+    currency: 'USD',
+    price: 2.43710944372,
+    mktcap: 2246469134.519867,
+    changePctDay: 0.0170845,
+    changePctWeek: -0.111226
+  },
+  {
+    ticker: 'XTZ',
+    currency: 'USD',
+    price: 1.91950468876,
+    mktcap: 1357097604.9959311,
+    changePctDay: -0.005008439999999999,
+    changePctWeek: -0.0258105
+  },
+  {
+    ticker: 'LINK',
+    currency: 'USD',
+    price: 3.32659216461,
+    mktcap: 1164307257.6135,
+    changePctDay: -0.0178759,
+    changePctWeek: 0.22808399999999998
+  },
+  {
+    ticker: 'LEO',
+    currency: 'USD',
+    price: 1.01859203444,
+    mktcap: 1018081610.7395386,
+    changePctDay: -0.00118188,
+    changePctWeek: -0.0151559
+  },
+  {
+    ticker: 'XLM',
+    currency: 'USD',
+    price: 0.0481086647639,
+    mktcap: 976964648.4126918,
+    changePctDay: 0.0168197,
+    changePctWeek: -0.0402851
+  },
+  {
+    ticker: 'XMR',
+    currency: 'USD',
+    price: 52.9441410791,
+    mktcap: 927700364.0153605,
+    changePctDay: 0.0146611,
+    changePctWeek: -0.08844350000000001
+  },
+  {
+    ticker: 'ADA',
+    currency: 'USD',
+    price: 0.0329144195453,
+    mktcap: 853374477.268319,
+    changePctDay: 0.0177853,
+    changePctWeek: -0.0872204
+  },
+  {
+    ticker: 'HT',
+    currency: 'USD',
+    price: 3.69651852602,
+    mktcap: 836502894.5625665,
+    changePctDay: 0.00637289,
+    changePctWeek: -0.0703912
+  },
+  {
+    ticker: 'TRX',
+    currency: 'USD',
+    price: 0.0124954114066,
+    mktcap: 833219925.4761442,
+    changePctDay: 0.0114313,
+    changePctWeek: -0.08875899999999999
+  },
+  {
+    ticker: 'USDC',
+    currency: 'USD',
+    price: 0.999333116588,
+    mktcap: 731045562.7827449,
+    changePctDay: -0.00010452700000000001,
+    changePctWeek: -0.00033351400000000003
+  },
+  {
+    ticker: 'CRO',
+    currency: 'USD',
+    price: 0.0494293337142,
+    mktcap: 703431330.8387017,
+    changePctDay: 0.015206599999999999,
+    changePctWeek: -0.0675654
+  },
+  {
+    ticker: 'DASH',
+    currency: 'USD',
+    price: 72.5786547419,
+    mktcap: 685008838.71637,
+    changePctDay: 0.0071204400000000004,
+    changePctWeek: -0.013202499999999999
+  },
+  {
+    ticker: 'ETC',
+    currency: 'USD',
+    price: 5.13870832807,
+    mktcap: 597700118.236596,
+    changePctDay: 0.00534281,
+    changePctWeek: -0.0878234
+  },
+  {
+    ticker: 'NEO',
+    currency: 'USD',
+    price: 7.21346363476,
+    mktcap: 508829292.2569814,
+    changePctDay: 0.00463557,
+    changePctWeek: -0.0869529
+  },
+  {
+    ticker: 'HEDG',
+    currency: 'USD',
+    price: 1.74238145122,
+    mktcap: 502169663.91142434,
+    changePctDay: 0.00533736,
+    changePctWeek: -0.0975913
+  },
+  {
+    ticker: 'MIOTA',
+    currency: 'USD',
+    price: 0.157676389594,
+    mktcap: 438266299.790629,
+    changePctDay: 0.0032245,
+    changePctWeek: -0.0831732
+  },
+  {
+    ticker: 'ATOM',
+    currency: 'USD',
+    price: 2.25105583411,
+    mktcap: 429250323.55849004,
+    changePctDay: 0.0157367,
+    changePctWeek: -0.0559736
+  },
+  {
+    ticker: 'ZEC',
+    currency: 'USD',
+    price: 35.3287200374,
+    mktcap: 347220155.12107724,
+    changePctDay: 0.00181892,
+    changePctWeek: -0.0490991
+  },
+  {
+    ticker: 'XEM',
+    currency: 'USD',
+    price: 0.0367551937444,
+    mktcap: 330796743.6628448,
+    changePctDay: 0.00627185,
+    changePctWeek: -0.0857758
+  },
+  {
+    ticker: 'MKR',
+    currency: 'USD',
+    price: 299.996741859,
+    mktcap: 301748546.9159741,
+    changePctDay: 0.0392818,
+    changePctWeek: -0.11649
+  },
+  {
+    ticker: 'OKB',
+    currency: 'USD',
+    price: 4.62030825606,
+    mktcap: 277218495.3636,
+    changePctDay: 0.0172699,
+    changePctWeek: -0.0679557
+  },
+  {
+    ticker: 'ONT',
+    currency: 'USD',
+    price: 0.383351789033,
+    mktcap: 251381621.91180873,
+    changePctDay: -0.0128594,
+    changePctWeek: -0.108278
   }
 ]
