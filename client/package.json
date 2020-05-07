@@ -10,7 +10,8 @@
     "build:watch": "webpack --watch",
     "dev": "NODE_ENV=development nodemon server.js",
     "start": "NODE_ENV=production node server.js",
-    "deploy": "now --npm"
+    "deploy": "now --npm",
+    "publishheroku": "cd ../ && git subtree push --prefix client heroku-sentiment-client master || true"
   },
   "keywords": [],
   "author": "",
