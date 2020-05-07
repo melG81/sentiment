@@ -2,12 +2,16 @@
   "name": "server",
   "version": "1.0.0",
   "description": "",
+  "engines": {
+    "node": "12.16.x"
+  },
   "main": "server.js",
   "scripts": {
     "test": "NODE_ENV=test mocha",
     "dev": "NODE_ENV=development nodemon ./server.js",
     "start": "NODE_ENV=production node ./server.js",
-    "deploy": "now --docker"
+    "deploy": "now --docker",
+    "publishheroku": "cd ../ && git subtree push --prefix server heroku-server master || true"
   },
   "keywords": [],
   "author": "",
