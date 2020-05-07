@@ -2,6 +2,9 @@
   "name": "client",
   "version": "1.0.0",
   "description": "",
+  "engines": {
+    "node": "12.16.x"
+  },
   "main": "server.js",
   "scripts": {
     "test": "find ./test -name '*.spec.js' | xargs mocha -R spec",
@@ -11,7 +14,7 @@
     "dev": "NODE_ENV=development nodemon server.js",
     "start": "NODE_ENV=production node server.js",
     "deploy": "now --npm",
-    "publishheroku": "cd ../ && git subtree push --prefix client heroku-sentiment-client master || true"
+    "publishheroku": "cd ../ && git subtree push --prefix client heroku-client master || true"
   },
   "keywords": [],
   "author": "",
